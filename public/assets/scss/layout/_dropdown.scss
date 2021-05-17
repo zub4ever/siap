@@ -1,0 +1,150 @@
+/* ============================ */
+/*            Dropdown
+/* ============================ */
+
+.dropdown {
+  .btn {
+    padding: 8px 24px;
+  }
+}
+
+.dropdown-toggle {
+  &:after {
+    font-family: themify;
+    content: "\e64b";
+    border: none;
+    font-size: 12px;
+    vertical-align: middle;
+    display: initial;
+
+  }
+}
+
+.dropup {
+  .dropdown-toggle {
+    &:after {
+      font-family: themify;
+      content: "\e648";
+      border: none;
+      font-size: 12px;
+      vertical-align: middle;
+      display: initial;
+    }
+  }
+}
+
+.dropright {
+  .dropdown-toggle {
+    &:after {
+      font-family: themify;
+      content: "\e649";
+      border: none;
+      font-size: 12px;
+      vertical-align: middle;
+      display: initial;
+    }
+  }
+}
+
+.dropleft {
+  .dropdown-toggle {
+    &:after {
+      font-family: themify;
+      content: "\e64a";
+      border: none;
+      font-size: 12px;
+      vertical-align: middle;
+      display: initial;
+    }
+    &:before {
+      display: none;
+    }
+  }
+}
+
+.btn-primary:not(:disabled):not(.disabled).active,
+.btn-primary:not(:disabled):not(.disabled):active,
+.show>.btn-primary.dropdown-toggle {
+  background-color: darken(theme-color-main(primary), 10%);
+  border-color: darken(theme-color-main(primary), 10%);
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active,
+.btn-secondary:not(:disabled):not(.disabled):active,
+.show>.btn-secondary.dropdown-toggle {
+  background-color: darken(theme-color-main(secondary), 10%);
+  border-color: darken(theme-color-main(secondary), 10%);
+}
+
+.btn-success:not(:disabled):not(.disabled).active,
+.btn-success:not(:disabled):not(.disabled):active,
+.show>.btn-success.dropdown-toggle {
+  background-color: darken(theme-color-main(success), 10%);
+  border-color: darken(theme-color-main(success), 10%);
+}
+
+.btn-danger:not(:disabled):not(.disabled).active,
+.btn-danger:not(:disabled):not(.disabled):active,
+.show>.btn-danger.dropdown-toggle {
+  background-color: darken(theme-color-main(danger), 10%);
+  border-color: darken(theme-color-main(danger), 10%);
+}
+
+.btn-warning:not(:disabled):not(.disabled).active,
+.btn-warning:not(:disabled):not(.disabled):active,
+.show>.btn-warning.dropdown-toggle {
+  background-color: darken(theme-color-main(warning), 10%);
+  border-color: darken(theme-color-main(warning), 10%);
+}
+
+.btn-dark:not(:disabled):not(.disabled).active,
+.btn-dark:not(:disabled):not(.disabled):active,
+.show>.btn-dark.dropdown-toggle {
+  background-color: darken(theme-color-main(dark), 10%);
+  border-color: darken(theme-color-main(dark), 10%);
+}
+
+.btn-light:not(:disabled):not(.disabled).active,
+.btn-light:not(:disabled):not(.disabled):active,
+.show>.btn-light.dropdown-toggle {
+  background-color: darken(theme-color-main(light), 10%);
+  border-color: darken(theme-color-main(light), 10%);
+}
+
+.btn-split {
+  .btn  {
+    padding: 8px 30px;
+    &.dropdown-toggle {
+      padding: 8px 12px;
+      &.btn-primary {
+        border-left: 1px solid darken(theme-color-main(primary), 10%);
+      }
+      &.btn-secondary {
+        border-left: 1px solid darken(theme-color-main(secondary), 5%);
+      }
+      &.btn-success {
+        border-left: 1px solid darken(theme-color-main(success), 5%);
+      }
+      &.btn-danger {
+        border-left: 1px solid darken(theme-color-main(danger), 10%);
+      }
+      &.btn-warning {
+        border-left: 1px solid darken(theme-color-main(warning), 10%);
+      }
+      &.btn-info {
+        border-left: 1px solid darken(theme-color-main(info), 10%);
+      }
+      &.btn-dark {
+        border-left: 1px solid darken(theme-color-main(dark), 10%);
+      }
+      &.btn-light {
+        border-left: 1px solid darken(theme-color-main(light), 10%);
+      }
+    }
+  }
+}
+
+
+/* ============================ */
+/*            End Dropdown
+/* ============================ */

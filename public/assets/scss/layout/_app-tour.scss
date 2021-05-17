@@ -1,0 +1,84 @@
+/* ============================ */
+/*            Tour
+/* ============================ */
+
+.hopscotch-bubble {
+  background-color: theme-color-main(primary) !important;
+  border: none !important;
+  color: $white !important;
+  font-size: 13px !important;
+  .hopscotch-bubble-number {
+    background: none !important;
+    background-color: #fff !important;
+    color: #444 !important;
+    padding: 0 !important;
+    border-radius: 50px !important;
+  }
+  h3 {
+    color: #fff !important;
+  }
+  .hopscotch-nav-button.next {
+    border-color: theme-color-main('light') !important;
+    color: #444 !important;
+    margin: 0 0 0 10px;
+    text-shadow: none !important;
+    background-color: $white !important;
+    background-image: none !important;
+  }
+  // Left Placement
+  .hopscotch-bubble-arrow-container{
+    &.right {
+      right: -33px !important;
+      .hopscotch-bubble-arrow-border {
+        border-left: 17px solid theme-color-main(primary) !important;
+      }
+      .hopscotch-bubble-arrow {
+        border-left: 17px solid theme-color-main(primary) !important;
+        left: -3px !important;
+      }
+    }
+  }
+  // Top Placement
+
+  .hopscotch-bubble-arrow-container {
+    &.down {
+      bottom: -33px !important;
+      .hopscotch-bubble-arrow-border {
+        border-top: 17px solid theme-color-main(primary) !important;
+      }
+      .hopscotch-bubble-arrow {
+        border-top: 17px solid theme-color-main(primary) !important;
+      }
+    }
+  }
+  // Right Placement
+
+  .hopscotch-bubble-arrow-container {
+    &.left {
+      left: -15px !important;
+      .hopscotch-bubble-arrow-border {
+        border-right: 17px solid theme-color-main(primary) !important;
+      }
+      .hopscotch-bubble-arrow {
+        border-right: 17px solid theme-color-main(primary) !important;
+      }
+    }
+  }
+  // Bottom Placement
+
+  .hopscotch-bubble-arrow-container{
+    &.up {
+      top: -15px !important;
+      .hopscotch-bubble-arrow-border {
+        border-bottom: 17px solid theme-color-main(primary) !important;
+      }
+      .hopscotch-bubble-arrow {
+        border-bottom: 17px solid theme-color-main(primary) !important;
+      }
+    }
+  }
+}
+
+/* ============================ */
+/*            End Tour
+/* ============================ */

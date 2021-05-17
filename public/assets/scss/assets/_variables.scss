@@ -1,0 +1,77 @@
+// ========================================= //
+//			Colors Used in Admin Dashboard
+// ========================================= //
+
+$white:				#FFFFFF;
+$tundora:			#444444;
+$Alabaster:	        #f9f9f9;
+$seashell:			#F1F0F0;
+$Gallery:           #eceaea;
+$dove-gray:			#666666;
+$mercury:			#e1e1e1;
+$hint-of-red:		#FAF8F8;
+$black:				#000000;
+$mine-shaft:		#202020;
+$shark:				#212529;
+$albi: 				#fcfcfc;
+
+
+
+// ========================================= //
+//			Main Primary Colors
+// ========================================= //
+
+
+$theme-colors-main: (
+  primary: #4327B7,
+  secondary: #04C4DC,
+  general: #1B0141,
+  success: #1CE882,
+  info: #65B7F3,
+  warning: #F5D41E,
+  danger: #F2385A,
+  light: #eaeaea,
+  dark: #444
+);
+
+// ========================================= //
+//			Fonts Variables
+// ========================================= //
+
+$font-family: 'Montserrat', sans-serif;
+$default-font-size: 14px;
+$body-color: theme-color-main(dark);
+$title-color: theme-color-main(dark);
+
+
+// ========================================= //
+//			Buttons Variables
+// ========================================= //
+
+// Fixed Width
+$btn-fixed-w:  110px;
+
+// Font Sizes
+$btn-font-size:       14px;
+$btn-font-size-xs:    12px;
+$btn-font-weight:     500;
+
+// Border Readius
+$btn-border-radius:   4px;
+
+// Btn Padding
+
+$btn-xs-padding-y:    8px;
+$btn-xs-padding-x:    12px;
+
+$btn-sm-padding-y:    8px;
+$btn-sm-padding-x:    13px;
+
+$btn-md-padding-y:    10px;
+$btn-md-padding-x:    18px;
+
+$btn-lg-padding-y:    15px;
+$btn-lg-padding-x:    30px;
+
+$btn-xl-padding-y:    19px;
+$btn-xl-padding-x:    24px;

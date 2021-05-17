@@ -1,0 +1,24 @@
+/* ============================ */
+/*            Pagination
+/* ============================ */
+
+.pagination {
+  li {
+    a {
+      color: theme-color-main(primary);
+      &:hover {
+        color: theme-color-main(primary);
+      }
+    }
+    &.active {
+      .page-link {
+        background: theme-color-main(primary);
+        border-color: theme-color-main(primary);
+      }
+    }
+  }
+}
+
+/* ============================ */
+/*         End Pagination
+/* ============================ */

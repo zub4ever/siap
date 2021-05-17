@@ -1,0 +1,95 @@
+/* ============================ */
+/*            Accordions        */
+/* ============================ */
+
+.accordion {
+  .card {
+    margin-bottom: 20px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+  .card-header {
+    padding: 0;
+    border: none;
+    a {
+      position: relative;
+      display: block;
+      background: #EFF3F6;
+      padding: 16px 15px;
+      border-radius: 3px;
+      color: #444;
+      letter-spacing: 0;
+      font-size: 15px;
+      font-weight: 500;
+    }
+  }
+  .card-body {
+    padding: 10px;
+    border: 1px solid #eff3f6;
+    font-size: 14px;
+    letter-spacing: 0;
+    color: #444;
+    line-height: 27px;
+    font-weight: 400;
+  }
+  /* Accordion Style 2 */
+
+  &.accordion-style-2 {
+    .card-header {
+      a {
+        &:before {
+          content: "\f106";
+          font-family: fontawesome;
+          position: absolute;
+          right: 13px;
+          color: #444;
+          font-size: 26px;
+          top: 50%;
+          transform: translate(0,-50%);
+        }
+        &.collapsed {
+          &:before {
+            content: "\f107";
+          }
+        }
+      }
+    }
+  }
+
+  &.primary-bg {
+    .card-header {
+      a {
+        background: theme-color-main(primary);
+        color: #fff;
+        &:before {
+          color: #fff;
+        }
+      }
+    }
+  }
+}
+
+/* Accordion Style 3 */
+
+.accordion-style-3 {
+  .card-header {
+    a{
+      &:before {
+        content: "\e622";
+        font-family: 'themify';
+        position: absolute;
+        right: 13px;
+        color: #444;
+        font-size: 15px;
+      }
+      &.collapsed:before {
+        content: "\e61a";
+      }
+    }
+  }
+}
+
+/* ============================ */
+/*         End Accordions
+/* ============================ */

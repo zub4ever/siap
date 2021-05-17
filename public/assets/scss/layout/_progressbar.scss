@@ -1,0 +1,42 @@
+/* ============================ */
+/*          ProgressBar
+/* ============================ */
+
+.progress-bar {
+  background-color: theme-color-main(primary);
+  &.bg-primary {
+    background-color: theme-color-main(primary);
+  }
+
+  &.bg-secondary {
+    background-color: theme-color-main(secondary) !important;
+  }
+
+  &.bg-success {
+    background-color: theme-color-main(success) !important;
+  }
+
+  &.bg-danger {
+    background-color: theme-color-main(danger) !important;
+  }
+
+  &.bg-warning {
+    background-color: theme-color-main(warning) !important;
+  }
+
+  &.bg-info {
+    background-color: theme-color-main(info) !important;
+  }
+
+  &.bg-dark {
+    background-color: theme-color-main(dark) !important;
+  }
+
+  &.bg-light {
+    background-color: theme-color-main(light) !important;
+  }
+}
+
+/* ============================ */
+/*          End ProgressBar
+/* ============================ */

@@ -1,0 +1,17 @@
+/* ============================ */
+/*         Sweet Alert
+/* ============================ */
+
+.swal2-container .swal2-styled:not(.swal2-cancel) {
+  background: theme-color-main(primary) !important;
+  outline: none;
+}
+
+.swal2-popup .swal2-title {
+  color: #444 !important;
+  font-size: 24px !important;
+}
+
+/* ============================ */
+/*        End Sweet Alert
+/* ============================ */

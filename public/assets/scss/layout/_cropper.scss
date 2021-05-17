@@ -1,0 +1,38 @@
+/* ============================ */
+/*            Cropper
+/* ============================ */
+
+.img-preview {
+  overflow: hidden;
+  float: left;
+  background-color: #eee;
+  width: 100%;
+  text-align: center;
+  margin-right: 10px;
+  margin-bottom: 10px;
+}
+.preview-lg {
+  width: 200px;
+  height: 150px;
+}
+
+.img-container,
+.img-preview {
+  background-color: #f7f7f7;
+  text-align: center;
+  width: 100%;
+}
+
+.preview-md {
+  width: 150px;
+  height: 120px;
+}
+
+.preview-sm {
+  width: 100px;
+  height: 75px;
+}
+
+/* ============================ */
+/*            End Cropper
+/* ============================ */

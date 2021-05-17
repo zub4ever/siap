@@ -1,0 +1,82 @@
+/* ============================ */
+/*            Maps
+/* ============================ */
+
+#animated_chart,
+#curved_chart,
+#zoom_country_chart,
+#pattern_map,
+#capitals_map,
+#pie_map {
+  height: 400px;
+}
+
+#google_map,
+#rt_cutom_marker {
+  height: 600px;
+}
+
+.map-marker {
+  /* adjusting for the marker dimensions
+    so that it is centered on coordinates */
+  margin-left: -8px;
+  margin-top: -8px;
+}
+
+.map-marker.map-clickable {
+  cursor: pointer;
+}
+
+.pulse {
+  width: 10px;
+  height: 10px;
+  border: 5px solid theme-color-main(primary);
+  border-radius: 30px;
+  background-color: #716f42;
+  z-index: 10;
+  position: absolute;
+}
+
+.map-marker .dot {
+  border: 10px solid lighten(theme-color-main(primary), 10%);
+  background: transparent;
+  border-radius: 60px;
+  height: 50px;
+  width: 50px;
+  -webkit-animation: pulse 3s ease-out;
+  animation: pulse 3s ease-out;
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  position: absolute;
+  top: -20px;
+  left: -20px;
+  z-index: 1;
+  opacity: 0;
+}
+
+@-webkit-keyframes pulse {
+  0% {
+    -webkit-transform: scale(0);
+    opacity: 0.0;
+  }
+  25% {
+    -webkit-transform: scale(0);
+    opacity: 0.1;
+  }
+  50% {
+    -webkit-transform: scale(0.1);
+    opacity: 0.3;
+  }
+  75% {
+    -webkit-transform: scale(0.5);
+    opacity: 0.5;
+  }
+  100% {
+    -webkit-transform: scale(1);
+    opacity: 0.0;
+  }
+}
+
+/* ============================ */
+/*            End Maps
+/* ============================ */

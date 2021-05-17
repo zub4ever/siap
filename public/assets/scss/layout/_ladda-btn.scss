@@ -1,0 +1,65 @@
+/* ============================ */
+/*         Ladda Btn
+/* ============================ */
+
+.ladda-button[disabled]:hover,
+.ladda-button[data-loading]:hover{
+  cursor: default !important;
+}
+
+.primary-btn.ladda-button[disabled],
+.primary-btn.ladda-button[data-loading],
+.primary-btn.ladda-button[disabled]:hover,
+.primary-btn.ladda-button[data-loading]:hover{
+  background-color: lighten(theme-color-main(primary), 10%) !important;
+}
+
+.secondary-btn.ladda-button[disabled],
+.secondary-btn.ladda-button[data-loading],
+.secondary-btn.ladda-button[disabled]:hover,
+.secondary-btn.ladda-button[data-loading]:hover{
+  background-color: lighten(theme-color-main(secondary), 10%) !important;
+}
+
+.success-btn.ladda-button[disabled],
+.success-btn.ladda-button[data-loading],
+.success-btn.ladda-button[disabled]:hover,
+.success-btn.ladda-button[data-loading]:hover{
+  background-color: lighten(theme-color-main(success), 10%) !important;
+}
+
+.warning-btn.ladda-button[disabled],
+.warning-btn.ladda-button[data-loading],
+.warning-btn.ladda-button[disabled]:hover,
+.warning-btn.ladda-button[data-loading]:hover{
+  background-color: lighten(theme-color-main(warning), 10%) !important;
+}
+
+.danger-btn.ladda-button[disabled],
+.danger-btn.ladda-button[data-loading],
+.danger-btn.ladda-button[disabled]:hover,
+.danger-btn.ladda-button[data-loading]:hover{
+  background-color: lighten(theme-color-main(danger), 10%) !important;
+}
+
+.dark-btn.ladda-button[disabled],
+.dark-btn.ladda-button[data-loading],
+.dark-btn.ladda-button[disabled]:hover,
+.dark-btn.ladda-button[data-loading]:hover{
+  background-color: lighten(theme-color-main(dark), 10%) !important;
+}
+
+.light-btn.ladda-button[disabled],
+.light-btn.ladda-button[data-loading],
+.light-btn.ladda-button[disabled]:hover,
+.light-btn.ladda-button[data-loading]:hover{
+  background-color: lighten(theme-color-main(light), 10%) !important;
+}
+
+.ladda-button[data-style=contract] {
+  width: auto !important;
+}
+
+/* ============================ */
+/*        End Ladda Btn
+/* ============================ */

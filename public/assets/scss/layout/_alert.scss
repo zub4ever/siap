@@ -1,0 +1,99 @@
+/* ============================ */
+/*            Alert             */
+/* ============================ */
+
+.alert {
+  letter-spacing: 0;
+  font-size: 14px;
+  border: none;
+  padding: 10px 16px;
+  font-weight: 600;
+  span {
+    font-size: 13px;
+  }
+}
+
+.alert strong,
+.alert-link {
+  font-weight: 700;
+}
+
+.alert-primary,
+.alert-danger,
+.alert-warning,
+.alert-dark,
+.alert-info,
+.alert-light,
+.alert-success{
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+  color: $white;
+}
+
+.alert-primary .alert-link,
+.alert-danger .alert-link,
+.alert-warning .alert-link,
+.alert-info .alert-link,
+.alert-success .alert-link {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.alert-primary {
+  background-color: theme-color-main('primary');
+  border-left: 4px solid #9178f9;
+}
+
+.alert-success {
+  border-left: 4px solid #00C853;
+  background-color: #00E676;
+}
+
+.alert-danger {
+  border-left: 4px solid darken(theme-color-main('danger'),20%);
+  background-color: theme-color-main('danger');
+}
+
+.alert-warning {
+  border-left: 4px solid #FFA000;
+  background-color: #FFC107;
+}
+
+.alert-info {
+  border-left: 4px solid #0288D1;
+  background-color: #29B6F6;
+}
+
+.alert-dark {
+  border-left: 4px solid #37474F;
+  background-color: #607D8B;
+}
+
+.alert-light {
+  border-left: 4px solid #607D8B;
+  background-color: #CFD8DC;
+}
+
+/* additional content */
+
+.alert-heading {
+  margin-bottom: 7px;
+}
+
+.alert-dismiss .alert {
+  padding: 13px 15px;
+}
+
+.alert-dismiss .alert-dismissible .close {
+  top: 4px;
+  outline: none;
+  font-size: 13px;
+}
+.alert-primary hr {
+  border-top-color: #fff;
+}
+
+/* ============================ */
+/*            End Alert         */
+/* ============================ */

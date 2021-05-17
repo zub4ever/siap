@@ -1,0 +1,69 @@
+/* ============================ */
+/*         Dropzone
+/* ============================ */
+
+.dropzone {
+  cursor: pointer;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  border-radius: 10px;
+  i {
+    font-size: 60px;
+  }
+  .dz-preview {
+    margin: 10px !important;
+  }
+  &.dropzone-primary {
+    border: 2px dashed lighten(theme-color-main(primary), 10%) !important;
+    i {
+      color: lighten(theme-color-main(primary), 10%);
+      opacity: 0.5;
+    }
+  }
+  &.dropzone-secondary {
+    border: 2px dashed lighten(theme-color-main(secondary), 10%) !important;
+    i {
+      color: lighten(theme-color-main(secondary), 10%);
+      opacity: 0.5;
+    }
+  }
+  &.dropzone-success {
+    border: 2px dashed lighten(theme-color-main(success), 10%) !important;
+    i {
+      color: lighten(theme-color-main(success), 10%);
+      opacity: 0.5;
+    }
+  }
+  &.dropzone-warning {
+    border: 2px dashed lighten(theme-color-main(warning), 10%) !important;
+    i {
+      color: lighten(theme-color-main(warning), 10%);
+      opacity: 0.5;
+    }
+  }
+  &.dropzone-danger {
+    border: 2px dashed lighten(theme-color-main(danger), 10%) !important;
+    i {
+      color: lighten(theme-color-main(danger), 10%);
+      opacity: 0.5;
+    }
+  }
+  &.dropzone-dark {
+    border: 2px dashed lighten(theme-color-main(dark), 10%) !important;
+    i {
+      color: lighten(theme-color-main(dark), 10%);
+      opacity: 0.5;
+    }
+  }
+  &.dropzone-light {
+    border: 2px dashed theme-color-main(light) !important;
+    i {
+      color: theme-color-main(light);
+      opacity: 0.5;
+    }
+  }
+}
+
+/* ============================ */
+/*        End Dropzone
+/* ============================ */

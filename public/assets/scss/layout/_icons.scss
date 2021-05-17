@@ -1,0 +1,144 @@
+/* ============================ */
+/*            Icons
+/* ============================ */
+
+// Font Awesome
+.fw-icons {
+  border: 1px solid #eaeaea;
+  padding: 10px;
+  margin: 0.5%;
+  flex: 0 0 24%;
+  @media (max-width: 640px) {
+    flex: 0 0 100%;
+  }
+  a {
+    color: #444;
+    margin: 9px 0;
+    display: inline-block;
+    font-family: 'lato', sans-serif;
+    &:hover {
+      color: theme-color-main(primary);
+    }
+    i {
+      width: 30px;
+      font-size: 14px;
+      color: theme-color-main(primary);
+    }
+  }
+}
+
+// Themify Icons
+
+.icon-section {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  .icon-container {
+    cursor: pointer;
+    -ms-flex-preferred-size: calc(100% * (1/4));
+    flex-basis: calc(100% * (1/4));
+    @media (max-width: 767px) {
+      flex-basis: 100%;
+    }
+    [class^="ti-"] {
+      width: 30px;
+      font-size: 14px;
+      display: inline-block;
+      -webkit-transition: all 0.3s ease 0s;
+      transition: all 0.3s ease 0s;
+    }
+    &:hover [class^="ti-"] {
+      -webkit-transform: scale(2);
+      transform: scale(2);
+      -webkit-transform-origin: left center;
+      transform-origin: left center;
+    }
+    &:hover {
+      span {
+        color: theme-color-main(primary);
+        &.icon-name {
+          -webkit-transform: translateX(10px);
+          transform: translateX(10px);
+        }
+      }
+    }
+    span {
+      &.icon-name {
+        color: #444;
+        margin: 9px 0;
+        display: inline-block;
+        font-family: 'lato', sans-serif;
+        -webkit-transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
+      }
+    }
+  }
+}
+
+// Ionicons
+
+#icons {
+  transition: opacity .2s ease-in-out;
+  padding-left: 5px;
+  width: 100%;
+  list-style: none;
+  text-align: left;
+  font-size: 1px;
+  li {
+    position: relative;
+    z-index: 0;
+    display: inline-block;
+    padding: 22px;
+    width: 85px;
+    border-radius: 4px;
+    list-style: none;
+    text-align: center;
+    font-weight: normal;
+    font-size: 32px;
+    cursor: pointer;
+    &:hover {
+      color: theme-color-main(primary);
+    }
+    &.active {
+      color: theme-color-main(primary);
+    }
+  }
+}
+
+// ET Line Icons
+
+.et-examples {
+  color: #555;
+  margin-left: 1px;
+  vertical-align: middle;
+  .box1 {
+    display: block;
+    width: 33%;
+    float: left;
+    padding: 0;
+    border: 1px solid #e5e5e5;
+    margin: -1px 0 0 -1px;
+    font-size: 13px;
+    @media (max-width: 640px) {
+      width: 100%;
+    }
+    span {
+      display: inline-block;
+      margin-right: 5px;
+      min-width: 70px;
+      min-height: 70px;
+      border-right: 1px solid #f1f1f1;
+      line-height: 70px;
+      text-align: center;
+      font-size: 32px;
+    }
+  }
+}
+
+
+
+/* ============================ */
+/*            End Icons
+/* ============================ */

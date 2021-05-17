@@ -1,0 +1,68 @@
+/* ============================ */
+/*            Calendar
+/* ============================ */
+
+.full_calendar {
+  table tr td {
+    vertical-align: middle !important;
+    padding: initial !important;
+  }
+  .fc-event {
+    border: none;
+    padding: 3px !important;
+    text-align: center;
+  }
+  a {
+    color: #fff !important;
+    font-size: 12px;
+  }
+  &.fc-unthemed .fc-toolbar .fc-button:focus,
+  &.fc-unthemed .fc-toolbar .fc-button:active,
+  &.fc-unthemed .fc-toolbar .fc-button.fc-state-active {
+    background: theme-color-main(primary);
+    color: #fff;
+    border: 1px solid theme-color-main(primary);
+    -webkit-box-shadow: none;
+    box-shadow: none;
+    text-shadow: none;
+  }
+  &.fc-unthemed .fc-toolbar .fc-button {
+    color: #a1a8c3;
+    background: transparent;
+    border: 1px solid #ebedf2;
+    text-shadow: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important;
+  }
+  &.fc-unthemed .fc-toolbar .fc-button:hover {
+    background: #f7f8fa;
+    border: 1px solid #ebedf2;
+    color: #a1a8c3;
+  }
+  &.fc-unthemed .fc-toolbar .fc-button {
+    outline: none !important;
+    font-size: 14px;
+  }
+  &.fc-unthemed .fc-toolbar h2 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    margin-top: 0.75rem;
+    margin: 0;
+  }
+}
+
+.external-event {
+  padding: 5px 10px;
+  font-weight: 500;
+  margin-bottom: 4px;
+  box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  text-shadow: 0 1px 1px rgba(0,0,0,0.1);
+  border-radius: 3px;
+  cursor: move;
+  text-align: center;
+}
+
+/* ============================ */
+/*            End Calendar
+/* ============================ */

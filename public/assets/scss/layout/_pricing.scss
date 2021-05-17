@@ -1,0 +1,166 @@
+/* ====================== */
+/*        Pricing         */
+/* ====================== */
+
+#mt_pricing {
+  .main_pricing_conatiner.highlight_pricing {
+    background: theme-color-main(primary);
+    &:hover {
+      a {
+        color: $white;
+        background: $shark !important;
+        transition: all 0.5s ease;
+        text-shadow: initial;
+        -ms-box-shadow: -1px 4px 36px 0 rgba(0, 0, 0, 0.61);
+        -o-box-shadow: -1px 4px 36px 0 rgba(0, 0, 0, 0.61);
+        -webkit-box-shadow: -1px 4px 36px 0 rgba(0, 0, 0, 0.61);
+        -moz-box-shadow: -1px 4px 36px 0 rgba(0, 0, 0, 0.61);
+        box-shadow: -1px 4px 36px 0 rgba(0, 0, 0, 0.61);
+        -webkit-transition: all 0.5s ease;
+        -moz-transition: all 0.5s ease;
+        -ms-transition: all 0.5s ease;
+        -o-transition: all 0.5s ease;
+        transition: all 0.5s ease;
+      }
+    }
+    .price_listing {
+      ul {
+        li {
+          color: $white;
+          &:before {
+            background: $white !important;
+          }
+        }
+      }
+    }
+    h2 {
+      color: $white !important;
+      .price_icon {
+        i {
+          color: $white !important;
+        }
+      }
+    }
+    .price_tag {
+      color: $white !important;
+    }
+    .per_month {
+      color: $white !important;
+    }
+    .mt_btn_color {
+      background: $white;
+      color: $shark;
+    }
+  }
+  .main_pricing_conatiner {
+    background: $white none repeat scroll 0 0;
+    overflow: hidden;
+    -webkit-box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+    -moz-box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+    -o-box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+    -ms-box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+    box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+    @media only screen and (max-width: 991px) {
+      margin-bottom: 40px;
+    }
+    &:hover {
+      a {
+        color: $Alabaster;
+        background-color: $tundora !important;
+        transition: all 0.5s ease;
+        text-shadow: initial;
+        -ms-box-shadow: -1px 4px 36px 0 rgba(204, 204, 204, 0.61);
+        -o-box-shadow: -1px 4px 36px 0 rgba(204, 204, 204, 0.61);
+        -webkit-box-shadow: -1px 4px 36px 0 rgba(204, 204, 204, 0.61);
+        -moz-box-shadow: -1px 4px 36px 0 rgba(204, 204, 204, 0.61);
+        box-shadow: -1px 4px 36px 0 rgba(204, 204, 204, 0.61);
+      }
+    }
+    .price {
+      padding: 35px 0 0;
+      text-align: center;
+      position: relative;
+      h2 {
+        font-weight: 500;
+        margin-bottom: 5px;
+        color: $shark;
+        @media only screen and (max-width: 480px) {
+          font-size: 24px;
+          margin-bottom: 0;
+          margin-top: 0;
+        }
+        .price_icon {
+          display: block;
+          margin-bottom: 6px;
+        }
+        .price_icon i {
+          color: $shark;
+          font-size: 65px;
+        }
+      }
+      .price_tag {
+        font-size: 48px;
+        font-weight: 500;
+        color: $shark;
+        position: relative;
+        @media only screen and (max-width: 480px) {
+          font-size: 40px;
+        }
+        .currency {
+          font-size: 28px;
+          left: -18px;
+          position: absolute;
+        }
+      }
+      .per_month {
+        font-size: 14px;
+        font-weight: 500;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        color: $shark;
+      }
+    }
+    .price_listing {
+      padding: 25px 40px 8px;
+      ul {
+        text-align: center;
+        li {
+          margin-bottom: 15px;
+          &:before {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+          }
+        }
+      }
+      @media only screen and (max-width: 480px) {
+        padding: 70px 0 25px 20px;
+      }
+    }
+    .choose_plan_btn {
+      text-align: center;
+      padding-bottom: 40px;
+      .mt_btn_white {
+        background: $Alabaster;
+        height: 55px;
+        line-height: 55px;
+        padding: 0;
+        text-align: center;
+        width: 55px;
+        border-color: $Alabaster !important;
+        -webkit-box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+        -moz-box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+        -o-box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+        -ms-box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+        box-shadow: 2px 2px 5px 0 rgba(204, 204, 204, 0.61);
+        i {
+          font-size: 45px;
+        }
+      }
+    }
+  }
+}
+
+/* =========================== */
+/*        End Pricing          */
+/* =========================== */

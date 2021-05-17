@@ -1,0 +1,123 @@
+/* ============================ */
+/*            Badges
+/* ============================ */
+
+.badge {
+  font-size: $btn-font-size;
+  font-family: $font-family;
+  font-weight: $btn-font-weight;
+
+  &.badge-pill {
+    padding: 8px 12px;
+  }
+
+  /*====================
+   General Badges
+   ====================*/
+
+  &.badge-primary {
+    background-color: theme-color-main('primary');
+    border-color: theme-color-main('primary');
+    padding: 5px 10px;
+    &:hover {
+      background-color: darken(theme-color-main('primary'), 10%);
+      border-color: darken(theme-color-main('primary'), 10%);
+    }
+  }
+
+  &.badge-secondary {
+    background-color: theme-color-main('secondary');
+    border-color: theme-color-main('secondary');
+    padding: 5px 10px;
+    &:hover {
+      background-color: darken(theme-color-main('secondary'), 10%);
+      border-color: darken(theme-color-main('secondary'), 10%);
+    }
+  }
+
+  &.badge-success {
+    background-color: theme-color-main('success');
+    border-color: theme-color-main('success');
+    padding: 5px 10px;
+    &:hover {
+      background-color: darken(theme-color-main('success'), 10%);
+      border-color: darken(theme-color-main('success'), 10%);
+    }
+  }
+
+  &.badge-danger {
+    background-color: theme-color-main('danger');
+    border-color: theme-color-main('danger');
+    padding: 5px 10px;
+    &:hover {
+      background-color: darken(theme-color-main('danger'), 10%);
+      border-color: darken(theme-color-main('danger'), 10%);
+    }
+  }
+
+  &.badge-warning {
+    background-color: theme-color-main('warning');
+    border-color: theme-color-main('warning');
+    padding: 5px 10px;
+    &:hover {
+      background-color: darken(theme-color-main('warning'), 10%);
+      border-color: darken(theme-color-main('warning'), 10%);
+    }
+  }
+
+  &.badge-info {
+    background-color: theme-color-main('info');
+    border-color: theme-color-main('info');
+    padding: 5px 10px;
+    &:hover {
+      background-color: darken(theme-color-main('info'), 10%);
+      border-color: darken(theme-color-main('info'), 10%);
+    }
+  }
+
+  &.badge-dark {
+    background-color: theme-color-main('dark');
+    border-color: theme-color-main('dark');
+    padding: 5px 10px;
+    &:hover {
+      background-color: lighten(theme-color-main('dark'), 10%);
+      border-color: lighten(theme-color-main('dark'), 10%);
+    }
+  }
+
+  &.badge-light {
+    background-color: theme-color-main('light');
+    border-color: theme-color-main('light');
+    padding: 5px 10px;
+    &:hover {
+      background-color: darken(theme-color-main('light'), 10%);
+      border-color: darken(theme-color-main('light'), 10%);
+    }
+  }
+}
+
+.btn {
+  .badge {
+    padding: .25em .4em;
+    border-radius: 50px;
+    top: 0;
+    right: -4px;
+    font-size: 12px;
+    background: #fff;
+  }
+}
+.nav-pills {
+  .nav-link {
+    color: theme-color-main(primary);
+    &.active {
+      background-color: theme-color-main(primary);
+    }
+    &.disabled {
+      color: #6c757d;
+    }
+  }
+}
+
+/* ============================ */
+/*            End Badges
+/* ============================ */

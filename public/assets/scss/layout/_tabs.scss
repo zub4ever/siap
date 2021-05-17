@@ -1,0 +1,35 @@
+/* ============================ */
+/*            Tabs
+/* ============================ */
+
+.nav-tabs {
+  border-color: theme-color-main(primary);
+  .nav-item.show .nav-link,
+  .nav-link.active {
+    background-color: theme-color-main(primary);
+    border-color: theme-color-main(primary);
+    color: $white;
+  }
+  .nav-link {
+    color: #444;
+  }
+  .nav-link:focus, .nav-link:hover {
+    border-color: theme-color-main(primary);
+    background-color: theme-color-main(primary);
+    color: #fff;
+  }
+}
+.vertical_tabs {
+  a {
+    text-align: center;
+    margin-bottom: 10px;
+    i {
+      display: block;
+      margin-bottom: 6px;
+    }
+  }
+}
+
+/* ============================ */
+/*            End Tabs
+/* ============================ */

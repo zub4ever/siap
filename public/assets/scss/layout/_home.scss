@@ -1,0 +1,46 @@
+/* ============================ */
+/*            Home
+/* ============================ */
+
+.rt_icon_card {
+  padding: 10px;
+  span {
+    font-weight: 600;
+  }
+  p {
+    font-size: 16px;
+    font-weight: 500;
+  }
+  .icon_rt {
+    float: left;
+    width: 20%;
+    position: relative;
+    z-index: 1;
+    &:before {
+      content: '';
+      width: 70px;
+      height: 45px;
+      background: lighten(theme-color-main(primary), 40%);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      z-index: -1;
+      border-radius: 40px;
+      transform: translate(-50%,-50%) rotate(-30deg);
+    }
+    i {
+      line-height: 60px;
+      margin-bottom: 0;
+      font-size: 38px;
+    }
+  }
+}
+
+.traffic-sales-amount {
+  float: right;
+  color: #3d405c;
+}
+
+/* ============================ */
+/*            End Home
+/* ============================ */

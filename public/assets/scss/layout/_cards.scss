@@ -1,0 +1,427 @@
+/* ============================ */
+/*            Cards
+/* ============================ */
+
+// Cards Design 1
+
+.card_with_image {
+  float: left;
+  width: 100%;
+  background: #fff;
+  box-shadow: 0 1px 5px 0 rgba(5, 5, 5, 0.2);
+  border-radius: 10px;
+  padding-bottom: 0;
+  .rt_post_data {
+    padding: 25px;
+    float: left;
+    width: 100%;
+  }
+  .blog_card_image {
+    background: #212121;
+    display: block;
+    text-align: center;
+    border-radius: 10px 10px 0 0;
+    overflow: hidden;
+  }
+  .blog_card_date {
+    text-align: center;
+    padding-right: 20px;
+    padding-left: 0;
+    width: 10%;
+    float: left;
+    h3 {
+      line-height: 35px;
+      margin-bottom: 0;
+    }
+    p {
+      font-size: 14px;
+    }
+    .blog_chat_icon {
+      ul {
+        padding: 0;
+        margin: 0 auto;
+        list-style: none;
+        display: block;
+        li {
+          margin: 0 auto;
+          padding-left: 0;
+          text-align: center;
+          width: 74%;
+          i {
+            font-size: 20px;
+          }
+        }
+      }
+      span {
+        font-size: 16px;
+      }
+    }
+  }
+  .blog_card_description {
+    float: left;
+    width: 90%;
+    .blog_data {
+      float: left;
+      width: 100%;
+      h3 {
+        margin-top: 0;
+        font-weight: 700;
+        font-size: 20px;
+        line-height: 28px;
+        @media only screen and (max-width: 480px) {
+          font-size: 18px;
+          line-height: 30px;
+        }
+      }
+      p {
+        color: #656565;
+      }
+    }
+  }
+
+
+}
+
+// Cards Design 2
+
+.grid-item {
+  margin-bottom: 0;
+  -webkit-border-radius: 12px;
+  -moz-border-radius: 12px;
+  border-radius: 12px;
+  @media only screen and (max-width: 991px) {
+    width: 100%;
+    float: left;
+  }
+}
+
+.image_card {
+  margin-right: 25px;
+  transition: all .4s cubic-bezier(0.175, 0.885, 0, 1);
+  background-color: #444;
+  width: 100%;
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 15px;
+  box-shadow: 0px 10px 10px -7px rgba(0, 0, 0, 0.1);
+  &:hover {
+    box-shadow: 0px 30px 18px -8px rgba(0, 0, 0, 0.1);
+    transform: scale(1.10, 1.10);
+    .card_img_hover_sec {
+      height: 100%;
+      opacity: 0.3;
+    }
+    .card__info {
+      background-color: transparent;
+      position: relative;
+      h3,.card_by {
+        color: #fff;
+      }
+    }
+    .card_img_hover {
+      opacity: 1;
+    }
+  }
+  .card_clock {
+    width: 15px;
+    vertical-align: middle;
+    fill: #fff;
+  }
+  .card_date {
+    font-size: 12px;
+    color: #fff;
+    vertical-align: middle;
+    margin-left: 5px;
+  }
+  .card_info {
+    float: right;
+  }
+  .card_img {
+    visibility: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 275px;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+
+  }
+  .card_img_hover {
+    position: absolute;
+    padding: 16px;
+    width: 100%;
+    opacity: 0;
+    top: 0;
+  }
+  .card_img_hover_sec {
+    transition: 0.2s all ease-out;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    position: absolute;
+    height: 275px;
+    top: 0;
+
+  }
+  .card__info {
+    z-index: 2;
+    background-color: #fff;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    padding: 26px 24px 34px 24px;
+  }
+  .card_title {
+    margin-top: 5px;
+    margin-bottom: 0;
+    font-size: 20px;
+    line-height: 30px;
+  }
+  .card_by {
+    font-size: 11px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    display: inline-block;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .card_author {
+    font-weight: 600;
+    text-decoration: none;
+    color: theme-color-main(secondary);
+  }
+}
+
+// Cards Design 3
+
+.team_member {
+  background: #fff none repeat scroll 0 0;
+  border-radius: 10px;
+  margin-bottom: 0;
+  padding: 30px 25px;
+  position: relative;
+  text-align: center;
+  -webkit-box-shadow: 3px 4px 9px -6px #cccccc;
+  -moz-box-shadow: 3px 4px 9px -6px #cccccc;
+  box-shadow: 3px 4px 9px -6px #cccccc;
+  border:1px solid $Alabaster;
+  width: 100%;
+  img {
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    width: auto;
+  }
+  .member_name {
+    margin-bottom: 20px;
+    h3 {
+      margin-bottom: 2px;
+      margin-top: 10px;
+      font-size: 20px;
+      @media only screen and (max-width: 640px) {
+        font-size: 18px;
+      }
+    }
+    span {
+      display: block;
+      font-size: 12px;
+      color: $dove-gray;
+      font-family: 'Roboto', sans-serif;
+      font-weight: 300;
+    }
+  }
+  ul {
+    li {
+      display: inline-block;
+      padding-left: 5px;
+      &:before {
+        display: none;
+      }
+      &:hover {
+        background-color: $white;
+        border-color: $white;
+        transition: all 0.5s ease;
+      }
+      i {
+        color: $shark;
+        display: inline-block;
+        line-height: 30px;
+        @media only screen and (max-width: 1200px) {
+          line-height: 20px;
+          font-size: 11px;
+        }
+        @media only screen and (max-width: 991px) {
+          line-height: 30px;
+          font-size: 18px;
+        }
+        &:hover {
+          color: $shark;
+        }
+      }
+    }
+  }
+}
+
+// Cards Design 4
+
+.article_card {
+  position: relative;
+  float: left;
+  overflow: hidden;
+  background-color: #ffffff;
+  color: #2B2B2B;
+  text-align: center;
+  font-size: 16px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.15);
+  margin-bottom: 0 !important;
+  @media only screen and (max-width:768px) {
+    width: 100%;
+  }
+  * {
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+  img {
+    max-width: 100%;
+    vertical-align: top;
+    position: relative;
+    width: 100%;
+  }
+  figcaption {
+    padding: 10%;
+    padding-bottom: calc(25%);
+    background-color: #ffffff;
+    @media only screen and (min-width:600px) and (max-width:768px) {
+      padding: 5% 5% calc(15%);
+    }
+  }
+  h3 {
+    margin-top: 5px;
+    margin-bottom: 0;
+    a {
+      font-size: 18px;
+      line-height: 24px;
+      color: #444;
+      text-transform: uppercase;
+      font-weight: 600;
+    }
+  }
+  h5 {
+    font-weight: 400;
+    margin: 0;
+    text-transform: uppercase;
+    color: #888;
+    line-height: 18px;
+    font-size: 12px;
+  }
+  footer {
+    border-top: 1px solid rgba(0, 0, 0, 0.065);
+    padding: 0 20px;
+    font-size: 13px;
+    line-height: 50px;
+    text-align: left;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    .icons {
+      position: absolute;
+      right: 20px;
+      top: 0;
+      i {
+        display: inline-block;
+        margin-right: 5px;
+        font-size: 1em;
+      }
+    }
+    .icons > div {
+      display: inline-block;
+      margin-left: 8px;
+    }
+  }
+}
+
+// Backgrounds
+
+.bg-card-primary,
+.bg-card-success,
+.bg-card-danger,
+.bg-card-warning,
+.bg-card-info,
+.bg-card-dark,
+.bg-card-secondary {
+  color: #fff;
+  h4 {
+    color: #fff;
+    line-height: 30px;
+  }
+}
+
+.bg-card-primary {
+  background: theme-color-main(primary);
+}
+
+.bg-card-secondary {
+  background: theme-color-main(secondary);
+}
+
+.bg-card-success {
+  background: theme-color-main(success);
+}
+
+.bg-card-danger {
+  background: theme-color-main(danger);
+}
+
+.bg-card-warning {
+  background: theme-color-main(warning);
+}
+
+.bg-card-info {
+  background: theme-color-main(info);
+}
+
+.bg-card-dark {
+  background: theme-color-main(dark);
+}
+
+.bg-card-light {
+  background: theme-color-main(light);
+  p {
+    color: #444;
+  }
+  hr {
+    border-color: #444;
+  }
+}
+
+// Card with Icon
+
+.card-icon {
+  p {
+    color: #757474;
+    font-size: 12px;
+    margin-bottom: 5px;
+  }
+  span {
+    font-size: 22px;
+    color: theme-color-main(primary);
+  }
+  i {
+    font-size: 30px;
+    margin-bottom: 14px;
+    display: inline-block;
+    color: theme-color-main(primary);
+  }
+}
+
+
+
+
+
+
+
+/* ============================ */
+/*            End Cards
+/* ============================ */

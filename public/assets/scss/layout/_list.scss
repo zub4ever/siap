@@ -1,0 +1,100 @@
+/* ============================ */
+/*            List Group
+/* ============================ */
+
+.list-group-item {
+  &.active {
+    background-color: theme-color-main(primary);
+    border-color: theme-color-main(primary);
+    h3,h4,h5,a,p {
+      color: $white;
+    }
+  }
+  h5 {
+    margin-bottom: 10px !important;
+  }
+  &.list-group-item-primary {
+    background-color: theme-color-main(primary);
+    border-color: theme-color-main(primary);
+    color: $white;
+    &:hover {
+      color: $white;
+      background-color: darken(theme-color-main('primary'), 10%);
+      border-color: darken(theme-color-main('primary'), 10%);
+    }
+  }
+  &.list-group-item-secondary {
+    background-color: theme-color-main(secondary);
+    border-color: theme-color-main(secondary);
+    color: $white;
+    &:hover {
+      color: $white;
+      background-color: darken(theme-color-main('secondary'), 10%);
+      border-color: darken(theme-color-main('secondary'), 10%);
+    }
+  }
+  &.list-group-item-success {
+    background-color: theme-color-main(success);
+    border-color: theme-color-main(success);
+    color: $white;
+    &:hover {
+      color: $white;
+      background-color: darken(theme-color-main('success'), 10%);
+      border-color: darken(theme-color-main('success'), 10%);
+    }
+  }
+  &.list-group-item-danger {
+    background-color: theme-color-main(danger);
+    border-color: theme-color-main(danger);
+    color: $white;
+    &:hover {
+      color: $white;
+      background-color: darken(theme-color-main('danger'), 10%);
+      border-color: darken(theme-color-main('danger'), 10%);
+    }
+  }
+  &.list-group-item-warning {
+    background-color: theme-color-main(warning);
+    border-color: theme-color-main(warning);
+    color: $white;
+    &:hover {
+      color: $white;
+      background-color: darken(theme-color-main('warning'), 10%);
+      border-color: darken(theme-color-main('warning'), 10%);
+    }
+  }
+  &.list-group-item-info {
+    background-color: theme-color-main(info);
+    border-color: theme-color-main(info);
+    color: $white;
+    &:hover {
+      color: $white;
+      background-color: darken(theme-color-main('info'), 10%);
+      border-color: darken(theme-color-main('info'), 10%);
+    }
+  }
+  &.list-group-item-dark {
+    background-color: theme-color-main(dark);
+    border-color: theme-color-main(dark);
+    color: $white;
+    &:hover {
+      color: $white;
+      background-color: darken(theme-color-main('dark'), 10%);
+      border-color: darken(theme-color-main('dark'), 10%);
+    }
+  }
+  &.list-group-item-light {
+    background-color: theme-color-main(light);
+    border-color: theme-color-main(light);
+    color: $black;
+    &:hover {
+      color: $black;
+      background-color: darken(theme-color-main('light'), 10%);
+      border-color: darken(theme-color-main('light'), 10%);
+    }
+  }
+}
+
+/* ============================ */
+/*            List Group
+/* ============================ */

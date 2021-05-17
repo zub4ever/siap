@@ -1,0 +1,235 @@
+/* ============================ */
+/*            Forms
+/* ============================ */
+
+// Form Control Focus
+
+.form-control {
+  &:focus {
+    color: #495057;
+    background-color: #fff;
+    border-color: theme-color-main(primary);
+    outline: 0;
+    box-shadow: none;
+  }
+}
+
+.form-control,
+.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.form-rounded {
+  border-radius: 40px;
+}
+
+.form-control {
+  font-size: 14px;
+  border: 1px solid rgba(170, 170, 170, .3);
+  //padding: 10.72px 12.8px;
+}
+
+//.form-control-sm,
+//.input-group-sm>.form-control,
+//.input-group-sm>.input-group-append>.btn,
+//.input-group-sm>.input-group-append>.input-group-text,
+//.input-group-sm>.input-group-prepend>.btn,
+//.input-group-sm>.input-group-prepend>.input-group-text {
+//  padding: 4px 8px;
+//}
+//
+//.form-control-lg,
+//.input-group-lg>.form-control,
+//.input-group-lg>.input-group-append>.btn,
+//.input-group-lg>.input-group-append>.input-group-text,
+//.input-group-lg>.input-group-prepend>.btn,
+//.input-group-lg>.input-group-prepend>.input-group-text {
+//  padding: 13.6px 16px;
+//}
+
+label {
+  font-weight: 500;
+  color: #666;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.font-14 {
+  font-size: 14px;
+}
+
+.input-rounded {
+  border-radius: 50px;
+}
+
+.custom-file-label,
+.custom-file-input,
+.custom-file {
+  height: calc(2.25rem + 7px);
+  padding: 10.8px 12px;
+}
+
+.custom-file-label:after {
+  height: calc(calc(2.25rem + 7px) - 1px * 2);
+  padding: 10.8px 12px;
+}
+
+.grid-col {
+  padding: 10px 15px;
+  background: #f3f8fb;
+  margin-bottom: 30px;
+  color: #666;
+  border: 1px solid #e3e6e8;
+}
+
+.custom-control-label {
+  margin-top: 2px;
+}
+
+.form-control-feedback {
+  font-size: 14px;
+  margin-top: 8px;
+  font-weight: 500;
+  color: #000;
+}
+
+.form-check .form-check-label {
+  min-height: 18px;
+  display: block;
+  margin-left: 15px;
+  font-size: $default-font-size;
+  line-height: 1;
+}
+
+.primary-checkbox,
+.primary-radio {
+  &.custom-checkbox {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(primary) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(primary), 30%) !important;
+    }
+  }
+  &.custom-radio {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(primary) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(primary), 30%) !important;
+    }
+  }
+}
+
+.secondary-checkbox,
+.secondary-radio {
+  &.custom-checkbox {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(secondary) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(secondary), 30%) !important;
+    }
+  }
+  &.custom-radio {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(secondary) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(secondary), 30%) !important;
+    }
+  }
+}
+.success-checkbox,
+.success-radio {
+  &.custom-checkbox {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(success) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(success), 30%) !important;
+    }
+  }
+  &.custom-radio {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(success) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(success), 30%) !important;
+    }
+  }
+}
+.danger-checkbox,
+.danger-radio {
+  &.custom-checkbox {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(danger) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(danger), 30%) !important;
+    }
+  }
+  &.custom-radio {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(danger) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(danger), 30%) !important;
+    }
+  }
+}
+.warning-checkbox,
+.warning-radio {
+  &.custom-checkbox {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(warning) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(warning), 30%) !important;
+    }
+  }
+  &.custom-radio {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(warning) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(warning), 30%) !important;
+    }
+  }
+}
+.dark-checkbox,
+.dark-radio {
+  &.custom-checkbox {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(dark) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(dark), 30%) !important;
+    }
+  }
+  &.custom-radio {
+    .custom-control-input:checked~.custom-control-label::before {
+      background-color: theme-color-main(dark) !important;
+    }
+    .custom-control-input:disabled:checked~.custom-control-label::before {
+      background-color: lighten(theme-color-main(dark), 30%) !important;
+    }
+  }
+}
+
+.input-group-text {
+  background-color: #f9f9f9 !important;
+  border: 1px solid rgba(170, 170, 170, 0.3) !important;
+}
+
+.valid-tooltip {
+  background-color: lighten(theme-color-main(success),20%);
+}
+.custom-select.is-valid, .form-control.is-valid, .was-validated .custom-select:valid, .was-validated .form-control:valid {
+  border-color:theme-color-main(success);
+}
+
+/* ============================ */
+/*            End Forms
+/* ============================ */

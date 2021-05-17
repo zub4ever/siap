@@ -1,0 +1,391 @@
+/* ============================ */
+/*            Buttons           */
+/* ============================ */
+
+.btn {
+  font-size: $btn-font-size;
+  font-family: $font-family;
+  font-weight: $btn-font-weight;
+
+  i {
+    margin-right: 5px;
+    vertical-align: initial;
+  }
+
+  &.btn-rounded {
+    border-radius: 50px;
+  }
+
+  &.btn-fixed-w {
+    width: $btn-fixed-w;
+  }
+
+  &.btn-xl {
+    padding: $btn-xl-padding-y $btn-xl-padding-x;
+  }
+
+  &.btn-lg {
+    padding: $btn-lg-padding-y $btn-lg-padding-x;
+  }
+
+  &.btn-md {
+    padding: $btn-md-padding-y $btn-md-padding-x;
+  }
+
+  &.btn-sm {
+    padding: $btn-sm-padding-y $btn-sm-padding-x;
+  }
+
+  &.btn-xs {
+    padding: $btn-xs-padding-y $btn-xs-padding-x;
+    font-size: $btn-font-size-xs;
+  }
+  &.btn-flat {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+  }
+
+  /*====================
+   General Buttons
+   ====================*/
+
+  &.btn-primary {
+    background-color: theme-color-main('primary');
+    border-color: theme-color-main('primary');
+    &:hover {
+      background-color: darken(theme-color-main('primary'), 10%);
+      border-color: darken(theme-color-main('primary'), 10%);
+    }
+  }
+
+  &.btn-secondary {
+    background-color: theme-color-main('secondary');
+    border-color: theme-color-main('secondary');
+    &:hover {
+      background-color: darken(theme-color-main('secondary'), 10%);
+      border-color: darken(theme-color-main('secondary'), 10%);
+    }
+  }
+
+  &.btn-success {
+    background-color: theme-color-main('success');
+    border-color: theme-color-main('success');
+    &:hover {
+      background-color: darken(theme-color-main('success'), 10%);
+      border-color: darken(theme-color-main('success'), 10%);
+    }
+  }
+
+  &.btn-danger {
+    background-color: theme-color-main('danger');
+    border-color: theme-color-main('danger');
+    &:hover {
+      background-color: darken(theme-color-main('danger'), 10%);
+      border-color: darken(theme-color-main('danger'), 10%);
+    }
+  }
+
+  &.btn-warning {
+    background-color: theme-color-main('warning');
+    border-color: theme-color-main('warning');
+    &:hover {
+      background-color: darken(theme-color-main('warning'), 10%);
+      border-color: darken(theme-color-main('warning'), 10%);
+    }
+  }
+
+  &.btn-info {
+    background-color: theme-color-main('info');
+    border-color: theme-color-main('info');
+    &:hover {
+      background-color: darken(theme-color-main('info'), 10%);
+      border-color: darken(theme-color-main('info'), 10%);
+    }
+  }
+
+  &.btn-dark {
+    background-color: theme-color-main('dark');
+    border-color: theme-color-main('dark');
+    &:hover {
+      background-color: lighten(theme-color-main('dark'), 10%);
+      border-color: lighten(theme-color-main('dark'), 10%);
+    }
+  }
+
+  &.btn-light {
+    background-color: theme-color-main('light');
+    border-color: theme-color-main('light');
+    &:hover {
+      background-color: darken(theme-color-main('light'), 10%);
+      border-color: darken(theme-color-main('light'), 10%);
+    }
+  }
+
+  /*====================
+   Outline Buttons
+   ====================*/
+
+  &.btn-outline-primary {
+    border-color: theme-color-main('primary');
+    color: theme-color-main('primary');
+    &:hover {
+      background-color: theme-color-main('primary');
+      border-color: theme-color-main('primary');
+      color: $white;
+    }
+  }
+
+  &.btn-outline-secondary {
+    border-color: theme-color-main('secondary');
+    color: theme-color-main('secondary');
+    &:hover {
+      background-color: theme-color-main('secondary');
+      border-color: theme-color-main('secondary');
+      color: $white;
+    }
+  }
+
+  &.btn-outline-success {
+    border-color: theme-color-main('success');
+    color: theme-color-main('success');
+    &:hover {
+      background-color: theme-color-main('success');
+      border-color: theme-color-main('success');
+      color: $white;
+    }
+  }
+
+  &.btn-outline-danger {
+    border-color: theme-color-main('danger');
+    color: theme-color-main('danger');
+    &:hover {
+      background-color: theme-color-main('danger');
+      border-color: theme-color-main('danger');
+      color: $white;
+    }
+  }
+
+  &.btn-outline-info {
+    border-color: theme-color-main('info');
+    color: theme-color-main('info');
+    &:hover {
+      background-color: theme-color-main('info');
+      border-color: theme-color-main('info');
+      color: $white;
+    }
+  }
+
+  &.btn-outline-warning {
+    border-color: theme-color-main('warning');
+    color: theme-color-main('warning');
+    &:hover {
+      background-color: theme-color-main('warning');
+      border-color: theme-color-main('warning');
+      color: inherit;
+    }
+  }
+
+  &.btn-outline-dark {
+    border-color: theme-color-main('dark');
+    color: theme-color-main('dark');
+    &:hover {
+      background-color: theme-color-main('dark');
+      border-color: theme-color-main('dark');
+      color: $white;
+    }
+  }
+
+  &.btn-outline-light {
+    border-color: theme-color-main('light');
+    color: darken(theme-color-main('light'),40%);
+    &:hover {
+      background-color: theme-color-main('light');
+      border-color: theme-color-main('light');
+      color: inherit;
+    }
+  }
+
+  /*====================
+   Inverse Buttons
+   ====================*/
+
+  &.btn-inverse-primary {
+    background-color: lighten(theme-color-main('primary'), 38%);
+    border-color: transparent;
+    color: theme-color-main('primary');
+    &:hover {
+      background-color: theme-color-main('primary');
+      border-color: theme-color-main('primary');
+      color: #fff;
+    }
+  }
+  &.btn-inverse-secondary {
+    background-color: lighten(theme-color-main('secondary'), 38%);
+    border-color: transparent;
+    color: theme-color-main('secondary');
+    &:hover {
+      background-color: theme-color-main('secondary');
+      border-color: theme-color-main('secondary');
+      color: #fff;
+    }
+  }
+
+  &.btn-inverse-success {
+    background-color: lighten(theme-color-main('success'), 38%);
+    border-color: transparent;
+    color: theme-color-main('success');
+    &:hover {
+      background-color: theme-color-main('success');
+      border-color: theme-color-main('success');
+      color: #fff;
+    }
+  }
+
+  &.btn-inverse-danger {
+    background-color: lighten(theme-color-main('danger'), 38%);
+    border-color: transparent;
+    color: theme-color-main('danger');
+    &:hover {
+      background-color: theme-color-main('danger');
+      border-color: theme-color-main('danger');
+      color: #fff;
+    }
+  }
+
+  &.btn-inverse-warning {
+    background-color: lighten(theme-color-main('warning'), 38%);
+    border-color: transparent;
+    color: theme-color-main('warning');
+    &:hover {
+      background-color: theme-color-main('warning');
+      border-color: theme-color-main('warning');
+      color: #fff;
+    }
+  }
+
+  &.btn-inverse-info {
+    background-color: lighten(theme-color-main('info'), 26%);
+    border-color: transparent;
+    color: theme-color-main('info');
+    &:hover {
+      background-color: theme-color-main('info');
+      border-color: theme-color-main('info');
+      color: #fff;
+    }
+  }
+
+  &.btn-inverse-dark {
+    background-color: lighten(theme-color-main('dark'), 50%);
+    border-color: transparent;
+    color: theme-color-main('dark');
+    &:hover {
+      background-color: theme-color-main('dark');
+      border-color: theme-color-main('dark');
+      color: #fff;
+    }
+  }
+
+  &.btn-inverse-light {
+    background-color: transparent;
+    border-color: darken(theme-color-main('light'),10%);
+    color: darken(theme-color-main('light'),10%);
+    &:hover {
+      background-color: theme-color-main('light');
+      border-color: theme-color-main('light');
+      color: $black;
+    }
+  }
+
+  /*====================
+    Social Buttons
+   ====================*/
+  &.btn-social {
+    padding: 10px 14px;
+    font-size: 14px;
+    i {
+      margin-right: 0;
+    }
+  }
+  &.btn-social-fb {
+    background: #3b579d;
+    color: #fff;
+    &:hover {
+      background: darken(#3b579d , 3%);
+    }
+  }
+  &.btn-social-tw {
+    background: #1da1f2;
+    color: #fff;
+    &:hover {
+      background: darken(#1da1f2 , 3%);
+    }
+  }
+  &.btn-social-li {
+    background: #0177b4;
+    color: #fff;
+    &:hover {
+      background: darken(#0177b4 , 3%);
+    }
+  }
+  &.btn-social-in {
+    background: #fb3958;
+    color: #fff;
+    &:hover {
+      background: darken(#fb3958 , 3%);
+    }
+  }
+  &.btn-social-pi {
+    background: #c8232c;
+    color: #fff;
+    &:hover {
+      background: darken(#c8232c , 3%);
+    }
+  }
+
+  // Outline Social Icons
+
+  &.btn-social-outline-fb {
+    border: 1px solid #3b579d;
+    color: #3b579d;
+    &:hover {
+      background: darken(#3b579d , 3%);
+      color: #fff;
+    }
+  }
+  &.btn-social-outline-tw {
+    border: 1px solid #1da1f2;
+    color: #1da1f2;
+    &:hover {
+      background: darken(#1da1f2 , 3%);
+      color: #fff;
+    }
+  }
+  &.btn-social-outline-li {
+    border: 1px solid #0177b4;
+    color: #0177b4;
+    &:hover {
+      background: darken(#0177b4 , 3%);
+      color: #fff;
+    }
+  }
+  &.btn-social-outline-in {
+    border: 1px solid #fb3958;
+    color: #fb3958;
+    &:hover {
+      background: darken(#fb3958 , 3%);
+      color: #fff;
+    }
+  }
+  &.btn-social-outline-pi {
+    border: 1px solid #c8232c;
+    color: #c8232c;
+    &:hover {
+      background: darken(#c8232c , 3%);
+      color: #fff;
+    }
+  }
+}
+
+
+

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="237.687" height="58.494" viewBox="0 0 237.687 58.494">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #04c4dc;
+      }
+
+      .cls-2 {
+        fill: #716aca;
+      }
+
+      .cls-3 {
+        fill: #444;
+        font-size: 41px;
+        font-family: Montserrat-Black, Montserrat;
+        font-weight: 800;
+      }
+    </style>
+  </defs>
+  <g id="Group_2" data-name="Group 2" transform="translate(-5.151 -7.36)">
+    <g id="Group_1" data-name="Group 1" transform="translate(5.151 7.36)">
+      <path id="Path_1" data-name="Path 1" class="cls-1" d="M5.151,21.107,20.486,9.958s7.483-5.176,10.4-.918S26.208,18.9,26.208,18.9L5.151,34.357Z" transform="translate(-5.151 -7.36)"/>
+      <path id="Path_2" data-name="Path 2" class="cls-1" d="M0,13.748,15.336,2.6s7.483-5.176,10.4-.918-4.677,9.864-4.677,9.864L0,27Z" transform="translate(45.301 58.494) rotate(180)"/>
+      <path id="Path_3" data-name="Path 3" class="cls-2" d="M50.442,12.57,5.34,45.426V58.771L50.442,26Z" transform="translate(-5.141 -7.1)"/>
+    </g>
+    <text id="DEVMIX" class="cls-3" transform="translate(64.838 51.182)"><tspan x="0" y="0">DEVMIX</tspan></text>
+  </g>
+</svg>

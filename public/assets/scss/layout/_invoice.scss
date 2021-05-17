@@ -1,0 +1,83 @@
+/* ============================ */
+/*            Invoice
+/* ============================ */
+
+.invoice-head {
+  margin-bottom: 30px;
+  border-bottom: 1px solid #efebeb;
+  padding-bottom: 20px;
+}
+
+.invoice-head .iv-left span {
+  color: #444;
+}
+
+.invoice-head span {
+  font-size: 21px;
+  font-weight: 700;
+  color: #777;
+}
+
+.invoice-address h3 {
+  font-size: 24px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 15px;
+}
+
+.invoice-address h5 {
+  font-size: 17px;
+  margin-bottom: 10px;
+}
+
+.invoice-address p {
+  font-size: 15px;
+  color: #555;
+}
+
+.invoice-date li {
+  font-size: 15px;
+  color: #555;
+  font-weight: 700;
+  margin-bottom: 5px;
+}
+
+.invoice-table .table-bordered td,
+.invoice-table .table-bordered th {
+  border: 1px solid rgba(120, 130, 140, 0.13) !important;
+  border-left: none!important;
+  border-right: none!important;
+}
+
+.invoice-table tr td {
+  color: #666;
+}
+
+.invoice-table tfoot tr td {
+  text-transform: uppercase;
+  font-weight: 600;
+  color: #444;
+}
+
+.invoice-buttons a {
+  display: inline-block;
+  font-size: 15px;
+  color: #fff;
+  background: #815ef6;
+  padding: 12px 19px;
+  border-radius: 3px;
+  text-transform: capitalize;
+  font-family: 'Lato', sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  margin-left: 6px;
+}
+
+.invoice-buttons a:hover {
+  background: #574494;
+}
+
+/* ============================ */
+/*            End Invoice
+/* ============================ */

@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+/* 
+======================================================================== 
+
+Devmix: style.css ( Main Theme CSS file )
+
+Theme Name: Devmix Bootstrap 4 Admin Template
+Version: 1.0
+Author: Raven Themez
+Author URI: https://themeforest.net/user/raventhemez
+If you having trouble in editing js. please send a mail to raventhemez@gmail.com
+ 
+This is the file you need to edit to change the look of the theme.
+======================================================================== 
+
+- // TABLE OF CONTENTS // -
+
+================================================
+ # Admin Dashboard
+ ===============================================
+ => General Style
+ => Global Style
+ => Functions
+ => Typography
+ => Sidebar
+ => Header
+ => Notification Menu
+ => Alert
+ => Accordions
+ => Buttons
+ => Cards
+ => List
+ => Modals
+ => Pagination
+ => Tabs
+ => Grid
+ => Icons
+ => Table
+ => Toastr
+ => Sweet Alert
+ => Image Cropper
+ => Css Loaders
+ => App Tour
+ => Ladda Button
+ => Dropzone
+ => Forms
+ => Mail Box
+ => Gallery
+ => Session
+ => Error Pages
+ => Invoice
+ => Home
+*/
+
+
+/* ========================================= */
+/* 		   		General Styling	 			 */
+/* ========================================= */
+
+@import "assets/variables";
+@import "assets/reset";
+@import "assets/general";
+@import "assets/functions";
+
+
+/* ========================================= */
+/* 		   			LAYOUT 					 */
+/* ========================================= */
+
+@import "layout/typography";
+@import "layout/sidebar";
+@import "layout/header";
+@import "layout/notification-menu";
+@import "layout/alert";
+@import "layout/accordions";
+@import "layout/buttons";
+@import "layout/badges";
+@import "layout/cards";
+@import "layout/dropdown";
+@import "layout/list";
+@import "layout/modals";
+@import "layout/pagination";
+@import "layout/progressbar";
+@import "layout/tabs";
+@import "layout/grid";
+@import "layout/icons";
+@import "layout/maps";
+@import "layout/table";
+@import "layout/toastr";
+@import "layout/sweetalert";
+@import "layout/cropper";
+@import "layout/loaders";
+@import "layout/app-tour";
+@import "layout/ladda-btn";
+@import "layout/dropzone";
+@import "layout/form";
+@import "layout/full-calender";
+@import "layout/mail-box";
+@import "layout/gallery";
+@import "layout/session";
+@import "layout/error-pages";
+@import "layout/invoice";
+@import "layout/pricing";
+@import "layout/profile";
+@import "layout/home";

@@ -1,0 +1,243 @@
+/* ============================ */
+/*            Gallery
+/* ============================ */
+
+#mt_portfolio {
+  .portfolio_grid {
+    width: calc(33.3333333% - 25px);
+    height: auto;
+    margin: 12px;
+    float: left;
+    position: relative;
+    max-height: 800px;
+    overflow: hidden;
+    @media only screen and (max-width: 767px) {
+      padding: 0 15px;
+      width: 97%;
+    }
+    @media only screen and (max-width: 480px) {
+      width: 95%;
+    }
+  }
+  li {
+    &:after {
+      display: none;
+    }
+    &:before {
+      display: none;
+    }
+  }
+  .mt_filter {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300;
+    margin-bottom: 20px;
+    @media only screen and (max-width: 767px) {
+      margin-left: 15px;
+    }
+    ul li {
+      margin-right: 15px;
+      padding: 0;
+      margin-bottom: 17px;
+      @media only screen and (max-width: 640px) {
+        margin-bottom: 0;
+      }
+      a {
+        color: $dove-gray;
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        &:hover {
+          &:before {
+            transform: scaleX(1);
+            -webkit-transform: scaleX(1);
+            -moz-transform: scaleX(1);
+            -o-transform: scaleX(1);
+            -ms-transform: scaleX(1);
+            transform-origin: left top 0;
+            -webkit-transform-origin: left top 0;
+            -moz-transform-origin: left top 0;
+            -o-transform-origin: left top 0;
+            -ms-transform-origin: left top 0;
+          }
+        }
+        &:before {
+          background-color: $shark;
+          content: "";
+          height: 0.5px;
+          left: 0;
+          position: absolute;
+          top: 25px;
+          transform: scaleX(0);
+          -webkit-transform: scaleX(0);
+          -moz-transform: scaleX(0);
+          -o-transform: scaleX(0);
+          -ms-transform: scaleX(0);
+          transform-origin: right top 0;
+          -webkit-transform-origin: right top 0;
+          -moz-transform-origin: right top 0;
+          -o-transform-origin: right top 0;
+          -ms-transform-origin: right top 0;
+          transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s,
+          -webkit-transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+          -moz-transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+          -o-transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+          -ms-transition: transform 0.3s cubic-bezier(0.165, 0.84, 0.44, 1) 0s;
+          width: 99%;
+        }
+      }
+    }
+  }
+  .mt_filter li a.active {
+    border-bottom: 0.5px solid $shark;
+  }
+  .portfolio_row {
+    margin-top: 30px;
+  }
+  .grid {
+    figure {
+      position: relative;
+      float: left;
+      overflow: hidden;
+      width: 100%;
+      text-align: center;
+      background: #000;
+      margin: 0;
+      @media screen and (max-width: 50em) {
+        display: inline-block;
+        float: none;
+        margin: 10px auto;
+        width: 100%;
+      }
+      h2 {
+        font-weight: 300;
+        span {
+          font-weight: 800;
+        }
+      }
+      h2,
+      h3 {
+        margin: 0;
+      }
+      h3 {
+        color: #fff;
+        font-size: 26px;
+        font-weight: 500;
+        @media only screen and (max-width: 520px) {
+          font-size: 16px;
+        }
+        .view_proj {
+          color: #fff;
+          text-transform: initial;
+          &:hover,
+          &:focus{
+            color: #fff;
+            text-decoration: none;
+          }
+        }
+      }
+      img {
+        position: relative;
+        display: block;
+        min-height: 100%;
+        max-width: 100%;
+      }
+      figcaption {
+        padding: 1em;
+        color: #fff;
+        text-transform: uppercase;
+        font-size: 1.25em;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        @media only screen and (max-width: 767px) {
+          padding: 1em;
+        }
+        &:before,
+        &:after {
+          pointer-events: none;
+        }
+      }
+    }
+    .effect-chico {
+      &:hover {
+        img {
+          opacity: 0.3;
+          -webkit-transform: scale(1);
+          transform: scale(1);
+        }
+      }
+      h2 {
+        padding: 20% 0 20px 0;
+      }
+      h3 {
+        font-size: 20px;
+        font-weight: bold;
+        letter-spacing: 2px;
+        -webkit-transform: scale(1.5);
+        transform: scale(1.5);
+        text-align: left;
+      }
+      img {
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: scale(1.12);
+        transform: scale(1.12);
+      }
+      span {
+        display: block;
+        margin-top: 5px;
+        @media only screen and (max-width: 520px) {
+          margin-top: 0;
+        }
+        a {
+          background: #fff none repeat scroll 0 0;
+          border-radius: 50%;
+          color: #000;
+          display: inline-block;
+          height: 40px;
+          line-height: 42px;
+          text-align: center;
+          width: 40px;
+          @media only screen and (max-width: 520px) {
+            height: 30px;
+            line-height: 30px;
+            width: 30px;
+          }
+        }
+      }
+      figcaption {
+        &:before {
+          position: absolute;
+          top: 30px;
+          right: 30px;
+          bottom: 30px;
+          left: 30px;
+          content: '';
+          -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+        }
+      }
+      figcaption::before,
+      h3 {
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+      }
+    }
+  }
+  figure.effect-chico:hover figcaption::before,
+  figure.effect-chico:hover h3 {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+  }
+}
+
+/* ============================ */
+/*            End Gallery
+/* ============================ */

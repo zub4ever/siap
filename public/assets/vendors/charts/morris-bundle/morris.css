@@ -1,0 +1,34 @@
+.morris-hover {
+    position: absolute;
+    z-index: 1000
+}
+
+.morris-hover.morris-default-style {
+    border-radius: 2px;
+    color: #3d3f5d;
+    background: rgb(255, 255, 255);
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #e6e6f2;
+}
+
+.morris-hover.morris-default-style .morris-hover-row-label {
+  border-bottom: 1px solid #e6e6f2;
+  padding: 8px;
+}
+
+.morris-hover.morris-default-style .morris-hover-point {
+    white-space: nowrap;
+    font-size: 16px;
+    padding: 8px;
+    background: #f7f7fd;
+    line-height: 18px;
+}
+
+#morris_donut svg text{
+  font-size: 4px!important;
+}
+
+#morris_donut tspan {
+  font-size: 4px!important;
+}
