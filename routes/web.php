@@ -15,8 +15,5 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('{name?}','DevmixController@viewLinks')->name('{name?}');
 
-
-Route::resource('/servidor','Serve');
-
+Route::resource('servidor','Servidor\ServeController');

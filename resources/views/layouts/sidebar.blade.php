@@ -200,15 +200,21 @@
                     <!--=========================*
                               Session
                     *===========================-->
-                    <li {!! (Request::is('login') || Request::is('register') || Request::is('lock')
-                        || Request::is('reset-password') || Request::is('forgot-password') ? 'class="active"':"") !!}>
+                    <li>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="feather ft-users"></i>
                             <span>SECCTC</span>
                         </a>
                         <ul class="collapse">
-                            <li {!! (Request::is('register') ? 'class="active"':"") !!}><a href="{{ URL::to('servidor.index') }}"><i class="ion-person-add"></i><span>Cadastrar servidor</span></a></li>
-                            <li {!! (Request::is('lock') ? 'class="active"':"") !!}><a href="{{ URL::to('lock') }}"><i class="ti-lock"></i><span>Lock Screen</span></a></li>
+                            <li{!! (request()->is('/servidor/*') ? 'class="active"' : "")!!}>
+                                <a href="{{ Route('servidor.index') }}"><i class="ion-person-add"></i>
+                                    <span>Cadastrar servidor</span></a>
+                            </li>
+                            <li {!! (Request::is('lock') ? 'class="active"':"") !!}>
+                                <a href="{{ URL::to('lock') }}"><i class="ti-lock">
+
+                                    </i><span>Lock Screen</span></a>
+                            </li>
                             <li {!! (Request::is('reset-password') ? 'class="active"':"") !!}>
                                 <a href="{{ URL::to('reset-password') }}">
                                     <i class="feather ft-lock"></i>
