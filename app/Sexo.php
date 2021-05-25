@@ -4,18 +4,17 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Origin extends Model {
-
-    protected $table = 'origin';
+class Sexo extends Model
+{
+    
+    protected $table = 'sexo';
     protected $primaryKey = 'id';
     public $timestamps = true;
     protected $fillable = [
-        'nm_origin'
+        'nm_sexo'
     ];
     protected $guarded = [];
-
     public function serve() {
-        return $this->hasMany(Serve::class, 'origin_id');
+        return $this->hasMany(Serve::class, 'sexo_id');
     }
-
 }

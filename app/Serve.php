@@ -12,16 +12,17 @@ class Serve extends Model
     protected $fillable = [
            'nm_servidor',  
            'matricula',
-           'sexo',
+           'sexo_id',
            'data_nascimento',
            'rg',
+           'orgao_expedidor_id',
            'cpf',
            'pis_pasep',
            'nm_pai',
            'nm_mae',
            'telefone',
            'email',
-           'obito',
+           'obito_id',
            'origin_id',
            'type_serve_id',
            'marital_status_id'
@@ -39,7 +40,19 @@ class Serve extends Model
    }
     public function marital_status(){
 
-          return $this->belongsTo(Denounced::class,'marital_status_id');
+          return $this->belongsTo(Marital_Status::class,'marital_status_id');
+    }
+    public function sexo(){
+
+          return $this->belongsTo(Sexo::class,'sexo_id');
+    }
+    public function obito(){
+
+          return $this->belongsTo(Obito::class,'obito_id');
+    }
+    public function orgao_expedidor(){
+
+          return $this->belongsTo(Orgao_Expedidor::class,'orgao_expedidor_id');
     }
  
     
