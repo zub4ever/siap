@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Servidor;
 
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\ServeFormRequest;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -12,6 +14,8 @@ use App\Sexo;
 use App\Type_Serve;
 use App\Obito;
 use App\Marital_Status;
+use Illuminate\Support\Facades\Redirect;
+
 
 class ServeController extends Controller {
 
@@ -40,13 +44,10 @@ class ServeController extends Controller {
         DB::beginTransaction();
         
          $serve = Serve::create($request->all());
-        
-         if (!$serve) {
-            DB::rollBack();
-            return redirect()->route('servidor.index')->with('error', "Falha ao cadastrar o Servidor.");
-        }
-        
-        return view('servidor.create');
+
+        DB::commit();
+        return redirect()->route('servidor.index')->whit('success',"Sucesso ao Cadastrar servidor");
+      
     }
 
 }

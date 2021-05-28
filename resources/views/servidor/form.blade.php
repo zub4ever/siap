@@ -1,24 +1,24 @@
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
-            <label for="nome" class="form-control-label">Nome:
+            <label for="nm_servidor" class="form-control-label">Nome:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="nome"
+            <input type="text" class="form-control" name="nm_servidor"
                    value="">
         </div>
     </div>
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Data Nascimento:
+            <label for="data_nascimento" class="form-control-label">Data Nascimento:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="" value="">
+            <input type="text" class="form-control" name="data_nascimento" value="">
         </div>
     </div>
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Sexo:
+            <label for="sexo_id" class="form-control-label">Sexo:
                 <span class="text-danger">*</span>
             </label>
             <select name="sexo_id" class="form-control" id="titula1">
@@ -35,15 +35,15 @@
 <div class="row">
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">RG:
+            <label for="rg" class="form-control-label">RG:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="" value="">
+            <input type="text" class="form-control" name="rg" value="">
         </div>
     </div>  
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Órgão Emissor:
+            <label for="orgao_expedidor_id" class="form-control-label">Órgão Emissor:
                 <span class="text-danger">*</span>
             </label>
             <select name="orgao_expedidor_id" class="form-control" id="titula1">
@@ -58,45 +58,45 @@
     </div>  
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">CPF:
+            <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="" value="">
+            <input type="text" class="form-control" name="cpf" value="">
         </div>
     </div>  
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">PIS/PASEP:
+            <label for="pis_pasep" class="form-control-label">PIS/PASEP:
             </label>
-            <input type="text" class="form-control" name="" value="">
+            <input type="text" class="form-control" name="pis_pasep" value="">
         </div>
     </div>  
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Nome do Pai:
+            <label for="nm_pai" class="form-control-label">Nome do Pai:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="" value="">
+            <input type="text" class="form-control" name="nm_pai" value="">
         </div>
     </div>  
 
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Nome da Mãe:
+            <label for="nm_mae" class="form-control-label">Nome da Mãe:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="" value="">
+            <input type="text" class="form-control" name="nm_mae" value="">
         </div>
     </div>  
     <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Obito:
+            <label for="obito_id" class="form-control-label">Obito:
                 <span class="text-danger">*</span>
             </label>
             <select name="obito_id" class="form-control" id="titula1">
-                <option value="">Selecione uma opção</option>
+                <option value="">Selecione</option>
                 @foreach ($obito as $obito)
                 <option value="{{$obito->id}}">
                     {{$obito->nm_obito}}
@@ -109,7 +109,7 @@
 <div class ="row">
     <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Origem do Servidor:
+            <label for="origin_id" class="form-control-label">Origem do Servidor:
                 <span class="text-danger">*</span>
             </label>
             <select name="origin_id" class="form-control" id="titula1">
@@ -124,7 +124,7 @@
     </div> 
     <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Situação do Servidor:
+            <label for="type_serve_id" class="form-control-label">Situação do Servidor:
                 <span class="text-danger">*</span>
             </label>
             <select name="type_serve_id" class="form-control" id="titula1">
@@ -139,7 +139,7 @@
     </div>
     <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
-            <label for="" class="form-control-label">Estado Civil:
+            <label for="marital_status_id" class="form-control-label">Estado Civil:
                 <span class="text-danger">*</span>
             </label>
             <select name="marital_status_id" class="form-control" id="titula1">

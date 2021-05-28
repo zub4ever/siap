@@ -1,5 +1,5 @@
 <footer>
     <div class="footer-area">
-        <p>&copy; Copyright 2019. All right reserved. Template by Raventhemez.</p>
+        <p>&copy; Instituto de Previdência do Município de Rio Branco - RBPREV</p>
     </div>
 </footer>

@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card_title">Cadastro de novo servidor</h4>
-                <form action="{{route('servidor.store')}}" method="POST">
+                <form action="{{route('servidor.store')}}" method="POST" id ="formServidor">
                     @csrf
                     @include('servidor.form')
                 </form>
@@ -29,7 +29,7 @@
 @endsection
 
 @section('js')
-<script src="{{asset('js/administracao/comunidade/create.js')}}"></script>
+<!--<script src="{{asset('js/administracao/comunidade/create.js')}}"></script> -->
 <script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
 <script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/vendors/select2/plugin/select2.js')}}"></script>
