@@ -9,7 +9,7 @@
     <!--=========================*
               Page Title
     *===========================-->
-    <title>@yield('page-title') | Devmix Bootstrap 4 Admin Template</title>
+    <title>@yield('page-title') | SISA </title>
 
     <!--=========================*
                 Favicon

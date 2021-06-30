@@ -1,5 +1,14 @@
 <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+        <div class="wrap">
+            <label for="matricula" class="form-control-label">Matrícula:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="matricula"
+                   value="">
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
             <label for="nm_servidor" class="form-control-label">Nome:
                 <span class="text-danger">*</span>
@@ -8,7 +17,7 @@
                    value="">
         </div>
     </div>
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="data_nascimento" class="form-control-label">Data Nascimento:
                 <span class="text-danger">*</span>
@@ -155,13 +164,8 @@
 </div>
 
 
-
-
-
-
-
-<div class="col-sm-12 mt-4" style="text-align: center;">
-    <div class="wrap">
+<div class="col-sm-12 mt-5">
+    <div class="wrap mt-1" style="text-align: center;">
         <button type="submit" class="btn btn-success">
             Salvar
         </button>

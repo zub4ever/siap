@@ -28,30 +28,55 @@
                             <li {!! (Request::is('index3') ? 'class="active"':"") !!}><a href="{{ URL::to('index3') }}">Dashboard V3</a></li>
                         </ul>
                     </li>
-                    <li>
+                    <!-- Inicio de Servidor -->
+                    <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="feather ft-users"></i>
                             <span>SECCTC</span>
                         </a>
-                        <ul class="collapse">
-                            <li{!! (request()->is('/servidor/*') ? 'class="active"' : "")!!}>
-                                <a href="{{ Route('servidor.index') }}"><i class="ion-person-add"></i>
-                                    <span>Cadastrar servidor</span></a>
-                            </li>
-                            <li {!! (Request::is('lock') ? 'class="active"':"") !!}>
-                                <a href="{{ URL::to('lock') }}"><i class="ti-lock">
 
-                                    </i><span>Lock Screen</span></a>
-                            </li>
-                            <li {!! (Request::is('reset-password') ? 'class="active"':"") !!}>
-                                <a href="{{ URL::to('reset-password') }}">
-                                    <i class="feather ft-lock"></i>
-                                    <span>Reset Password</span>
+                        <ul class="collapse">
+                            <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('servidor.index')}}">
+                                    <i class="icon-clipboard"></i>
+                                    <span>Cadastrar Servidor</span>
                                 </a>
                             </li>
-                            <li {!! (Request::is('forgot-password') ? 'class="active"':"") !!}><a href="{{ URL::to('forgot-password') }}"><i class="ti-bookmark-alt"></i><span>Forgot Password</span></a></li>
+
+                            <!-- Fim do cadastros auxiliares -->
                         </ul>
                     </li>
+                    <!--fim de Servidor-->
+                    <!-- Inicio de Cadastros -->
+                    <li {!! (request()->is('cadastrosAuxiliares*') ? 'class="active"' : "")!!}>
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class="ti-settings"></i>
+                            <span>Cadastros</span>
+                        </a>
+
+                        <ul class="collapse">
+                            <li {!! (request()->is('cadastrosAuxiliares/origem*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('origem.index')}}">
+                                    <i class="icon-clipboard"></i>
+                                    <span>Origem</span>
+                                </a>
+                            </li>
+                            <li {!! (request()->is('cadastrosAuxiliares/orgao*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('orgao.index')}}">
+                                    <i class="icon-clipboard"></i>
+                                    <span>Orgão</span>
+                                </a>
+                            </li> 
+                            <li {!! (request()->is('cadastrosAuxiliares/funcao*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('funcao.index')}}">
+                                    <i class="icon-clipboard"></i>
+                                    <span>Funções</span>
+                                </a>
+                            </li>                              
+                            <!-- Fim do cadastros auxiliares -->
+                        </ul>
+                    </li>
+                    <!--fim de Cadastros-->
                 </ul>
             </nav>
         </div>
