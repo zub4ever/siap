@@ -14,6 +14,7 @@ class Sexo extends Model
         'nm_sexo'
     ];
     protected $guarded = [];
+    
     public function serve() {
         return $this->hasMany(Serve::class, 'sexo_id');
     }

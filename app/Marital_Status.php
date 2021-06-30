@@ -14,6 +14,7 @@ class Marital_Status extends Model {
     ];
     protected $guarded = [];
     public function serve() {
+        
         return $this->hasMany(Serve::class, 'marital_status_id');
     }
 
