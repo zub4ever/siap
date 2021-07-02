@@ -25,7 +25,7 @@
             <input type="text" class="form-control" name="data_nascimento" value="">
         </div>
     </div>
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+<!--    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="sexo_id" class="form-control-label">Sexo:
                 <span class="text-danger">*</span>
@@ -39,7 +39,7 @@
                 @endforeach
             </select>
         </div>
-    </div>
+    </div> -->
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -50,7 +50,7 @@
             <input type="text" class="form-control" name="rg" value="">
         </div>
     </div>  
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+ <!--   <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="orgao_expedidor_id" class="form-control-label">Órgão Emissor:
                 <span class="text-danger">*</span>
@@ -64,7 +64,7 @@
                 @endforeach
             </select>
         </div>
-    </div>  
+    </div>  --> 
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="cpf" class="form-control-label">CPF:
@@ -99,7 +99,7 @@
             <input type="text" class="form-control" name="nm_mae" value="">
         </div>
     </div>  
-    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+ <!--   <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="obito_id" class="form-control-label">Obito:
                 <span class="text-danger">*</span>
@@ -113,15 +113,15 @@
                 @endforeach
             </select>
         </div>
-    </div> 
+    </div> -->
 </div>
 <div class ="row">
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+   <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
             <label for="origin_id" class="form-control-label">Origem do Servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select name="origin_id" class="form-control" id="titula1">
+            <select name="origin_id" class="form-control">
                 <option value="">Selecione uma opção</option>
                 @foreach ($origin as $origem)
                 <option value="{{$origem->id}}">
@@ -131,7 +131,7 @@
             </select>
         </div>
     </div> 
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+ <!--   <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
             <label for="type_serve_id" class="form-control-label">Situação do Servidor:
                 <span class="text-danger">*</span>
@@ -145,8 +145,8 @@
                 @endforeach
             </select>
         </div>
-    </div>
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+    </div> -->
+  <!--  <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
             <label for="marital_status_id" class="form-control-label">Estado Civil:
                 <span class="text-danger">*</span>
@@ -160,7 +160,7 @@
                 @endforeach
             </select>
         </div>
-    </div>
+    </div> -->
 </div>
 
 

@@ -19,7 +19,11 @@ class ServeController extends Controller {
 
     //
     public function index() {
-        return view('servidor.index');
+        
+        
+         $servidor = DB::table('serve')->get()->all();
+         $origin = DB::table('origin')->get()->all();
+        return view('servidor.index',compact('servidor','origin'));
     }
 
     public function create() {
