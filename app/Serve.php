@@ -16,21 +16,20 @@ class Serve extends Model {
         'cpf',
         'pis_pasep',
         'nm_pai',
-        'nm_mae'   ,  /*
+        'nm_mae'   , 
         'sexo_id',
-        'obito_id', */
-        'origin_id' 
-        //,
-      /*  'type_serve_id',
+        'obito_id', 
+        'origin_id',
+       'type_serve_id',
         'marital_status_id',
-         'orgao_expedidor_id'*/
+         'orgao_expedidor_id'
     ];
-    protected $guarded = [];
+      protected $guarded = [];
 
     public function origin() {
         return $this->belongsToMany(Origin::class, 'origin_id');
     }
-     /*
+ 
     public function type_serve() {
 
         return $this->belongsTo(Type_Serve::class, 'type_serve_id');
@@ -38,22 +37,21 @@ class Serve extends Model {
 
     public function marital_status() {
 
-        return $this->belongsTo(Marital_Status::class, 'marital_status_id');
+        return $this->belongsToMany(Marital_Status::class, 'marital_status_id');
     }
 
     public function sexo() {
 
-        return $this->belongsTo(Sexo::class, 'sexo_id');
+        return $this->belongsToMany(Sexo::class, 'sexo_id');
     }
 
     public function obito() {
 
-        return $this->belongsTo(Obito::class, 'obito_id');
+        return $this->belongsToMany(Obito::class, 'obito_id');
     }
 
     public function orgao_expedidor() {
 
-        return $this->belongsTo(Orgao_Expedidor::class, 'orgao_expedidor_id');
-    } */
-
+        return $this->belongsToMany(Orgao_Expedidor::class, 'orgao_expedidor_id');
+    } 
 }

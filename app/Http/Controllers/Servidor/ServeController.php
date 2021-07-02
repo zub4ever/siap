@@ -41,7 +41,7 @@ class ServeController extends Controller {
     public function store(ServeFormRequest $request) {
         
         DB::beginTransaction();
-        
+        //$funcao = Funcao::create($request->all());
         $serve = Serve::create($request->all());
         
      
