@@ -24,28 +24,21 @@ class ServeController extends Controller {
 
     public function create() {
         $origin = Origin::all();
-        $sexo = Sexo::all();
-        $orgao_expedidor = Orgao_Expedidor::all();
-        $obito = Obito::all();
-        $type_serve = Type_Serve::all();
-        $marital_status = Marital_Status::all();
-        
-        return view('servidor.create', compact('origin',
-                                                 'sexo', 
-                                               'orgao_expedidor', 
-                                                  'obito', 
-                                                'type_serve',
-                                                 'marital_status'));
+        //$sexo = Sexo::all();
+        //$orgao_expedidor = Orgao_Expedidor::all();
+        //$obito = Obito::all();
+        //$type_serve = Type_Serve::all();
+        //$marital_status = Marital_Status::all();
+
+        return view('servidor.create');
     }
 
     public function store(ServeFormRequest $request) {
-        
+
         DB::beginTransaction();
         //$funcao = Funcao::create($request->all());
         $serve = Serve::create($request->all());
-        
-     
-        
+
         if (!$serve) {
             DB::rollBack();
             return redirect()->route('servidor.index')->with('error', "Falha ao cadastrar uma lotação.");
@@ -53,7 +46,7 @@ class ServeController extends Controller {
         DB::commit();
         return redirect()->route('servidor.index')->with(
                         'success',
-                        "Lotação cadastrada com sucesso."
+                        " cadastrada com sucesso."
         );
     }
 

@@ -8,7 +8,7 @@ class Origin extends Model {
   
     
     protected $table = 'origin';
-    /*protected $primaryKey = 'id';
+    protected $primaryKey = 'id';
     public $timestamps = true;
     protected $fillable = [
         'nm_origem'
@@ -17,6 +17,6 @@ class Origin extends Model {
 
     public function serve() {
         return $this->hasMany(Serve::class, 'origin_id');
-    }*/
+    }
 
 }

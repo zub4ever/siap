@@ -18,20 +18,20 @@ class CreateServeTable extends Migration {
             $table->string('nm_servidor', 150)->nullable();
 
             //$table->char('sexo', 1)->nullable();
-            $table->dateTime('data_nascimento')->nullable();
+            $table->date('data_nascimento')->nullable();
             //
-            $table->integer('sexo_id')->unsigned();
-            $table->foreign('sexo_id')->references('id')->on('sexo')->onDelete('cascade');
+            //$table->integer('sexo_id')->nullable();
+            //$table->foreign('sexo_id')->references('id')->on('sexo')->onDelete('cascade');
             //
             $table->string('rg', 10)->nullable();
-            $table->integer('orgao_expedidor_id')->unsigned();
-            $table->foreign('orgao_expedidor_id')->references('id')->on('orgao_expedidor')->onDelete('cascade');
+            //$table->integer('orgao_expedidor_id')->unsigned();
+            //$table->foreign('orgao_expedidor_id')->references('id')->on('orgao_expedidor')->onDelete('cascade');
             $table->string('cpf', 11)->nullable();
             $table->string('pis_pasep', 20)->nullable();
             $table->string('nm_pai', 100)->nullable();
             $table->string('nm_mae', 100)->nullable();
-            $table->integer('obito_id')->unsigned();
-            $table->foreign('obito_id')->references('id')->on('obito')->onDelete('cascade');
+            //$table->integer('obito_id')->nullable();
+            //$table->foreign('obito_id')->references('id')->on('obito')->onDelete('cascade');
             //            
             //$table->string('telefone', 12)->nullable();
             //$table->string('email', 100)->nullable();
@@ -40,21 +40,16 @@ class CreateServeTable extends Migration {
             $table->integer('origin_id')->unsigned();
             $table->foreign('origin_id')->references('id')->on('origin')->onDelete('cascade');
             //Tipo de servidor
-            $table->integer('type_serve_id')->unsigned();
-            $table->foreign('type_serve_id')->references('id')->on('type_serve')->onDelete('cascade');
+            //$table->integer('type_serve_id')->nullable();
+            //$table->foreign('type_serve_id')->references('id')->on('type_serve')->onDelete('cascade');
             //Estado Civil
            
-            $table->integer('marital_status_id')->unsigned();
-            $table->foreign('marital_status_id')->references('id')->on('marital_status')->onDelete('cascade');
+            //$table->integer('marital_status_id')->nullable();
+            //$table->foreign('marital_status_id')->references('id')->on('marital_status')->onDelete('cascade');
             $table->timestamps();
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down() {
         Schema::dropIfExists('serve');
     }

@@ -14,6 +14,7 @@ class Type_Serve extends Model
     ];
     protected $guarded = [];
     public function serve() {
-        return $this->hasMany(Serve::class, 'type_serve_id');
+        
+        return $this->belongsTo(Serve::class, 'type_serve_id');
     }
 }

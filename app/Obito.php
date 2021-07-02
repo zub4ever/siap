@@ -14,6 +14,7 @@ class Obito extends Model
     ];
     protected $guarded = [];
     public function serve() {
+        
         return $this->hasMany(Serve::class, 'obito_id');
     }
 }

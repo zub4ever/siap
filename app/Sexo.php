@@ -16,6 +16,6 @@ class Sexo extends Model
     protected $guarded = [];
     
     public function serve() {
-        return $this->hasMany(Serve::class, 'sexo_id');
+        return $this->belongsTo(Serve::class, 'sexo_id');
     }
 }

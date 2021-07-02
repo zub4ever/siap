@@ -1,5 +1,5 @@
 <div class="row">
-        <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+        <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="matricula" class="form-control-label">Matrícula:
                 <span class="text-danger">*</span>
@@ -8,7 +8,7 @@
                    value="">
         </div>
     </div>
-    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="nm_servidor" class="form-control-label">Nome:
                 <span class="text-danger">*</span>
@@ -17,7 +17,7 @@
                    value="">
         </div>
     </div>
-    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="data_nascimento" class="form-control-label">Data Nascimento:
                 <span class="text-danger">*</span>
@@ -25,21 +25,7 @@
             <input type="text" class="form-control" name="data_nascimento" value="">
         </div>
     </div>
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
-        <div class="wrap">
-            <label for="sexo_id" class="form-control-label">Sexo:
-                <span class="text-danger">*</span>
-            </label>
-            <select name="sexo_id" class="form-control" id="titula1">
-                <option value="">Selecione uma opção</option>
-                @foreach ($sexo as $sx)
-                <option value="{{$sx->id}}">
-                    {{$sx->nm_sexo}}
-                </option>
-                @endforeach
-            </select>
-        </div>
-    </div>
+
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -48,21 +34,6 @@
                 <span class="text-danger">*</span>
             </label>
             <input type="text" class="form-control" name="rg" value="">
-        </div>
-    </div>  
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
-        <div class="wrap">
-            <label for="orgao_expedidor_id" class="form-control-label">Órgão Emissor:
-                <span class="text-danger">*</span>
-            </label>
-            <select name="orgao_expedidor_id" class="form-control" id="titula1">
-                <option value="">Selecione uma opção</option>
-                @foreach ($orgao_expedidor as $orgaoEx)
-                <option value="{{$orgaoEx->id}}">
-                    {{$orgaoEx->nm_orgao}}
-                </option>
-                @endforeach
-            </select>
         </div>
     </div>  
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -99,21 +70,7 @@
             <input type="text" class="form-control" name="nm_mae" value="">
         </div>
     </div>  
-    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
-        <div class="wrap">
-            <label for="obito_id" class="form-control-label">Obito:
-                <span class="text-danger">*</span>
-            </label>
-            <select name="obito_id" class="form-control" id="titula1">
-                <option value="">Selecione</option>
-                @foreach ($obito as $obito)
-                <option value="{{$obito->id}}">
-                    {{$obito->nm_obito}}
-                </option>
-                @endforeach
-            </select>
-        </div>
-    </div> 
+ 
 </div>
 <div class ="row">
     <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
@@ -131,36 +88,7 @@
             </select>
         </div>
     </div> 
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
-        <div class="wrap">
-            <label for="type_serve_id" class="form-control-label">Situação do Servidor:
-                <span class="text-danger">*</span>
-            </label>
-            <select name="type_serve_id" class="form-control" id="titula1">
-                <option value="">Selecione uma opção</option>
-                @foreach ($type_serve as $tpserve)
-                <option value="{{$tpserve->id}}">
-                    {{$tpserve->status_servidor}}
-                </option>
-                @endforeach
-            </select>
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
-        <div class="wrap">
-            <label for="marital_status_id" class="form-control-label">Estado Civil:
-                <span class="text-danger">*</span>
-            </label>
-            <select name="marital_status_id" class="form-control" id="titula1">
-                <option value="">Selecione uma opção</option>
-                @foreach ($marital_status as $estadoCivil)
-                <option value="{{$estadoCivil->id}}">
-                    {{$estadoCivil->status_civil}}
-                </option>
-                @endforeach
-            </select>
-        </div>
-    </div>
+
 </div>
 
 
