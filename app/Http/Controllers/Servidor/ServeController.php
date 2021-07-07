@@ -24,13 +24,15 @@ class ServeController extends Controller {
 
     public function create() {
         $origin = Origin::all();
-        //$sexo = Sexo::all();
-        //$orgao_expedidor = Orgao_Expedidor::all();
-        //$obito = Obito::all();
-        //$type_serve = Type_Serve::all();
-        //$marital_status = Marital_Status::all();
+        $sexo = Sexo::all();
+        $orgao_expedidor = Orgao_Expedidor::all();
+        $obito = Obito::all();
+        $type_serve = Type_Serve::all();
+        $marital_status = Marital_Status::all();
 
-        return view('servidor.create');
+        return view('servidor.create',compact('origin','sexo',
+        'orgao_expedidor','obito', 
+        'type_serve','marital_status'));
     }
 
     public function store(ServeFormRequest $request) {
