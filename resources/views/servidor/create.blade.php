@@ -17,7 +17,7 @@
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Cadastrar Lotação</h4>
+                <h4 class="card_title">Cadastrar Servidor</h4>
                 <form action="{{route('servidor.store')}}" method="POST">
                     @csrf
                     @include('servidor.form')
