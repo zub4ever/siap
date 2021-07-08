@@ -29,10 +29,10 @@ class ServeController extends Controller {
         $obito = Obito::all();
         $type_serve = Type_Serve::all();
         $marital_status = Marital_Status::all();
-
+        $serve = Serve::all();
         return view('servidor.create',compact('origin','sexo',
         'orgao_expedidor','obito', 
-        'type_serve','marital_status'));
+        'type_serve','marital_status','serve'));
     }
 
     public function store(ServeFormRequest $request) {
