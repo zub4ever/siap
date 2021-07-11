@@ -17,7 +17,7 @@ class Serve extends Model {
         'pis_pasep',
         'nm_pai',
         'nm_mae', 
-         'origin_id'   /*,
+        'origin_id'   /*,
         'sexo_id',
         'obito_id', 
         
