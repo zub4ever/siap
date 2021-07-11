@@ -29,7 +29,8 @@ class FuncaoController extends Controller
         }
         
       public function store(FuncaoFormRequest $request) {
-          DB::beginTransaction();
+        
+        DB::beginTransaction();
 
         $funcao = Funcao::create($request->all());
 
