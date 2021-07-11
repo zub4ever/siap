@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Serve extends Model {
 
     protected $table = 'serve';
+    protected $primaryKey = 'id';
     public $timestamps = true;
     protected $fillable = [
         'nm_servidor',

@@ -127,7 +127,7 @@
                 <option value="">Selecione uma opção</option>
                 @foreach ($type_serve as $tp)
                 <option value="{{$tp->id}}">
-                    {{$or->status_servidor}}
+                    {{$tp->status_servidor}}
                 </option>
                 @endforeach
             </select>
