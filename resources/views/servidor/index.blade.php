@@ -41,11 +41,18 @@
                             </tr>
                         </thead>
                         <tbody>
+                            @foreach ($servidor as $svd)
                             <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td> <td></td> <td></td>
-                                <td class="text-center">
+                                <td class="text-center">{{$svd->id}}</td>
+                                <td class="text-center">{{$svd->nm_servidor}}</td>
+                                <td class="text-center">{{$svd->cpf}}</td>
+                                <td class="text-center">{{$svd->data_nascimento}}</td>
+                                @foreach($origin as $mnc)
+                                @if($svd->origin_id == $mnc->id)
+                                 <td class="text-center">{{$mnc->nm_origem}}</td>
+                                @endif
+                                @endforeach
+                                <td>
                                     <a href="">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
@@ -57,6 +64,7 @@
                                     </form>
                                 </td>
                             </tr>
+                            @endforeach
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end">
