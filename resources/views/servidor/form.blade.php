@@ -46,7 +46,7 @@
         </div>
     </div>
 
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="rg" class="form-control-label">RG:
                 <span class="text-danger">*</span>
@@ -54,8 +54,24 @@
             <input type="text" class="form-control" name="rg" value="">
         </div>
     </div>
+           <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+        <div class="wrap">
+            <label for="orgao_expedidor_id" class="form-control-label">Órgão Expedidor:
+                <span class="text-danger">*</span>
+            </label>
 
-    <div class="col-sm-12 col-md-2 col-lg-3 mt-4">
+            <select name="orgao_expedidor_id" class="form-control" id="titula1">
+                <option value="">Selecione uma opção</option>
+                @foreach ($orgao_expedidor as $ex)
+                <option value="{{$ex->id}}">
+                    {{$ex->nm_orgao}}
+                </option>
+                @endforeach
+            </select>
+        </div>
+    </div>
+
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
@@ -64,6 +80,13 @@
         </div>
     </div>
 
+</div>
+
+
+<!-- // // // -->
+
+<div class="row">
+    
     <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="pis_pasep" class="form-control-label">PIS/PASESP:
@@ -72,13 +95,7 @@
             <input type="text" class="form-control" name="pis_pasep" value="">
         </div>
     </div>
-</div>
-
-
-<!-- // // // -->
-
-<div class="row">
-    <div class="col-sm-12 col-md-2 col-lg-5 mt-4">
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
             <label for="nm_pai" class="form-control-label">Nome do Pai:
                 <span class="text-danger">*</span>
@@ -87,7 +104,7 @@
         </div>
     </div>
 
-    <div class="col-sm-12 col-md-3 col-lg-5 mt-4">
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
             <label for="nm_mae" class="form-control-label">Nome da Mãe:
                 <span class="text-danger">*</span>
@@ -152,22 +169,7 @@
     </div>
 </div>
 <div class ="row">
-       <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
-        <div class="wrap">
-            <label for="orgao_expedidor_id" class="form-control-label">Órgão Expedidor:
-                <span class="text-danger">*</span>
-            </label>
 
-            <select name="orgao_expedidor_id" class="form-control" id="titula1">
-                <option value="">Selecione uma opção</option>
-                @foreach ($orgao_expedidor as $ex)
-                <option value="{{$ex->id}}">
-                    {{$ex->nm_orgao}}
-                </option>
-                @endforeach
-            </select>
-        </div>
-    </div>
            <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
             <label for="type_serve_id" class="form-control-label">Situação do Servidor:

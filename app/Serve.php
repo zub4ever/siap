@@ -38,7 +38,7 @@ class Serve extends Model {
         return $this->hasMany(Marital_Status::class, 'marital_status_id');
     }
 
- /*
+
     public function type_serve() {
 
         return $this->belongsTo(Type_Serve::class, 'type_serve_id');
@@ -58,5 +58,5 @@ class Serve extends Model {
     public function orgao_expedidor() {
 
         return $this->belongsToMany(Orgao_Expedidor::class, 'orgao_expedidor_id');
-    } */
+    } 
 }
