@@ -43,8 +43,8 @@ class CreateServeTable extends Migration {
            // $table->foreign('type_serve_id')->references('id')->on('type_serve')->onDelete('cascade');
             //Estado Civil
            
-           // $table->integer('marital_status_id')->unsigned();
-           // $table->foreign('marital_status_id')->references('id')->on('marital_status')->onDelete('cascade');
+           $table->integer('marital_status_id')->unsigned();
+           $table->foreign('marital_status_id')->references('id')->on('marital_status')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -16,13 +16,15 @@ class Serve extends Model {
         'cpf',
         'pis_pasep',
         'nm_pai',
-        'nm_mae', 
-        'origin_id'   /*,
+        'nm_mae',
+        'marital_status_id',
+        'origin_id'
+       /*  
         'sexo_id',
         'obito_id', 
         
        'type_serve_id',
-        'marital_status_id',
+        
          'orgao_expedidor_id' */
     ];
       protected $guarded = [];
@@ -30,16 +32,18 @@ class Serve extends Model {
     public function origin() {
         return $this->hasMany(Origin::class, 'origin_id');
     }
+    
+    public function marital_status() {
+
+        return $this->hasMany(Marital_Status::class, 'marital_status_id');
+    }
+
  /*
     public function type_serve() {
 
         return $this->belongsTo(Type_Serve::class, 'type_serve_id');
     }
 
-    public function marital_status() {
-
-        return $this->belongsToMany(Marital_Status::class, 'marital_status_id');
-    }
 
     public function sexo() {
 

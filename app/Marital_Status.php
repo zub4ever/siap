@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Marital_Status extends Model {
 
     protected $table = 'marital_status';
-    protected $primaryKey = 'id';
+    /*protected $primaryKey = 'id';
     public $timestamps = true;
     protected $fillable = [
         'status_civil'
@@ -15,7 +15,7 @@ class Marital_Status extends Model {
     protected $guarded = [];
     public function serve() {
         
-        return $this->hasMany(Serve::class, 'marital_status_id');
-    }
+        return $this->hasOne(Serve::class, 'marital_status_id');
+    }*/
 
 }

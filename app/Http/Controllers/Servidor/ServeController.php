@@ -11,6 +11,7 @@ use App\Funcao;
 use App\Orgao;
 use App\Origin;
 use App\Serve;
+use App\Marital_Status;
 
 
 class ServeController extends Controller {
@@ -30,9 +31,9 @@ class ServeController extends Controller {
         //$orgao_expedidor = Orgao_Expedidor::all();
         //$obito = Obito::all();
         //$type_serve = Type_Serve::all();
-      //  $marital_status = Marital_Status::all();
+        $marital_status = Marital_Status::all();
         
-        return view('servidor.create', compact('origin'));
+        return view('servidor.create', compact('origin','marital_status'));
     }
 
     public function store(ServeFormRequest $request) {

@@ -97,6 +97,37 @@
             </div>
 
     </div>
+
+        <!-- // // // -->
+
+    <div class="row">
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
+        <div class="wrap">
+            <label for="marital_status" class="form-control-label">Estado Civil:
+                <span class="text-danger">*</span>
+            </label>
+            
+            <select name="marital_status_id" class="form-control" id="titula1">
+            <option value="">Selecione uma opção</option>
+                        @foreach ($marital_status as $ms)
+              <option value="{{$ms->id}}">
+                     {{$ms->status_civil}}
+             </option>
+                  @endforeach
+             </select>
+        </div>
+
+<!-- //
+        <div class="col-sm-12 col-md-3 col-lg-5 mt-4">
+                <div class="wrap">
+                    <label for="nm_mae" class="form-control-label">Nome da Mãe:
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" name="nm_mae" value="">
+                </div>
+            </div> // // -->
+
+    </div>
     <!-- // // // -->
 </div>
 
