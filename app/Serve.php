@@ -18,14 +18,14 @@ class Serve extends Model {
         'nm_pai',
         'nm_mae',
         'marital_status_id',
-        'origin_id'
-       /*  
+        'origin_id',
+         
         'sexo_id',
         'obito_id', 
         
        'type_serve_id',
         
-         'orgao_expedidor_id' */
+         'orgao_expedidor_id' 
     ];
       protected $guarded = [];
 

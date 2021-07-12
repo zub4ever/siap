@@ -28,11 +28,11 @@ class ServeFormRequest extends FormRequest {
             'nm_pai' => ['required', 'max:200'],
             'nm_mae' => ['required', 'max:200'],
             'origin_id' => ['required'],
-            'marital_status_id' => ['required']
-            /*'type_serve_id'=> ['required', 'exists:type_serve,id'],
-            'sexo_id'=> ['required', 'exists:sexo,id'],
-            'orgao_expedidor_id' => ['required', 'exists:orgao_expedidor,id'],
-            'obito_id'=> ['required', 'exists:obito,id'] */
+            'marital_status_id' => ['required'],
+            'type_serve_id'=> ['required'],
+            'sexo_id'=> ['required'],
+            'orgao_expedidor_id' => ['required'],
+            'obito_id'=> ['required'] 
              
         ];
     }

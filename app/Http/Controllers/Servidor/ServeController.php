@@ -7,11 +7,16 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\ServeFormRequest;
 use Illuminate\Support\Facades\DB;
-use App\Funcao;
+use App\Obito;
 use App\Orgao;
 use App\Origin;
 use App\Serve;
 use App\Marital_Status;
+use App\Type_Serve;
+use App\Orgao_Expedidor;
+use App\Sexo;
+
+        
 
 
 class ServeController extends Controller {
@@ -27,13 +32,13 @@ class ServeController extends Controller {
 
     public function create() {
         $origin = Origin::all();
-        ///$sexo = Sexo::all();
-        //$orgao_expedidor = Orgao_Expedidor::all();
-        //$obito = Obito::all();
-        //$type_serve = Type_Serve::all();
+        $sexo = Sexo::all();
+        $orgao_expedidor = Orgao_Expedidor::all();
+        $obito = Obito::all();
+        $type_serve = Type_Serve::all();
         $marital_status = Marital_Status::all();
         
-        return view('servidor.create', compact('origin','marital_status'));
+        return view('servidor.create', compact('origin','marital_status','sexo','orgao_expedidor','obito','type_serve'));
     }
 
     public function store(ServeFormRequest $request) {
