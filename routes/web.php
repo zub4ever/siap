@@ -15,10 +15,16 @@ Route::get('/', function () {
     return view('index');
 });
 
-
+//Cadastro de ervidpr
 Route::resource('servidor','Servidor\ServeController');
 Route::get('servidor/create','Servidor\ServeController@create')->name('servidor.create');
 Route::post('servidor/create','Servidor\ServeController@store');
+//Contrato atrelado a servidor
+
+Route::resource('servidor/contrato','Servidor\Contrato\ContractController');
+Route::get('servidor/contrato/create','Servidor\Contrato\ContractController@create')->name('contrato.create');
+Route::post('servidor/contrato/create','Servidor\Contrato\ContractController@store');
+
 
 //
 Route::resource('cadastrosAuxiliares/origem','CadastrosAuxiliares\Origin\OriginController');

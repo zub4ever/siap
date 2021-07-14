@@ -32,7 +32,7 @@
                     <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="feather ft-users"></i>
-                            <span>SECCTC</span>
+                            <span>SERVIDOR</span>
                         </a>
 
                         <ul class="collapse">
@@ -40,6 +40,12 @@
                                 <a href="{{route('servidor.index')}}">
                                     <i class="icon-clipboard"></i>
                                     <span>Cadastrar Servidor</span>
+                                </a>
+                            </li>
+                            <li {!! (request()->is('servidor/contrato*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('contrato.index')}}">
+                                    <i class="icon-clipboard"></i>
+                                    <span>Contratos</span>
                                 </a>
                             </li>
 
