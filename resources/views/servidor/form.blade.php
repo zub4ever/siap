@@ -153,7 +153,7 @@
     </div>
     <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
-            <label for="obito_id" class="form-control-label">Obito:
+            <label for="obito_id" class="form-control-label">Obito?:
                 <span class="text-danger">*</span>
             </label>
 

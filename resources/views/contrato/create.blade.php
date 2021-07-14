@@ -9,7 +9,7 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("servidor.contrato.index")}}">Contratos</a></li>
+    <li class="breadcrumb-item"><a href="{{route("contrato.index")}}">Contratos</a></li>
     <li class="breadcrumb-item active"><a>Cadastrar Contrato</a></li>
 </ol>
 
@@ -17,10 +17,10 @@
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Cadastrar Servidor</h4>
+                <h4 class="card_title">Cadastrar Contrato</h4>
                 <form action="{{route('contrato.store')}}" method="POST">
                     @csrf
-                    @include('servidor.contrato.form')
+                    @include('contrato.form')
                 </form>
             </div>
         </div>
