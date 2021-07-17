@@ -42,7 +42,20 @@
                                     <span>Cadastrar Servidor</span>
                                 </a>
                             </li>
-                            <li {!! (request()->is('servidor/contrato*') ? 'class="active"' : "")!!}>
+                            <!-- Fim do cadastros auxiliares -->
+                        </ul>
+                    </li>
+                    <!--fim de Servidor-->
+                                        <!-- Inicio de Contrato -->
+                    <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class="feather ft-users"></i>
+                            <span>Contrato</span>
+                        </a>
+
+                        <ul class="collapse">
+
+                            <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('contrato.index')}}">
                                     <i class="icon-clipboard"></i>
                                     <span>Contratos</span>
@@ -52,7 +65,7 @@
                             <!-- Fim do cadastros auxiliares -->
                         </ul>
                     </li>
-                    <!--fim de Servidor-->
+                    <!--fim de-->
                     <!-- Inicio de Cadastros -->
                     <li {!! (request()->is('cadastrosAuxiliares*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">

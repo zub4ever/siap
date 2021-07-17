@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Servidor\Contrato;
+namespace App\Http\Controllers\Contrato;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -20,13 +20,13 @@ class ContractController extends Controller {
         
          
         
-        return view('servidor.contrato.index');
+        return view('contrato.index');
     }
 
     public function create() {
   
         
-        return view('servidor.contrato.create');
+        return view('contrato.create');
     }
 
     public function store(ServeFormRequest $request) {
@@ -37,12 +37,12 @@ class ContractController extends Controller {
 
         if (!$serve) {
             DB::rollBack();
-            return redirect()->route('servidor.contrato.index')->with('error', "Falha ao cadastrar uma lotação.");
+            return redirect()->route('contrato.index')->with('error', "Falha ao cadastrar uma lotação.");
         }
         $serve->save();
         DB::commit();
 
-        return redirect()->route('servidor.contrato.index')->with(
+        return redirect()->route('contrato.index')->with(
                         'success',
                         "Lotação cadastrada com sucesso."
         );
