@@ -25,7 +25,11 @@ Route::resource('contrato','Contrato\ContractController');
 Route::get('contrato/create','Contrato\ContractController@create')->name('contrato.create');
 Route::post('contrato/create','Contrato\ContractController@store');
 
-
+//
+//Servidor - Endereco
+Route::resource('servidor/endereco','Servidor\Endereco\AddressController');
+Route::get('servidor/endereco/create','Servidor\Endereco\AddressController@create')->name('endereco.create');
+Route::post('servidor/endereco/create','Servidor\Endereco\AddressController@store');
 //
 Route::resource('cadastrosAuxiliares/origem','CadastrosAuxiliares\Origin\OriginController');
 Route::get('cadastrosAuxiliares/origem/create','CadastrosAuxiliares\Origin\OriginController@create')->name('origem.create');
