@@ -28,11 +28,11 @@ class ContractController extends Controller {
     public function create() {
         
         $origin = Origin::all();
-        $servidor = Servidor::all();
+        $servidor = Serve::all();
         $orgao = Orgao::all();
         $funcao = Funcao::all();
 
-        return view('contrato.create', compact('origin','orgao','funcao','origin'));
+        return view('contrato.create', compact('servidor','orgao','funcao','origin'));
         
     }
 

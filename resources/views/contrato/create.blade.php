@@ -29,3 +29,8 @@
 @endsection
 
 
+@section('js')
+<script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
+<script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/vendors/select2/plugin/select2.js')}}"></script>
+@endsections
