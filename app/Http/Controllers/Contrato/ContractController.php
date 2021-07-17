@@ -5,10 +5,12 @@ namespace App\Http\Controllers\Contrato;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ContractFormRequest;
 use App\Serve;
 use App\Origin;
 use App\Funcao;
 use App\Orgao;
+use App\Contract;
 use Illuminate\Support\Facades\DB;
 
 class ContractController extends Controller {
@@ -26,14 +28,13 @@ class ContractController extends Controller {
     }
 
     public function create() {
-        
+
         $origin = Origin::all();
         $servidor = Serve::all();
         $orgao = Orgao::all();
         $funcao = Funcao::all();
 
-        return view('contrato.create', compact('servidor','orgao','funcao','origin'));
-        
+        return view('contrato.create', compact('servidor', 'orgao', 'funcao', 'origin'));
     }
 
     public function store(ContractFormRequest $request) {
@@ -46,7 +47,7 @@ class ContractController extends Controller {
             DB::rollBack();
             return redirect()->route('contrato.index')->with('error', "Falha ao cadastrar uma lotação.");
         }
-        $serve->save();
+        $contrato->save();
         DB::commit();
 
         return redirect()->route('contrato.index')->with(
