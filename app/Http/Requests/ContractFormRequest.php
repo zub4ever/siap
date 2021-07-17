@@ -22,6 +22,7 @@ class ContractFormRequest extends FormRequest {
      */
     public function rules() {
         return [
+            'matricula' => ['required', 'max:1'],
             'orgao_id' =>  ['required'],
             'serve_id' =>  ['required'],
             'serve_id' =>  ['required'],

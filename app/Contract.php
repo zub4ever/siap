@@ -9,6 +9,7 @@ class Contract extends Model {
     protected $table = 'contract';
     public $timestamps = true;
     protected $fillable = [
+        'nr_contrato',
         'origin_id',
         'orgao_id',
         'funcao_id',

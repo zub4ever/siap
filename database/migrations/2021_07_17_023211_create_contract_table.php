@@ -14,6 +14,7 @@ class CreateContractTable extends Migration {
     public function up() {
         Schema::create('contract', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('nr_contrato')->unsigned();
             //
             $table->integer('origin_id')->unsigned();
             $table->foreign('origin_id')->references('id')->on('origin')->onDelete('cascade');

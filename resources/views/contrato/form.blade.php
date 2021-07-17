@@ -12,7 +12,7 @@
             </select>
         </div>
     </div>
-    <div class="col-sm-12 col-md-7 col-lg-7 mt-5">
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-5">
         <div class="wrap">
             <label for="serve_id" class="form-control-label">Servidor:
                 <span class="text-danger">*</span>
@@ -23,6 +23,14 @@
                 <option value="{{$sv->id}}">{{$sv->nm_servidor}}</option>
                 @endforeach
             </select>
+        </div>
+    </div>
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-5">
+        <div class="wrap">
+            <label for="nr_contrato" class="form-control-label">Nº Contrato:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="nr_contrato" value="">
         </div>
     </div>
 </div>
