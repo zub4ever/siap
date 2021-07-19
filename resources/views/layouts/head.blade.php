@@ -30,7 +30,7 @@
           rel="stylesheet">
     <!-- SELECT-2 -->
     <link href="{{asset('assets/vendors/select2/select2.min.css')}}" rel="stylesheet" />
-    <script src="{{asset('assets/vendors/select2.min.js')}}"></script>
+    <script src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
     <!--=========================*
           Select 2
     *===========================--> 
