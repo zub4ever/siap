@@ -28,6 +28,17 @@
     <!-- Montserrat USE: font-family: 'Montserrat', sans-serif;-->
     <link href="https://fonts.googleapis.com/css?family=Montserrat:100,200,300,400,500,600,700,800,900"
           rel="stylesheet">
+    <!-- SELECT-2 -->
+    <link href="{{asset('assets/vendors/select2/select2.min.css')}}" rel="stylesheet" />
+    <script src="{{asset('assets/vendors/select2.min.js')}}"></script>
+    <!--=========================*
+          Select 2
+    *===========================--> 
+      <script>
+      $(document).ready(function() {
+             $('.myselect').select2();
+      });
+      </script>
 
     <!-- HTML5 shiv and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
