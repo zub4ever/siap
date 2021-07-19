@@ -46,7 +46,7 @@
                         </ul>
                     </li>
                     <!--fim de Servidor-->
-                                        <!-- Inicio de Contrato -->
+                    <!-- Inicio de Contrato -->
                     <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="feather ft-users"></i>
@@ -65,12 +65,30 @@
                             <!-- Fim do cadastros auxiliares -->
                         </ul>
                     </li>
+                    <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class="feather ft-users"></i>
+                            <span>Endereço Servidor</span>
+                        </a>
+
+                        <ul class="collapse">
+
+                            <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('endereco.index')}}">
+                                    <i class="icon-clipboard"></i>
+                                    <span>Endereços</span>
+                                </a>
+                            </li>
+
+                            <!-- Fim do  -->
+                        </ul>
+                    </li>
                     <!--fim de-->
                     <!-- Inicio de Cadastros -->
                     <li {!! (request()->is('cadastrosAuxiliares*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="ti-settings"></i>
-                            <span>Cadastros</span>
+                            <span>Cadastros Auxiliares</span>
                         </a>
 
                         <ul class="collapse">

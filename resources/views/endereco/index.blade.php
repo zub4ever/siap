@@ -3,53 +3,54 @@
 
 {{-- Page Title --}}
 @section('page-title')
-Contrato
+Endereços
 @endsection
 
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Contrato</a></li>
+    <li class="breadcrumb-item active"><a>Endereço</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('contrato.create')}}" role="button">
-                    Novo contrato
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('endereco.create')}}" role="button">
+                    Novo endereço
                 </a>
             </div>
-            
         </div>
     </div>
-    
 </div>
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Contratos</h4>
+                <h4 class="card_title">Endereços</h4>
                 <div class="table-responsive">
                     <table id="dataTable" class="table text-center">
                         <thead class="bg-light text-capitalize">
                             <tr>
                                 <th class="text-center">Matrícula</th>
-                                <th class="text-center">Contrato</th>
                                 <th class="text-center">Nome servidor</th>
-                                <th class="text-center">Origem</th>
+                                <th class="text-center">Cidade</th>
+
                                 <th class="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($servidor as $svd)
+                            @foreach ($address as $svd)                            
                             <tr>
-                                <td class="text-center">{{$svd->matricula}}</td>
-                                <td class="text-center"></td>
-                                <td class="text-center">{{$svd->nm_servidor}}</td>
-                                @foreach($origin as $mnc)
-                                @if($svd->origin_id == $mnc->id)
-                                <td class="text-center">{{$mnc->nm_origem}}</td>
+                                @foreach($servidor as $vd)
+                                @if($svd->serve_id == $vd->id)
+                                <td class="text-center">{{$vd->matricula}}</td>
+                                <td class="text-center">{{$vd->nm_servidor}}</td>
+                                @endif
+                                @endforeach
+                                @foreach($city as $mnc)
+                                @if($svd->city_id == $mnc->id)
+                                <td class="text-center">{{$mnc->nm_cidade}}</td>
                                 @endif
                                 @endforeach
                                 <td>

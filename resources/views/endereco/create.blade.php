@@ -9,20 +9,23 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("servidor.index")}}">servidor</a></li>
-    <li class="breadcrumb-item active"><a>Cadastrar Contrato</a></li>
+    <li class="breadcrumb-item"><a href="{{route("endereco.index")}}">Endereço</a></li>
+    <li class="breadcrumb-item active"><a>Cadastrar Endereço</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Cadastrar Endereço</h4>
+                <h4 class="card_title">Cadastrar Enereço Servidor</h4>
                 <form action="{{route('endereco.store')}}" method="POST">
                     @csrf
-                    @include('servidor.endereco.form')
+                    @include('endereco.form')
                 </form>
             </div>
         </div>
     </div>
+</div>
 @endsection
+
+
