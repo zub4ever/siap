@@ -4,9 +4,10 @@
         <label for="server_id" class="form-control-label">Servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control servidorSelect2" name="serve_id" id="serve_id">
+            <select class="form-control servidor-select2" name="serve_id" id="serve_id">
+                <option value="">Selecione a cidade</option>
                 @foreach ($servidor as $sv)
-           
+                
                 <option value="{{$sv->id}}">{{$sv->matricula}}-{{$sv->nm_servidor}}</option>
                 @endforeach
             </select>

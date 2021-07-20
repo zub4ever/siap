@@ -12,8 +12,8 @@
 <script>
     $(document).ready(function() {
         
-          $('.servidorSelect2').select2({
-            placeholder: 'Selecione o Matricula-Servidor'
+          $('.servidor-select2').select2({
+            placeholder: 'Selecione ...'
           });
     });
 </script>
