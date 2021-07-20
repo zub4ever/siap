@@ -1,11 +1,10 @@
 <div class="row">
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
-            <label for="serve_id" class="form-control-label">Servidor:
+        <label for="server_id" class="form-control-label">Servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control select2" name="serve_id" id="serve_id">
-                <option value="">Selecione o Servidor</option>
+            <select class="form-control servidorSelect2" name="serve_id" id="serve_id">
                 @foreach ($servidor as $sv)
            
                 <option value="{{$sv->id}}">{{$sv->matricula}}-{{$sv->nm_servidor}}</option>
@@ -47,7 +46,7 @@
             <label for="city_id" class="form-control-label">Cidade:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control select2" name="city_id" id="serve_id">
+            <select class="form-control cidadeSelect2" name="city_id" id="serve_id">
                 <option value="">Selecione a cidade</option>
                 @foreach ($city as $ct)
                 <option value="{{$ct->id}}">{{$ct->nm_cidade}}</option>
@@ -60,7 +59,7 @@
             <label for="state_id" class="form-control-label">Estado:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control select2" name="state_id" id="serve_id">
+            <select class="form-control estadoSelect2" name="state_id" id="serve_id">
                 <option value="">Selecione o estado</option>
                 @foreach ($state as $st)
                 <option value="{{$st->id}}">{{$st->nm_estado}}</option>
