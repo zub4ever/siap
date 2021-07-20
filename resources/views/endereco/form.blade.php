@@ -4,11 +4,11 @@
             <label for="serve_id" class="form-control-label">Servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select class="myselect2" name="serve_id" id="serve_id">
-                <option value="">Selecione o Servidor/Matricula</option>
+            <select class="form-control select2" name="serve_id" id="serve_id">
+                <option value="">Selecione o Servidor</option>
                 @foreach ($servidor as $sv)
            
-                <option value="{{$sv->id}}">{{$sv->nm_servidor}} / {{$sv->matricula}}</option>
+                <option value="{{$sv->id}}">{{$sv->matricula}}-{{$sv->nm_servidor}}</option>
                 @endforeach
             </select>
         </div>
