@@ -30,13 +30,13 @@
           rel="stylesheet">
     <!-- SELECT-2 -->
     <link href="{{asset('assets/vendors/select2/select2.min.css')}}" rel="stylesheet" />
-    <script src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
+    <script type="text/javascript" src="{{asset('assets/vendors/select2/select2.min.js')}}"></script>
     <!--=========================*
           Select 2
     *===========================--> 
       <script>
       $(document).ready(function() {
-             $('.myselect').select2();
+             $('.myselect2').select2();
       });
       </script>
 
