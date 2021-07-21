@@ -1,9 +1,12 @@
 <?php
 
 
-Route::get('/', function () {
-    return view('index');
-});
+
+Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
+
+
+Route::middleware(['auth'])->group(function () {
+Route::get('/home', 'HomeController@index')->name('index');
 //Cadastro de ervidpr
 Route::resource('servidor','Servidor\ServeController');
 Route::get('servidor/create','Servidor\ServeController@create')->name('servidor.create');
@@ -28,3 +31,17 @@ Route::post('cadastrosAuxiliares/orgao/create','CadastrosAuxiliares\Orgao\OrgaoC
 Route::resource('cadastrosAuxiliares/funcao','CadastrosAuxiliares\Funcao\FuncaoController');
 Route::get('cadastrosAuxiliares/funcao/create','CadastrosAuxiliares\Funcao\FuncaoController@create')->name('funcao.create');
 Route::post('cadastrosAuxiliares/funcao/create','CadastrosAuxiliares\Funcao\FuncaoController@store');
+
+
+
+
+
+
+});
+Auth::routes();
+
+
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
