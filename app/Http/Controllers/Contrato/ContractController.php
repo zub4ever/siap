@@ -19,12 +19,12 @@ class ContractController extends Controller {
 
 
     public function index() {
-
+        $contrato = DB::table('contract')->get()->all();
         $servidor = DB::table('serve')->get()->all();
         $origin = DB::table('origin')->get()->all();
         $orgao = DB::table('orgao')->get()->all();
         $funcao = DB::table('funcao')->get()->all();
-        return view('contrato.index', compact('servidor', 'origin', 'funcao', 'orgao'));
+        return view('contrato.index', compact('servidor', 'origin', 'funcao', 'orgao','contrato'));
     }
 
     public function create() {

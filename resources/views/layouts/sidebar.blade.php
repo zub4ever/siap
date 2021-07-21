@@ -32,14 +32,14 @@
                     <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="feather ft-users"></i>
-                            <span>SERVIDOR</span>
+                            <span>Servidor</span>
                         </a>
 
                         <ul class="collapse">
                             <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('servidor.index')}}">
                                     <i class="icon-clipboard"></i>
-                                    <span>Cadastrar Servidor</span>
+                                    <span>Servidores</span>
                                 </a>
                             </li>
                             <!-- Fim do cadastros auxiliares -->

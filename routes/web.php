@@ -1,26 +1,14 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 Route::get('/', function () {
     return view('index');
 });
-
 //Cadastro de ervidpr
 Route::resource('servidor','Servidor\ServeController');
 Route::get('servidor/create','Servidor\ServeController@create')->name('servidor.create');
 Route::post('servidor/create','Servidor\ServeController@store');
 //Contrato atrelado a servidor
-
 Route::resource('contrato','Contrato\ContractController');
 Route::get('contrato/create','Contrato\ContractController@create')->name('contrato.create');
 Route::post('contrato/create','Contrato\ContractController@store');
@@ -28,8 +16,6 @@ Route::post('contrato/create','Contrato\ContractController@store');
 Route::resource('endereco','Endereco\EnderecoController');
 Route::get('endereco/create','Endereco\EnderecoController@create')->name('endereco.create');
 Route::post('endereco/create','Endereco\EnderecoController@store');
-//
-
 //
 Route::resource('cadastrosAuxiliares/origem','CadastrosAuxiliares\Origin\OriginController');
 Route::get('cadastrosAuxiliares/origem/create','CadastrosAuxiliares\Origin\OriginController@create')->name('origem.create');

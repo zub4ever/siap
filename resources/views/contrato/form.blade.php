@@ -4,7 +4,7 @@
             <label for="origin_id" class="form-control-label">Origem Servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control select2" name="origin_id" id="origin_id">
+            <select class="form-control contrato-select2" name="origin_id" id="origin_id">
                 <option value="">Selecione uma opção</option>
                 @foreach ($origin as $atividade)
                 <option value="{{$atividade->id}}">{{$atividade->nm_origem}}</option>
@@ -17,10 +17,10 @@
             <label for="serve_id" class="form-control-label">Servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control select2" name="serve_id" id="serve_id">
+            <select class="form-control serve-select2" name="serve_id" id="serve_id">
                 <option value="">Selecione uma opção</option>
                 @foreach ($servidor as $sv)
-                <option value="{{$sv->id}}">{{$sv->nm_servidor}}</option>
+                <option value="{{$sv->id}}">{{$sv->matricula}}- {{$sv->nm_servidor}}</option>
                 @endforeach
             </select>
         </div>
@@ -72,7 +72,7 @@
 <div class="col-sm-12 mt-5">
     <div class="wrap mt-1" style="text-align: center;">
         <button type="submit" class="btn btn-success">
-            Salvar Servidor
+            Salvar Contrato
         </button>
     </div>
 </div>

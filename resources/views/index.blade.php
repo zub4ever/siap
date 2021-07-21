@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('page-title')
-    Dashboard V1
+    Dashboard
 @endsection
 
 {{-- This Page Css --}}
@@ -29,7 +29,7 @@
         <div class="col-lg-8 stretched_card">
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card_title mb-2">Your Eccommerce store's Year Sales</h4>
+                    <h4 class="card_title mb-2">Eccommerce store's Year Sales</h4>
                     <div class="d-flex flex-wrap align-items-baseline">
                         <h2 class="mr-3">89,99 $</h2>
                         <i class="feather ft-arrow-up mr-1 text-success"></i><span><cite class="mb-0 text-success font-weight-medium">4.89%</cite></span>

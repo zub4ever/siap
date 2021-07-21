@@ -20,10 +20,10 @@ Contrato
                     Novo contrato
                 </a>
             </div>
-            
+
         </div>
     </div>
-    
+
 </div>
 <div class="row">
     <div class="col-12 mb-4">
@@ -42,11 +42,15 @@ Contrato
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($servidor as $svd)
+                            @foreach ($contrato as $svd)
                             <tr>
-                                <td class="text-center">{{$svd->matricula}}</td>
-                                <td class="text-center"></td>
-                                <td class="text-center">{{$svd->nm_servidor}}</td>
+                                @foreach($servidor as $kf)
+                                @if($svd->serve_id == $kf->id)
+                                <td class="text-center">{{$kf->matricula}}</td>
+                                <td class="text-center">{{$svd->nr_contrato}}</td>
+                                <td class="text-center">{{$kf->nm_servidor}}</td>
+                                @endif
+                                @endforeach
                                 @foreach($origin as $mnc)
                                 @if($svd->origin_id == $mnc->id)
                                 <td class="text-center">{{$mnc->nm_origem}}</td>
