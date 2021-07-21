@@ -407,6 +407,7 @@ button {
   .card:hover {
     box-shadow: 0 5px 30px rgba(0, 0, 0, 0.02); }
   .card .card-body {
+    
     padding: 25px; }
   .card .card_title {
     margin-bottom: 24px;
