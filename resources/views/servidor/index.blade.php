@@ -19,6 +19,9 @@
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('servidor.create')}}" role="button">
                     Cadastrar novo servidor
                 </a>
+                                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar " href="{{route('contrato.create')}}" role="button">
+                    Novo contrato
+                </a> 
             </div>
         </div>
     </div>

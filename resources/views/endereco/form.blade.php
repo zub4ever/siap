@@ -5,7 +5,7 @@
                 <span class="text-danger">*</span>
             </label>
             <select class="form-control servidor-select2" name="serve_id" id="serve_id">
-                <option value="">Selecione a cidade</option>
+                <option value="">Selecione o servidor</option>
                 @foreach ($servidor as $sv)
                 
                 <option value="{{$sv->id}}">{{$sv->matricula}}-{{$sv->nm_servidor}}</option>
