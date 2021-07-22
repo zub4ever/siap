@@ -31,14 +31,14 @@
                 <li class="user-dropdown">
                     <div class="dropdown">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="d_none_sm">Jessica <i class="ti-angle-down"></i></span>
-                            <img src="{{asset('assets/images/user.jpg')}}" alt="" class="img-fluid">
+                            <span class="d_none_sm"> <font color="#6600ff">{{Auth::user()->name}} </font><i class="ti-angle-down"></i></span>
+                            <img src="{{asset('assets/images/rbprev-2.ico')}}" alt="" class="img-fluid">
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"  >
-                            <a class="dropdown-item" href="#"><i class="ti-user"></i> Profile</a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                           <!--<a class="dropdown-item" href="#"><i class="ti-user"></i> Profile</a>
                             <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Settings</a>
-                            <span role="separator" class="divider"></span>
-                            <a class="dropdown-item" href="#"><i class="ti-power-off"></i>Logout</a>
+                            <span role="separator" class="divider"></span>--> 
+                            <a class="dropdown-item" href="{{Auth::logout()}}"><i class="ti-power-off"></i>Logout</a>
                         </div>
                     </div>
                 </li>
