@@ -34,7 +34,7 @@
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
-                <label for="email" class="text-white d-flex justify-content-between mt-4"><p><strong>{{ __('E-Mail Address') }}</p></strong></label>
+                <h4><label for="email" class="text-white d-flex justify-content-between mt-4"><p><strong>{{ __('Email:') }}</strong></p></label></h4>
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
                                     @if ($errors->has('email'))
@@ -44,7 +44,7 @@
                                     @endif
                 </div>
                 <div class="form-group">
-                <label for="password" class="text-white d-flex justify-content-between mt-4"><p><strong>{{ __('Password') }}</p></strong></label>
+                <h4> <label for="password" class="text-white d-flex justify-content-between mt-4"><p><strong>{{ __('Senha:') }}</strong></p></strong></p></label></h4>
 
                             
                                     <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
@@ -56,6 +56,7 @@
                                     @endif
 
                 </div>
+                <br>
                <button type="submit" value="Login" class="btn btn-danger btn-block mb-3">
                                         {{ __('Login') }}
                 </button>        
