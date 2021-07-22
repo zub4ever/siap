@@ -38,7 +38,7 @@
                            <!--<a class="dropdown-item" href="#"><i class="ti-user"></i> Profile</a>
                             <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Settings</a>
                             <span role="separator" class="divider"></span>--> 
-                            <a class="dropdown-item" href=""><i class="ti-power-off"></i>Logout</a>
+                            <a class="dropdown-item" href="/logout"><font color="#ff0000"><i class="ti-power-off"></i>Logout</a> </font>
                         </div>
                     </div>
                 </li>

@@ -4,6 +4,7 @@
 
 Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 
+Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::middleware(['auth'])->group(function () {
 Route::get('/home', 'HomeController@index')->name('index');
