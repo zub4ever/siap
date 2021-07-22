@@ -14,7 +14,7 @@ class UsersTableSeeder extends Seeder
              User::create([
             'name'      => 'Alisson Nascimento',
             'email'     => 'alisson.souza@riobranco.ac.gov.br',
-            'password'  => bcrypt('pikachu123'),
+            'password' => Hash::make('pikachu123'),
         ]);
     }
 }

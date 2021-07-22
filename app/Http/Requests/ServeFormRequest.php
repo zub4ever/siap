@@ -32,8 +32,7 @@ class ServeFormRequest extends FormRequest {
             'type_serve_id'=> ['required'],
             'sexo_id'=> ['required'],
             'orgao_expedidor_id' => ['required'],
-            'obito_id'=> ['required'] 
-             
+            'obito_id'=> ['required']             
         ];
     }
    
