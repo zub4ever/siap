@@ -30,7 +30,7 @@
         <div class="card-body">
       <center>  <img src="{{asset('assets/images/rbprev-2-logo.png')}}" alt="" class="img-fluid"> <center>
             <h3 class="text-center text-white font-weight-light mb-4"><strong><font color=red>RB</font>PREV</strong></h3>
-            <h3 class="text-center text-white font-weight-light mb-4"><img height="30" width="30"src="{{asset('assets/images/favicon.png')}}" alt="" class="img-fluid"> {{ __('Login SISA') }}</h3>
+            
             <form method="POST" action="{{ route('login') }}">
                 @csrf
                 <div class="form-group">
