@@ -19,6 +19,9 @@ Orgão
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('orgao.create')}}" role="button">
                     Novo orgão
                 </a>
+                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('funcao.create')}}" role="button">
+                    Nova função
+                </a>
             </div>
         </div>
     </div>

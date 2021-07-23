@@ -16,8 +16,12 @@ Contrato
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('contrato.create')}}" role="button">
+                
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar " href="{{route('contrato.create')}}" role="button">
                     Novo contrato
+                </a> 
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('endereco.create')}}" role="button">
+                    Cadastrar endereço
                 </a>
             </div>
 

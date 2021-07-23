@@ -8542,7 +8542,7 @@ footer {
   margin: auto; }
   @media screen and (min-width: 768px) {
     .login-card {
-      width: 336px; } }
+      width: 600px; } }
   .login-card .card-body {
     padding: 40px; }
   .login-card .login-brand {
