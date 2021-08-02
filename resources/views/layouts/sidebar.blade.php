@@ -4,7 +4,7 @@
                       Logo
         *===========================-->
         <div class="logo">
-            <a href="{{ URL::to('index') }}"><img src="{{asset('assets/images/logo.svg')}}" alt="logo"></a>
+            <a href="{{ URL::to('home') }}"><img src="{{asset('assets/images/logo.svg')}}" alt="logo"></a>
         </div>
         <!--=========================*
                     End Logo
