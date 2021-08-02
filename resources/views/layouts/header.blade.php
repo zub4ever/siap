@@ -30,7 +30,6 @@
                     <div class="dropdown">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="d_none_sm"> <font color="#6600ff">{{Auth::user()->name}} </font><i class="ti-angle-down"></i></span>
-                            <img width="40" height="20" src="{{asset('assets/images/rbprev-2.png')}}" alt="" class="img-fluid">
                             <img width="20" height="10" src="{{asset('assets/images/sair.png')}}" alt="" class="img-fluid">
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
