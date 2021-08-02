@@ -31,14 +31,15 @@
                     <!-- Inicio de Servidor -->
                     <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
-                            <i class="feather ft-users"></i>
+                            <i class="icon-profile-male"></i>
+                            
                             <span>Servidor</span>
                         </a>
 
                         <ul class="collapse">
                             <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('servidor.index')}}">
-                                    <i class="icon-clipboard"></i>
+                                    <i class="feather ft-users"></i>
                                     <span>Servidores</span>
                                 </a>
                             </li>
@@ -49,7 +50,7 @@
                     <!-- Inicio de Contrato -->
                     <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
-                            <i class="feather ft-users"></i>
+                            <i class="icon-pencil"></i>
                             <span>Contrato</span>
                         </a>
 
@@ -57,7 +58,7 @@
 
                             <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('contrato.index')}}">
-                                    <i class="icon-clipboard"></i>
+                                    <i class="icon-documents"></i>
                                     <span>Contratos</span>
                                 </a>
                             </li>
@@ -67,7 +68,7 @@
                     </li>
                     <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
-                            <i class="feather ft-users"></i>
+                            <i class=" icon-streetsign"></i>
                             <span>Endereço Servidor</span>
                         </a>
 
@@ -75,7 +76,7 @@
 
                             <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('endereco.index')}}">
-                                    <i class="icon-clipboard"></i>
+                                    <i class="icon-map"></i>
                                     <span>Endereços</span>
                                 </a>
                             </li>
