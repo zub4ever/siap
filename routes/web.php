@@ -34,6 +34,14 @@ Route::get('cadastrosAuxiliares/funcao/create','CadastrosAuxiliares\Funcao\Funca
 Route::post('cadastrosAuxiliares/funcao/create','CadastrosAuxiliares\Funcao\FuncaoController@store');
 
 
+Route::resource('pedido','Pedido\PedidoController');
+
+
+
+
+
+
+
 
 
 
