@@ -43,7 +43,7 @@
             <label for="orgao_id" class="form-control-label">Orgão Servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control select2" name="orgao_id" id="orgao_id">
+            <select class="form-control og-select2" name="orgao_id" id="orgao_id">
                 <option value="">Selecione uma opção</option>
                 @foreach ($orgao as $og)
                 <option value="{{$og->id}}">{{$og->nm_orgao}}</option>
@@ -56,7 +56,7 @@
             <label for="funcao_id" class="form-control-label">Função:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control select2" name="funcao_id" id="funcao_id">
+            <select class="form-control func-select2" name="funcao_id" id="funcao_id">
                 <option value="">Selecione uma opção</option>
                 @foreach ($funcao as $ofc)
                 <option value="{{$ofc->id}}">{{$ofc->nm_funcao}}</option>

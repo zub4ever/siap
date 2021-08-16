@@ -12,51 +12,37 @@ Pedidos
     <li class="breadcrumb-item active"><a>Pedido</a></li>
 </ol>
 
+<h4>2.0 Informações de Contato</h4>
+           
+           <div class="row">
+              <div class="col-sm-12 col-md-12 col-lg-12 mt-5">
+                  <div class="wrap">
+                   <div class="table-responsive">                          
+                       
+                           <div class="table-responsive">
+                               <table class="table table-bordered">
+                                   <thead>
+                                       <tr>
+                                           <th class="text-center">Tipo de contato</th>
+                                           <th class="text-center">Contato</th>
+                                           <th class="text-center">Ação</th>
+                                       </tr>
+                                   </thead>
+                                   <tbody id="tbody">
+                                   </tbody>
+                               </table>
+                           </div>
+                           <button class="btn btn-md btn-info" 
+                                   id="addBtn" type="button">
+                               Adcionar Contato
+                           </button>
+                       
+                       <!<!-- comment -->
+                   </div>
 
-
-
-<form method="POST">
-        Receita
-        <input type="text" name="receita" placeholder="Ex: Pão de queijo">
-        <table border=1 id="tabela">
-            <tr>
-                <td colspan="6" style="text-align: center">
-                    <label>Pedidos:</label>
-                </td>
-            </tr>
-            <tr>
-
-                <td>Cód. Produto:</td>
-                <td>
-                    <input type="text" name="codProduto[]" placeholder="Cód. Produto">
-                </td>
-                <td>
-                    <label>Quantidade:</label>
-                </td>
-                <td>
-                    <input type="text" name="razao[]" placeholder="Quantidade">
-                </td>
-                <td>
-                    <label>Desconto:</label>
-                </td>
-                <td>
-                    <input type="text" name="desconto[]" placeholder="Desconto">
-                </td>
-            </tr>
-
-        </table>
-
-        <button type="button" id="adicionar">Adicionar</button>
-        <button type="submit">Cadastrar</button>
-
-    </form>
-
-
-
-
-
-
-
+                  </div>
+               </div>        
+           </div> 
 
 @endsection
 @section('js')

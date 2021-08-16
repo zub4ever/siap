@@ -9,7 +9,10 @@
             <label for="nm_orgao" class="form-control-label">Nome da orgão:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="nm_orgao" value="">
+            <input type="text" class="form-control" name="nm_orgao" value="{{ @$orgao->nm_orgao }}">
+            @if ($errors->has('nm_orgao'))
+                <h6 class="heading text-danger">{{$errors->first('nm_orgao')}}</h6>
+            @endif
         </div>
     </div>
 </div>

@@ -46,7 +46,31 @@ class OriginController extends Controller
         );
       }  
        
-        
-        
+      public function edit($id){
+
+        $origin = Origin::findOrFail($id);
+
+        return view("cadastrosAuxiliares.origem.edit", compact('origin'));
+      }   
+      public function update(OriginFormRequest $request, $id)
+      {
+          $origin = Origin::findOrFail($id);
+  
+          DB::beginTransaction();
+  
+          if (!$origin->update($request->all())) {
+              DB::rollBack();
+              return redirect()->route('origem.index')->with('error', "Falha na alteração da lotação.");
+          }
+  
+          DB::commit();
+  
+          return redirect()->route('origem.index')->with(
+              'success',
+              "Origem alterado com sucesso."
+          );
+      } 
+
+
     }
 

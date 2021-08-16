@@ -12,11 +12,7 @@ use App\Orgao;
 class OrgaoController extends Controller
 {
     public function index() {
-           
-     
-        
-            
-            
+ 
            $orgao = DB::table('orgao')->get()->all();
             //
             return view('cadastrosAuxiliares.orgao.index', compact('orgao'));
@@ -44,8 +40,30 @@ class OrgaoController extends Controller
                         "Lotação cadastrada com sucesso."
         );
       }  
-       
-        
+      public function edit($id){
+
+        $orgao = Orgao::findOrFail($id);
+        return view('cadastrosAuxiliares.orgao.edit',compact('orgao'));
+      }   
+      
+      public function update(OrgaoFormRequest $request, $id) {
+        $orgao = Orgao::findOrFail($id);
+  
+          DB::beginTransaction();
+  
+          if (!$orgao->update($request->all())) {
+
+              DB::rollBack();
+              return redirect()->route('orgao.index')->with('error', "Falha na alteração da Órgão.");
+          }
+  
+          DB::commit();
+  
+          return redirect()->route('orgao.index')->with(
+              'success',
+              "Órgão alterado com sucesso."
+          );
+      }  
         
     }
 

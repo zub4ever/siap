@@ -18,10 +18,10 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card_title">Editar Função</h4>
-                <form action="{{route('funcao.update', $orgaoExpedidor->id)}}" method="POST">
+                <form action="{{route('funcao.update', $funcao->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    @include('cadastrosAuxiliares.origem.form')
+                    @include('cadastrosAuxiliares.funcao.form')
                 </form>
             </div>
         </div>

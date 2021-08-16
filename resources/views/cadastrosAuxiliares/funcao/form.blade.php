@@ -19,7 +19,10 @@
             <label for="nm_funcao" class="form-control-label">Nome da Função:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="nm_funcao" value="">
+            <input type="text" class="form-control" name="nm_funcao" value="{{ @$funcao->nm_funcao }}">
+            @if ($errors->has('nm_funcao'))
+                <h6 class="heading text-danger">{{$errors->first('nm_funcao')}}</h6>
+            @endif
         </div>
     </div> 
 </div>

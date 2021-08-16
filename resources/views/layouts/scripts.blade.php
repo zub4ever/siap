@@ -15,6 +15,8 @@
           $('.servidor-select2').select2();
           $('.contrato-select2').select2();
           $('.serve-select2').select2();
+           $('.og-select2').select2();
+           $('.func-select2').select2();
     });
 </script>
 

@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card_title">Editar órgão expedidor</h4>
-                <form action="{{route('origem.update', $orgaoExpedidor->id)}}" method="POST">
+                <form action="{{route('origem.update', $origin->id)}}" method="POST">
                     @csrf
                     @method('PUT')
                     @include('cadastrosAuxiliares.origem.form')

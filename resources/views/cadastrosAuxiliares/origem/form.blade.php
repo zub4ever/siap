@@ -9,7 +9,10 @@
             <label for="nm_origem" class="form-control-label">Nome da origem:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="nm_origem" value="">
+            <input type="text" class="form-control" name="nm_origem" value="{{ @$origin->nm_origem }}">
+            @if ($errors->has('nm_origem'))
+                <h6 class="heading text-danger">{{$errors->first('nm_origem')}}</h6>
+            @endif
         </div>
     </div>
 </div>

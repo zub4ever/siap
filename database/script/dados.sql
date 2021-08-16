@@ -6,7 +6,7 @@ INSERT INTO marital_status(id,status_civil)values (1,'Solteiro'), (2, 'Casado'),
 
 INSERT INTO obito(id,nm_obito)values(1,'Não'),(2,'Sim');
 
-INSERT INTO origin(id,nm_origem)values(1,'Assembleia Legislativa');
+
 
 INSERT INTO orgao_expedidor(id,nm_orgao)values(1,'SSP/AC'),(2,'SEPC/AC');
 
@@ -39,3 +39,4 @@ INSERT INTO city(id,nm_cidade) values
 INSERT INTO state(id,nm_estado) values (1,'Acre');
 
 
+INSERT INTO origin(id,nm_origem)values(1,'Assembleia Legislativa');

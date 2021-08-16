@@ -36,7 +36,7 @@ class FuncaoController extends Controller
 
         if (!$funcao) {
             DB::rollBack();
-            return redirect()->route('funcao.index')->with('error', "Falha ao cadastrar uma lotação.");
+            return redirect()->route('funcao.index')->with('error', "Falha ao cadastrar uma Função.");
         }
 
         DB::commit();
@@ -46,7 +46,33 @@ class FuncaoController extends Controller
                         "Lotação cadastrada com sucesso."
         );
       }  
+      public function edit($id){
+
+        $funcao = Funcao::findOrFail($id);
+
+        $orgaoMun = Orgao::findOrFail($id);
+        return view('cadastrosAuxiliares.funcao.edit',compact('funcao','orgaoMun'));
+      }   
+      
+      public function update(FuncaoFormRequest $request, $id) {
+        $funcao = Funcao::findOrFail($id);
+
        
+          DB::beginTransaction();
+  
+          if (!$funcao->update($request->all())) {
+
+              DB::rollBack();
+              return redirect()->route('funcao.index')->with('error', "Falha na alteração da Órgão.");
+          }
+  
+          DB::commit();
+  
+          return redirect()->route('funcao.index')->with(
+              'success',
+              "Órgão alterado com sucesso."
+          );
+      }         
         
         
     }

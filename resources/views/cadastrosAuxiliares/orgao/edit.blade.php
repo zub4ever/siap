@@ -17,7 +17,7 @@
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Editar órgão 
+                <h4 class="card_title">Editar Órgão 
                 </h4>
                 <form action="{{route('orgao.update', $orgao->id)}}" method="POST">
                     @csrf
