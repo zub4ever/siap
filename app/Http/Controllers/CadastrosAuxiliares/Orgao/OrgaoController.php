@@ -30,14 +30,14 @@ class OrgaoController extends Controller
 
         if (!$orgao) {
             DB::rollBack();
-            return redirect()->route('orgao.index')->with('error', "Falha ao cadastrar uma lotação.");
+            return redirect()->route('orgao.index')->with('error', "Falha ao cadastrar um Órgão.");
         }
 
         DB::commit();
 
         return redirect()->route('orgao.index')->with(
                         'success',
-                        "Lotação cadastrada com sucesso."
+                        "Órgão cadastrado com sucesso."
         );
       }  
       public function edit($id){

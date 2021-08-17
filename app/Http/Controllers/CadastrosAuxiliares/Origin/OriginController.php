@@ -35,14 +35,14 @@ class OriginController extends Controller
 
         if (!$origin) {
             DB::rollBack();
-            return redirect()->route('origem.index')->with('error', "Falha ao cadastrar uma lotação.");
+            return redirect()->route('origem.index')->with('error', "Falha ao cadastrar uma Origem.");
         }
 
         DB::commit();
 
         return redirect()->route('origem.index')->with(
                         'success',
-                        "Lotação cadastrada com sucesso."
+                        "Origem cadastrada com sucesso."
         );
       }  
        
@@ -60,7 +60,7 @@ class OriginController extends Controller
   
           if (!$origin->update($request->all())) {
               DB::rollBack();
-              return redirect()->route('origem.index')->with('error', "Falha na alteração da lotação.");
+              return redirect()->route('origem.index')->with('error', "Falha na alteração da Origem.");
           }
   
           DB::commit();

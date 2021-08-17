@@ -45,14 +45,14 @@ class ContractController extends Controller {
 
         if (!$contrato) {
             DB::rollBack();
-            return redirect()->route('contrato.index')->with('error', "Falha ao cadastrar uma lotação.");
+            return redirect()->route('contrato.index')->with('error', "Falha ao cadastrar um Contrato.");
         }
         $contrato->save();
         DB::commit();
 
         return redirect()->route('contrato.index')->with(
                         'success',
-                        "Lotação cadastrada com sucesso."
+                        "Contrato cadastrada com sucesso."
         );
     }
 

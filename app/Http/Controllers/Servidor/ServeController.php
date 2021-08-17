@@ -49,14 +49,14 @@ class ServeController extends Controller {
 
         if (!$serve) {
             DB::rollBack();
-            return redirect()->route('servidor.index')->with('error', "Falha ao cadastrar uma lotação.");
+            return redirect()->route('servidor.index')->with('error', "Falha ao cadastrar o Servidor.");
         }
         $serve->save();
         DB::commit();
 
         return redirect()->route('servidor.index')->with(
                         'success',
-                        "Lotação cadastrada com sucesso."
+                        "Servidor cadastrado com sucesso."
         );
       }
 

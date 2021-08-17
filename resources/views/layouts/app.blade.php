@@ -44,6 +44,7 @@
                        Main Section
             *====================================-->
             <div class="main-content-inner">
+            {{-- @include('mensagem.flash-message') --}}
                 @yield('main-content')
             </div>
             <!--==================================*
@@ -81,6 +82,7 @@
     *===========================-->
     @yield('js')
     @include('layouts.scripts')
+    @include('mensagem.alert-message')
     
     </body>
 </html>

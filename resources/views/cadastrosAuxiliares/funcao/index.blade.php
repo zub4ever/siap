@@ -75,3 +75,7 @@ Função
     </div>
 </div>
 @endsection
+@section('js')
+<!-- Sweet Alert Js -->
+<script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
+@endsection

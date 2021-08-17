@@ -43,7 +43,7 @@ class FuncaoController extends Controller
 
         return redirect()->route('funcao.index')->with(
                         'success',
-                        "Lotação cadastrada com sucesso."
+                        "Função cadastrada com sucesso."
         );
       }  
       public function edit($id){
@@ -63,14 +63,14 @@ class FuncaoController extends Controller
           if (!$funcao->update($request->all())) {
 
               DB::rollBack();
-              return redirect()->route('funcao.index')->with('error', "Falha na alteração da Órgão.");
+              return redirect()->route('funcao.index')->with('error', "Falha na alteração função.");
           }
   
           DB::commit();
   
           return redirect()->route('funcao.index')->with(
               'success',
-              "Órgão alterado com sucesso."
+              "Função alterado com sucesso."
           );
       }         
         

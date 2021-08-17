@@ -37,7 +37,7 @@ class EnderecoController extends Controller {
 
         if (!$address) {
             DB::rollBack();
-            return redirect()->route('endereco.index')->with('error', "Falha ao cadastrar uma lotação.");
+            return redirect()->route('endereco.index')->with('error', "Falha ao cadastrar um Endereço.");
         }
 
         $address->save();
@@ -46,7 +46,7 @@ class EnderecoController extends Controller {
 
         return redirect()->route('endereco.index')->with(
                         'success',
-                        "Lotação cadastrada com sucesso."
+                        "Endereço cadastrado com sucesso."
         );
     }
 
