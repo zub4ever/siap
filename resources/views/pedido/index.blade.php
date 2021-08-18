@@ -34,7 +34,7 @@ Pedidos
                            </div>
                            <button class="btn btn-md btn-info" 
                                    id="addBtn" type="button">
-                               Adcionar Contato
+                               Adicionar Contato
                            </button>
                        
                        <!<!-- comment -->
@@ -53,7 +53,7 @@ Pedidos
 <script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
 <script src="{{Config::get('app.url')}}/node_modules/select2/jquery.select2.js"></script>
 <script src="{{Config::get('app.url')}}/node_modules/select2/dist/js/select2.min.js"></script>
-
+<script src="{{asset('assets/js/jquery.min.js')}}"></script>
 <script src="{{asset('assets/js/pedido/create.js')}}"></script>
 
 
