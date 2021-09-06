@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
-
+use sistemaSemeia\Serve;
+use DB;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
@@ -24,7 +24,30 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
     public function index()
-    {
-        return view('/home');
+    {   
+        
+        $serve = DB::table('serve')->get();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        return view('/home', compact('serve'));
     }
 }
