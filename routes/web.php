@@ -37,7 +37,7 @@ Route::post('cadastrosAuxiliares/funcao/create','CadastrosAuxiliares\Funcao\Func
 Route::resource('pedido','Pedido\PedidoController');
 
 
-
+Route::resource('folhaPagamento','FolhaPagamento\FolhaPagamentoController');
 
 
 

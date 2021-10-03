@@ -42,7 +42,8 @@
             <label for="data_nascimento" class="form-control-label">Data de Nascimento:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control focus" name="data_nascimento" value="" data-mask="00/00/0000">
+            <input type="text" class="form-control" name="data_nascimento" data-mask="00/00/0000" value="" autocomplete="off" maxlength="10">
+            
         </div>
     </div>
 
@@ -51,7 +52,7 @@
             <label for="rg" class="form-control-label">RG:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="rg" value="">
+            <input type="text" class="form-control" name="rg" value="" maxlength="8">
         </div>
     </div>
            <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -76,7 +77,8 @@
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="cpf" value="">
+            <input type="text" class="form-control focus" name="cpf" id="cpf" value="" data-mask="999.999.999-99"  autocomplete="off" maxlength="14">
+          <!--  <input type="text" class="form-control" name="cpf" value=""> -->
         </div>
     </div>
 
@@ -92,7 +94,7 @@
             <label for="pis_pasep" class="form-control-label">PIS/PASESP:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="pis_pasep" value="">
+            <input type="text" class="form-control" name="pis_pasep" value="" maxlength="14">
         </div>
     </div>
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
@@ -114,9 +116,6 @@
     </div>
 
 </div>
-
-<!-- // // // -->
-
 <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">

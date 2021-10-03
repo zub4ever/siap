@@ -17,13 +17,14 @@
         <div class="menu-inner" id="sidebar_menu">
             <nav>
                 <ul class="metismenu" id="menu">
-                    <li {!! (Request::is('index') || Request::is('index2') || Request::is('index3') ? 'class="active"':"") !!}>
+                    <li>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="feather ft-home"></i>
                             <span>dashboard</span>
                         </a>
                         <ul class="collapse">
-                            <li {!! (Request::is('index') ? 'class="active"':"") !!}><a href="{{ URL::to('index') }}">Dashboard V1</a></li>
+                           <li {!! (request()->is('folhaPagamento*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('folhaPagamento.index') }}">Folha Pagamento</a></li>
                             <li {!! (Request::is('index2') ? 'class="active"':"") !!}><a href="{{ URL::to('index2') }}">Dashboard V2</a></li>
                             <li {!! (Request::is('index3') ? 'class="active"':"") !!}><a href="{{ URL::to('index3') }}">Dashboard V3</a></li>
                         </ul>
