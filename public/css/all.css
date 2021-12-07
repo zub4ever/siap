@@ -912,7 +912,7 @@ blockquote {
   height: 100vh;
   width: 280px;
   overflow: hidden;
-  background: #1B0141;
+  background: #013e41;
   box-shadow: 2px 0 32px rgba(0, 0, 0, 0.05);
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s; }
@@ -973,7 +973,7 @@ blockquote {
       height: 100%; }
   .sidebar-menu .sidebar-header {
     padding: 19px 32px 20px;
-    background: #1B0141;
+    background: #013e41;
     border-bottom: 1px solid #343e50; }
 
 .slimScrollBar {
@@ -1006,12 +1006,12 @@ blockquote {
     margin: 0;
     padding-top: 17px !important;
     padding-right: 6px !important;
-    background: #1b0141; } }
+    background: #013e41; } }
 @media only screen and (max-width: 991px) {
   .sidebar_collapsed .nav-btn {
     position: fixed;
     z-index: 99;
-    background: #1b0141;
+    background: #38b184;
     height: 50px !important;
     width: 50px !important;
     left: auto !important;
@@ -1033,7 +1033,7 @@ blockquote {
 .metismenu li a {
   position: relative;
   display: block;
-  color: #8d97ad;
+  color: #fff;
   font-size: 15px;
   text-transform: capitalize;
   padding: 10px;
@@ -1081,7 +1081,7 @@ blockquote {
 .metismenu > li.active > a svg,
 .metismenu > li.active > a {
   color: #fff;
-  background: #2a0165; }
+  background: #38b184; }
 
 .metismenu li:hover > a,
 .metismenu li.active > a {

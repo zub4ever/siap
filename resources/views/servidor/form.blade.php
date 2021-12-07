@@ -42,11 +42,9 @@
             <label for="data_nascimento" class="form-control-label">Data de Nascimento:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="data_nascimento" data-mask="00/00/0000" value="" autocomplete="off" maxlength="10">
-            
+          <input type="text" class="form-control" id='data_nascimento' name="data_nascimento" autocomplete="off"></p>
         </div>
     </div>
-
     <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="rg" class="form-control-label">RG:
@@ -55,13 +53,13 @@
             <input type="text" class="form-control" name="rg" value="" maxlength="8">
         </div>
     </div>
-           <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="orgao_expedidor_id" class="form-control-label">Órgão Expedidor:
                 <span class="text-danger">*</span>
             </label>
 
-            <select name="orgao_expedidor_id" class="form-control" id="titula1">
+            <select name="orgao_expedidor_id" class="form-control">
                 <option value="">Selecione uma opção</option>
                 @foreach ($orgao_expedidor as $ex)
                 <option value="{{$ex->id}}">
@@ -88,7 +86,7 @@
 <!-- // // // -->
 
 <div class="row">
-    
+
     <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="pis_pasep" class="form-control-label">PIS/PASESP:
@@ -169,7 +167,7 @@
 </div>
 <div class ="row">
 
-           <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
             <label for="type_serve_id" class="form-control-label">Situação do Servidor:
                 <span class="text-danger">*</span>

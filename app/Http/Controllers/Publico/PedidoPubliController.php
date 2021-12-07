@@ -25,6 +25,6 @@ class PedidoPubliController extends Controller
     public function apVoluntaria() {
        
 
-        return view("requerimentos.aposentadorias.apVoluntaria");
+        return view("requerimentos.apVoluntaria");
     }
 }

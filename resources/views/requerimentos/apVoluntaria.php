@@ -1,23 +1,12 @@
 @extends('layouts.public')
+
+
 {{-- Page Title --}}
 @section('page-title')
-Requerimentos
+Voluntária
 @endsection
 
 @section('main-content')
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

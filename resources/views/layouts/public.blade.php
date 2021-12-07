@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
     <head>
         <title>Requerimentos</title>
         <meta charset="utf-8">
@@ -98,57 +98,94 @@
             <a href="{{ url('/login') }}">Área administrativa</a>
             <a href="http://portalcidadao.riobranco.ac.gov.br/contracheque/">Contracheque</a>
             <a href="http://aplicacoes.rbprev.riobranco.ac.gov.br/DAP/">DAP</a>
-            <button class="dropdown-btn">Dropdown 
+            <button class="dropdown-btn">Aposentadorias 
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-container">
-                <a href="#">Link 1</a>
+                <a href="{{ url('/requerimentos') }}">Voluntaria tempo de contribuição</a>
                 <a href="#">Link 2</a>
                 <a href="#">Link 3</a>
             </div>
         </div>
-        <div class="main">
-            <h4>Aposentadoria Voluntária por Tempo de Contribuição</h4>
-            <div class ="container">
-                <div class="row">
-                    <div class="card border-primary mb-3" style="max-width: 20rem;">
-                        <div class="card-header">Header</div>
-                        <div class="card-body text-primary">
-                            <h5 class="card-title">Primary card title</h5>
-                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                        </div>
-                    </div>
-                    <div class="card border-secondary mb-3" style="max-width: 18rem;">
-                    <div class="card-header">Header</div>
-                    <div class="card-body text-secondary">
-                        <h5 class="card-title">Secondary card title</h5>
-                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    </div>
-                </div>
-                </div>
-        </div>
-    </div>
-    <script>
-/* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
-var dropdown = document.getElementsByClassName("dropdown-btn");
-var i;
-
-for (i = 0; i < dropdown.length; i++) {
-dropdown[i].addEventListener("click", function () {
+    
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <script>
+      
+    /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+    var dropdown = document.getElementsByClassName("dropdown-btn");
+    var i;
+    for (i = 0; i < dropdown.length; i++) {
+    dropdown[i].addEventListener("click", function () {
     this.classList.toggle("active");
     var dropdownContent = this.nextElementSibling;
     if (dropdownContent.style.display === "block") {
-        dropdownContent.style.display = "none";
+    dropdownContent.style.display = "none";
     } else {
-        dropdownContent.style.display = "block";
+    dropdownContent.style.display = "block";
     }
-});
-}
-    </script>
+    });
+    }
+        </script>
 
 
 
 
 
-</body>
+        <!-- meio do site -->
+
+
+
+        @yield('footer')
+
+        <!-- Footer -->
+
+        
+
+        <!-- Bootstrap core JavaScript -->
+
+
+        <script src='{{asset("vendor/bootstrap/js/bootstrap.js")}}'></script>
+        <script src='{{asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}'></script>
+
+
+
+
+    </body>
+
 </html>
