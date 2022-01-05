@@ -51,14 +51,8 @@ Auth::routes();
 
 
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
-
-
-
-    Route::get("/requerimentos", "Publico\PedidoPubliController@index");
-    Route::get("/requerimentos", "Publico\PedidoPubliController@apVoluntaria");
+    Route::get("/requerimentos", "Publico\PedidoPubliController@index")->name('atendimento');
+    
     
     
 
