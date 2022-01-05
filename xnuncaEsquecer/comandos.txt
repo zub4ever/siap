@@ -1,8 +1,0 @@
-composer update
-composer install
-
-npm update
-npm install
-
-||Migate verificar sempre||
-php artisan migrate:status

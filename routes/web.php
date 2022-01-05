@@ -39,6 +39,8 @@ Route::resource('pedido','Pedido\PedidoController');
 
 Route::resource('folhaPagamento','FolhaPagamento\FolhaPagamentoController');
 
+//Administração
+Route::resource('administracao/atendimentos','Administracao\Atendimentos\AtendimentosController');
 
 
 
@@ -51,7 +53,11 @@ Auth::routes();
 
 
 
-    Route::get("/requerimentos", "Publico\PedidoPubliController@index")->name('atendimento');
+    Route::resource("/requerimentos", "Publico\PedidoPubliController");
+    Route::get('requerimentos/create','Publico\PedidoPubliController@create')->name('requerimentos.create');
+    Route::post('requerimentos/create','Publico\PedidoPubliController@store');
+    
+    
     
     
     

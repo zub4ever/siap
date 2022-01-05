@@ -86,6 +86,25 @@
                         </ul>
                     </li>
                     <!--fim de-->
+                    <!-- Inicio de Administração -->
+                    <li {!! (request()->is('administracao*') ? 'class="active"' : "")!!}>
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class="icon-profile-male"></i>
+                            
+                            <span>Administração</span>
+                        </a>
+
+                        <ul class="collapse">
+                            <li {!! (request()->is('administracao/atendimentos*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('atendimentos.index')}}">
+                                    <i class="feather ft-users"></i>
+                                    <span>Atendimentos</span>
+                                </a>
+                            </li>
+                            <!-- Fim do cadastros auxiliares -->
+                        </ul>
+                    </li>
+                    <!--fim de Administração-->
                     <!-- Inicio de Cadastros -->
                     <li {!! (request()->is('cadastrosAuxiliares*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">

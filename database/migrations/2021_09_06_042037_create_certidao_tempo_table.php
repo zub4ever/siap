@@ -19,21 +19,21 @@ class CreateCertidaoTempoTable extends Migration {
             $table->string('nm_empregador')->nullable();
             $table->string('cpf_cnpj')->nullable();
             $table->string('nm_cid')->nullable();
-            $table->integer('tpProfessor_id')->unsigned();
+            $table->unsignedInteger('tpProfessor_id')->nullable();
             $table->foreign('tpProfessor_id')->references('id')->on('tpProfessor')->onDelete('cascade');
-            $table->date('data_ingresso')->unsigned();
-            $table->date('data_termino')->unsigned();
+            $table->dateTime('data_ingresso')->nullable();
+            $table->dateTime('data_termino')->nullable();
 
-            $table->integer('tpAposentadoriaEspecial_id')->unsigned();
+            $table->unsignedInteger('tpAposentadoriaEspecial_id')->nullable();
             $table->foreign('tpAposentadoriaEspecial_id')->references('id')->on('tpAposentadoriaEspecial')->onDelete('cascade');
             //
-            $table->integer('tpServicoMilitar_id')->unsigned();
+            $table->unsignedInteger('tpServicoMilitar_id')->nullable();
             $table->foreign('tpServicoMilitar_id')->references('id')->on('tpServicoMilitar')->onDelete('cascade');
             //
-            $table->integer('tpPCCR_id')->unsigned();
+            $table->unsignedInteger('tpPCCR_id')->nullable();
             $table->foreign('tpPCCR_id')->references('id')->on('tpPCCR')->onDelete('cascade');
             //tpServicoPublico
-            $table->integer('tpServicoPublico_id')->unsigned();
+            $table->unsignedInteger('tpServicoPublico_id')->nullable();
             $table->foreign('tpServicoPublico_id')->references('id')->on('tpServicoPublico')->onDelete('cascade');
             $table->timestamps();
         });
