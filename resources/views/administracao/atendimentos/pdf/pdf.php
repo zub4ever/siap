@@ -1,0 +1,233 @@
+<html lang="pt-br">
+    <head>
+        <!DOCTYPE html>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title>Atendimento PDF</title>
+    <link rel="stylesheet" href="{{asset('css/pdf.css')}}">
+
+
+</head>
+
+<body>
+    <div align="center"><img class="imgcabecalho" src="../public/imagem/rbPrevlogo2.png"></div>   
+    <h3 align="center">Atendimento ao Assegurado</h3>
+    <table class="tg" style="table-layout: fixed; width: 700px">
+        <colgroup>
+            <col style="width: 700px">
+        </colgroup>
+        <tr>
+            <th class="tg-0pky">
+        <center><strong>Solicitação de Atendimento ao Assegurado</strong></center>
+    </th>
+</tr>
+</table>
+<br>    
+<table class="tgB" style="undefined;table-layout: fixed; width: 700px">
+<colgroup>
+<col style="width: 200px">
+<col style="width: 500px">
+</colgroup>
+  <tr>
+      @foreach($atendimentos as $atendimento)
+    <th class="tgB-lnuh"><strong>Protocolo: </strong> <a>{{$atendimento->id}}</a><br></th>
+    
+   
+					              
+    <th class="tgB-s9fk"><strong>Nome do Assegurado: </strong>{{$atendimento->nm_assegurado}}<br></th>
+		        
+     @endforeach
+  </tr>
+</table>
+
+
+
+
+
+
+
+
+<div class="footer" align="center"><img width="100" height="30" src="../public/imagem/rbPrev.png"></div>
+
+</body>
+<style>
+    .html, body {
+        display: block;
+    }
+
+    .cabecalho {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    .left {
+        float: left;
+        width: 100px;
+    }
+
+    .html, body {
+        display: block;
+    }
+
+    .cabecalho {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    .footer {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+    }
+
+    .left {
+        float: left;
+        width: 100px;
+    }
+
+    .body {
+        margin-top: 0.5cm;
+        margin-left: 1cm;
+        margin-right: 1cm;
+        margin-bottom: 0.5cm;
+    }
+
+    .header {
+        position: fixed;
+        top: 0cm;
+        left: 0cm;
+        right: 0cm;
+        height: 2cm;
+        background-color: #3b5998;
+        color: white;
+        line-height: 1.0cm;
+    }
+
+    .table, th, td {
+        border: 1px solid black;
+        border-collapse: collapse;
+        size: auto;
+        padding: 6px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .imgcabecalho {
+        width: 120px;
+        height: 90px;
+        alignment: center;
+    }
+
+    .imgrodape {
+        width: 740px;
+        height: 40px;
+        alignment: center;
+    }
+
+    <!--alisson-->
+    .tg {
+        border-collapse: collapse;
+        border-spacing: 0;
+        border-color: #ccc;
+    }
+
+    .tg td {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: #ccc;
+        color: #333;
+        background-color: #f8f8f8;
+    }
+
+    .tg th {
+        font-family: Arial, sans-serif;
+        font-size: 14px;
+        font-weight: normal;
+        padding: 10px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: #ccc;
+        color: #333;
+        background-color: #f8f8f8;
+    }
+
+    .tg .tg-xldj {
+        border-color: inherit;
+        text-align: left
+    }
+
+    .tg .tg-0pky {
+        border-color: inherit;
+        text-align: left;
+        vertical-align: top
+    }
+
+    <!--
+    CCS Teste
+
+    -->
+    .tgd {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .tgd td {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        padding: 8px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: black;
+    }
+
+    .tgd th {
+        font-family: Arial, sans-serif;
+        font-size: 12px;
+        font-weight: normal;
+        padding: 8px 4px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: black;
+    }
+
+    .tgd .tgd-x4j0 {
+        font-size: 12px;
+        text-align: left;
+        vertical-align: top;
+    }
+    <!-- CSS Teste -->
+
+    table, td, th {
+        border: 1px solid black;
+    }
+
+    .tgB  {border-collapse:collapse;border-spacing:0;}
+    .tgB td{font-family:Arial, sans-serif;font-size:12px;padding:8px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tgB th{font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:8px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
+    .tgB .tgB-lnuh{font-size:12px;background-color:#ffffff;text-align:left}
+    .tgB .tgB-s9fk{font-size:12px;background-color:#ffffff;text-align:left;vertical-align:top}
+    .tgB .tgB-0lax{text-align:left;vertical-align:top}
+
+
+
+</style>
+</html>
+

@@ -16,7 +16,7 @@ Atendimentos
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('requerimentos.create')}}" role="button">
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('atendimentos.create')}}" role="button">
                     Novo atendimento
                 </a>
             </div>
@@ -56,6 +56,9 @@ Atendimentos
                                 <td>
                                     <a href="{{route('atendimentos.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
+                                    </a>
+                                    <a href="{{route('atendimentos.pdf',$fcn->id)}}">
+                                        <i class="ti-printer mr-1 btn btn-warning"></i>
                                     </a>
                                     &nbsp;
                                     <form action="" method="POST"

@@ -3,11 +3,11 @@
     <div class="all-steps" id="all-steps"> <span class="step"><i class="fa fa-user"></i></span> <span class="step"><i class="fa fa-map-marker"></i></span> <span class="step"><i class="fa fa-shopping-bag"></i></span> </i></span> <span class="step"><i class="fa fa-mobile-phone"></i></span> </div>
     <div class="tab">
         <h6>Informe seu nome:</h6>
-        <p> <input placeholder="Nome..." oninput="this.className = ''" name="nm_assegurado"></p>
+        <p> <input placeholder="Nome do assegurado..." oninput="this.className = ''" name="nm_assegurado"></p>
     </div>
     <div class="tab">
         <h6>Qual sua cidade?</h6>
-        <p><input placeholder="City" oninput="this.className = ''" name="nm_cidade"></p>
+        <p><input placeholder="Cidade" oninput="this.className = ''" name="nm_cidade"></p>
     </div>
     <div class="tab">
         <h6>Tipo de atendimento:</h6>

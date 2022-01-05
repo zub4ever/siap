@@ -11,14 +11,14 @@
         <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
         <style>
             body {
-                background: #007cd5;
+                background: #41BCFF
             }
 
             #regForm {
-                background-color: #ffffff;
+                background-color: #f8f8f8;
                 margin: 0px auto;
                 font-family: Raleway;
-                padding: 40px;
+                padding: 100px;
                 border-radius: 10px
             }
 
@@ -54,11 +54,11 @@
             }
 
             button {
-                background-color: #6A1B9A;
+                background-color: #151C48;
                 color: #ffffff;
                 border: none;
                 border-radius: 50%;
-                padding: 10px 20px;
+                padding: 20px 30px;
                 font-size: 17px;
                 font-family: Raleway;
                 cursor: pointer
