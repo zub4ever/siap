@@ -15,7 +15,8 @@ class AtendimentosController extends Controller {
     
 
     public function index() {
-        $atendimentos = DB::table('atendimento')->get()->all();
+        $atendimentos = DB::table('atendimento')->get();
+        //$atendimentos = Atendimento::paginate(5);// Quantidade por página
         return view("administracao.atendimentos.index", compact('atendimentos'));
     }
 
@@ -76,6 +77,12 @@ class AtendimentosController extends Controller {
                         ->setPaper('A4', 'portrait')
                         ->stream();
       
+    }
+    public function destroy($id){
+    	$atendimentos= Atendimento::findOrFail($id);
+       // $categoria->condicao='0';
+        $atendimentos->update();
+        return Redirect::to('atendimentos.index');
     }
 
 }
