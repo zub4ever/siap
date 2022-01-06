@@ -8,15 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use App\Atendimento;
-use Dompdf\Dompdf;
-use Dompdf\Options;
 use PDF;
 use Carbon\Carbon;
 
 class AtendimentosController extends Controller {
-
-    //put your code here
-
+    
 
     public function index() {
         $atendimentos = DB::table('atendimento')->get()->all();
@@ -72,15 +68,14 @@ class AtendimentosController extends Controller {
         );
     }
 
-    public function pdf($id) {
-
-       $atendimentos = DB::table('atendimento')->get()->all();
-
-
-        return PDF::loadView('administracao.atendimentos.pdf.pdf',compact('atendimentos'))
+    public function Verpdf($id){
+       $atendimentos = Atendimento::findOrFail($id);
+        return \PDF::loadView('administracao.atendimentos.pdf.Verpdf',           
+                                compact('atendimentos')
+                )
                         ->setPaper('A4', 'portrait')
-                        ->stream('informações_atendimento.pdf');
-        // ->download('relatorio_alunos.pdf');
+                        ->stream();
+      
     }
 
 }

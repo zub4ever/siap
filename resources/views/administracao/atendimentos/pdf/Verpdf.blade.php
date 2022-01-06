@@ -22,20 +22,32 @@
 </tr>
 </table>
 <br>    
-<table class="tgB" style="undefined;table-layout: fixed; width: 700px">
+<table class="tgB" style="table-layout: fixed; width: 700px">
+    <colgroup>
+        <col style="width: 200px">
+        <col style="width: 500px">
+    </colgroup>
+    <tr>
+        <th class="tgB-lnuh"><strong>Protocolo: </strong> <a>{{$atendimentos->id}}</a><br></th>
+        <th class="tgB-s9fk"><strong>Nome do Assegurado: </strong>{{$atendimentos->nm_assegurado}}<br></th>
+    </tr>
+</table>
+<table class="tgB" style="table-layout: fixed; width: 700px">
+    <colgroup>
+        <col style="width: 200px">
+        <col style="width: 500px">
+    </colgroup>
+    <tr>
+        <th class="tgB-lnuh"><strong>Cidade: </strong> <a>{{$atendimentos->nm_cidade}}</a><br></th>
+        <th class="tgB-s9fk"><strong>Número do telefone: </strong>{{$atendimentos->numero_telefone}}<br></th>
+    </tr>
+</table>
+<table class="tgd" style="table-layout: fixed; width: 700px">
 <colgroup>
-<col style="width: 200px">
-<col style="width: 500px">
+<col style="width: 700px">
 </colgroup>
   <tr>
-      @foreach($atendimentos as $atendimento)
-    <th class="tgB-lnuh"><strong>Protocolo: </strong> <a>{{$atendimento->id}}</a><br></th>
-    
-   
-					              
-    <th class="tgB-s9fk"><strong>Nome do Assegurado: </strong>{{$atendimento->nm_assegurado}}<br></th>
-		        
-     @endforeach
+    <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Descrição da solicitação de atendimento: </strong>{{ $atendimentos->nm_atendimento }}</p></th>
   </tr>
 </table>
 
@@ -45,10 +57,13 @@
 
 
 
-
-<div class="footer" align="center"><img width="100" height="30" src="../public/imagem/rbPrev.png"></div>
+<div class="footer" align="center"><img width="100" height="30" src="../public/imagem/rbPrev.png">   
+</div>
 
 </body>
+
+</html>
+
 <style>
     .html, body {
         display: block;
@@ -175,11 +190,6 @@
         text-align: left;
         vertical-align: top
     }
-
-    <!--
-    CCS Teste
-
-    -->
     .tgd {
         border-collapse: collapse;
         border-spacing: 0;
@@ -209,25 +219,13 @@
     }
 
     .tgd .tgd-x4j0 {
+       font-family: Arial, sans-serif;
         font-size: 12px;
-        text-align: left;
-        vertical-align: top;
-    }
-    <!-- CSS Teste -->
-
-    table, td, th {
-        border: 1px solid black;
-    }
-
-    .tgB  {border-collapse:collapse;border-spacing:0;}
-    .tgB td{font-family:Arial, sans-serif;font-size:12px;padding:8px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-    .tgB th{font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:8px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-    .tgB .tgB-lnuh{font-size:12px;background-color:#ffffff;text-align:left}
-    .tgB .tgB-s9fk{font-size:12px;background-color:#ffffff;text-align:left;vertical-align:top}
-    .tgB .tgB-0lax{text-align:left;vertical-align:top}
-
-
-
+        padding: 8px 5px;
+        border-style: solid;
+        border-width: 1px;
+        overflow: hidden;
+        word-break: normal;
+        border-color: black;
+    } 
 </style>
-</html>
-

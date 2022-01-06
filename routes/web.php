@@ -43,7 +43,7 @@ Route::resource('folhaPagamento','FolhaPagamento\FolhaPagamentoController');
 Route::resource('administracao/atendimentos','Administracao\Atendimentos\AtendimentosController');
 Route::get('administracao/atendimentos/create','Administracao\Atendimentos\AtendimentosController@create')->name('atendimentos.create');
 Route::post('administracao/atendimentos/create','Administracao\Atendimentos\AtendimentosController@store');
-Route::get('/atendimentos/{id}/pdf','Administracao\Atendimentos\AtendimentosController@pdf')->name('atendimentos.pdf');
+Route::get('/atendimentos/{id?}/pdf','Administracao\Atendimentos\AtendimentosController@Verpdf')->name('atendimentos.Verpdf');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

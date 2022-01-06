@@ -57,7 +57,8 @@ Atendimentos
                                     <a href="{{route('atendimentos.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
-                                    <a href="{{route('atendimentos.pdf',$fcn->id)}}">
+                                    <a href="{{route('atendimentos.Verpdf',$fcn->id)}}" target="_blank
+                                       ">
                                         <i class="ti-printer mr-1 btn btn-warning"></i>
                                     </a>
                                     &nbsp;

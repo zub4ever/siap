@@ -201,7 +201,11 @@
             x = document.getElementsByClassName("tab");
             y = x[currentTab].getElementsByTagName("input");
             for (i = 0; i < y.length; i++) { if (y[i].value=="" ) { y[i].className +=" invalid" ; valid=false; } } if (valid) { document.getElementsByClassName("step")[currentTab].className +=" finish" ; } return valid; } function fixStepIndicator(n) { var i, x=document.getElementsByClassName("step"); for (i=0; i < x.length; i++) { x[i].className=x[i].className.replace(" active", "" ); } x[n].className +=" active" ; }
-            </script>
+            
+            
+           
+            
+        </script>
     </body>
 
 </html>

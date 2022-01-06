@@ -15,7 +15,7 @@
     </div>
     <div class="tab">
         <h6>Número de Telefone:</h6>
-        <p><input placeholder="Informe o número de telefone para entrarmos em contato" oninput="this.className = ''" name="numero_telefone"></p>
+        <p><input placeholder="Informe o número de telefone para entrarmos em contato" oninput="this.className = ''" name="numero_telefone" data-mask="(00)99999-9999" maxlength="15" ></p>
     </div>
     <div class="thanks-message text-center" id="text-message"> <img src="/assets/images/rbprev-2-logo.png" width="100" class="mb-4">
         <h3>Obrigado pelas informações!</h3> <span>Clique no botão abaixo para enviar sua solicitação de contato.</span>
