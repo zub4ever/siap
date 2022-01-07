@@ -70,11 +70,11 @@ Atendimentos
                                         <i class="ti-printer mr-1 btn btn-warning"></i>
                                     </a>
                                     &nbsp;
-                                    <form action="" method="POST"
-                                          id="formLaravel" style="display:inline-block;">
+                                    <form action="{{ route('atendimentos.destroy', $fcn->id)}}" method="POST"
+                                         style="display:inline-block;">
                                         @method('DELETE')
                                         @csrf
-                                        <span class="submit" idform="">
+                                        <span class="submit">
                                             <i class="ti-trash btn btn-danger"></i>
                                         </span>
                                     </form>

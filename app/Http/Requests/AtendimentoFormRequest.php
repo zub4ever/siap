@@ -26,6 +26,7 @@ class AtendimentoFormRequest extends FormRequest {
             'nm_cidade' => ['required', 'max:100'],         
             'nm_atendimento' => ['required', 'max:100'],
             'numero_telefone' => ['required', 'max:15'],
+            'atendimento_status_id'=>['required']
             
         ];
     }

@@ -13,10 +13,15 @@ class Atendimento extends Model
         'nm_assegurado',
         'nm_cidade',
         'nm_atendimento',
-        'numero_telefone'
+        'numero_telefone',
+        'atendimento_status_id'
     ];
-    protected $guarded = [];
+   
     
+    public function atendimento_status(){
+
+          return $this->hasMany(AtendimentoStatus::class,'atendimento_status_id');
+    }
     
     
     

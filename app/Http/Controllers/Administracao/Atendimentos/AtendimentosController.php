@@ -8,11 +8,11 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\View;
 use App\Atendimento;
+use App\AtendimentoStatus;
 use PDF;
 use Carbon\Carbon;
 
 class AtendimentosController extends Controller {
-    
 
     public function index() {
         $atendimentos = DB::table('atendimento')->get();
@@ -20,7 +20,9 @@ class AtendimentosController extends Controller {
         return view("administracao.atendimentos.index", compact('atendimentos'));
     }
 
-    public function create() {
+    public function create(){
+
+        //$atendimento_status = AtendimentoStatus::where('atendimento_status', 1)->get();
 
         return view('administracao.atendimentos.create');
     }
@@ -28,8 +30,13 @@ class AtendimentosController extends Controller {
     public function store(AtendimentoFormRequest $request) {
 
         DB::beginTransaction();
+        
+        $request->request->add(['atendimento_status_id' => 1]);
 
         $atendimentos = Atendimento::create($request->all());
+
+
+
 
         if (!$atendimentos) {
             DB::rollBack();
@@ -69,19 +76,19 @@ class AtendimentosController extends Controller {
         );
     }
 
-    public function Verpdf($id){
-       $atendimentos = Atendimento::findOrFail($id);
-        return \PDF::loadView('administracao.atendimentos.pdf.Verpdf',           
+    public function Verpdf($id) {
+        $atendimentos = Atendimento::findOrFail($id);
+        return \PDF::loadView('administracao.atendimentos.pdf.Verpdf',
                                 compact('atendimentos')
-                )
+                        )
                         ->setPaper('A4', 'portrait')
                         ->stream();
-      
     }
-    public function destroy($id){
-    	$atendimentos= Atendimento::findOrFail($id);
-       // $categoria->condicao='0';
-        $atendimentos->update();
+
+    public function destroy($id) {
+        $atendimentos = Atendimento::findOrFail($id);
+        // $categoria->condicao='0';
+        $atendimentos->delete();
         return Redirect::to('atendimentos.index');
     }
 

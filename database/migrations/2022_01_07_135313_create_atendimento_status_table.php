@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAtendimentoTable extends Migration
+class CreateAtendimentoStatusTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,9 @@ class CreateAtendimentoTable extends Migration
      */
     public function up()
     {
-        Schema::create('atendimento', function (Blueprint $table) {
+        Schema::create('atendimento_status', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nm_assegurado')->nullable();
-            $table->string('nm_cidade')->nullable();
-            $table->string('nm_atendimento')->nullable();
-            $table->string('numero_telefone')->nullable();
+            $table->string('statusAtendimento')->nullable();
             $table->timestamps();
         });
     }
@@ -30,6 +27,6 @@ class CreateAtendimentoTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('atendimento');
+        Schema::dropIfExists('atendimento_status');
     }
 }
