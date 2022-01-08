@@ -29,25 +29,22 @@ class AtendimentosController extends Controller {
 
     public function store(AtendimentoFormRequest $request) {
 
-        DB::beginTransaction();
         
-        $request->request->add(['atendimento_status_id' => 1]);
+
+         DB::beginTransaction();
 
         $atendimentos = Atendimento::create($request->all());
 
-
-
-
         if (!$atendimentos) {
             DB::rollBack();
-            return redirect()->route('atendimentos.index')->with('error', "Falha ao cadastrar um Atendimento.");
+            return redirect()->route('atendimentos.index')->with('error', "Falha ao cadastrar um atendimento.");
         }
 
         DB::commit();
 
         return redirect()->route('atendimentos.index')->with(
-                        'success',
-                        "Atendimento cadastrado com sucesso."
+            'success',
+            "Atendimento cadastrado com sucesso."
         );
     }
 

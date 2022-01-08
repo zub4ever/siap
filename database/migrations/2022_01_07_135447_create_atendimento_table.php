@@ -20,8 +20,8 @@ class CreateAtendimentoTable extends Migration
             $table->string('nm_atendimento')->nullable();
             $table->string('numero_telefone')->nullable();
             //Status
-            $table->unsignedInteger('atendimento_status_id')->unsigned();
-            $table->foreign('atendimento_status_id')->references('id')->on('atendimento_status')->onDelete('cascade');
+            $table->boolean('status');
+            
             $table->timestamps();
         });
     }
