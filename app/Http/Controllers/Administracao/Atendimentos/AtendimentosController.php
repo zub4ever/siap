@@ -12,11 +12,15 @@ use App\AtendimentoStatus;
 use PDF;
 use Carbon\Carbon;
 
+
 class AtendimentosController extends Controller {
 
     public function index() {
-        $atendimentos = DB::table('atendimento')->get();
-        //$atendimentos = Atendimento::paginate(5);// Quantidade por página
+        
+        $atendimentos = Atendimento::where('status',1 )->orderBY('id')->get();
+        
+        
+        
         return view("administracao.atendimentos.index", compact('atendimentos'));
     }
 

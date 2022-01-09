@@ -1,6 +1,8 @@
 @extends('layouts.app')
 
-@section('page-title') Editar Atendimento@endsection
+@section('page-title')
+ Editar Atendimentos
+@endsection
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/select2/select2.min.css")}}">
