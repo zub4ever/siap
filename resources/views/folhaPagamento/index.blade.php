@@ -19,6 +19,7 @@ Folha Pagamento
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('endereco.create')}}" role="button">
                     Novo
                 </a>
+                <span>OLÁ MUNDO</span>
             </div>
         </div>
     </div>
