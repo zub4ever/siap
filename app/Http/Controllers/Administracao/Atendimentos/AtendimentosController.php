@@ -26,9 +26,10 @@ class AtendimentosController extends Controller {
 
     public function create(){
 
-        //$atendimento_status = AtendimentoStatus::where('atendimento_status', 1)->get();
+        $atendimento_status = DB::table('atendimento_status')->get();
 
-        return view('administracao.atendimentos.create');
+        return view('administracao.atendimentos.create', 
+        ['atendimento_status'=>$atendimento_status]);
     }
 
     public function store(AtendimentoFormRequest $request) {
@@ -36,9 +37,13 @@ class AtendimentosController extends Controller {
         
 
          DB::beginTransaction();
+         //$denuncias->status_id ='1';
+        // $request->request->add(['id_status_liberacao_projeto' => 1]);
 
+ 
+       $request->request->add(['atendimento_status_id' => 1]);
         $atendimentos = Atendimento::create($request->all());
-
+        
         if (!$atendimentos) {
             DB::rollBack();
             return redirect()->route('atendimentos.index')->with('error', "Falha ao cadastrar um atendimento.");

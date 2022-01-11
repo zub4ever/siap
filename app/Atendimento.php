@@ -14,7 +14,8 @@ class Atendimento extends Model
         'nm_cidade',
         'nm_atendimento',
         'numero_telefone',
-        'status'
+        'status',
+        'atendimento_status_id'
     ];
    
     

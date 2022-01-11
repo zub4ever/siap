@@ -21,6 +21,9 @@ class CreateAtendimentoTable extends Migration
             $table->string('numero_telefone')->nullable();
             //Status
             $table->boolean('status');
+
+            $table->integer('atendimento_status_id')->unsigned();
+            $table->foreign('atendimento_status_id')->references('id')->on('atendimento_status')->onDelete('cascade');
             
             $table->timestamps();
         });
