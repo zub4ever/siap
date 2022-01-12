@@ -17,7 +17,10 @@ class AtendimentosController extends Controller {
 
     public function index() {
         
-        $atendimentos = Atendimento::where('status',1 )->orderBY('id')->get();
+        $atendimentos = Atendimento::where('status',1 ) 
+                ->where('atendimento_status_id',1)
+                ->orderBY('id')
+                ->get();
         
         
         

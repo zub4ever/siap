@@ -62,6 +62,9 @@ Atendimentos
 
 
                                 <td>
+                                    <a href="" data-target="#modal-detalhes-{{$fcn->id}}" data-toggle="modal">
+                                        <i class="ti-clipboard mr-1 btn btn-info"></i>
+                                    </a>
                                     <a href="{{route('atendimentos.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
@@ -80,6 +83,7 @@ Atendimentos
                                     </form>
                                 </td>
                             </tr>
+                            @include('administracao.atendimentos.modal')
                             @endforeach
                         </tbody>
                     </table>
