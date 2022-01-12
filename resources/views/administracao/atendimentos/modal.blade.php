@@ -27,10 +27,7 @@
                     <div class="col-sm-12 col-md-6 col-lg-6 mt-2">
                         <p><strong>Cidade: <a> <font color ="red">{{$fcn->nm_cidade}}</font></a></p></strong> 
                     </div>
-
-
                 </div>
-
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
                         <p><strong>Solicitação de atendimento: <a><font color ="red">{{$fcn->nm_atendimento}}</font></a></p></strong> 

@@ -58,9 +58,6 @@ Atendimentos
                                 <td class="text-center">{{$fcn->nm_cidade}}</td>
                                 <td class="text-center">{{$fcn->numero_telefone}}</td>
                                 <td>{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</td>
-
-
-
                                 <td>
                                     <a href="" data-target="#modal-detalhes-{{$fcn->id}}" data-toggle="modal">
                                         <i class="ti-clipboard mr-1 btn btn-info"></i>
