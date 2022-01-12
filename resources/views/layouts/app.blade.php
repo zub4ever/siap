@@ -17,7 +17,7 @@
     <!--=========================*
              Page Container
     *===========================-->
-    <div class="page-container">
+    <div class="page-container" id="teste">
 
         <!--=========================*
                  Side Bar Menu
@@ -44,7 +44,7 @@
                        Main Section
             *====================================-->
             <div class="main-content-inner">
-            {{-- @include('mensagem.flash-message') --}}
+                {{-- @include('mensagem.flash-message') --}}
                 @yield('main-content')
             </div>
             <!--==================================*
@@ -55,7 +55,10 @@
                End Main Content Section
         *===================================-->
 
-@include('layouts.footer')
+        <!--=================================*
+                      Footer Section
+        *===================================-->
+        @include('layouts.footer')
         <!--=================================*
                     End Footer Section
         *===================================-->
@@ -66,23 +69,12 @@
     *===========================-->
 
     <!--=========================*
-          Offset Sidebar Menu
-    *===========================-->
-    @include('layouts.offset-menu')
-    <!--================================*
-             End Offset Sidebar Menu
-    *==================================-->
-    
-   <!--=================================*
-               Footer Section
-    *===================================-->
-       
-    <!--=========================*
                 Scripts
     *===========================-->
-    @yield('js')
+
     @include('layouts.scripts')
+
+    @yield('js')
     @include('mensagem.alert-message')
-    
     </body>
 </html>

@@ -91,11 +91,25 @@ class AtendimentosController extends Controller {
                         ->stream();
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
+        
         $atendimentos = Atendimento::findOrFail($id);
-        // $categoria->condicao='0';
-        $atendimentos->delete();
-        return Redirect::to('atendimentos.index');
+
+
+        DB::beginTransaction();
+
+        if (!$atendimentos->update(['status'=> 0])) {
+            DB::rollBack();
+            return redirect()->route('atendimentos.index')->with('error', "Falha ao deletar o Atendimento.");
+        }
+
+        DB::commit();
+
+        return redirect()->route('atendimentos.index')->with(
+            'success',
+            "Atendimento deletado com sucesso."
+        );
     }
 
 }

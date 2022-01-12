@@ -81,20 +81,54 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 3);
 /******/ })
 /************************************************************************/
-/******/ ([
-/* 0 */
-/*!***************************************************************************!*\
-  !*** multi ./resources/assets/js/app.js ./resources/assets/sass/app.scss ***!
-  \***************************************************************************/
+/******/ ({
+
+/***/ "./resources/js/delete.js":
+/*!********************************!*\
+  !*** ./resources/js/delete.js ***!
+  \********************************/
 /*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/***/ (function(module, exports) {
 
-!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\xampp\\htdocs\\sisa\\resources\\assets\\js\\app.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\xampp\\htdocs\\sisa\\resources\\assets\\sass\\app.scss'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
-
-
-/***/ })
-/******/ ]);
+    $(document).ready(function () {
+        $("body").on('click', '.submit', function (e) {
+          var _this = this;
+      
+          e.preventDefault();
+          swal({
+            title: "Você tem certeza?",
+            text: "Você não poderá reverter isso!",
+            type: "warning",
+            showCancelButton: !0,
+            confirmButtonText: "Sim, exclua-o!",
+            cancelButtonText: "Não, cancele!",
+            confirmButtonClass: "btn btn-success mr-5",
+            cancelButtonClass: "btn btn-danger",
+            buttonsStyling: !1
+          }).then(function (result) {
+            if (result.value) {
+              var $this = $(_this);
+              document.getElementById("formLaravel" + $this.attr("idform")).submit();
+            }
+          });
+        });
+      });
+      
+      /***/ }),
+      
+      /***/ 3:
+      /*!**************************************!*\
+        !*** multi ./resources/js/delete.js ***!
+        \**************************************/
+      /*! no static exports found */
+      /***/ (function(module, exports, __webpack_require__) {
+      
+      module.exports = __webpack_require__(/*! /mnt/sda1/sistemas/sepa/develop/siagro/resources/js/delete.js */"./resources/js/delete.js");
+      
+      
+      /***/ })
+      
+      /******/ });
