@@ -911,7 +911,7 @@ blockquote {
   height: 100vh;
   width: 280px;
   overflow: hidden;
-  background: #1B0141;
+  background: #030e06;
   box-shadow: 2px 0 32px rgba(0, 0, 0, 0.05);
   -webkit-transition: all 0.3s ease 0s;
   transition: all 0.3s ease 0s; }
@@ -972,11 +972,11 @@ blockquote {
       height: 100%; }
   .sidebar-menu .sidebar-header {
     padding: 19px 32px 20px;
-    background: #1B0141;
+    background: #030e06;
     border-bottom: 1px solid #343e50; }
 
 .slimScrollBar {
-  background: #4327B7 !important;
+  background: #007cd5 !important;
   opacity: 0.1 !important; }
 
 /* ============================ */
@@ -1080,7 +1080,7 @@ blockquote {
 .metismenu > li.active > a svg,
 .metismenu > li.active > a {
   color: #fff;
-  background: #2a0165; }
+  background: #030e06; }
 
 .metismenu li:hover > a,
 .metismenu li.active > a {

@@ -32,10 +32,7 @@
                             <span class="d_none_sm"> <font color="#6600ff">{{Auth::user()->name}} </font><i class="ti-angle-down"></i></span>
                             <img width="20" height="10" src="{{asset('assets/images/sair.png')}}" alt="" class="img-fluid">
                         </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                           <!--<a class="dropdown-item" href="#"><i class="ti-user"></i> Profile</a>
-                            <a class="dropdown-item" href="#"><i class="ti-settings"></i> Account Settings</a>
-                            <span role="separator" class="divider"></span>--> 
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">                         
                             <a class="dropdown-item" href="/logout"><font color="#ff0000"><i class="ti-power-off"></i>Logout</a> </font>
                         </div>
                     </div>
