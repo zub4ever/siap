@@ -6,11 +6,13 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\AtendimentoFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Atendimento;
 use App\AtendimentoStatus;
 use PDF;
 use Carbon\Carbon;
+use Gate;
 
 
 class AtendimentosController extends Controller {
@@ -28,6 +30,11 @@ class AtendimentosController extends Controller {
     }
 
     public function create(){
+        
+        $permissao = Auth::user()->permissao->pluck('id');
+        if (!in_array(3, $permissao->toArray()) && !in_array(4, $permissao->toArray())) {
+            return redirect()->route('documentoTerra.index')->with('alert', "Você não tem permissão.");
+        }
 
         $atendimento_status = DB::table('atendimento_status')->get();
 
