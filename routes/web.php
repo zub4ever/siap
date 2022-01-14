@@ -44,7 +44,7 @@ Route::resource('administracao/atendimentos','Administracao\Atendimentos\Atendim
 Route::get('administracao/atendimentos/create','Administracao\Atendimentos\AtendimentosController@create')->name('atendimentos.create');
 Route::post('administracao/atendimentos/create','Administracao\Atendimentos\AtendimentosController@store');
 Route::get('/atendimentos/{id?}/pdf','Administracao\Atendimentos\AtendimentosController@Verpdf')->name('atendimentos.Verpdf');
-Route::get('/atendimentos/{id}/destroy','Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
+Route::delete('/atendimentos/{id}/destroy','Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

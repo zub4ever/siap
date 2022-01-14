@@ -58,10 +58,10 @@ Atendimentos
                                 <td class="text-center">{{$fcn->nm_cidade}}</td>
                                 <td class="text-center">{{$fcn->numero_telefone}}</td>
                                 <td>{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</td>
-
-
-
                                 <td>
+                                    <a href="" data-target="#modal-detalhes-{{$fcn->id}}" data-toggle="modal">
+                                        <i class="ti-clipboard mr-1 btn btn-info"></i>
+                                    </a>
                                     <a href="{{route('atendimentos.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
@@ -70,16 +70,17 @@ Atendimentos
                                         <i class="ti-printer mr-1 btn btn-warning"></i>
                                     </a>
                                     &nbsp;
-                                    <form action="{{ route('atendimentos.destroy', $fcn->id)}}" method="POST"
-                                         style="display:inline-block;">
+                                    <form action="{{route('atendimentos.destroy', $fcn->id)}}" method="POST"
+                                          id="formLaravel{{$fcn->id}}" style="display:inline-block;">
                                         @method('DELETE')
                                         @csrf
-                                        <span class="submit">
+                                        <span class="submit" idform="{{$fcn->id}}">
                                             <i class="ti-trash btn btn-danger"></i>
                                         </span>
                                     </form>
                                 </td>
                             </tr>
+                            @include('administracao.atendimentos.modal')
                             @endforeach
                         </tbody>
                     </table>
