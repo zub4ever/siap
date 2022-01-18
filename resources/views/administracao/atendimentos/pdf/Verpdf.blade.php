@@ -9,7 +9,7 @@
 </head>
 
 <body>
-    <div align="center"><img class="imgcabecalho" src="../public/imagem/rbPrevlogo2.png"></div>   
+    <div align="center"><img class="imgcabecalho" src="../public/imagem/rbPrevlogo2.jpg"></div>   
     <h3 align="center">Atendimento ao Assegurado</h3>
     <table class="tg" style="table-layout: fixed; width: 700px">
         <colgroup>
@@ -57,7 +57,7 @@
 
 
 
-<div class="footer" align="center"><img width="100" height="30" src="../public/imagem/rbPrev.png">   
+<div class="footer" align="center"><img width="100" height="30" src="../public/imagem/rbPrev.jpg">   
 </div>
 
 </body>
