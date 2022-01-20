@@ -101,6 +101,15 @@
                                     <span>Atendimentos</span>
                                 </a>
                             </li>
+                            @can('admin')
+                            
+                            <li {!! (request()->is('administracao/usuarios*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('usuarios.index')}}">
+                                    <i class="feather ft-users"></i>
+                                    <span>Usuários</span>
+                                </a>
+                            </li>
+                            @endcan
                             <!-- Fim do cadastros auxiliares -->
                         </ul>
                     </li>

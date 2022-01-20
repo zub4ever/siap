@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('page-title')
-Atendimentos
+Usuários
 @endsection
 @section('css')
 <!-- Start datatable css -->
@@ -17,15 +17,15 @@ Atendimentos
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Atendimentos</a></li>
+    <li class="breadcrumb-item active"><a>Usuários</a></li>
 </ol>
 @can('admin')
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('atendimentos.create')}}" role="button">
-                    Novo atendimento
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="{{route('usuarios.criar')}}" role="button">
+                    Novo User
                 </a>
             </div>
         </div>
@@ -41,46 +41,35 @@ Atendimentos
                         <thead class="bg-light text-capitalize">
                             <tr>
                                 <th class="text-center">Id</th>
-                                <th class="text-center">Nome assegurado</th>
-                                <th class="text-center">Tipo de atendimento</th>
-                                <th class="text-center">Cidade</th>
-                                <th class="text-center">Número</th>
-                                <th class="text-center">Data</th>
+                                <th class="text-center">Usuário</th>
+                                <th class="text-center">Email</th>
+                                <th class="text-center">Situação</th>                               
                                 <th class="text-center">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($atendimentos as $fcn)
+                          @foreach ($usuarios as $user)
                             <tr>
-                                <td class="text-center">{{$fcn->id}}</td>
-                                <td class="text-center">{{$fcn->nm_assegurado}}</td>
-                                <td class="text-center">{{$fcn->nm_atendimento}}</td>
-                                <td class="text-center">{{$fcn->nm_cidade}}</td>
-                                <td class="text-center">{{$fcn->numero_telefone}}</td>
-                                <td>{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</td>
-                                <td>
-                                    <a href="" data-target="#modal-detalhes-{{$fcn->id}}" data-toggle="modal">
-                                        <i class="ti-clipboard mr-1 btn btn-info"></i>
-                                    </a>
-                                    <a href="{{route('atendimentos.edit', $fcn->id)}}">
+                                <td class="text-center">{{$user->id}}</td>
+                                <td class="text-center">{{$user->name}}</td>
+                                <td class="text-center">{{$user->email}}</td>
+                                <td class="text-center"></td>
+                                
+                                <td>                                   
+                                    <a href="">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
-                                    </a>
-                                    <a href="{{route('atendimentos.Verpdf',$fcn->id)}}" target="_blank
-                                       ">
-                                        <i class="ti-printer mr-1 btn btn-warning"></i>
-                                    </a>
+                                    </a>                                   
                                     &nbsp;
-                                    <form action="{{route('atendimentos.destroy', $fcn->id)}}" method="POST"
-                                          id="formLaravel{{$fcn->id}}" style="display:inline-block;">
+                                    <form action="" style="display:inline-block;">
                                         @method('DELETE')
                                         @csrf
-                                        <span class="submit" idform="{{$fcn->id}}">
+                                        <span class="submit" idform="">
                                             <i class="ti-trash btn btn-danger"></i>
                                         </span>
                                     </form>
                                 </td>
                             </tr>
-                            @include('administracao.atendimentos.modal')
+                            
                             @endforeach
                         </tbody>
                     </table>

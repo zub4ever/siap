@@ -36,16 +36,19 @@ Route::post('cadastrosAuxiliares/funcao/create','CadastrosAuxiliares\Funcao\Func
 
 Route::resource('pedido','Pedido\PedidoController');
 
-
 Route::resource('folhaPagamento','FolhaPagamento\FolhaPagamentoController');
-
-//Administração
+//Administração ATENDIMENTO
 Route::resource('administracao/atendimentos','Administracao\Atendimentos\AtendimentosController');
 Route::get('administracao/atendimentos/create','Administracao\Atendimentos\AtendimentosController@create')->name('atendimentos.create');
 Route::post('administracao/atendimentos/create','Administracao\Atendimentos\AtendimentosController@store');
 Route::get('/atendimentos/{id?}/pdf','Administracao\Atendimentos\AtendimentosController@Verpdf')->name('atendimentos.Verpdf');
 Route::delete('/atendimentos/{id}/destroy','Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
 
+//USUARIOS
+Route::resource('administracao/usuarios','Administracao\Usuarios\UsuariosController');
+Route::get('administracao/usuarios/create','Administracao\Usuarios\UsuariosController@criar')->name('usuarios.criar');
+Route::post('administracao/usuarios/create','Administracao\Usuarios\UsuariosController@store');
+//FimUsuários
 
 Route::get('/home', 'HomeController@index')->name('home');
 

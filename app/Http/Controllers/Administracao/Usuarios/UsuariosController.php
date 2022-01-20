@@ -1,69 +1,71 @@
 <?php
 
-namespace App\Http\Controllers\Administracao\Atendimentos;
+namespace App\Http\Controllers\Administracao\Usuarios;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\AtendimentoFormRequest;
+use App\Http\Requests\Usuarios\UserFormRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
-use App\Atendimento;
-use App\AtendimentoStatus;
+use App\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 use PDF;
 use Carbon\Carbon;
 use Gate;
 
 
-class AtendimentosController extends Controller {
+class UsuariosController extends Controller {
 
     public function index() {
         
-        $atendimentos = Atendimento::where('status',1 ) 
-                ->where('atendimento_status_id',1)
+        $usuarios = User::where('status',1)
                 ->orderBY('id')
                 ->get();
         
+        return view("administracao.usuarios.index", compact('usuarios'));
+    }
+    
+    public function criar() {
+        return view("administracao.usuarios.criar");
+    }
+    
+    
+
+    public function create(array $data){
         
+       return User::create([
+        'name' => $data['name'],
+        'email' => $data['email'],
+        'password' => Hash::make($data['password'])
+      ]);
+
         
-        return view("administracao.atendimentos.index", compact('atendimentos'));
+        return view('administracao.usuarios.create');
+        
     }
 
-    public function create(){
+    public function store(Request $request) {        
+         
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:6',
+        ]);
+           
+        $data = $request->all();
+        $check = $this->create($data);
         
        
 
-        $atendimento_status = DB::table('atendimento_status')->get();
-
-        return view('administracao.atendimentos.create', 
-        ['atendimento_status'=>$atendimento_status]);
-    }
-
-    public function store(AtendimentoFormRequest $request) {
-
-        
-
-         DB::beginTransaction();
-         //$denuncias->status_id ='1';
-        // $request->request->add(['id_status_liberacao_projeto' => 1]);
-
- 
-       $request->request->add(['atendimento_status_id' => 1]);
-        $atendimentos = Atendimento::create($request->all());
-        
-        if (!$atendimentos) {
-            DB::rollBack();
-            return redirect()->route('atendimentos.index')->with('error', "Falha ao cadastrar um atendimento.");
-        }
-
-        DB::commit();
-
-        return redirect()->route('atendimentos.index')->with(
+        return redirect()->route('usuarios.index')->with(
             'success',
-            "Atendimento cadastrado com sucesso."
+            "Usuário cadastrado com sucesso."
         );
     }
-
+    /*
     public function edit($id) {
 
         $atendimentos = Atendimento::findOrFail($id);
@@ -117,6 +119,6 @@ class AtendimentosController extends Controller {
             'success',
             "Atendimento deletado com sucesso."
         );
-    }
+    } */
 
 }
