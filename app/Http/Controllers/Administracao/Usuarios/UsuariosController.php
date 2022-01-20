@@ -71,26 +71,27 @@ class UsuariosController extends Controller {
         $atendimentos = Atendimento::findOrFail($id);
         return view('administracao.atendimentos.edit', compact('atendimentos'));
     }
-
-    public function update(AtendimentoFormRequest $request, $id) {
-        $atendimentos = Atendimento::findOrFail($id);
+    */
+    public function update(UserFormRequest $request, $id) {
+        
+        $usuarios = User::findOrFail($id);
 
         DB::beginTransaction();
 
-        if (!$atendimentos->update($request->all())) {
+        if (!$usuarios->update($request->all())) {
 
             DB::rollBack();
-            return redirect()->route('atendimentos.index')->with('error', "Falha em alterar o atendimento.");
+            return redirect()->route('usuarios.index')->with('error', "Falha em alterar o usuário.");
         }
 
         DB::commit();
 
-        return redirect()->route('atendimentos.index')->with(
+        return redirect()->route('usuarios.index')->with(
                         'success',
-                        "Atendimento alterado com sucesso."
+                        "Usuário alterado com sucesso."
         );
     }
-
+    /*
     public function Verpdf($id) {
         $atendimentos = Atendimento::findOrFail($id);
         return \PDF::loadView('administracao.atendimentos.pdf.Verpdf',
@@ -99,26 +100,26 @@ class UsuariosController extends Controller {
                         ->setPaper('A4', 'portrait')
                         ->stream();
     }
-
+*/
     public function destroy($id)
     {
         
-        $atendimentos = Atendimento::findOrFail($id);
+        $usuarios = User::findOrFail($id);
 
 
         DB::beginTransaction();
 
-        if (!$atendimentos->update(['status'=> 0])) {
+        if (!$usuarios->update(['status'=> 0])) {
             DB::rollBack();
-            return redirect()->route('atendimentos.index')->with('error', "Falha ao deletar o Atendimento.");
+            return redirect()->route('usuarios.index')->with('error', "Falha ao deletar o Usuário.");
         }
 
         DB::commit();
 
-        return redirect()->route('atendimentos.index')->with(
+        return redirect()->route('usuarios.index')->with(
             'success',
-            "Atendimento deletado com sucesso."
+            "Usuário deletado com sucesso."
         );
-    } */
+    } 
 
 }

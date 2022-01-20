@@ -60,10 +60,11 @@ Usuários
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>                                   
                                     &nbsp;
-                                    <form action="" style="display:inline-block;">
+                                    <form action="{{route('usuarios.destroy', $user->id)}}" method="POST"
+                                          id="formLaravel{{$user->id}}" style="display:inline-block;">
                                         @method('DELETE')
                                         @csrf
-                                        <span class="submit" idform="">
+                                        <span class="submit" idform="{{$user->id}}">
                                             <i class="ti-trash btn btn-danger"></i>
                                         </span>
                                     </form>
