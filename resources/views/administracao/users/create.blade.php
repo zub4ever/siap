@@ -9,10 +9,20 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("usuarios.index")}}">usuario</a></li>
+    <li class="breadcrumb-item"><a href="{{route("users.index")}}">usuario</a></li>
     <li class="breadcrumb-item active"><a>Cadastrar </a></li>
 </ol>
 
+<div class="row">
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Create New User</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-primary" href="{{ route('users.index') }}"> Back</a>
+        </div>
+    </div>
+</div>
 @if (count($errors) > 0)
 <div class="alert alert-danger">
     <strong>Whoops!</strong> There were some problems with your input.<br><br>

@@ -19,7 +19,7 @@ Atendimentos
     <li class="breadcrumb-item"><a href="">Início</a></li>
     <li class="breadcrumb-item active"><a>Atendimentos</a></li>
 </ol>
-@can('admin')
+
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
@@ -92,7 +92,7 @@ Atendimentos
         </div>
     </div>
 </div>
-@endcan
+
 @endsection
 @section('js')
 <!-- Data Table js -->

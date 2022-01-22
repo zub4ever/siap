@@ -22,11 +22,11 @@ Usuários
 <div class="row">
     <div class="col-lg-12 margin-tb">
         <div class="pull-left">
-            <h2>Role Management</h2>
+            <h2>Gerencimento de regras</h2>
         </div>
         <div class="pull-right">
             @can('role-create')
-            <a class="btn btn-success" href="{{ route('roles.create') }}"> Create New Role</a>
+            <a class="btn btn-success" href="{{ route('roles.create') }}"> Criar nova regra</a>
             @endcan
         </div>
     </div>
@@ -41,8 +41,8 @@ Usuários
     <table class="table table-bordered">
         <tr>
             <th class="text-center">Id</th>
-            <th class="text-center">Name</th>
-            <th width="280px">Action</th>
+            <th class="text-center">Nome</th>
+            <th width="280px">Ação</th>
         </tr>
         @foreach ($roles as $key => $role)
         <tr>

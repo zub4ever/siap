@@ -82,14 +82,14 @@ class RoleController extends Controller{
     
         $role->syncPermissions($request->input('permission'));
     
-        return redirect()->route('administracao.roles.index')
+        return redirect()->route('roles.index')
                         ->with('success','Role updated successfully');
     }
 
     public function destroy($id)
     {
         DB::table("roles")->where('id',$id)->delete();
-        return redirect()->route('administracao.roles.index')
+        return redirect()->route('roles.index')
                         ->with('success','Role deleted successfully');
     }
 }

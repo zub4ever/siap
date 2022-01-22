@@ -19,18 +19,24 @@ Usuários
     <li class="breadcrumb-item"><a href="">Início</a></li>
     <li class="breadcrumb-item active"><a>Usuários</a></li>
 </ol>
-@can('admin')
+<br>
 <div class="row">
-    <div class="col-lg-12 mb-4">
-        <div class="card">
-            <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="{{route('users.create')}}" role="button">
-                    Novo User
-                </a>
-            </div>
+    <div class="col-lg-12 margin-tb">
+        <div class="pull-left">
+            <h2>Gerencimento de usuários</h2>
+        </div>
+        <div class="pull-right">
+            <a class="btn btn-success" href="{{ route('users.create') }}"> Criar novo usuário</a>
         </div>
     </div>
 </div>
+
+
+@if ($message = Session::get('success'))
+<div class="alert alert-success">
+  <p>{{ $message }}</p>
+</div>
+@endif
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card">
@@ -42,7 +48,7 @@ Usuários
                             <th class="text-center">Id</th>
                             <th class="text-center">Nome</th>
                             <th class="text-center">Email</th>
-                            <th class="text-center">Roles</th>
+                            <th class="text-center">Tipo de user</th>
                             <th width="280px">Ação</th>
                         </tr>
                         @foreach ($data as $key => $user)
@@ -73,7 +79,7 @@ Usuários
         </div>
     </div>
 </div>
-@endcan
+
 @endsection
 @section('js')
 <!-- Data Table js -->
