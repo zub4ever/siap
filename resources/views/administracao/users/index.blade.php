@@ -1,0 +1,91 @@
+@extends('layouts.app')
+
+
+{{-- Page Title --}}
+@section('page-title')
+Usuários
+@endsection
+@section('css')
+<!-- Start datatable css -->
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/jquery.dataTables.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/dataTables.bootstrap4.min.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/responsive.bootstrap.min.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/responsive.jqueryui.min.css")}}">
+<!-- Sweet Alert Css -->
+<link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
+@endsection
+@section('main-content')
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="">Início</a></li>
+    <li class="breadcrumb-item active"><a>Usuários</a></li>
+</ol>
+@can('admin')
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="{{route('users.create')}}" role="button">
+                    Novo User
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card_title">Usuarios do sistema</h4>
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <tr>
+                            <th class="text-center">Id</th>
+                            <th class="text-center">Nome</th>
+                            <th class="text-center">Email</th>
+                            <th class="text-center">Roles</th>
+                            <th width="280px">Ação</th>
+                        </tr>
+                        @foreach ($data as $key => $user)
+                        <tr>
+                            <td class="text-center">{{ $user->id }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td class="text-center">{{ $user->email }}</td>
+                            <td class="text-center">
+                                @if(!empty($user->getRoleNames()))
+                                @foreach($user->getRoleNames() as $v)
+                                <label class="badge badge-success">{{ $v }}</label>
+                                @endforeach
+                                @endif
+                            </td>
+                            <td>
+                                <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
+                                <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Editar</a>
+                                <a class="btn btn-success" href="{{ route('users.destroy',$user->id) }}"> Deletar</a>
+                            </td>
+                        </tr>
+                        @endforeach
+                    </table>
+                    <div class="d-flex justify-content-end">
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endcan
+@endsection
+@section('js')
+<!-- Data Table js -->
+<script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/dataTables.bootstrap4.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/dataTables.responsive.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/responsive.bootstrap.min.js")}}"></script>
+<!-- Data table Init -->
+<script src="{{asset("assets/js/init/data-table.js")}}"></script>
+<!-- Sweet Alert Js -->
+<!-- Sweet Alert Js -->
+<script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
+<script src="{{asset('js/delete.js')}}"></script>
+@endsection

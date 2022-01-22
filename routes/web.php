@@ -6,7 +6,8 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 
 Route::get('/logout', 'Auth\LoginController@logout');
 
-Route::middleware(['auth'])->group(function () {
+Route::group(['middleware' => ['auth']], function() {
+    
 Route::get('/home', 'HomeController@index')->name('index');
 //Cadastro de ervidpr
 Route::resource('servidor','Servidor\ServeController');
@@ -45,9 +46,8 @@ Route::get('/atendimentos/{id?}/pdf','Administracao\Atendimentos\AtendimentosCon
 Route::delete('/atendimentos/{id}/destroy','Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
 
 //USUARIOS
-Route::resource('administracao/usuarios','Administracao\Usuarios\UsuariosController');
-Route::get('administracao/usuarios/create','Administracao\Usuarios\UsuariosController@criar')->name('usuarios.criar');
-Route::post('administracao/usuarios/create','Administracao\Usuarios\UsuariosController@store');
+Route::resource('administracao/users','Administracao\Usuarios\UserController');
+Route::resource('administracao/roles','Administracao\Usuarios\RoleController');
 //FimUsuários
 
 Route::get('/home', 'HomeController@index')->name('home');

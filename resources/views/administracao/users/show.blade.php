@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('page-title')
- Editar Atendimentos
+Editar Atendimentos
 @endsection
 
 @section('css')
@@ -16,18 +16,31 @@
 </ol>
 
 <div class="row">
-    <div class="col-lg-12 mb-4">
-        <div class="card">
-            <div class="card-body">
-                <h4 class="card_title">Editar atendimento</h4>
-                <form action="{{route('atendimentos.update', $atendimentos->id)}}" method="POST">
-                    @csrf
-                    @method('PUT')
-                    @include('administracao.atendimentos.form')
-                </form>
-            </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Name:</strong>
+            {{ $user->name }}
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Email:</strong>
+            {{ $user->email }}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Roles:</strong>
+            @if(!empty($user->getRoleNames()))
+                @foreach($user->getRoleNames() as $v)
+                    <label class="badge badge-success">{{ $v }}</label>
+                @endforeach
+            @endif
+        </div>
+    </div>
+    
+    
+    
 </div>
 @endsection
 

@@ -101,15 +101,23 @@
                                     <span>Atendimentos</span>
                                 </a>
                             </li>
-                            @can('admin')
-                            
-                            <li {!! (request()->is('administracao/usuarios*') ? 'class="active"' : "")!!}>
-                                <a href="{{route('usuarios.index')}}">
+                          
+                            <!-- Usuario -->
+                            <li {!! (request()->is('administracao/users*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('users.index')}}">
                                     <i class="feather ft-users"></i>
                                     <span>Usuários</span>
                                 </a>
                             </li>
-                            @endcan
+                            <!-- Fim do User -->
+                            <!-- Roles -->
+                            <li {!! (request()->is('administracao/roles*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('roles.index')}}">
+                                    <i class="feather ft-users"></i>
+                                    <span>Regras</span>
+                                </a>
+                            </li>
+                            <!-- Fim do Roles -->
                             <!-- Fim do cadastros auxiliares -->
                         </ul>
                     </li>
