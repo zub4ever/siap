@@ -69,6 +69,7 @@ Atendimentos
                                        ">
                                         <i class="ti-printer mr-1 btn btn-warning"></i>
                                     </a>
+                                    @can('excluir')
                                     &nbsp;
                                     <form action="{{route('atendimentos.destroy', $fcn->id)}}" method="POST"
                                           id="formLaravel{{$fcn->id}}" style="display:inline-block;">
@@ -78,6 +79,7 @@ Atendimentos
                                             <i class="ti-trash btn btn-danger"></i>
                                         </span>
                                     </form>
+                                    @endcan
                                 </td>
                             </tr>
                             @include('administracao.atendimentos.modal')

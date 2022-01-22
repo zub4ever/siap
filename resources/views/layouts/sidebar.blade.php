@@ -101,7 +101,7 @@
                                     <span>Atendimentos</span>
                                 </a>
                             </li>
-                          
+                          @role('Admin')
                             <!-- Usuario -->
                             <li {!! (request()->is('administracao/users*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('users.index')}}">
@@ -117,6 +117,7 @@
                                     <span>Regras</span>
                                 </a>
                             </li>
+                            @endrole
                             <!-- Fim do Roles -->
                             <!-- Fim do cadastros auxiliares -->
                         </ul>

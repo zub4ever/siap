@@ -9,7 +9,7 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("usuarios.index")}}">usuario</a></li>
+    <li class="breadcrumb-item"><a href="{{route("roles.index")}}">Regras</a></li>
     <li class="breadcrumb-item active"><a>Cadastrar </a></li>
 </ol>
 

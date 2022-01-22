@@ -15,6 +15,7 @@ Usuários
 <link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
 @endsection
 @section('main-content')
+@role('Admin')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
     <li class="breadcrumb-item active"><a>Usuários</a></li>
@@ -79,7 +80,17 @@ Usuários
         </div>
     </div>
 </div>
+@else
+<br>
+<br>
+<br>
 
+<div class="overlay">
+ <center>  <h1> <i class="fa fa-refresh fa-spin"></i><h1> <center>
+		<h3>Acesso negado</h3>
+ </div>
+    <script>window.location.href = "{{url('home')}}"</script>
+@endrole
 @endsection
 @section('js')
 <!-- Data Table js -->

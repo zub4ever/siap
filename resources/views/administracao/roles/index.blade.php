@@ -14,7 +14,9 @@ Usuários
 <!-- Sweet Alert Css -->
 <link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
 @endsection
+
 @section('main-content')
+
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
     <li class="breadcrumb-item active"><a>Usuários</a></li>
