@@ -5,6 +5,7 @@ use sistemaSemeia\Serve;
 use DB;
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Atendimento;
 
 class HomeController extends Controller
 {
@@ -28,6 +29,14 @@ class HomeController extends Controller
         
         $serve = DB::table('serve')->get();
         
+
+        $atendimentos = Atendimento::select(DB::raw("COUNT(*) as count"))
+        ->whereYear('created_at', date('Y'))
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('count');
+
+
+
         
         
         
@@ -47,7 +56,6 @@ class HomeController extends Controller
         
         
         
-        
-        return view('/home', compact('serve'));
+        return view('/home', compact('serve','atendimentos'));
     }
 }

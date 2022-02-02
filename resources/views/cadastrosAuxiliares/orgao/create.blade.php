@@ -17,7 +17,7 @@
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Cadastrar Origem</h4>
+                <h4 class="card_title">Cadastrar Orgão</h4>
                 <form action="{{route('orgao.store')}}" method="POST">
                     @csrf
                     @include('cadastrosAuxiliares.orgao.form')
