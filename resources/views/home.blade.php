@@ -5,104 +5,119 @@ Página inicial
 @endsection
 {{-- This Page Css --}}
 @section('css')
-<!--=========================*
-               AM Chart
-    *===========================-->
-<link rel="stylesheet" href="{{ asset('assets/vendors/am-charts/css/am-charts.css') }}" type="text/css" media="all" />
-<!--=========================*
-               Morris Css
-    *===========================-->
-<link rel="stylesheet" href="{{ asset('assets/vendors/charts/morris-bundle/morris.css') }}">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<!--=========================*
-               Datatable
-    *===========================-->
-<!-- Start datatable css -->
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-table/css/jquery.dataTables.css') }}">
-<link rel="stylesheet" type="text/css"
-      href="{{ asset('assets/vendors/data-table/css/dataTables.bootstrap4.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-table/css/responsive.bootstrap.min.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-table/css/responsive.jqueryui.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/vendors/highcharts/css/highcharts.css') }}" type="text/css"
+          media="all"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendors/am-charts/css/am-charts.css') }}" type="text/css"
+          media="all"/>
+    <link rel="stylesheet" href="{{ asset('assets/vendors/charts/morris-bundle/morris.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendors/data-table/css/jquery.dataTables.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('assets/vendors/data-table/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('assets/vendors/data-table/css/responsive.bootstrap.min.css') }}">
+    <link rel="stylesheet" type="text/css"
+          href="{{ asset('assets/vendors/data-table/css/responsive.jqueryui.min.css') }}">
 @endsection
 @section('main-content')
 
-
 <div class="row">
-       <div class="col-lg-4">  
-       <div id="container"></div>
+        <script src="{{asset('assets/vendors/highcharts/highcharts.js')}}"></script>
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+        <div class="col-sm-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row">                       
+                        <div class="col-sm-4">
+                            <figure class="highcharts-figure">
+                                <div id="containerATER">
+                                </div>
+                            </figure>
+                        </div>
+                        <div class="col-sm-4">
+                            <figure class="highcharts-figure">
+                                <div id="containerServidores">
+                                </div>
+                            </figure>
+                        </div>                       
+                    </div>
 
-
-
-
-
+                   
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-<script src="https://code.highcharts.com/highcharts.js"></script>
-<script type="text/javascript">
-    var atendimentos =  <?php echo json_encode($atendimentos) ?>;
-   
-    Highcharts.chart('container', {
-        title: {
-            text: 'New User Records - 2021'
-        },
-        subtitle: {
-            text: 'Source: websolutionstuff.com'
-        },
-         xAxis: {
-            categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-        },
-        yAxis: {
-            title: {
-                text: 'Números de atendimentos'
-            }
-        },
-        legend: {
-            layout: 'horizontal',
-            align: 'center',
-            verticalAlign: 'bottom'
-        },
-        plotOptions: {
-            series: {
-                allowPointSelect: true
-            }
-        },
-        series: [{
-            name: 'New Users',
-            data: atendimentos
-        }],
-        responsive: {
-            rules: [{
-                condition: {
-                    maxWidth: 500
+
+    <script>
+         var atendimentos =  <?php echo json_encode($atendimentos) ?>;
+           
+            Highcharts.chart('containerATER', {
+                chart: {
+                    type: 'column',
+                    styledMode: true
                 },
-                chartOptions: {
-                    legend: {
-                        layout: 'horizontal',
-                        align: 'center',
-                        verticalAlign: 'bottom'
+                title: {
+                    text: 'Atendimentos 2022'
+                },
+                yAxis: [{
+                    className: 'highcharts-color-3',
+                    title: {
+                        text: 'Quantidade'
                     }
+                },],
+                plotOptions: {
+                    column: {
+                        borderRadius: 5
+                    }
+                },
+                series: [{
+                    name: 'Abertos',
+                    data: [atendimentos]
+                }, {
+                    name: 'Fechados',
+                    data: []
                 }
-            }]
-        }
-});
-</script>
+                ]
+            });
+        </script>
+
+        <script>
+            var serve =  <?php echo json_encode($serve) ?>;
+           
+           Highcharts.chart('containerATER', {
+               chart: {
+                   type: 'column',
+                   styledMode: true
+               },
+               title: {
+                   text: 'Atendimentos 2022'
+               },
+               yAxis: [{
+                   className: 'highcharts-color-3',
+                   title: {
+                       text: 'Quantidade'
+                   }
+               },],
+               plotOptions: {
+                   column: {
+                       borderRadius: 5
+                   }
+               },
+               series: [{
+                   name: 'Abertos',
+                   data: [atendimentos]
+               }, {
+                   name: 'Fechados',
+                   data: []
+               }
+               ]
+           });
+        </script>
 
 
 @endsection
 @section('js')
-<!-- start amchart js -->
-<script src="{{asset('assets/vendors/am-charts/js/ammap.js')}}"></script>
-<script src="{{asset('assets/vendors/am-charts/js/worldLow.js')}}"></script>
-<script src="{{asset('assets/vendors/am-charts/js/continentsLow.js')}}"></script>
-<script src="{{asset('assets/vendors/am-charts/js/light.js')}}"></script>
-<!--Morris Chart-->
-<script src="{{asset('assets/vendors/charts/morris-bundle/raphael.min.js')}}"></script>
-<script src="{{asset('assets/vendors/charts/morris-bundle/morris.js')}}"></script>
-<!--Chart Js-->
-<script src="{{asset('assets/vendors/charts/charts-bundle/Chart.bundle.js')}}"></script>
-<!-- C3 Chart -->
-<script src="{{asset('assets/vendors/charts/c3charts/c3.min.js')}}"></script>
-<script src="{{asset('assets/vendors/charts/c3charts/d3-5.4.0.min.js')}}"></script>
-<!--Home Script-->
+
 @endsection

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="origin_id" class="form-control-label">Órgão:
                 <span class="text-danger">*</span>
@@ -14,7 +14,20 @@
             </select>
         </div>
     </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+        <div class="wrap">
+            <label for="nm_servidor" class="form-control-label">Tipo de servidor:
+                <span class="text-danger">*</span>
+            
 
+
+        </div>
+    </div>
+
+</div>
+
+
+<div class="row">
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
             <label for="nm_servidor" class="form-control-label">Nome do servidor:
@@ -37,15 +50,15 @@
 <!-- // // // -->
 
 <div class="row">
-    <div class="col-sm-12 col-md-2 col-lg-4 mt-4">
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="data_nascimento" class="form-control-label">Data de Nascimento:
                 <span class="text-danger">*</span>
             </label>
-          <input type="text" class="form-control" id='data_nascimento' name="data_nascimento" autocomplete="off"></p>
+          <input type="text" class="form-control" name='data_nascimento' placeholder="11/11/1111" data-mask="00/00/0000" autocomplete="off"></p>
         </div>
     </div>
-    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="rg" class="form-control-label">RG:
                 <span class="text-danger">*</span>
