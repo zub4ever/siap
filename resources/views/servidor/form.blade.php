@@ -16,11 +16,17 @@
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
-            <label for="nm_servidor" class="form-control-label">Tipo de servidor:
+            <label for="tp_servidor_id" class="form-control-label">Tipo de servidor:
                 <span class="text-danger">*</span>
-            
-
-
+            </label>
+            <select name="tp_servidor_id" class="form-control" id="titula1">
+                <option value="">Selecione uma opção</option>
+                @foreach ($tpservidor as $tp)
+                <option value="{{$tp->id}}">
+                    {{$tp->nm_tpservidor}}
+                </option>
+                @endforeach
+            </select>
         </div>
     </div>
 
@@ -28,7 +34,15 @@
 
 
 <div class="row">
-    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
+     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+        <div class="wrap">
+            <label for="matricula" class="form-control-label">Matrícula:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="matricula" value="">
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-9 col-lg-9 mt-4">
         <div class="wrap">
             <label for="nm_servidor" class="form-control-label">Nome do servidor:
                 <span class="text-danger">*</span>
@@ -37,14 +51,7 @@
         </div>
     </div>
 
-    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
-        <div class="wrap">
-            <label for="matricula" class="form-control-label">Matrícula:
-                <span class="text-danger">*</span>
-            </label>
-            <input type="text" class="form-control" name="matricula" value="">
-        </div>
-    </div>
+   
 </div>
 
 <!-- // // // -->

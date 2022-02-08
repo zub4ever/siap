@@ -85,14 +85,16 @@ Página inicial
 
         <script>
             var serve =  <?php echo json_encode($serve) ?>;
+            var serveAp =  <?php echo json_encode($serveAp) ?>;
+            var servePs =  <?php echo json_encode($servePs) ?>;
            
-           Highcharts.chart('containerATER', {
+           Highcharts.chart('containerServidores', {
                chart: {
                    type: 'column',
                    styledMode: true
                },
                title: {
-                   text: 'Atendimentos 2022'
+                   text: 'Servidores'
                },
                yAxis: [{
                    className: 'highcharts-color-3',
@@ -106,11 +108,14 @@ Página inicial
                    }
                },
                series: [{
-                   name: 'Abertos',
-                   data: [atendimentos]
+                   name: 'Quantidade Geral',
+                   data: [serve]
                }, {
-                   name: 'Fechados',
-                   data: []
+                   name: 'Aposentados',
+                   data: [serveAp]
+               }, {
+                   name: 'Pensionistas',
+                   data: [servePs]
                }
                ]
            });

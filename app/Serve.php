@@ -25,7 +25,8 @@ class Serve extends Model {
         
        'type_serve_id',
         
-         'orgao_expedidor_id' 
+         'orgao_expedidor_id',
+         'tp_servidor_id'
     ];
       protected $guarded = [];
 
@@ -59,4 +60,8 @@ class Serve extends Model {
 
         return $this->belongsToMany(Orgao_Expedidor::class, 'orgao_expedidor_id');
     } 
+    public function tp_seervidor() {
+
+        return $this->belongsTo(Type_Serve::class, 'tp_servidor_id');
+    }
 }
