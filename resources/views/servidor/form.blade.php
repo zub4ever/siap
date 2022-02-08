@@ -42,7 +42,12 @@
             <label for="data_nascimento" class="form-control-label">Data de Nascimento:
                 <span class="text-danger">*</span>
             </label>
-          <input type="text" class="form-control" id='data_nascimento' name="data_nascimento" autocomplete="off"></p>
+          <input type="text" class="form-control focus" name="data_nascimento"
+                               value="{{(empty(old('data_nascimento')) and isset($serve))  ? $serve->data_nascimento->format('d/m/Y') : old('data_nascimento')}}"
+                               data-mask="00/00/0000">
+                        @if ($errors->has('data_nascimento'))
+                        <h6 class="heading text-danger">{{$errors->first('data_nascimento')}}</h6>
+                        @endif
         </div>
     </div>
     <div class="col-sm-12 col-md-2 col-lg-2 mt-4">

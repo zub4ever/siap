@@ -37,3 +37,8 @@ mix.combine([
     'public/assets/js/modernizr-2.8.3.min.js',
     'public/assets/js/main.js',
 ], 'public/js/all.js');
+
+
+mix.js('resources/js/app.js', 'public/js')    
+.sass('resources/sass/app.scss', 'public/css');
+

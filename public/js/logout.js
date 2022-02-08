@@ -81,54 +81,20 @@
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 2);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
-/******/ ({
-
-/***/ "./resources/js/delete.js":
-/*!********************************!*\
-  !*** ./resources/js/delete.js ***!
-  \********************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-$(document).ready(function () {
-  $("body").on('click', '.submit', function (e) {
-    var _this = this;
-
-    e.preventDefault();
-    swal({
-      title: "Você tem certeza?",
-      text: "Você não poderá reverter isso!",
-      type: "warning",
-      showCancelButton: !0,
-      confirmButtonText: "Sim, exclua-o!",
-      cancelButtonText: "Não, cancele!",
-      confirmButtonClass: "btn btn-success mr-5",
-      cancelButtonClass: "btn btn-danger",
-      buttonsStyling: !1
-    }).then(function (result) {
-      if (result.value) {
-        var $this = $(_this);
-        document.getElementById("formLaravel" + $this.attr("idform")).submit();
-      }
-    });
-  });
-});
-
-/***/ }),
-
-/***/ 2:
+/******/ ([
+/* 0 */,
+/* 1 */
 /*!**************************************!*\
-  !*** multi ./resources/js/delete.js ***!
+  !*** multi ./resources/js/logout.js ***!
   \**************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\sisa\resources\js\delete.js */"./resources/js/delete.js");
+!(function webpackMissingModule() { var e = new Error("Cannot find module 'C:\\xampp\\htdocs\\sisa\\resources\\js\\logout.js'"); e.code = 'MODULE_NOT_FOUND'; throw e; }());
 
 
 /***/ })
-
-/******/ });
+/******/ ]);

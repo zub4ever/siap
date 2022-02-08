@@ -87,9 +87,9 @@ Usuários
 
 <div class="overlay">
  <center>  <h1> <i class="fa fa-refresh fa-spin"></i><h1> <center>
-		<h3>Acesso negado</h3>
+	<h3>Acesso negado</h3>
  </div>
-    <script>window.location.href = "{{url('home')}}"</script>
+        <script>window.location.href = "{{url('home')}}"</script>
 @endrole
 @endsection
 @section('js')

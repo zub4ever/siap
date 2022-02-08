@@ -25,7 +25,6 @@
         "vue-template-compiler": "^2.6.14"
     },
     "dependencies": {
-        "select2": "~4.0",
         "smartwizard": "^5.1.1"
     }
 }

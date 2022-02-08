@@ -40,9 +40,7 @@
 <script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
-<script src="{{Config::get('app.url')}}/node_modules/select2/jquery.select2.js"></script>
-<script src="{{Config::get('app.url')}}/node_modules/select2/dist/js/select2.min.js"></script>
-<script src="{{asset('assets/js/endereco/create.js')}}"></script>
+<script src="{{asset('assets/js/servidor/endereco/create.js')}}"></script>
 
 
 @endsection

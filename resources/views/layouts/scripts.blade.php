@@ -13,13 +13,18 @@
     $(document).ready(function() {
         
           $('.servidor-select2').select2();
-          $('.contrato-select2').select2();
-          $('.serve-select2').select2();
-           $('.og-select2').select2();
-           $('.func-select2').select2();
+          
+        
     });
 </script>
-
+<script>
+    $(document).ready(function() {
+        
+          $('.select2-serve_id').select2();
+          
+        
+    });
+</script>
 <!--=========================*
         Select 2 Cidade
 *===========================
