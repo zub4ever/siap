@@ -48,6 +48,7 @@
                                 <th class="text-center">CPF</th>
                                 <th class="text-center">Data nascimento</th>
                                 <th class="text-center">Origem</th>
+                                <th class="text-center">Tipo de servidor</th>
                                 <th class="text-center">Ações</th>
                             </tr>
                         </thead>
@@ -61,6 +62,11 @@
                                 @foreach($origin as $mnc)
                                 @if($svd->origin_id == $mnc->id)
                                  <td class="text-center">{{$mnc->nm_origem}}</td>
+                                @endif
+                                @endforeach
+                                @foreach($tpservidor as $tp)
+                                @if($svd->tp_servidor_id == $tp->id)
+                                 <td class="text-center">{{$tp->nm_tpservidor}}</td>
                                 @endif
                                 @endforeach
                                 <td>

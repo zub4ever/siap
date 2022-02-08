@@ -50,7 +50,8 @@ class FuncaoController extends Controller
 
         $funcao = Funcao::findOrFail($id);
 
-        $orgaoMun = Orgao::findOrFail($id);
+        $orgaoMun = Orgao::get();
+        
         return view('cadastrosAuxiliares.funcao.edit',compact('funcao','orgaoMun'));
       }   
       

@@ -15,6 +15,7 @@ use App\Marital_Status;
 use App\Type_Serve;
 use App\Orgao_Expedidor;
 use App\Sexo;
+use App\TipoServidor;
 
         
 
@@ -24,10 +25,10 @@ class ServeController extends Controller {
     //
     public function index() {
         
-        
+         $tpservidor=DB::table('tpservidor')->get()->all();
          $servidor = DB::table('serve')->get()->all();
          $origin = DB::table('origin')->get()->all();
-        return view('servidor.index',compact('servidor','origin'));
+        return view('servidor.index',compact('servidor','origin','tpservidor'));
     }
 
     public function create() {
@@ -37,8 +38,8 @@ class ServeController extends Controller {
         $obito = Obito::all();
         $type_serve = Type_Serve::all();
         $marital_status = Marital_Status::all();
-        
-        return view('servidor.create', compact('origin','marital_status','sexo','orgao_expedidor','obito','type_serve'));
+        $tpservidor = TipoServidor::all();
+        return view('servidor.create', compact('origin','marital_status','sexo','orgao_expedidor','obito','type_serve','tpservidor'));
     }
 
     public function store(ServeFormRequest $request) {

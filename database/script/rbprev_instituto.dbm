@@ -1,0 +1,1425 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+CAUTION: Do not modify this file unless you know what you are doing.
+         Unexpected results may occur if the code is changed deliberately.
+-->
+<dbmodel pgmodeler-ver="0.9.3-alpha1" last-position="450,1878" last-zoom="1" max-obj-count="38"
+	 default-schema="public" default-owner="postgres">
+<database name="rbprev_instituto" encoding="UTF8" lc-collate="Portuguese_Brazil.1252" lc-ctype="Portuguese_Brazil.1252" is-template="false" allow-conns="true">
+	<role name="postgres"/>
+	<tablespace name="pg_default"/>
+</database>
+
+<schema name="public" layer="0" rect-visible="true" fill-color="#e1e1e1" sql-disabled="true">
+</schema>
+
+<sequence name="address_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="address" layer="0" collapse-mode="2" max-obj-count="10" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.address_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_rua">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="nr_casa">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="complemento">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="state_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="city_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="serve_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="address_pkey" type="pk-constr" table="public.address">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="aposentadoria_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="aposentadoria" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.aposentadoria_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_aposentadoria">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="aposentadoria_pkey" type="pk-constr" table="public.aposentadoria">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="atendimento_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="atendimento" layer="0" collapse-mode="2" max-obj-count="10" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.atendimento_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_assegurado">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="nm_cidade">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="nm_atendimento">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="numero_telefone">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="status" not-null="true" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="atendimento_status_id" not-null="true" default-value="1">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="atendimento_pkey" type="pk-constr" table="public.atendimento">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="atendimento_status_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="atendimento_status" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="680" y="1040"/>
+	<column name="id" not-null="true" sequence="public.atendimento_status_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="statusAtendimento">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="atendimento_status_pkey" type="pk-constr" table="public.atendimento_status">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="certidao_tempo_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="certidao_tempo" layer="0" collapse-mode="2" max-obj-count="15" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1000" y="1040"/>
+	<column name="id" not-null="true" sequence="public.certidao_tempo_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_empregador">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="cpf_cnpj">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="nm_cid">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="tpProfessor_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="data_ingresso">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="data_termino">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="tpAposentadoriaEspecial_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="tpServicoMilitar_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="tpPCCR_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="tpServicoPublico_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="certidao_tempo_pkey" type="pk-constr" table="public.certidao_tempo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="city_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="city" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.city_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_cidade">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="city_pkey" type="pk-constr" table="public.city">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="contract_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="contract" layer="0" collapse-mode="2" max-obj-count="9" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.contract_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nr_contrato" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="origin_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="orgao_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="funcao_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="serve_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="contract_pkey" type="pk-constr" table="public.contract">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="folhapagto_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="folhapagto" layer="0" collapse-mode="2" max-obj-count="20" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.folhapagto_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="ano" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="mes" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="qtdAposentadoFffin" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="qtdAposentadoFprev" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="qtdPensionistaFfin" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="qtdPensionistaFprev" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="qtdTotalFfin" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="qtdTotalFprev" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="valorAposFfin" not-null="true">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="valorAposFprev" not-null="true">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="valorPenFfin" not-null="true">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="valorPenFprev" not-null="true">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="valorTotalFfin" not-null="true">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="valorTotalFprev" not-null="true">
+		<type name="double precision" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="folhapagto_pkey" type="pk-constr" table="public.folhapagto">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="funcao_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="funcao" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="560" y="1040"/>
+	<column name="id" not-null="true" sequence="public.funcao_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_funcao">
+		<type name="character varying" length="45"/>
+	</column>
+	<column name="orgao_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="funcao_pkey" type="pk-constr" table="public.funcao">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="marital_status_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="marital_status" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="880" y="1040"/>
+	<column name="id" not-null="true" sequence="public.marital_status_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="status_civil">
+		<type name="character varying" length="45"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="marital_status_pkey" type="pk-constr" table="public.marital_status">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="migrations_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="migrations" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.migrations_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="migration" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="batch" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<constraint name="migrations_pkey" type="pk-constr" table="public.migrations">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="model_has_permissions" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="permission_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="model_type" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="model_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="model_has_permissions_pkey" type="pk-constr" table="public.model_has_permissions">
+		<columns names="permission_id,model_id,model_type" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="model_has_roles" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="380" y="1040"/>
+	<column name="role_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="model_type" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="model_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="model_has_roles_pkey" type="pk-constr" table="public.model_has_roles">
+		<columns names="role_id,model_id,model_type" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="obito_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="obito" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="820" y="1040"/>
+	<column name="id" not-null="true" sequence="public.obito_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_obito">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="obito_pkey" type="pk-constr" table="public.obito">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="orgao_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<sequence name="orgao_expedidor_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="orgao_expedidor" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.orgao_expedidor_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_orgao">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="orgao_expedidor_pkey" type="pk-constr" table="public.orgao_expedidor">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="orgao" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1100" y="1040"/>
+	<column name="id" not-null="true" sequence="public.orgao_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_orgao">
+		<type name="character varying" length="45"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="orgao_pkey" type="pk-constr" table="public.orgao">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="origin_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="origin" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="id" not-null="true" sequence="public.origin_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_origem">
+		<type name="character varying" length="45"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="origin_pkey" type="pk-constr" table="public.origin">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="password_resets" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1040"/>
+	<column name="email" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="token" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+</table>
+
+<sequence name="pedido_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="pedido" layer="0" collapse-mode="2" max-obj-count="34" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="520" y="1040"/>
+	<column name="id" not-null="true" sequence="public.pedido_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="serve_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="contrato" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="ing_serv_publico">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="ing_cargo">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="licenca_gozada">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="data_pedido">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="aposentadoria_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cod_cid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_cid">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="cid">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="ato_concessao">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="ato_data">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="publicacao">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="data_publicacao">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="processo_org">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="processo_org_data">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="processo_adm">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="processo_adm_data">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="processo_tce">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="processo_tce_data">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="invalidez_data">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="grupo">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="protocolo">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="faltas">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="certidao_tempo_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="pedido_status">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="pedido_pkey" type="pk-constr" table="public.pedido">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="permissions_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="permissions" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="900" y="1040"/>
+	<column name="id" not-null="true" sequence="public.permissions_id_seq">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="guard_name" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="permissions_name_guard_name_unique" type="uq-constr" table="public.permissions">
+		<columns names="name,guard_name" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="permissions_pkey" type="pk-constr" table="public.permissions">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="role_has_permissions" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1660"/>
+	<column name="permission_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="role_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="role_has_permissions_pkey" type="pk-constr" table="public.role_has_permissions">
+		<columns names="permission_id,role_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="roles_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="roles" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="1500"/>
+	<column name="id" not-null="true" sequence="public.roles_id_seq">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="guard_name" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="roles_name_guard_name_unique" type="uq-constr" table="public.roles">
+		<columns names="name,guard_name" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="roles_pkey" type="pk-constr" table="public.roles">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="serve_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="serve" layer="0" collapse-mode="2" max-obj-count="20" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="880" y="2020"/>
+	<column name="id" not-null="true" sequence="public.serve_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="matricula" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_servidor">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="data_nascimento">
+		<type name="date" length="0"/>
+	</column>
+	<column name="sexo_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="rg">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="orgao_expedidor_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="cpf">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="pis_pasep">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="nm_pai">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="nm_mae">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="obito_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="origin_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="type_serve_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="marital_status_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="serve_pkey" type="pk-constr" table="public.serve">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="sexo_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="sexo" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="800" y="1660"/>
+	<column name="id" not-null="true" sequence="public.sexo_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_sexo">
+		<type name="character varying" length="20"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="sexo_pkey" type="pk-constr" table="public.sexo">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="state_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="state" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1080" y="1660"/>
+	<column name="id" not-null="true" sequence="public.state_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_estado">
+		<type name="character varying" length="150"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="state_pkey" type="pk-constr" table="public.state">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tpAposentadoriaEspecial_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tpAposentadoriaEspecial" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="2160"/>
+	<column name="id" not-null="true" sequence="public.&quot;tpAposentadoriaEspecial_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sts_aposentadoriaEspecial">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="tpAposentadoriaEspecial_pkey" type="pk-constr" table="public.&quot;tpAposentadoriaEspecial&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tpPCCR_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tpPCCR" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="2160"/>
+	<column name="id" not-null="true" sequence="public.&quot;tpPCCR_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sts_PCCR">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="tpPCCR_pkey" type="pk-constr" table="public.&quot;tpPCCR&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tpProfessor_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tpProfessor" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="2160"/>
+	<column name="id" not-null="true" sequence="public.&quot;tpProfessor_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sts_professor">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="tpProfessor_pkey" type="pk-constr" table="public.&quot;tpProfessor&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tpServicoMilitar_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tpServicoMilitar" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="560" y="2160"/>
+	<column name="id" not-null="true" sequence="public.&quot;tpServicoMilitar_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sts_Servico_Mili">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="tpServicoMilitar_pkey" type="pk-constr" table="public.&quot;tpServicoMilitar&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="tpServicoPublico_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="tpServicoPublico" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="320" y="1880"/>
+	<column name="id" not-null="true" sequence="public.&quot;tpServicoPublico_id_seq&quot;">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="sts_servico">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="tpServicoPublico_pkey" type="pk-constr" table="public.&quot;tpServicoPublico&quot;">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="type_serve_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="type_serve" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="2340"/>
+	<column name="id" not-null="true" sequence="public.type_serve_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="status_servidor">
+		<type name="character varying" length="45"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="type_serve_pkey" type="pk-constr" table="public.type_serve">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="users_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="users" layer="0" collapse-mode="2" max-obj-count="10" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="280" y="2340"/>
+	<column name="id" not-null="true" sequence="public.users_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="email" not-null="true">
+		<type name="character varying" length="50"/>
+	</column>
+	<column name="email_verified_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="password" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="remember_token">
+		<type name="character varying" length="100"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="status" not-null="true" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<constraint name="users_email_unique" type="uq-constr" table="public.users">
+		<columns names="email" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="users_pkey" type="pk-constr" table="public.users">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<index name="model_has_permissions_model_id_model_type_index" table="public.model_has_permissions"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="90">
+		<idxelement use-sorting="false">
+			<column name="model_id"/>
+		</idxelement>
+		<idxelement use-sorting="false">
+			<column name="model_type"/>
+		</idxelement>
+</index>
+
+<index name="model_has_roles_model_id_model_type_index" table="public.model_has_roles"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="90">
+		<idxelement use-sorting="false">
+			<column name="model_id"/>
+		</idxelement>
+		<idxelement use-sorting="false">
+			<column name="model_type"/>
+		</idxelement>
+</index>
+
+<index name="password_resets_email_index" table="public.password_resets"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="90">
+		<idxelement use-sorting="false">
+			<column name="email"/>
+		</idxelement>
+</index>
+
+<constraint name="address_city_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.city" table="public.address">
+	<columns names="city_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="address_serve_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.serve" table="public.address">
+	<columns names="serve_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="address_state_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.state" table="public.address">
+	<columns names="state_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="atendimento_atendimento_status_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.atendimento_status" table="public.atendimento">
+	<columns names="atendimento_status_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="certidao_tempo_tpaposentadoriaespecial_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.&quot;tpAposentadoriaEspecial&quot;" table="public.certidao_tempo">
+	<columns names="tpAposentadoriaEspecial_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="certidao_tempo_tppccr_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.&quot;tpPCCR&quot;" table="public.certidao_tempo">
+	<columns names="tpPCCR_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="certidao_tempo_tpprofessor_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.&quot;tpProfessor&quot;" table="public.certidao_tempo">
+	<columns names="tpProfessor_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="certidao_tempo_tpservicomilitar_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.&quot;tpServicoMilitar&quot;" table="public.certidao_tempo">
+	<columns names="tpServicoMilitar_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="certidao_tempo_tpservicopublico_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.&quot;tpServicoPublico&quot;" table="public.certidao_tempo">
+	<columns names="tpServicoPublico_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="contract_funcao_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.funcao" table="public.contract">
+	<columns names="funcao_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="contract_orgao_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.orgao" table="public.contract">
+	<columns names="orgao_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="contract_origin_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.origin" table="public.contract">
+	<columns names="origin_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="contract_serve_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.serve" table="public.contract">
+	<columns names="serve_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="funcao_orgao_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.orgao" table="public.funcao">
+	<columns names="orgao_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="model_has_permissions_permission_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.permissions" table="public.model_has_permissions">
+	<columns names="permission_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="model_has_roles_role_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.roles" table="public.model_has_roles">
+	<columns names="role_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="pedido_aposentadoria_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.aposentadoria" table="public.pedido">
+	<columns names="aposentadoria_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="pedido_certidao_tempo_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.certidao_tempo" table="public.pedido">
+	<columns names="certidao_tempo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="pedido_serve_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.serve" table="public.pedido">
+	<columns names="serve_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="role_has_permissions_permission_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.permissions" table="public.role_has_permissions">
+	<columns names="permission_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="role_has_permissions_role_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.roles" table="public.role_has_permissions">
+	<columns names="role_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="serve_marital_status_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.marital_status" table="public.serve">
+	<columns names="marital_status_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="serve_obito_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.obito" table="public.serve">
+	<columns names="obito_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="serve_orgao_expedidor_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.orgao_expedidor" table="public.serve">
+	<columns names="orgao_expedidor_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="serve_origin_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.origin" table="public.serve">
+	<columns names="origin_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="serve_sexo_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.sexo" table="public.serve">
+	<columns names="sexo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="serve_type_serve_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.type_serve" table="public.serve">
+	<columns names="type_serve_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<relationship name="rel_address_city" type="relfk" layer="0"
+	 custom-color="#2137d0"
+	 src-table="public.address"
+	 dst-table="public.city" reference-fk="address_city_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_address_serve" type="relfk" layer="0"
+	 custom-color="#ebf7fa"
+	 src-table="public.address"
+	 dst-table="public.serve" reference-fk="address_serve_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_address_state" type="relfk" layer="0"
+	 custom-color="#371687"
+	 src-table="public.address"
+	 dst-table="public.state" reference-fk="address_state_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_atendimento_atendimento_status" type="relfk" layer="0"
+	 custom-color="#272c3e"
+	 src-table="public.atendimento"
+	 dst-table="public.atendimento_status" reference-fk="atendimento_atendimento_status_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="&quot;rel_certidao_tempo_tpAposentadoriaEspecial&quot;" type="relfk" layer="0"
+	 custom-color="#7e2101"
+	 src-table="public.certidao_tempo"
+	 dst-table="public.&quot;tpAposentadoriaEspecial&quot;" reference-fk="certidao_tempo_tpaposentadoriaespecial_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_certidao_tempo_tpPCCR&quot;" type="relfk" layer="0"
+	 custom-color="#1aeb9c"
+	 src-table="public.certidao_tempo"
+	 dst-table="public.&quot;tpPCCR&quot;" reference-fk="certidao_tempo_tppccr_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_certidao_tempo_tpProfessor&quot;" type="relfk" layer="0"
+	 custom-color="#5ba63f"
+	 src-table="public.certidao_tempo"
+	 dst-table="public.&quot;tpProfessor&quot;" reference-fk="certidao_tempo_tpprofessor_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_certidao_tempo_tpServicoMilitar&quot;" type="relfk" layer="0"
+	 custom-color="#425a31"
+	 src-table="public.certidao_tempo"
+	 dst-table="public.&quot;tpServicoMilitar&quot;" reference-fk="certidao_tempo_tpservicomilitar_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="&quot;rel_certidao_tempo_tpServicoPublico&quot;" type="relfk" layer="0"
+	 custom-color="#262c47"
+	 src-table="public.certidao_tempo"
+	 dst-table="public.&quot;tpServicoPublico&quot;" reference-fk="certidao_tempo_tpservicopublico_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_contract_funcao" type="relfk" layer="0"
+	 custom-color="#3856bf"
+	 src-table="public.contract"
+	 dst-table="public.funcao" reference-fk="contract_funcao_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_contract_orgao" type="relfk" layer="0"
+	 custom-color="#9d0479"
+	 src-table="public.contract"
+	 dst-table="public.orgao" reference-fk="contract_orgao_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_contract_origin" type="relfk" layer="0"
+	 custom-color="#5bc808"
+	 src-table="public.contract"
+	 dst-table="public.origin" reference-fk="contract_origin_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_contract_serve" type="relfk" layer="0"
+	 custom-color="#0fcf94"
+	 src-table="public.contract"
+	 dst-table="public.serve" reference-fk="contract_serve_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_funcao_orgao" type="relfk" layer="0"
+	 custom-color="#27b5b4"
+	 src-table="public.funcao"
+	 dst-table="public.orgao" reference-fk="funcao_orgao_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_model_has_permissions_permissions" type="relfk" layer="0"
+	 custom-color="#f4fdd5"
+	 src-table="public.model_has_permissions"
+	 dst-table="public.permissions" reference-fk="model_has_permissions_permission_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_model_has_roles_roles" type="relfk" layer="0"
+	 custom-color="#e48d33"
+	 src-table="public.model_has_roles"
+	 dst-table="public.roles" reference-fk="model_has_roles_role_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_pedido_aposentadoria" type="relfk" layer="0"
+	 custom-color="#40f1b8"
+	 src-table="public.pedido"
+	 dst-table="public.aposentadoria" reference-fk="pedido_aposentadoria_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pedido_certidao_tempo" type="relfk" layer="0"
+	 custom-color="#25cef7"
+	 src-table="public.pedido"
+	 dst-table="public.certidao_tempo" reference-fk="pedido_certidao_tempo_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_pedido_serve" type="relfk" layer="0"
+	 custom-color="#0a50ad"
+	 src-table="public.pedido"
+	 dst-table="public.serve" reference-fk="pedido_serve_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_role_has_permissions_permissions" type="relfk" layer="0"
+	 custom-color="#b7f32e"
+	 src-table="public.role_has_permissions"
+	 dst-table="public.permissions" reference-fk="role_has_permissions_permission_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_role_has_permissions_roles" type="relfk" layer="0"
+	 custom-color="#119a9d"
+	 src-table="public.role_has_permissions"
+	 dst-table="public.roles" reference-fk="role_has_permissions_role_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_serve_marital_status" type="relfk" layer="0"
+	 custom-color="#abdfa3"
+	 src-table="public.serve"
+	 dst-table="public.marital_status" reference-fk="serve_marital_status_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_serve_obito" type="relfk" layer="0"
+	 custom-color="#d0955e"
+	 src-table="public.serve"
+	 dst-table="public.obito" reference-fk="serve_obito_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_serve_orgao_expedidor" type="relfk" layer="0"
+	 custom-color="#d8250f"
+	 src-table="public.serve"
+	 dst-table="public.orgao_expedidor" reference-fk="serve_orgao_expedidor_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_serve_origin" type="relfk" layer="0"
+	 custom-color="#57e48a"
+	 src-table="public.serve"
+	 dst-table="public.origin" reference-fk="serve_origin_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_serve_sexo" type="relfk" layer="0"
+	 custom-color="#903ca7"
+	 src-table="public.serve"
+	 dst-table="public.sexo" reference-fk="serve_sexo_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_serve_type_serve" type="relfk" layer="0"
+	 custom-color="#cec806"
+	 src-table="public.serve"
+	 dst-table="public.type_serve" reference-fk="serve_type_serve_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<permission>
+	<object name="public" type="schema"/>
+	<roles names="postgres"/>
+	<privileges create="true" usage="true"/>
+</permission>
+<permission>
+	<object name="public" type="schema"/>
+	<privileges create="true" usage="true"/>
+</permission>
+</dbmodel>
