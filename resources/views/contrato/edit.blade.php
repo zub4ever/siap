@@ -9,19 +9,19 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route("home")}}">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("fonteRecurso.index")}}">Órgão expedidor</a></li>
-    <li class="breadcrumb-item active"><a>Editar órgão expedidor</a></li>
+    <li class="breadcrumb-item"><a href="{{route("contrato.index")}}">Contrato</a></li>
+    <li class="breadcrumb-item active"><a>Editar Contrato</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Editar órgão expedidor</h4>
-                <form action="{{route('orgaoExpedidor.update', $orgaoExpedidor->id)}}" method="POST">
+                <h4 class="card_title">Editar Contrato</h4>
+                <form action="{{route('contrato.update', $contrato->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    @include('administracao.auxiliares.orgaoExpedidor.form')
+                    @include('contrato.form')
                 </form>
             </div>
         </div>

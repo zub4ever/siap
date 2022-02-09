@@ -13,7 +13,8 @@ class Contract extends Model {
         'origin_id',
         'orgao_id',
         'funcao_id',
-        'serve_id'
+        'serve_id',
+        'status'
     ];
     protected $guarded = [];
 

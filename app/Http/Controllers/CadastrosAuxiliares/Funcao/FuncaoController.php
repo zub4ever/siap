@@ -74,7 +74,27 @@ class FuncaoController extends Controller
               'success',
               "Função alterado com sucesso."
           );
-      }         
+      }
+          public function destroy($id)
+    {
+        
+        $funcao = Funcao::findOrFail($id);
+
+
+        DB::beginTransaction();
+
+        if (!$funcao->update(['status'=> 0])) {
+            DB::rollBack();
+            return redirect()->route('contrato.index')->with('error', "Falha ao deletar a Função.");
+        }
+
+        DB::commit();
+
+        return redirect()->route('contrato.index')->with(
+            'success',
+            "Função deletado com sucesso."
+        );
+    }
         
         
     }

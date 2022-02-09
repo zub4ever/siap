@@ -24,7 +24,7 @@ class ContractController extends Controller {
         $origin = DB::table('origin')->get()->all();
         $orgao = DB::table('orgao')->get()->all();
         $funcao = DB::table('funcao')->get()->all();
-        return view('contrato.index', compact('servidor', 'origin', 'funcao', 'orgao','contrato'));
+        return view('contrato.index', compact('servidor', 'origin', 'funcao', 'orgao', 'contrato'));
     }
 
     public function create() {
@@ -53,6 +53,56 @@ class ContractController extends Controller {
         return redirect()->route('contrato.index')->with(
                         'success',
                         "Contrato cadastrada com sucesso."
+        );
+    }
+
+    public function edit($id) {
+
+        $contrato = Contract::findOrFail($id);
+         $origin = Origin::all();
+        $servidor = Serve::all();
+        $orgao = Orgao::all();
+        $funcao = Funcao::all();
+        return view('contrato.edit', compact('contrato','servidor', 'orgao', 'funcao', 'origin'));
+    }
+
+    public function update(ContractFormRequest $request, $id) {
+
+        $contrato = Contract::findOrFail($id);
+
+        DB::beginTransaction();
+
+        if (!$contrato->update($request->all())) {
+
+            DB::rollBack();
+            return redirect()->route('contrato.index')->with('error', "Falha na alteração contrato.");
+        }
+
+        DB::commit();
+
+        return redirect()->route('contrato.index')->with(
+                        'success',
+                        "Contrato alterado com sucesso."
+        );
+    }
+        public function destroy($id)
+    {
+        
+        $contrato = Contract::findOrFail($id);
+
+
+        DB::beginTransaction();
+
+        if (!$contrato->update(['status'=> 0])) {
+            DB::rollBack();
+            return redirect()->route('atendimentos.index')->with('error', "Falha ao deletar o Contrato.");
+        }
+
+        DB::commit();
+
+        return redirect()->route('atendimentos.index')->with(
+            'success',
+            "Contrato deletado com sucesso."
         );
     }
 

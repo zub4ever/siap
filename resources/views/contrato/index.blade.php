@@ -69,15 +69,20 @@ Contrato
                                 @endif
                                 @endforeach
                                 <td>
-                                    <a href="">
+                                    <a href="{{route('contrato.edit', $svd->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
-                                    <form action="" method="POST"
-                                          id="formLaravel" style="display:inline-block;">
-                                        <span class="submit" idform="">
+                                    @can('excluir')
+                                    &nbsp;
+                                    <form action="{{route('contrato.destroy', $svd->id)}}" method="POST"
+                                          id="formLaravel{{$svd->id}}" style="display:inline-block;">
+                                        @method('DELETE')
+                                        @csrf
+                                        <span class="submit" idform="{{$svd->id}}">
                                             <i class="ti-trash btn btn-danger"></i>
                                         </span>
                                     </form>
+                                    @endcan
                                 </td>
                             </tr>
                             @endforeach

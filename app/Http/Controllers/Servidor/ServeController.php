@@ -16,19 +16,20 @@ use App\Type_Serve;
 use App\Orgao_Expedidor;
 use App\Sexo;
 use App\TipoServidor;
-
-        
-
+use App\Funcao;
 
 class ServeController extends Controller {
 
     //
     public function index() {
-        
-         $tpservidor=DB::table('tpservidor')->get()->all();
-         $servidor = DB::table('serve')->get()->all();
-         $origin = DB::table('origin')->get()->all();
-        return view('servidor.index',compact('servidor','origin','tpservidor'));
+
+        $tpservidor = DB::table('tpservidor')->get()->all();
+        $servidor = Serve::where('status', 1)
+                ->orderBY('id')
+                ->get();
+        $origin = DB::table('origin')->get()->all();
+
+        return view('servidor.index', compact('servidor', 'origin', 'tpservidor'));
     }
 
     public function create() {
@@ -39,11 +40,11 @@ class ServeController extends Controller {
         $type_serve = Type_Serve::all();
         $marital_status = Marital_Status::all();
         $tpservidor = TipoServidor::all();
-        return view('servidor.create', compact('origin','marital_status','sexo','orgao_expedidor','obito','type_serve','tpservidor'));
+        return view('servidor.create', compact('origin', 'marital_status', 'sexo', 'orgao_expedidor', 'obito', 'type_serve', 'tpservidor'));
     }
 
     public function store(ServeFormRequest $request) {
-        
+
         DB::beginTransaction();
 
         $serve = Serve::create($request->all());
@@ -59,14 +60,60 @@ class ServeController extends Controller {
                         'success',
                         "Servidor cadastrado com sucesso."
         );
-      }
-       public function edit($id) {
-
-        $serve = Serve::findOrFail($id);
-        return view('servidor.edit', compact('serve'));
     }
 
-      
-      
+    public function edit($id) {
+        
+        $origin = Origin::get();
+        $sexo = Sexo::get();
+        $orgao_expedidor = Orgao_Expedidor::get();
+        $obito = Obito::get();
+        $type_serve = Type_Serve::get();
+        $marital_status = Marital_Status::get();
+        $tpservidor = TipoServidor::get();
+
+        $serve = Serve::findOrFail($id);
+        return view('servidor.edit', compact('serve','origin','sexo','orgao_expedidor','obito','type_serve','marital_status','tpservidor'));
+    }
+    
+    public function update(ServeFormRequest $request, $id) {
+       
+          $serve = Serve::findOrFail($id);
+
+       
+          DB::beginTransaction();
+  
+          if (!$serve->update($request->all())) {
+
+              DB::rollBack();
+              return redirect()->route('servidor.index')->with('error', "Falha na alteração do servidor.");
+          }
+  
+          DB::commit();
+  
+          return redirect()->route('servidor.index')->with(
+              'success',
+              "Servidor alterado com sucesso."
+          );
+      }
+
+    public function destroy($id) {
+
+        $serve = Serve::findOrFail($id);
+
+        DB::beginTransaction();
+
+        if (!$serve->update(['status' => 0])) {
+            DB::rollBack();
+            return redirect()->route('servidor.index')->with('error', "Falha ao deletar o Servidor.");
+        }
+
+        DB::commit();
+
+        return redirect()->route('servidor.index')->with(
+                        'success',
+                        "Servidor deletado com sucesso."
+        );
+    }
 
 }

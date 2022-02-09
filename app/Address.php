@@ -14,7 +14,8 @@ class Address extends Model {
         'complemento',
         'state_id',
         'city_id',
-        'serve_id'
+        'serve_id',
+        'status'
     ];
     
     protected $guarded = [];
