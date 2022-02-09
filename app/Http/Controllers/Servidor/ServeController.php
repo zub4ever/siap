@@ -60,5 +60,13 @@ class ServeController extends Controller {
                         "Servidor cadastrado com sucesso."
         );
       }
+       public function edit($id) {
+
+        $serve = Serve::findOrFail($id);
+        return view('servidor.edit', compact('serve'));
+    }
+
+      
+      
 
 }

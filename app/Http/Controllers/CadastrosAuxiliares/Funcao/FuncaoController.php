@@ -56,7 +56,8 @@ class FuncaoController extends Controller
       }   
       
       public function update(FuncaoFormRequest $request, $id) {
-        $funcao = Funcao::findOrFail($id);
+       
+          $funcao = Funcao::findOrFail($id);
 
        
           DB::beginTransaction();

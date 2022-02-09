@@ -49,5 +49,10 @@ class EnderecoController extends Controller {
                         "Endereço cadastrado com sucesso."
         );
     }
+    
+    public function edit($id){
+        
+        
+    }
 
 }

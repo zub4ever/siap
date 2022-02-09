@@ -24,9 +24,8 @@
                         </a>
                         <ul class="collapse">
                            <li {!! (request()->is('folhaPagamento*') ? 'class="active"' : "")!!}>
-                                <a href="{{route('folhaPagamento.index') }}">Folha Pagamento</a></li>
-                            <li {!! (Request::is('index2') ? 'class="active"':"") !!}><a href="{{ URL::to('index2') }}">Dashboard V2</a></li>
-                            <li {!! (Request::is('index3') ? 'class="active"':"") !!}><a href="{{ URL::to('index3') }}">Dashboard V3</a></li>
+                                <a href="{{route('home') }}">Inicio</a></li>
+                            
                         </ul>
                     </li>
                     <!-- Inicio de Servidor -->
@@ -44,11 +43,25 @@
                                     <span>Servidores</span>
                                 </a>
                             </li>
-                            <!-- Fim do cadastros auxiliares -->
+                            <!-- Fim do -->
+                            <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('contrato.index')}}">
+                                    <i class="icon-documents"></i>
+                                    <span>Contratos</span>
+                                </a>
+                            </li>
+                            <!-- -->
+                            <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('endereco.index')}}">
+                                    <i class="icon-map"></i>
+                                    <span>Endereços</span>
+                                </a>
+                            </li>
+                            
                         </ul>
                     </li>
                     <!--fim de Servidor-->
-                    <!-- Inicio de Contrato -->
+                    <!-- Inicio de Contrato 
                     <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="icon-pencil"></i>
@@ -64,9 +77,9 @@
                                 </a>
                             </li>
 
-                            <!-- Fim do cadastros auxiliares -->
+                            <!-- Fim do cadastros auxiliares
                         </ul>
-                    </li>
+                    </li>  
                     <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class=" icon-streetsign"></i>
@@ -82,9 +95,9 @@
                                 </a>
                             </li>
 
-                            <!-- Fim do  -->
+                         
                         </ul>
-                    </li>
+                    </li> -->
                     <!--fim de-->
                     <!-- Inicio de Administração -->
                     <li {!! (request()->is('administracao*') ? 'class="active"' : "")!!}>

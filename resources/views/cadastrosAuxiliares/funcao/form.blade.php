@@ -7,13 +7,17 @@
             <select name="orgao_id" class="form-control" id="titula1">
                 <option value="">Selecione uma opção</option>
                 @foreach ($orgaoMun as $orgao)
-                <option value="{{$orgao->id}}">
+                <option value="{{$orgao->id}}"
+                    {{(empty(old('orgao_id')) ? @$funcao->orgao_id : old('orgao_id')) == $orgao->id ? 'selected' : ''}}>
                     {{$orgao->nm_orgao}}
                 </option>
                 @endforeach
             </select>
+            @if ($errors->has('orgao_id'))
+            <h6 class="heading text-danger">{{$errors->first('orgao_id')}}</h6>
+            @endif
         </div>
-    </div>  
+    </div>   
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="nm_funcao" class="form-control-label">Nome da Função:
@@ -21,7 +25,7 @@
             </label>
             <input type="text" class="form-control" name="nm_funcao" value="{{ @$funcao->nm_funcao }}">
             @if ($errors->has('nm_funcao'))
-                <h6 class="heading text-danger">{{$errors->first('nm_funcao')}}</h6>
+            <h6 class="heading text-danger">{{$errors->first('nm_funcao')}}</h6>
             @endif
         </div>
     </div> 

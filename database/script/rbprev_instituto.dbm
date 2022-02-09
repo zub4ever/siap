@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3-alpha1" last-position="450,1878" last-zoom="1" max-obj-count="38"
+<dbmodel pgmodeler-ver="0.9.3-alpha1" last-position="0,0" last-zoom="1" max-obj-count="39"
 	 default-schema="public" default-owner="postgres">
 <database name="rbprev_instituto" encoding="UTF8" lc-collate="Portuguese_Brazil.1252" lc-ctype="Portuguese_Brazil.1252" is-template="false" allow-conns="true">
 	<role name="postgres"/>
@@ -21,7 +21,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="address" layer="0" collapse-mode="2" max-obj-count="10" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="60" y="60"/>
 	<column name="id" not-null="true" sequence="public.address_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -62,7 +62,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="aposentadoria" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="380" y="60"/>
 	<column name="id" not-null="true" sequence="public.aposentadoria_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -88,7 +88,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="atendimento" layer="0" collapse-mode="2" max-obj-count="10" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="720" y="60"/>
 	<column name="id" not-null="true" sequence="public.atendimento_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -129,7 +129,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="atendimento_status" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="680" y="1040"/>
+	<position x="1140" y="60"/>
 	<column name="id" not-null="true" sequence="public.atendimento_status_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -155,7 +155,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="certidao_tempo" layer="0" collapse-mode="2" max-obj-count="15" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1000" y="1040"/>
+	<position x="1460" y="60"/>
 	<column name="id" not-null="true" sequence="public.certidao_tempo_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -208,7 +208,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="city" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="60" y="480"/>
 	<column name="id" not-null="true" sequence="public.city_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -234,7 +234,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="contract" layer="0" collapse-mode="2" max-obj-count="9" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="340" y="480"/>
 	<column name="id" not-null="true" sequence="public.contract_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -272,7 +272,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="folhapagto" layer="0" collapse-mode="2" max-obj-count="20" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="680" y="480"/>
 	<column name="id" not-null="true" sequence="public.folhapagto_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -337,7 +337,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="funcao" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="560" y="1040"/>
+	<position x="1020" y="480"/>
 	<column name="id" not-null="true" sequence="public.funcao_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -366,7 +366,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="marital_status" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="880" y="1040"/>
+	<position x="1340" y="480"/>
 	<column name="id" not-null="true" sequence="public.marital_status_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -392,7 +392,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="migrations" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="60" y="880"/>
 	<column name="id" not-null="true" sequence="public.migrations_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -407,42 +407,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<table name="model_has_permissions" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
-	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="280" y="1040"/>
-	<column name="permission_id" not-null="true">
-		<type name="bigint" length="0"/>
-	</column>
-	<column name="model_type" not-null="true">
-		<type name="character varying" length="255"/>
-	</column>
-	<column name="model_id" not-null="true">
-		<type name="bigint" length="0"/>
-	</column>
-	<constraint name="model_has_permissions_pkey" type="pk-constr" table="public.model_has_permissions">
-		<columns names="permission_id,model_id,model_type" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<table name="model_has_roles" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
-	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="380" y="1040"/>
-	<column name="role_id" not-null="true">
-		<type name="bigint" length="0"/>
-	</column>
-	<column name="model_type" not-null="true">
-		<type name="character varying" length="255"/>
-	</column>
-	<column name="model_id" not-null="true">
-		<type name="bigint" length="0"/>
-	</column>
-	<constraint name="model_has_roles_pkey" type="pk-constr" table="public.model_has_roles">
-		<columns names="role_id,model_id,model_type" ref-type="src-columns"/>
-	</constraint>
-</table>
-
 <sequence name="obito_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
 	<schema name="public"/>
 	<role name="postgres"/>
@@ -451,7 +415,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="obito" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="820" y="1040"/>
+	<position x="360" y="880"/>
 	<column name="id" not-null="true" sequence="public.obito_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -482,7 +446,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="orgao_expedidor" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="920" y="880"/>
 	<column name="id" not-null="true" sequence="public.orgao_expedidor_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -503,7 +467,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="orgao" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1100" y="1040"/>
+	<position x="640" y="880"/>
 	<column name="id" not-null="true" sequence="public.orgao_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -529,7 +493,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="origin" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="1240" y="880"/>
 	<column name="id" not-null="true" sequence="public.origin_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -550,7 +514,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="password_resets" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="1040"/>
+	<position x="60" y="1060"/>
 	<column name="email" not-null="true">
 		<type name="character varying" length="50"/>
 	</column>
@@ -570,7 +534,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="pedido" layer="0" collapse-mode="2" max-obj-count="34" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="520" y="1040"/>
+	<position x="380" y="1060"/>
 	<column name="id" not-null="true" sequence="public.pedido_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -663,94 +627,15 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
-<sequence name="permissions_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1">
-	<schema name="public"/>
-	<role name="postgres"/>
-</sequence>
-
-<table name="permissions" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
-	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="900" y="1040"/>
-	<column name="id" not-null="true" sequence="public.permissions_id_seq">
-		<type name="bigint" length="0"/>
-	</column>
-	<column name="name" not-null="true">
-		<type name="character varying" length="255"/>
-	</column>
-	<column name="guard_name" not-null="true">
-		<type name="character varying" length="255"/>
-	</column>
-	<column name="created_at">
-		<type name="timestamp" length="0" precision="0"/>
-	</column>
-	<column name="updated_at">
-		<type name="timestamp" length="0" precision="0"/>
-	</column>
-	<constraint name="permissions_name_guard_name_unique" type="uq-constr" table="public.permissions">
-		<columns names="name,guard_name" ref-type="src-columns"/>
-	</constraint>
-	<constraint name="permissions_pkey" type="pk-constr" table="public.permissions">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<table name="role_has_permissions" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
-	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="280" y="1660"/>
-	<column name="permission_id" not-null="true">
-		<type name="bigint" length="0"/>
-	</column>
-	<column name="role_id" not-null="true">
-		<type name="bigint" length="0"/>
-	</column>
-	<constraint name="role_has_permissions_pkey" type="pk-constr" table="public.role_has_permissions">
-		<columns names="permission_id,role_id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
-<sequence name="roles_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1">
-	<schema name="public"/>
-	<role name="postgres"/>
-</sequence>
-
-<table name="roles" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
-	<schema name="public"/>
-	<role name="postgres"/>
-	<position x="280" y="1500"/>
-	<column name="id" not-null="true" sequence="public.roles_id_seq">
-		<type name="bigint" length="0"/>
-	</column>
-	<column name="name" not-null="true">
-		<type name="character varying" length="255"/>
-	</column>
-	<column name="guard_name" not-null="true">
-		<type name="character varying" length="255"/>
-	</column>
-	<column name="created_at">
-		<type name="timestamp" length="0" precision="0"/>
-	</column>
-	<column name="updated_at">
-		<type name="timestamp" length="0" precision="0"/>
-	</column>
-	<constraint name="roles_name_guard_name_unique" type="uq-constr" table="public.roles">
-		<columns names="name,guard_name" ref-type="src-columns"/>
-	</constraint>
-	<constraint name="roles_pkey" type="pk-constr" table="public.roles">
-		<columns names="id" ref-type="src-columns"/>
-	</constraint>
-</table>
-
 <sequence name="serve_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
 	<schema name="public"/>
 	<role name="postgres"/>
 </sequence>
 
-<table name="serve" layer="0" collapse-mode="2" max-obj-count="20" z-value="0">
+<table name="serve" layer="0" collapse-mode="2" max-obj-count="22" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="880" y="2020"/>
+	<position x="760" y="1060"/>
 	<column name="id" not-null="true" sequence="public.serve_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -760,7 +645,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="nm_servidor">
 		<type name="character varying" length="150"/>
 	</column>
-	<column name="data_nascimento">
+	<column name="data_nascimento" not-null="true">
 		<type name="date" length="0"/>
 	</column>
 	<column name="sexo_id" not-null="true">
@@ -802,6 +687,12 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="updated_at">
 		<type name="timestamp" length="0" precision="0"/>
 	</column>
+	<column name="tp_servidor_id">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="status" not-null="true" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
 	<constraint name="serve_pkey" type="pk-constr" table="public.serve">
 		<columns names="id" ref-type="src-columns"/>
 	</constraint>
@@ -815,7 +706,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="sexo" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="800" y="1660"/>
+	<position x="1140" y="1060"/>
 	<column name="id" not-null="true" sequence="public.sexo_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -841,7 +732,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="state" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1080" y="1660"/>
+	<position x="1420" y="1060"/>
 	<column name="id" not-null="true" sequence="public.state_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -867,7 +758,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpAposentadoriaEspecial" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="2160"/>
+	<position x="60" y="1700"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpAposentadoriaEspecial_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -893,7 +784,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpPCCR" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="2160"/>
+	<position x="440" y="1700"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpPCCR_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -919,7 +810,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpProfessor" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="2160"/>
+	<position x="720" y="1700"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpProfessor_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -945,7 +836,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpServicoMilitar" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="560" y="2160"/>
+	<position x="1020" y="1700"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpServicoMilitar_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -971,7 +862,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpServicoPublico" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="320" y="1880"/>
+	<position x="1340" y="1700"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpServicoPublico_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -997,7 +888,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="type_serve" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="2340"/>
+	<position x="60" y="1880"/>
 	<column name="id" not-null="true" sequence="public.type_serve_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -1023,7 +914,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="users" layer="0" collapse-mode="2" max-obj-count="10" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="280" y="2340"/>
+	<position x="360" y="1880"/>
 	<column name="id" not-null="true" sequence="public.users_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -1059,6 +950,96 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</constraint>
 </table>
 
+<index name="password_resets_email_index" table="public.password_resets"
+	 concurrent="false" unique="false" fast-update="false" buffering="false"
+	 index-type="btree" factor="90">
+		<idxelement use-sorting="false">
+			<column name="email"/>
+		</idxelement>
+</index>
+
+<sequence name="permissions_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="permissions" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="720" y="1880"/>
+	<column name="id" not-null="true" sequence="public.permissions_id_seq">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="guard_name" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="permissions_pkey" type="pk-constr" table="public.permissions">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="permissions_name_guard_name_unique" type="uq-constr" table="public.permissions">
+		<columns names="name,guard_name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="roles_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="9223372036854775807" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="roles" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1140" y="1880"/>
+	<column name="id" not-null="true" sequence="public.roles_id_seq">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="name" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="guard_name" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="roles_pkey" type="pk-constr" table="public.roles">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+	<constraint name="roles_name_guard_name_unique" type="uq-constr" table="public.roles">
+		<columns names="name,guard_name" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="model_has_permissions" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1520" y="1880"/>
+	<column name="permission_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="model_type" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="model_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="model_has_permissions_pkey" type="pk-constr" table="public.model_has_permissions">
+		<columns names="permission_id,model_id,model_type" ref-type="src-columns"/>
+	</constraint>
+</table>
+
 <index name="model_has_permissions_model_id_model_type_index" table="public.model_has_permissions"
 	 concurrent="false" unique="false" fast-update="false" buffering="false"
 	 index-type="btree" factor="90">
@@ -1069,6 +1050,24 @@ CAUTION: Do not modify this file unless you know what you are doing.
 			<column name="model_type"/>
 		</idxelement>
 </index>
+
+<table name="model_has_roles" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="2160"/>
+	<column name="role_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="model_type" not-null="true">
+		<type name="character varying" length="255"/>
+	</column>
+	<column name="model_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="model_has_roles_pkey" type="pk-constr" table="public.model_has_roles">
+		<columns names="role_id,model_id,model_type" ref-type="src-columns"/>
+	</constraint>
+</table>
 
 <index name="model_has_roles_model_id_model_type_index" table="public.model_has_roles"
 	 concurrent="false" unique="false" fast-update="false" buffering="false"
@@ -1081,13 +1080,35 @@ CAUTION: Do not modify this file unless you know what you are doing.
 		</idxelement>
 </index>
 
-<index name="password_resets_email_index" table="public.password_resets"
-	 concurrent="false" unique="false" fast-update="false" buffering="false"
-	 index-type="btree" factor="90">
-		<idxelement use-sorting="false">
-			<column name="email"/>
-		</idxelement>
-</index>
+<table name="role_has_permissions" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="500" y="2160"/>
+	<column name="permission_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<column name="role_id" not-null="true">
+		<type name="bigint" length="0"/>
+	</column>
+	<constraint name="role_has_permissions_pkey" type="pk-constr" table="public.role_has_permissions">
+		<columns names="permission_id,role_id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<table name="tpservidor" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="940" y="2160"/>
+	<column name="id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_tpservidor">
+		<type name="character varying" length="40"/>
+	</column>
+	<constraint name="tpservidor_pkey" type="pk-constr" table="public.tpservidor">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
 
 <constraint name="address_city_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.city" table="public.address">
@@ -1173,18 +1194,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
-<constraint name="model_has_permissions_permission_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.permissions" table="public.model_has_permissions">
-	<columns names="permission_id" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="model_has_roles_role_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.roles" table="public.model_has_roles">
-	<columns names="role_id" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
 <constraint name="pedido_aposentadoria_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.aposentadoria" table="public.pedido">
 	<columns names="aposentadoria_id" ref-type="src-columns"/>
@@ -1200,18 +1209,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <constraint name="pedido_serve_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.serve" table="public.pedido">
 	<columns names="serve_id" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="role_has_permissions_permission_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.permissions" table="public.role_has_permissions">
-	<columns names="permission_id" ref-type="src-columns"/>
-	<columns names="id" ref-type="dst-columns"/>
-</constraint>
-
-<constraint name="role_has_permissions_role_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
-	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.roles" table="public.role_has_permissions">
-	<columns names="role_id" ref-type="src-columns"/>
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
@@ -1251,166 +1248,202 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
+<constraint name="serve_tp_servidor_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.tpservidor" table="public.serve">
+	<columns names="tp_servidor_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="model_has_permissions_permission_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.permissions" table="public.model_has_permissions">
+	<columns names="permission_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="model_has_roles_role_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.roles" table="public.model_has_roles">
+	<columns names="role_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="role_has_permissions_permission_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.permissions" table="public.role_has_permissions">
+	<columns names="permission_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="role_has_permissions_role_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.roles" table="public.role_has_permissions">
+	<columns names="role_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
 <relationship name="rel_address_city" type="relfk" layer="0"
-	 custom-color="#2137d0"
+	 custom-color="#fbad25"
 	 src-table="public.address"
 	 dst-table="public.city" reference-fk="address_city_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_address_serve" type="relfk" layer="0"
-	 custom-color="#ebf7fa"
+	 custom-color="#34735c"
 	 src-table="public.address"
 	 dst-table="public.serve" reference-fk="address_serve_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_address_state" type="relfk" layer="0"
-	 custom-color="#371687"
+	 custom-color="#2991a2"
 	 src-table="public.address"
 	 dst-table="public.state" reference-fk="address_state_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_atendimento_atendimento_status" type="relfk" layer="0"
-	 custom-color="#272c3e"
+	 custom-color="#3d7388"
 	 src-table="public.atendimento"
 	 dst-table="public.atendimento_status" reference-fk="atendimento_atendimento_status_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpAposentadoriaEspecial&quot;" type="relfk" layer="0"
-	 custom-color="#7e2101"
+	 custom-color="#e611e4"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpAposentadoriaEspecial&quot;" reference-fk="certidao_tempo_tpaposentadoriaespecial_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpPCCR&quot;" type="relfk" layer="0"
-	 custom-color="#1aeb9c"
+	 custom-color="#8c0d1f"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpPCCR&quot;" reference-fk="certidao_tempo_tppccr_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpProfessor&quot;" type="relfk" layer="0"
-	 custom-color="#5ba63f"
+	 custom-color="#3dab0a"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpProfessor&quot;" reference-fk="certidao_tempo_tpprofessor_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpServicoMilitar&quot;" type="relfk" layer="0"
-	 custom-color="#425a31"
+	 custom-color="#008013"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpServicoMilitar&quot;" reference-fk="certidao_tempo_tpservicomilitar_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpServicoPublico&quot;" type="relfk" layer="0"
-	 custom-color="#262c47"
+	 custom-color="#7698f4"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpServicoPublico&quot;" reference-fk="certidao_tempo_tpservicopublico_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_contract_funcao" type="relfk" layer="0"
-	 custom-color="#3856bf"
+	 custom-color="#f766f9"
 	 src-table="public.contract"
 	 dst-table="public.funcao" reference-fk="contract_funcao_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_contract_orgao" type="relfk" layer="0"
-	 custom-color="#9d0479"
+	 custom-color="#2552f3"
 	 src-table="public.contract"
 	 dst-table="public.orgao" reference-fk="contract_orgao_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_contract_origin" type="relfk" layer="0"
-	 custom-color="#5bc808"
+	 custom-color="#67e89e"
 	 src-table="public.contract"
 	 dst-table="public.origin" reference-fk="contract_origin_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_contract_serve" type="relfk" layer="0"
-	 custom-color="#0fcf94"
+	 custom-color="#5a9b20"
 	 src-table="public.contract"
 	 dst-table="public.serve" reference-fk="contract_serve_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_funcao_orgao" type="relfk" layer="0"
-	 custom-color="#27b5b4"
+	 custom-color="#945a6d"
 	 src-table="public.funcao"
 	 dst-table="public.orgao" reference-fk="funcao_orgao_id_foreign"
 	 src-required="false" dst-required="true"/>
 
-<relationship name="rel_model_has_permissions_permissions" type="relfk" layer="0"
-	 custom-color="#f4fdd5"
-	 src-table="public.model_has_permissions"
-	 dst-table="public.permissions" reference-fk="model_has_permissions_permission_id_foreign"
-	 src-required="false" dst-required="true"/>
-
-<relationship name="rel_model_has_roles_roles" type="relfk" layer="0"
-	 custom-color="#e48d33"
-	 src-table="public.model_has_roles"
-	 dst-table="public.roles" reference-fk="model_has_roles_role_id_foreign"
-	 src-required="false" dst-required="true"/>
-
 <relationship name="rel_pedido_aposentadoria" type="relfk" layer="0"
-	 custom-color="#40f1b8"
+	 custom-color="#a05bf4"
 	 src-table="public.pedido"
 	 dst-table="public.aposentadoria" reference-fk="pedido_aposentadoria_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_pedido_certidao_tempo" type="relfk" layer="0"
-	 custom-color="#25cef7"
+	 custom-color="#c69921"
 	 src-table="public.pedido"
 	 dst-table="public.certidao_tempo" reference-fk="pedido_certidao_tempo_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_pedido_serve" type="relfk" layer="0"
-	 custom-color="#0a50ad"
+	 custom-color="#b9000d"
 	 src-table="public.pedido"
 	 dst-table="public.serve" reference-fk="pedido_serve_id_foreign"
 	 src-required="false" dst-required="false"/>
 
-<relationship name="rel_role_has_permissions_permissions" type="relfk" layer="0"
-	 custom-color="#b7f32e"
-	 src-table="public.role_has_permissions"
-	 dst-table="public.permissions" reference-fk="role_has_permissions_permission_id_foreign"
-	 src-required="false" dst-required="true"/>
-
-<relationship name="rel_role_has_permissions_roles" type="relfk" layer="0"
-	 custom-color="#119a9d"
-	 src-table="public.role_has_permissions"
-	 dst-table="public.roles" reference-fk="role_has_permissions_role_id_foreign"
-	 src-required="false" dst-required="true"/>
-
 <relationship name="rel_serve_marital_status" type="relfk" layer="0"
-	 custom-color="#abdfa3"
+	 custom-color="#3d2168"
 	 src-table="public.serve"
 	 dst-table="public.marital_status" reference-fk="serve_marital_status_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_obito" type="relfk" layer="0"
-	 custom-color="#d0955e"
+	 custom-color="#311c94"
 	 src-table="public.serve"
 	 dst-table="public.obito" reference-fk="serve_obito_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_orgao_expedidor" type="relfk" layer="0"
-	 custom-color="#d8250f"
+	 custom-color="#85909f"
 	 src-table="public.serve"
 	 dst-table="public.orgao_expedidor" reference-fk="serve_orgao_expedidor_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_origin" type="relfk" layer="0"
-	 custom-color="#57e48a"
+	 custom-color="#dc8f2f"
 	 src-table="public.serve"
 	 dst-table="public.origin" reference-fk="serve_origin_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_sexo" type="relfk" layer="0"
-	 custom-color="#903ca7"
+	 custom-color="#af1754"
 	 src-table="public.serve"
 	 dst-table="public.sexo" reference-fk="serve_sexo_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_type_serve" type="relfk" layer="0"
-	 custom-color="#cec806"
+	 custom-color="#a35a33"
 	 src-table="public.serve"
 	 dst-table="public.type_serve" reference-fk="serve_type_serve_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_serve_tpservidor" type="relfk" layer="0"
+	 custom-color="#dd1c41"
+	 src-table="public.serve"
+	 dst-table="public.tpservidor" reference-fk="serve_tp_servidor_id_foreign"
+	 src-required="false" dst-required="false"/>
+
+<relationship name="rel_model_has_permissions_permissions" type="relfk" layer="0"
+	 custom-color="#f326bd"
+	 src-table="public.model_has_permissions"
+	 dst-table="public.permissions" reference-fk="model_has_permissions_permission_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_model_has_roles_roles" type="relfk" layer="0"
+	 custom-color="#967828"
+	 src-table="public.model_has_roles"
+	 dst-table="public.roles" reference-fk="model_has_roles_role_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_role_has_permissions_permissions" type="relfk" layer="0"
+	 custom-color="#6bd768"
+	 src-table="public.role_has_permissions"
+	 dst-table="public.permissions" reference-fk="role_has_permissions_permission_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_role_has_permissions_roles" type="relfk" layer="0"
+	 custom-color="#76261a"
+	 src-table="public.role_has_permissions"
+	 dst-table="public.roles" reference-fk="role_has_permissions_role_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <permission>

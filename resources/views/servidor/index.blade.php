@@ -58,7 +58,9 @@
                                 <td class="text-center">{{$svd->id}}</td>
                                 <td class="text-center">{{$svd->nm_servidor}}</td>
                                 <td class="text-center">{{$svd->cpf}}</td>
-                                <td class="text-center">{{$svd->data_nascimento}}</td>
+                                
+                                <td>{{ date( 'd/m/Y' , strtotime($svd->data_nascimento))}}</td>
+                               
                                 @foreach($origin as $mnc)
                                 @if($svd->origin_id == $mnc->id)
                                  <td class="text-center">{{$mnc->nm_origem}}</td>
@@ -95,7 +97,6 @@
 
 
 @endsection
-
 @section('js')
 <!-- Data Table js -->
 <script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.js")}}"></script>
@@ -110,4 +111,5 @@
 <script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
 <script src="{{asset('js/delete.js')}}"></script>
 @endsection
+
 
