@@ -67,7 +67,9 @@ class AtendimentosController extends Controller {
     public function edit($id) {
 
         $atendimentos = Atendimento::findOrFail($id);
-        return view('administracao.atendimentos.edit', compact('atendimentos'));
+        $atendimento_status = AtendimentoStatus::all();
+        
+        return view('administracao.atendimentos.edit', compact('atendimentos','atendimento_status'));
     }
 
     public function update(AtendimentoFormRequest $request, $id) {

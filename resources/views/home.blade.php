@@ -41,7 +41,13 @@ Página inicial
                                 <div id="containerServidores">
                                 </div>
                             </figure>
-                        </div>                       
+                        </div> 
+                         <div class="col-sm-4">
+                            <figure class="highcharts-figure">
+                                <div id="containerOrigem">
+                                </div>
+                            </figure>
+                        </div>
                     </div>
 
                    
@@ -52,7 +58,8 @@ Página inicial
 
     <script>
          var atendimentos =  <?php echo json_encode($atendimentos) ?>;
-           
+         var atendimentosAbertos =  <?php echo json_encode($atendimentosAbertos) ?>;
+         var atendimentosFechados =  <?php echo json_encode($atendimentosFechados) ?>;
             Highcharts.chart('containerATER', {
                 chart: {
                     type: 'column',
@@ -62,22 +69,25 @@ Página inicial
                     text: 'Atendimentos 2022'
                 },
                 yAxis: [{
-                    className: 'highcharts-color-3',
+                    className: 'highcharts-color-6',
                     title: {
                         text: 'Quantidade'
                     }
                 },],
                 plotOptions: {
                     column: {
-                        borderRadius: 5
+                        borderRadius: 3
                     }
                 },
                 series: [{
-                    name: 'Abertos',
+                    name: 'Geral',
                     data: [atendimentos]
                 }, {
+                    name: 'Abertos',
+                    data: [atendimentosAbertos]
+                }, {
                     name: 'Fechados',
-                    data: []
+                    data: [atendimentosFechados]
                 }
                 ]
             });

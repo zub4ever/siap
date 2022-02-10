@@ -32,7 +32,9 @@ class HomeController extends Controller
         //;$serve = DB::table('serve')->get();
         
 
-        $atendimentos = Atendimento::where('status', 1)->count();
+        $atendimentos = DB::table('atendimento')->count();
+        $atendimentosAbertos = Atendimento::where('atendimento_status_id', 1)->count();
+        $atendimentosFechados = Atendimento::where('atendimento_status_id', 2)->count();
         
         
         
@@ -64,6 +66,6 @@ class HomeController extends Controller
         
         
         
-        return view('/home', compact('serve','serveAp','servePs','atendimentos'));
+        return view('/home', compact('serve','serveAp','servePs','atendimentos','atendimentosAbertos','atendimentosFechados'));
     }
 }
