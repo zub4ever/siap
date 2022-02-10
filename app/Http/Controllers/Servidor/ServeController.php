@@ -20,7 +20,18 @@ use App\Funcao;
 
 class ServeController extends Controller {
 
-    //
+    public function show($id){
+        
+        
+        $tpservidor = DB::table('tpservidor')->get()->all();
+        $servidor = Serve::where('status', 1)
+                ->orderBY('id')
+                ->get();
+        $origin = DB::table('origin')->get()->all();
+
+        return view('servidor.show', compact('servidor', 'origin', 'tpservidor'));        
+    }
+
     public function index() {
 
         $tpservidor = DB::table('tpservidor')->get()->all();
@@ -63,7 +74,7 @@ class ServeController extends Controller {
     }
 
     public function edit($id) {
-        
+
         $origin = Origin::get();
         $sexo = Sexo::get();
         $orgao_expedidor = Orgao_Expedidor::get();
@@ -73,29 +84,28 @@ class ServeController extends Controller {
         $tpservidor = TipoServidor::get();
 
         $serve = Serve::findOrFail($id);
-        return view('servidor.edit', compact('serve','origin','sexo','orgao_expedidor','obito','type_serve','marital_status','tpservidor'));
+        return view('servidor.edit', compact('serve', 'origin', 'sexo', 'orgao_expedidor', 'obito', 'type_serve', 'marital_status', 'tpservidor'));
     }
-    
+
     public function update(ServeFormRequest $request, $id) {
-       
-          $serve = Serve::findOrFail($id);
 
-       
-          DB::beginTransaction();
-  
-          if (!$serve->update($request->all())) {
+        $serve = Serve::findOrFail($id);
 
-              DB::rollBack();
-              return redirect()->route('servidor.index')->with('error', "Falha na alteração do servidor.");
-          }
-  
-          DB::commit();
-  
-          return redirect()->route('servidor.index')->with(
-              'success',
-              "Servidor alterado com sucesso."
-          );
-      }
+        DB::beginTransaction();
+
+        if (!$serve->update($request->all())) {
+
+            DB::rollBack();
+            return redirect()->route('servidor.index')->with('error', "Falha na alteração do servidor.");
+        }
+
+        DB::commit();
+
+        return redirect()->route('servidor.index')->with(
+                        'success',
+                        "Servidor alterado com sucesso."
+        );
+    }
 
     public function destroy($id) {
 

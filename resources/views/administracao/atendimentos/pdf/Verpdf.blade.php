@@ -47,7 +47,15 @@
 <col style="width: 700px">
 </colgroup>
   <tr>
-    <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Descrição da solicitação de atendimento: </strong>{{ $atendimentos->nm_atendimento }}</p></th>
+    <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Tipo de solicitação de atendimento: </strong>{{ $atendimentos->nm_atendimento }}</p></th>
+  </tr>
+</table>
+<table class="tgd" style="table-layout: fixed; width: 700px">
+<colgroup>
+<col style="width: 700px">
+</colgroup>
+  <tr>
+    <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Descrição do atendimento realizado: </strong>{{ $atendimentos->descricao }}</p></th>
   </tr>
 </table>
 
@@ -57,7 +65,7 @@
 
 
 
-<div class="footer" align="center"><img width="100" height="30" src="../public/imagem/rbPrev.jpg">   
+<div class="footer" align="center"><img width="100" height="100" src="../public/imagem/pfrb.jpg">   
 </div>
 
 </body>

@@ -25,7 +25,8 @@ class AtendimentoFormRequest extends FormRequest {
             'nm_assegurado' => ['required', 'max:100'],
             'nm_cidade' => ['required', 'max:100'],         
             'nm_atendimento' => ['required', 'max:100'],
-            'numero_telefone' => ['required', 'max:15']
+            'numero_telefone' => ['required', 'max:15'],
+            'descricao' => ['max:300']
            
             
         ];

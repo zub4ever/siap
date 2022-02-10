@@ -16,6 +16,7 @@ class Atendimento extends Model
         'numero_telefone',
         'status',
         'atendimento_status_id'
+        ,'descricao'
     ];
    
     

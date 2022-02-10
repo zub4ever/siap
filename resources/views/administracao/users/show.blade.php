@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('page-title')
-Editar Atendimentos
+Usuários
 @endsection
 
 @section('css')
@@ -11,10 +11,9 @@ Editar Atendimentos
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route("home")}}">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("atendimentos.index")}}">Atendimentos</a></li>
-    <li class="breadcrumb-item active"><a>Editar atendimento</a></li>
+    <li class="breadcrumb-item"><a href="{{route("users.index")}}">Usuários</a></li>
+    <li class="breadcrumb-item active"><a>Detalhes</a></li>
 </ol>
-
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -32,20 +31,16 @@ Editar Atendimentos
         <div class="form-group">
             <strong>Roles:</strong>
             @if(!empty($user->getRoleNames()))
-                @foreach($user->getRoleNames() as $v)
-                    <label class="badge badge-success">{{ $v }}</label>
-                @endforeach
+            @foreach($user->getRoleNames() as $v)
+            <label class="badge badge-success">{{ $v }}</label>
+            @endforeach
             @endif
         </div>
     </div>
-    
-    
-    
 </div>
 @endsection
 
 @section('js')
-<script src="{{asset('js/administracao/comunidade/create.js')}}"></script>
 <script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
 <script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/vendors/select2/plugin/select2.js')}}"></script>
