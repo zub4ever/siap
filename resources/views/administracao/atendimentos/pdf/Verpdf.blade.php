@@ -10,7 +10,7 @@
 
 <body>
     <div align="center"><img class="imgcabecalho" src="../public/imagem/rbPrevlogo2.jpg"></div>   
-    <h3 align="center">Atendimento ao Assegurado</h3>
+    <h3 align="center">Instituto de Previdência do Município de Rio Branco</h3>
     <table class="tg" style="table-layout: fixed; width: 700px">
         <colgroup>
             <col style="width: 700px">

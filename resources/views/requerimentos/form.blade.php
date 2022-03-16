@@ -1,6 +1,6 @@
 <div id="regForm">
     <h1 id="register">Atendimento ao Assegurado</h1>
-    <div class="all-steps" id="all-steps"> <span class="step"><i class="fa fa-user"></i></span> <span class="step"><i class="fa fa-map-marker"></i></span> <span class="step"><i class="fa fa-shopping-bag"></i></span> </i></span> <span class="step"><i class="fa fa-mobile-phone"></i></span> </div>
+    <div class="all-steps" id="all-steps"> <span class="step"><i class="fa fa-user"></i></span> <span class="step"><i class="fa fa-map-marker"></i></span> <span class="step"><i class="fa fa-search"></i></span> </i></span> <span class="step"><i class="fa fa-mobile-phone"></i></span> </div>
     <div class="tab">
         <h6>Informe seu nome:</h6>
         <p> <input placeholder="Nome do assegurado..." oninput="this.className = ''" name="nm_assegurado"></p>
