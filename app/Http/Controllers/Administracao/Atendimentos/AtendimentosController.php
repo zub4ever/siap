@@ -21,7 +21,7 @@ class AtendimentosController extends Controller {
         
         $atendimentos = Atendimento::where('status',1 ) 
                 ->where('atendimento_status_id',1)
-                ->orderBY('id')
+                ->orderBY('id', 'asc')
                 ->get();
         
         

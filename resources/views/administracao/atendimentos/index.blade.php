@@ -43,7 +43,7 @@ Atendimentos
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Nome assegurado</th>
                                 <th class="text-center">Tipo de atendimento</th>
-                                <th class="text-center">Cidade</th>
+                                <th class="text-center">CPF</th>
                                 <th class="text-center">Número</th>
                                 <th class="text-center">Data</th>
                                 <th class="text-center">Ação</th>
@@ -55,7 +55,7 @@ Atendimentos
                                 <td class="text-center">{{$fcn->id}}</td>
                                 <td class="text-center">{{$fcn->nm_assegurado}}</td>
                                 <td class="text-center">{{$fcn->nm_atendimento}}</td>
-                                <td class="text-center">{{$fcn->nm_cidade}}</td>
+                                <td class="text-center">{{$fcn->cpf}}</td>
                                 <td class="text-center">{{$fcn->numero_telefone}}</td>
                                 <td>{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</td>
                                 <td>

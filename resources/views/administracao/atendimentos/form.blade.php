@@ -31,6 +31,43 @@
     </div>
     <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
+            <label for="cpf" class="form-control-label">CPF:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control focus" name="cpf" id="cpf" value="{{empty(old('cpf')) ? @$serve->cpf : old('cpf')}}" data-mask="999.999.999-99"  autocomplete="off" maxlength="14">
+            @if ($errors->has('cpf'))
+            <h6 class="heading text-danger">{{$errors->first('cpf')}}</h6>
+            @endif
+        </div>
+    </div>
+    
+    
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+        <div class="wrap">
+            <label for="nm_cidade" class="form-control-label">Cidade:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="nm_cidade" value="{{ @$atendimentos->nm_cidade }}">
+            @if ($errors->has('nm_cidade'))
+            <h6 class="heading text-danger">{{$errors->first('nm_cidade')}}</h6>
+            @endif
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+        <div class="wrap">
+            <label for="numero_telefone" class="form-control-label">Numero de telefone:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="numero_telefone" placeholder="(00)00000-0000" data-mask="(00)00000-0000" maxlength="13" autocomplete="off" value="{{ @$atendimentos->numero_telefone }}">
+            @if ($errors->has('numero_telefone'))
+            <h6 class="heading text-danger">{{$errors->first('numero_telefone')}}</h6>
+            @endif
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+        <div class="wrap">
             <label for="nm_atendimento" class="form-control-label">Tipo de atendimento:
                 <span class="text-danger">*</span>
             </label>
@@ -42,28 +79,17 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+ <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
-            <label for="nm_cidade" class="form-control-label">Cidade:
+            <label for="email" class="form-control-label">E-mail informado:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="nm_cidade" value="{{ @$atendimentos->nm_cidade }}">
-            @if ($errors->has('nm_cidade'))
-            <h6 class="heading text-danger">{{$errors->first('nm_cidade')}}</h6>
+            <input type="text" class="form-control" name="email" value="{{ @$atendimentos->email }}">
+            @if ($errors->has('email'))
+            <h6 class="heading text-danger">{{$errors->first('email')}}</h6>
             @endif
         </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
-        <div class="wrap">
-            <label for="numero_telefone" class="form-control-label">Numero de telefone:
-                <span class="text-danger">*</span>
-            </label>
-            <input type="text" class="form-control" name="numero_telefone" placeholder="(00)00000-0000" data-mask="(00)00000-0000" maxlength="13" autocomplete="off" value="{{ @$atendimentos->numero_telefone }}">
-            @if ($errors->has('numero_telefone'))
-            <h6 class="heading text-danger">{{$errors->first('numero_telefone')}}</h6>
-            @endif
-        </div>
-    </div>
+    </div>   
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
@@ -74,6 +100,7 @@
                       rows="4" value="{{@$atendimentos->descricao}}">
             </textarea>
         </div>
+    </div>
     </div>
 
     <div class="col-sm-12 mt-5">

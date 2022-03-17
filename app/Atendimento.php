@@ -11,6 +11,8 @@ class Atendimento extends Model
     public $timestamps = true;
     protected $fillable = [
         'nm_assegurado',
+        'cpf',
+        'email',
         'nm_cidade',
         'nm_atendimento',
         'numero_telefone',

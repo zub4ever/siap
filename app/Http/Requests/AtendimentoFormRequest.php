@@ -23,11 +23,21 @@ class AtendimentoFormRequest extends FormRequest {
     public function rules() {
         return [
             'nm_assegurado' => ['required', 'max:100'],
-            'nm_cidade' => ['required', 'max:100'],         
-            'nm_atendimento' => ['required', 'max:100'],
+            'cpf' => ['max:15'],
+            'email'  => ['max:30'],
+            'nm_cidade' => ['max:100'],         
+            'nm_atendimento' => ['max:100'],
             'numero_telefone' => ['required', 'max:15'],
             'descricao' => ['max:300']
            
+            
+        ];
+    }
+    
+    public function messages() {
+        return [
+            'nm_assegurado.required' => 'O nome do assegurado é obrigatório.',
+            'numero_telefone.required' => 'Numero de contato é obrigatório.'
             
         ];
     }

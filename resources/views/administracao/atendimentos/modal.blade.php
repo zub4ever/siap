@@ -21,18 +21,30 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-12 col-md-6 col-lg-6 mt-2">
+                    <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
+                        <p><strong>CPF: <a> <font color ="red">{{$fcn->cpf}}</font></a></p></strong> 
+                    </div>
+                    <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
                         <p><strong>Data da solicitação: <a><font color ="red">{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</font></a></p></strong> 
                     </div>
-                    <div class="col-sm-12 col-md-6 col-lg-6 mt-2">
+                    <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
                         <p><strong>Cidade: <a> <font color ="red">{{$fcn->nm_cidade}}</font></a></p></strong> 
                     </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
+                        <p><strong>Email: <a> <font color ="red">{{$fcn->email}}</font></a></p></strong> 
+                    </div>
+                    
                 </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
                         <p><strong>Solicitação de atendimento: <a><font color ="red">{{$fcn->nm_atendimento}}</font></a></p></strong> 
                     </div> 
                 </div> 
+                <div class="row d-flex justify-content-center align-items-center">
+                    <p>Administração</p>
+                </div>
                 <div class="row">
                     <div class="col-sm-12 col-md-12 col-lg-12 mt-2">
                         <p><strong>Descrição de atendimento: <a><font color ="red">{{$fcn->descricao}}</font></a></p></strong> 
