@@ -23,40 +23,41 @@
 </table>
 <br>    
 <table class="tgB" style="table-layout: fixed; width: 700px">
-    <colgroup>
-        <col style="width: 200px">
-        <col style="width: 500px">
-    </colgroup>
     <tr>
-        <th class="tgB-lnuh"><strong>Protocolo: </strong> <a>{{$atendimentos->id}}</a><br></th>
+        <th class="tgB-lnuh" ><strong>Protocolo: </strong> <a>{{$atendimentos->id}}</a></th>
         <th class="tgB-s9fk"><strong>Nome do Assegurado: </strong>{{$atendimentos->nm_assegurado}}<br></th>
+        <th class="tgB-lnuh"><strong>CPF: </strong> <a>{{$atendimentos->cpf}}</a></th>
     </tr>
 </table>
-<table class="tgB" style="table-layout: fixed; width: 700px">
-    <colgroup>
-        <col style="width: 200px">
-        <col style="width: 500px">
-    </colgroup>
+<table class="tgB" style="table-layout: fixed; width: 700px">   
     <tr>
         <th class="tgB-lnuh"><strong>Cidade: </strong> <a>{{$atendimentos->nm_cidade}}</a><br></th>
         <th class="tgB-s9fk"><strong>Número do telefone: </strong>{{$atendimentos->numero_telefone}}<br></th>
+        
+    </tr>
+</table>
+<table class="tgB" style="table-layout: fixed; width: 700px">   
+    <tr>
+        
+        <th class="tgB-s9fk"><strong>Email: </strong>{{$atendimentos->email}}<br></th>
+        
     </tr>
 </table>
 <table class="tgd" style="table-layout: fixed; width: 700px">
-<colgroup>
-<col style="width: 700px">
-</colgroup>
-  <tr>
-    <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Tipo de solicitação de atendimento: </strong>{{ $atendimentos->nm_atendimento }}</p></th>
-  </tr>
+    <colgroup>
+        <col style="width: 700px">
+    </colgroup>
+    <tr>
+        <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Tipo de solicitação de atendimento: </strong>{{ $atendimentos->nm_atendimento }}</p></th>
+    </tr>
 </table>
 <table class="tgd" style="table-layout: fixed; width: 700px">
-<colgroup>
-<col style="width: 700px">
-</colgroup>
-  <tr>
-    <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Descrição do atendimento realizado: </strong>{{ $atendimentos->descricao }}</p></th>
-  </tr>
+    <colgroup>
+        <col style="width: 700px">
+    </colgroup>
+    <tr>
+        <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Descrição do atendimento realizado: </strong>{{ $atendimentos->descricao }}</p></th>
+    </tr>
 </table>
 
 
@@ -227,7 +228,7 @@
     }
 
     .tgd .tgd-x4j0 {
-       font-family: Arial, sans-serif;
+        font-family: Arial, sans-serif;
         font-size: 12px;
         padding: 8px 5px;
         border-style: solid;
@@ -235,5 +236,5 @@
         overflow: hidden;
         word-break: normal;
         border-color: black;
-    } 
+    }
 </style>

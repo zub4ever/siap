@@ -1,3 +1,12 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : 17 de mar. de 2022, 17:27:38
+    Author     : sklpb
+*/
+
 .html, body {
     display: block;
 }
@@ -167,11 +176,45 @@ table, td, th {
     border: 1px solid black;
 }
 
-.tgB  {border-collapse:collapse;border-spacing:0;}
-.tgB td{font-family:Arial, sans-serif;font-size:12px;padding:8px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tgB th{font-family:Arial, sans-serif;font-size:12px;font-weight:normal;padding:8px 4px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;border-color:black;}
-.tgB .tgB-lnuh{font-size:12px;background-color:#ffffff;text-align:left}
-.tgB .tgB-s9fk{font-size:12px;background-color:#ffffff;text-align:left;vertical-align:top}
-.tgB .tgB-0lax{text-align:left;vertical-align:top}
+.tgB  {
+    border-collapse:collapse;
+    border-spacing:0;
+}
+.tgB td{
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    padding:8px 4px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:black;
+}
+.tgB th{
+    font-family:Arial, sans-serif;
+    font-size:12px;
+    font-weight:normal;
+    padding:8px 4px;
+    border-style:solid;
+    border-width:1px;
+    overflow:hidden;
+    word-break:normal;
+    border-color:black;
+}
+.tgB .tgB-lnuh{
+    font-size:12px;
+    background-color:#ffffff;
+    text-align:left
+}
+.tgB .tgB-s9fk{
+    font-size:12px;
+    background-color:#ffffff;
+    text-align:left;
+    vertical-align:top
+}
+.tgB .tgB-0lax{
+    text-align:left;
+    vertical-align:top
+}
 
 

@@ -34,14 +34,14 @@
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control focus" name="cpf" id="cpf" value="{{empty(old('cpf')) ? @$serve->cpf : old('cpf')}}" data-mask="999.999.999-99"  autocomplete="off" maxlength="14">
+            <input type="text" class="form-control focus" name="cpf" id="cpf" value="{{empty(old('cpf')) ? @$atendimentos->cpf : old('cpf')}}" data-mask="999.999.999-99"  autocomplete="off" maxlength="14">
             @if ($errors->has('cpf'))
             <h6 class="heading text-danger">{{$errors->first('cpf')}}</h6>
             @endif
         </div>
     </div>
-    
-    
+
+
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -79,7 +79,7 @@
     </div>
 </div>
 <div class="row">
- <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="email" class="form-control-label">E-mail informado:
                 <span class="text-danger">*</span>
@@ -91,22 +91,28 @@
         </div>
     </div>   
 </div>
+<hr>
+<div class="row d-flex justify-content-center align-items-center">
+    <p>Administração</p>
+</div>
+<hr>
+
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
-       
-       
+
+
         <div class="form-group">
             <textarea type="text" class="form-control" name="descricao"
                       rows="4" value="{{@$atendimentos->descricao}}">
             </textarea>
         </div>
     </div>
-    </div>
+</div>
 
-    <div class="col-sm-12 mt-5">
-        <div class="wrap mt-1" style="text-align: center;">
-            <button type="submit" class="btn btn-success">
-                Salvar
-            </button>
-        </div>
+<div class="col-sm-12 mt-5">
+    <div class="wrap mt-1" style="text-align: center;">
+        <button type="submit" class="btn btn-success">
+            Salvar
+        </button>
     </div>
+</div>
