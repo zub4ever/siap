@@ -107,6 +107,15 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="numero_telefone">
 		<type name="character varying" length="55"/>
 	</column>
+	<column name="email">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="cpf">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="descricao">
+		<type name="character varying" length="400"/>
+	</column>
 	<column name="status" not-null="true" default-value="true">
 		<type name="boolean" length="0"/>
 	</column>
@@ -118,15 +127,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="updated_at">
 		<type name="timestamp" length="0" precision="0"/>
-	</column>
-	<column name="descricao">
-		<type name="character varying" length="400"/>
-	</column>
-	<column name="cpf">
-		<type name="character varying" length="15"/>
-	</column>
-	<column name="email">
-		<type name="character varying" length="30"/>
 	</column>
 	<constraint name="atendimento_pkey" type="pk-constr" table="public.atendimento">
 		<columns names="id" ref-type="src-columns"/>
