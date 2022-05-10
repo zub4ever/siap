@@ -113,6 +113,11 @@
                                     <i class="feather ft-users"></i>
                                     <span>Atendimentos</span>
                                 </a>
+                            </li><li {!! (request()->is('administracao/reqAposentadorias*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('reqAposentadorias.index')}}">
+                                    <i class="feather ft-users"></i>
+                                    <span>Requerimentos</span>
+                                </a>
                             </li>
                           @role('Admin')
                             <!-- Usuario -->
