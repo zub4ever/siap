@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="shortcut icon" href="{{asset('assets/images/favicon.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('assets/images/rbprev-2.png')}}" type="image/x-icon">
     <title>SISA</title>
 
     <!-- Vendor css -->
@@ -28,7 +28,7 @@
     <br><br><br><br><br><br>
     <div class="card login-card">
         <div class="card-body">
-      <center>  <img src="{{asset('assets/images/rbprev-2-logo.png')}}" alt="" class="img-fluid"> <center>
+      <center>  <img src="{{asset('assets/images/rbprev-2-logo.jpeg')}}" alt="" class="img-fluid"> <center>
             <h3 class="text-center text-white font-weight-light mb-4"><strong><font color=red>RB</font>PREV</strong></h3>
             
             <form method="POST" action="{{ route('login') }}">
