@@ -28,7 +28,7 @@
     <br><br><br><br><br><br>
     <div class="card login-card">
         <div class="card-body">
-      <center>  <img src="{{asset('assets/images/rbprev-2-logo.jpeg')}}" alt="" class="img-fluid"> <center>
+      <center>  <img src="{{asset('imagem/rbPrevlogo2.png')}}" alt="" class="img-fluid"> <center>
             <h3 class="text-center text-white font-weight-light mb-4"><strong><font color=red>RB</font>PREV</strong></h3>
             
             <form method="POST" action="{{ route('login') }}">
