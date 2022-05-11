@@ -51,7 +51,16 @@ Route::resource('administracao/roles','Administracao\Usuarios\RoleController');
 //FimUsuários
 
 Route::get('/home', 'HomeController@index')->name('home');
+//Requerimentos de Aposentadoria 
 
+Route::resource('administracao/reqAposentadorias','Administracao\reqAposentadorias\reqAposentadoriasController');
+
+
+
+
+
+
+//FimRequerimentosAposentadoria 
 
 });
 Auth::routes();
