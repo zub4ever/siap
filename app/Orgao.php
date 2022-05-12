@@ -16,4 +16,8 @@ class Orgao extends Model
        public function funcao() {
         return $this->hasMany(Funcao::class, 'orgao_id');
     }
+     public function requerimentoAposentadoriaVoluntaria() {
+        
+        return $this->belongsTo('App\Models\ApRequerimentos\RequerimentoAposentadoriaVoluntaria', 'orgao_id');
+    }
 }

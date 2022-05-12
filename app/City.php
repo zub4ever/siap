@@ -17,4 +17,10 @@ class City extends Model
     public function address() {
         return $this->belongsTo(Address::class, 'city_id');
     }
+    
+    
+    public function requerimentoAposentadoriaVoluntaria() {
+        
+        return $this->belongsTo('App\Models\ApRequerimentos\RequerimentoAposentadoriaVoluntaria', 'city_id');
+    }
 }

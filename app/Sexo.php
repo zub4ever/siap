@@ -18,4 +18,8 @@ class Sexo extends Model
     public function serve() {
         return $this->belongsTo(Serve::class, 'sexo_id');
     }
+    public function requerimentoAposentadoriaVoluntaria() {
+        
+        return $this->belongsTo('App\Models\ApRequerimentos\RequerimentoAposentadoriaVoluntaria', 'sexo_id');
+    }
 }
