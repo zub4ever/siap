@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3-alpha1" last-position="0,96" last-zoom="1" max-obj-count="39"
+<dbmodel pgmodeler-ver="0.9.3-alpha1" last-position="0,0" last-zoom="1" max-obj-count="39"
 	 default-schema="public" default-owner="postgres">
 <database name="rbprev_instituto" encoding="UTF8" lc-collate="Portuguese_Brazil.1252" lc-ctype="Portuguese_Brazil.1252" is-template="false" allow-conns="true">
 	<role name="postgres"/>
