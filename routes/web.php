@@ -62,6 +62,13 @@ Route::get('administracao/reqVoluntaria/create','Administracao\reqAposentadorias
 
 //FimRequerimentosAposentadoria 
 
+//Rotas do Dap
+
+Route::resource('/dap','DAP\DapController');
+
+
+//Fim DAP
+
 });
 Auth::routes();
 

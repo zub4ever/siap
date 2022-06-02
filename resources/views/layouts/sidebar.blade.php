@@ -23,16 +23,16 @@
                             <span>dashboard</span>
                         </a>
                         <ul class="collapse">
-                           <li {!! (request()->is('folhaPagamento*') ? 'class="active"' : "")!!}>
+                            <li {!! (request()->is('folhaPagamento*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('home') }}">Inicio</a></li>
-                            
+
                         </ul>
                     </li>
                     <!-- Inicio de Servidor -->
                     <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="icon-profile-male"></i>
-                            
+
                             <span>Servidor</span>
                         </a>
 
@@ -57,7 +57,7 @@
                                     <span>Endereços</span>
                                 </a>
                             </li>
-                            
+
                         </ul>
                     </li>
                     <!--fim de Servidor-->
@@ -77,33 +77,33 @@
                                 </a>
                             </li>
 
-                            <!-- Fim do cadastros auxiliares
-                        </ul>
-                    </li>  
+                    <!-- Fim do cadastros auxiliares
+                </ul>
+            </li>  
+            <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
+                <a href="javascript:void(0)" aria-expanded="true">
+                    <i class=" icon-streetsign"></i>
+                    <span>Endereço Servidor</span>
+                </a>
+
+                <ul class="collapse">
+
                     <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
-                        <a href="javascript:void(0)" aria-expanded="true">
-                            <i class=" icon-streetsign"></i>
-                            <span>Endereço Servidor</span>
+                        <a href="{{route('endereco.index')}}">
+                            <i class="icon-map"></i>
+                            <span>Endereços</span>
                         </a>
+                    </li>
 
-                        <ul class="collapse">
-
-                            <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
-                                <a href="{{route('endereco.index')}}">
-                                    <i class="icon-map"></i>
-                                    <span>Endereços</span>
-                                </a>
-                            </li>
-
-                         
-                        </ul>
-                    </li> -->
+                 
+                </ul>
+            </li> -->
                     <!--fim de-->
                     <!-- Inicio de Administração -->
                     <li {!! (request()->is('administracao*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="icon-profile-male"></i>
-                            
+
                             <span>Administração</span>
                         </a>
 
@@ -119,7 +119,7 @@
                                     <span>Requerimentos</span>
                                 </a>
                             </li>
-                          @role('Admin')
+                            @role('Admin')
                             <!-- Usuario -->
                             <li {!! (request()->is('administracao/users*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('users.index')}}">
@@ -171,6 +171,26 @@
                         </ul>
                     </li>
                     <!--fim de Cadastros-->
+                    <!--Inicio  de DAP -->
+                    <li {!! (request()->is('dap*') ? 'class="active"' : "")!!}>
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class="ti-money"></i>
+                            <span>DAP</span>
+                        </a>
+
+                        <ul class="collapse">
+                            <li {!! (request()->is('dap/*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('dap.index')}}">
+                                    <i class="ti-money"></i>
+                                    <span>DAP</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+
+                    <!--Fim de DAP-->
+
                 </ul>
             </nav>
         </div>
