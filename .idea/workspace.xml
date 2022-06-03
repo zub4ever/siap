@@ -1,94 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="23fdc650-e149-4b55-bf70-b9e8d1aae735" name="Default Changelist" comment="" />
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <list default="true" id="23fdc650-e149-4b55-bf70-b9e8d1aae735" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/config/apiCobranca.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/devmix-laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/devmix-laravel.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
-  </component>
-  <component name="FUSProjectUsageTrigger">
-    <session id="-1591402190">
-      <usages-collector id="statistics.lifecycle.project">
-        <counts>
-          <entry key="project.open.time.1" value="1" />
-          <entry key="project.opened" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.open">
-        <counts>
-          <entry key="css" value="7" />
-          <entry key="env" value="1" />
-          <entry key="js" value="15" />
-          <entry key="json" value="1" />
-          <entry key="php" value="97" />
-          <entry key="scss" value="3" />
-          <entry key="woff" value="1" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.open">
-        <counts>
-          <entry key=".env file" value="1" />
-          <entry key="Blade" value="92" />
-          <entry key="CSS" value="7" />
-          <entry key="JSON" value="1" />
-          <entry key="JavaScript" value="15" />
-          <entry key="PHP" value="5" />
-          <entry key="PLAIN_TEXT" value="1" />
-          <entry key="SCSS" value="3" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.extensions.edit">
-        <counts>
-          <entry key="css" value="6" />
-          <entry key="js" value="97" />
-          <entry key="php" value="1962" />
-        </counts>
-      </usages-collector>
-      <usages-collector id="statistics.file.types.edit">
-        <counts>
-          <entry key="Blade" value="1883" />
-          <entry key="CSS" value="6" />
-          <entry key="JavaScript" value="97" />
-          <entry key="PHP" value="79" />
-        </counts>
-      </usages-collector>
-    </session>
-  </component>
-  <component name="FileEditorManager">
-    <leaf>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/head.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="54" selection-start-line="6" selection-start-column="54" selection-end-line="6" selection-end-column="54" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/views/layouts/scripts.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/webpack.mix.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="11" column="3" selection-start-line="11" selection-start-column="3" selection-end-line="11" selection-end-column="3" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <execution />
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
@@ -100,6 +33,9 @@
       <find>default</find>
       <find>feather</find>
     </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -165,6 +101,9 @@
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
     <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="NodeModulesDirectoryManager">
     <handled-path value="$PROJECT_DIR$/node_modules" />
@@ -265,6 +204,59 @@
       <path value="$PROJECT_DIR$/vendor/webmozart/assert" />
       <path value="$PROJECT_DIR$/vendor/beyondcode/laravel-dump-server" />
       <path value="$PROJECT_DIR$/vendor/dragonmantank/cron-expression" />
+      <path value="$PROJECT_DIR$/vendor/voku/portable-ascii" />
+      <path value="$PROJECT_DIR$/vendor/league/config" />
+      <path value="$PROJECT_DIR$/vendor/league/commonmark" />
+      <path value="$PROJECT_DIR$/vendor/league/mime-type-detection" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-svg-lib" />
+      <path value="$PROJECT_DIR$/vendor/phenx/php-font-lib" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition-contracts" />
+      <path value="$PROJECT_DIR$/vendor/facade/flare-client-php" />
+      <path value="$PROJECT_DIR$/vendor/facade/ignition" />
+      <path value="$PROJECT_DIR$/vendor/sabberworm/php-css-parser" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/deprecations" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/event-manager" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/dbal" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/cache" />
+      <path value="$PROJECT_DIR$/vendor/phpunit/php-invoker" />
+      <path value="$PROJECT_DIR$/vendor/symfony/deprecation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-grapheme" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-normalizer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php80" />
+      <path value="$PROJECT_DIR$/vendor/graham-campbell/result-type" />
+      <path value="$PROJECT_DIR$/vendor/symfony/mime" />
+      <path value="$PROJECT_DIR$/vendor/symfony/error-handler" />
+      <path value="$PROJECT_DIR$/vendor/symfony/event-dispatcher-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php73" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-intl-idn" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-iconv" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-php81" />
+      <path value="$PROJECT_DIR$/vendor/laravelcollective/html" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/service-contracts" />
+      <path value="$PROJECT_DIR$/vendor/symfony/string" />
+      <path value="$PROJECT_DIR$/vendor/ramsey/collection" />
+      <path value="$PROJECT_DIR$/vendor/dompdf/dompdf" />
+      <path value="$PROJECT_DIR$/vendor/phpoption/phpoption" />
+      <path value="$PROJECT_DIR$/vendor/spatie/laravel-permission" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/reflection-docblock" />
+      <path value="$PROJECT_DIR$/vendor/barryvdh/laravel-dompdf" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/type" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/lines-of-code" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/code-unit" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/cli-parser" />
+      <path value="$PROJECT_DIR$/vendor/sebastian/complexity" />
+      <path value="$PROJECT_DIR$/vendor/brick/math" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-client" />
+      <path value="$PROJECT_DIR$/vendor/psr/event-dispatcher" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/dflydev/dot-access-data" />
+      <path value="$PROJECT_DIR$/vendor/nette/schema" />
+      <path value="$PROJECT_DIR$/vendor/nette/utils" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/laravel/serializable-closure" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
@@ -272,6 +264,7 @@
     <option name="width" value="1440" />
     <option name="height" value="829" />
   </component>
+  <component name="ProjectId" id="2A4LyVavpQLaQR0GltKLDn5SxKD" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -313,26 +306,24 @@
       <pane id="Scope" />
     </panes>
   </component>
-  <component name="PropertiesComponent">
-    <property name="SearchEverywhereHistoryKey" value="variable.&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/public/assets/scss/assets/_variables.scss&#10;main.js&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/public/assets/js/main.js&#10;scrip&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/layouts/scripts.blade.php&#10;packa&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/package.json&#10;typo&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/typography.blade.php&#10;toastr&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/toastr.blade.php&#10;timelin&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/timeline.blade.php&#10;themi&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/themify.blade.php&#10;text-edi&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/text-editor.blade.php&#10;tabs&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/tabs.blade.php&#10;sweet&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/public/assets/js/init/sweet-alert.js&#10;reset&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/reset-password.blade.php&#10;side&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/layouts/sidebar.blade.php&#10;login&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/login.blade.php&#10;regis&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/register.blade.php&#10;read-ma&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/read-mail.blade.php&#10;progre&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/progressbar.blade.php&#10;data&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/datatable.blade.php&#10;galler&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/gallery.blade.php&#10;profile.bl&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/profile.blade.php&#10;pricin&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/pricing.blade.php&#10;pop&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/popover.blade.php&#10;pagina&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/pagination.blade.php&#10;morri&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/morris-charts.blade.php&#10;modal&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/modals.blade.php&#10;forg&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/forgot-password.blade.php&#10;forgo&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/forgot-password.blade.php&#10;lock&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/lock.blade.php&#10;loaders&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/loaders.blade.php&#10;list&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/list-group.blade.php&#10;ladd&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/ladda-button.blade.php&#10;js-&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/js-grid.blade.php&#10;ioni&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/ionicons.blade.php&#10;invoi&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/invoice.blade.php&#10;invo&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/invoice.blade.php&#10;inbo&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/inbox.blade.php&#10;grid&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/grid.blade.php&#10;goog&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/public/assets/js/google-maps.js&#10;googl&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/google-maps.blade.php&#10;goo&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/google-maps.blade.php&#10;full&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/full-calendar.blade.php&#10;form-va&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/form-validation.blade.php&#10;form-la&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/form-layouts.blade.php&#10;form-g&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/form-groups.blade.php&#10;form-ba&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/form-basic.blade.php&#10;inde&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/index.blade.php&#10;404&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/404.blade.php&#10;font-a&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/font-awesome.blade.php&#10;et-lin&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/et-line.blade.php&#10;dropzon&#9;FILE&#9;file:///Applications/AMPPS/www/devmix-laravel/resources/views/dropzone.blade.php" />
-    <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
-    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="nodejs_package_manager_path" value="npm" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
-      <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
-      </list>
-    </option>
-  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/sisa&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -344,6 +335,9 @@
       <option name="presentableId" value="Default" />
       <updated>1549977351279</updated>
       <workItem from="1549977352618" duration="24944000" />
+      <workItem from="1654264180799" duration="1830000" />
+      <workItem from="1654270298016" duration="4049000" />
+      <workItem from="1654284990017" duration="9098000" />
     </task>
     <servers />
   </component>
@@ -386,10 +380,18 @@
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
-    <option name="version" value="1" />
+    <option name="version" value="3" />
   </component>
-  <component name="VcsContentAnnotationSettings">
-    <option name="myLimit" value="2678400000" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/public/assets/js/google-maps.js">

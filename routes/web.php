@@ -7,7 +7,7 @@ Route::get('/', 'Auth\LoginController@showLoginForm')->name('login');
 Route::get('/logout', 'Auth\LoginController@logout');
 
 Route::group(['middleware' => ['auth']], function() {
-    
+
 Route::get('/home', 'HomeController@index')->name('index');
 //Cadastro de ervidpr
 Route::resource('servidor','Servidor\ServeController');
@@ -29,7 +29,7 @@ Route::post('cadastrosAuxiliares/origem/create','CadastrosAuxiliares\Origin\Orig
 Route::resource('cadastrosAuxiliares/orgao','CadastrosAuxiliares\Orgao\OrgaoController');
 Route::get('cadastrosAuxiliares/orgao/create','CadastrosAuxiliares\Orgao\OrgaoController@create')->name('orgao.create');
 Route::post('cadastrosAuxiliares/orgao/create','CadastrosAuxiliares\Orgao\OrgaoController@store');
-//Funções 
+//Funções
 Route::resource('cadastrosAuxiliares/funcao','CadastrosAuxiliares\Funcao\FuncaoController');
 Route::get('cadastrosAuxiliares/funcao/create','CadastrosAuxiliares\Funcao\FuncaoController@create')->name('funcao.create');
 Route::post('cadastrosAuxiliares/funcao/create','CadastrosAuxiliares\Funcao\FuncaoController@store');
@@ -51,7 +51,7 @@ Route::resource('administracao/roles','Administracao\Usuarios\RoleController');
 //FimUsuários
 
 Route::get('/home', 'HomeController@index')->name('home');
-//Requerimentos de Aposentadoria 
+//Requerimentos de Aposentadoria
 
 Route::resource('administracao/reqAposentadorias','Administracao\reqAposentadorias\reqAposentadoriasController');
 Route::resource('administracao/reqVoluntaria','Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController');
@@ -60,11 +60,18 @@ Route::get('administracao/reqVoluntaria/create','Administracao\reqAposentadorias
 
 
 
-//FimRequerimentosAposentadoria 
+//FimRequerimentosAposentadoria
 
 //Rotas do Dap
 
 Route::resource('/dap','DAP\DapController');
+//
+    Route::get('token', 'DAP\APIController@token')->name('token');
+    Route::get('registrar', 'DAP\APIController@registrar')->name('registrar');
+    Route::get('listar', 'DAP\APIController@listar')->name('listar');
+    Route::get('consultar', 'DAP\APIController@consultar')->name('consultar');
+    //Route::get('baixar', 'DAP\APIController@baixar')->name('baixar');
+    Route::get('atualizar', 'DAP\APIController@atualizar')->name('atualizar');
 
 
 //Fim DAP
@@ -77,10 +84,9 @@ Auth::routes();
     Route::resource("/requerimentos", "Publico\PedidoPubliController");
     Route::get('requerimentos/create','Publico\PedidoPubliController@create')->name('requerimentos.create');
     Route::post('requerimentos/create','Publico\PedidoPubliController@store');
-    
-    
-    
-    
-    
 
-     
+
+
+
+
+
