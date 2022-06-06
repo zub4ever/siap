@@ -4,6 +4,7 @@ namespace App\Http\Controllers\DAP;
 
 use App\Http\Controllers\Controller;
 use GuzzleHttp\Client;
+use PDF;
 
 class APIController extends Controller
 {
@@ -73,7 +74,7 @@ class APIController extends Controller
             "numeroTituloBeneficiario" => "000101",
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
-            "numeroTituloCliente" => "00031285570008004000",
+            "numeroTituloCliente" => "00031285570007004000",
             "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
@@ -86,7 +87,8 @@ class APIController extends Controller
                 "bairro" => "ESPERANCA",
                 "uf" => "AC",
                 "telefone" => "000000000"
-            )
+            ),
+             "indicadorPix"=> "S"
 
         );
 
@@ -123,7 +125,14 @@ class APIController extends Controller
             /* Conveter o JSON em array associativo PHP */
             $boleto = json_decode($contents);
 
-            dd($boleto);
+
+            $dadosboleto = $boleto;
+
+
+            return view("dap.guiaCNPJ.verGuiaPDF", compact('dadosboleto'));
+
+
+
 
         } catch (ClientException $e) {
             echo $e->getMessage();
@@ -144,7 +153,7 @@ class APIController extends Controller
             ]);
 
             /* Requisição */
-            $response = $guzzle->request('GET', 'https://api.hm.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key') .
+            $response = $guzzle->request('GET', 'https://api.sandbox.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key') .
                 '&agenciaBeneficiario=' . '452' .
                 '&contaBeneficiario=' . '123873' .
                 '&indicadorSituacao=' . 'B' .
@@ -171,7 +180,7 @@ class APIController extends Controller
     }
 
     public function consultar(){
-        $id = '00031285570008004000';
+        $id = '00031285570007004000';
         try {
             $guzzle = new Client([
                 'headers' => [
@@ -197,7 +206,14 @@ class APIController extends Controller
             /* Converter o JSON em array associativo do PHP */
             $boleto = json_decode($contents);
 
+
             dd($boleto);
+
+
+            $dadosboleto = $boleto;
+
+
+            return view("dap.guiaCNPJ.verGuiaPDF", compact('dadosboleto'));
 
         } catch (ClientException $e) {
             echo $e->getMessage();

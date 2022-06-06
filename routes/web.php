@@ -74,6 +74,7 @@ Route::resource('/dap','DAP\DapController');
     Route::get('atualizar', 'DAP\APIController@atualizar')->name('atualizar');
 
 
+    //Route::get('/dap/guiaCNPJ/verGuiaPDF','DAP\APIController')->name('atendimentos.Verpdf');
 //Fim DAP
 
 });
