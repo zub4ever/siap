@@ -22,13 +22,13 @@ class APIController extends Controller
                 'verify' => false
             ]);
             /* Requisição POST*/
-            $response = $guzzle->request('POST', 'https://api.hm.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key'),
+            $response = $guzzle->request('POST', 'https://oauth.sandbox.bb.com.br/oauth/token?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key'),
                 array(
                     'form_params' => array(
                         'grant_type' => 'client_credentials',
                         'client_id' => config('apiCobranca.client_id'),
                         'client_secret' => config('apiCobranca.client_secret'),
-                        'scope' => 'cobrancas.boletos-info cobrancas.boletos-requisicao'
+                        'scope' => 'cobrancas.boletos-requisicao cobrancas.boletos-info'
                     )));
 
             /* Recuperar o corpo da resposta da requisição */
@@ -40,8 +40,8 @@ class APIController extends Controller
             /* Converte o JSON em array associativo PHP */
             $token = json_decode($contents);
 
-            //return $token->access_token;
-            dd($token->access_token);
+            return $token->access_token;
+            //dd($token->access_token);
 
 
         } catch (GuzzleException $e) {
@@ -55,32 +55,27 @@ class APIController extends Controller
     {
         /* Informações do Boleto */
         $body = array(
-            "numeroConvenio" => 3128557,
-            "numeroCarteira" => 17,
-            "numeroVariacaoCarteira" => 35,
-            "codigoModalidade" => 1,
-            "dataEmissao" => "09.02.2021",
-            "dataVencimento" => "12.02.2021",
-            "valorOriginal" => 456.32,
-            "valorAbatimento" => 0,
-            "quantidadeDiasProtesto" => 0,
-            "quantidadeDiasNegativacao" => 0,
-            "orgaoNegativador" => 0,
-            "indicadorAceiteTituloVencido" => "N",
-            "numeroDiasLimiteRecebimento" => 0,
-            "codigoAceite" => "N",
-            "codigoTipoTitulo" => 2,
-            "descricaoTipoTitulo" => "DM",
-            "indicadorPermissaoRecebimentoParcial" => "N",
-            "numeroTituloBeneficiario" => "947262434",
-            "campoUtilizacaoBeneficiario" => "RPPS",
-            "numeroTituloCliente" => "0003128557700000600",
-            "mensagemBloquetoOcorrencia" => "BOLETO DE TESTE",
+            'numeroConvenio' => 3128557,
+            'numeroCarteira' => 17,
+            'numeroVariacaoCarteira' => 35,
+            'codigoModalidade' => 1,
+            'dataEmissao' => '09.02.2021',
+            'dataVencimento' => '12.02.2021',
+            'valorOriginal' => 123.50,
+            'valorAbatimento' => 0,
+            'quantidadeDiasProtesto' => 0,
+            'indicadorNumeroDiasLimiteRecebimento' => 'N',
+            'numeroDiasLimiteRecebimento' => 0,
+            'codigoAceite' => 'A',
+            'codigoTipoTitulo' => 4,
+            'descricaoTipoTitulo' => 'DS',
+            'indicadorPermissaoRecebimentoParcial' => 'N',
+            'numeroTituloBeneficiario' => '000101',
+            'textoCampoUtilizacaoBeneficiario' => 'RPPS',
+            'codigoTipoContaCaucao' => 0,
+            'numeroTituloCliente' => '0003128557700040300',
+            'textoMensagemBloquetoOcorrencia' => 'TESTE',
 
-            "multa" => array(
-
-                "valor" => 54.80
-  ),
             "pagador" => array(
                 "tipoInscricao" => 2,
                 "numeroInscricao" => 97257206000133,
@@ -91,13 +86,8 @@ class APIController extends Controller
                 "bairro" => "ESPERANCA",
                 "uf" => "AC",
                 "telefone" => "000000000"
-  ),
-            "beneficiarioFinal" => array(
-                "tipoInscricao" => 2,
-                "numeroInscricao" => 97257206000133,
-                "nome" => "PAPELARIA FILARDES GARRIDO"
-  ),
-            "indicadorPix"=> "S"
+            ),
+           "indicadorPix" => "S"
         );
 
         /* Converte array em json */
@@ -117,7 +107,7 @@ class APIController extends Controller
 
 
             /* Requisição */
-            $response = $guzzle->request('POST', 'https://api.sandbox.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key'),
+            $response = $guzzle->request('POST', 'https://api.hm.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key'),
 
                 [
                     'body' => $body
@@ -144,11 +134,74 @@ class APIController extends Controller
 
     public function listar()
     {
+        try {
+            $guzzle = new Client([
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $this->token(),
+                    'Content-Type' => 'application/json',
+                ],
+                'verify' => false
+            ]);
 
+            /* Requisição */
+            $response = $guzzle->request('GET', 'https://api.hm.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key') .
+                '&agenciaBeneficiario=' . '452' .
+                '&contaBeneficiario=' . '123873' .
+                '&indicadorSituacao=' . 'B' .
+                '&indice=' . '20' .
+                '&codigoEstadoTituloCobranca=' . '7' .
+                '&dataInicioMovimento=' . '01.01.2021' .
+                '&dataFimMovimento=' . '27.08.2021'
+            );
+
+            /* Recuperar o corpo da resposta da requisição */
+            $body = $response->getBody();
+
+            /* Acessar as dados da resposta - JSON */
+            $contents = $body->getContents();
+
+            /* Converter o JSON em array associativo do PHP */
+            $boletos = json_decode($contents);
+
+            dd($boletos);
+
+        } catch (GuzzleException $e) {
+            echo $e->getMessage();
+        }
     }
 
-    public function consultar()
-    {
+    public function consultar(){
+        $id = '0003128557700000600';
+        try {
+            $guzzle = new Client([
+                'headers' => [
+                    'Authorization' => 'Bearer ' . $this->token(),
+                    'Content-Type' => 'application/json',
+                ],
+                'verify' => false
+            ]);
+
+            /* Requisição */
+            $response = $guzzle->request('GET', 'https://api.hm.bb.com.br/cobrancas/v2/boletos/'.
+                $id .
+                '?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key') .
+                '&numeroConvenio=' .'3128557'
+            );
+
+            /* Recuperar o corpo da resposta da requisição */
+            $body = $response->getBody();
+
+            /* Acessar as dados da resposta - JSON */
+            $contents = $body->getContents();
+
+            /* Converter o JSON em array associativo do PHP */
+            $boleto = json_decode($contents);
+
+            dd($boleto);
+
+        } catch (ClientException $e) {
+            echo $e->getMessage();
+        }
 
     }
 
