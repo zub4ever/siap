@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="23fdc650-e149-4b55-bf70-b9e8d1aae735" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.env" beforeDir="false" afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/devmix-laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/devmix-laravel.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DAP/APIController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DAP/APIController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/apiCobranca.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/apiCobranca.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -312,6 +307,8 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
     "last_opened_file_path": "C:/xampp/htdocs/sisa",
     "node.js.detected.package.eslint": "true",
@@ -335,6 +332,7 @@
       <updated>1549977351279</updated>
       <workItem from="1549977352618" duration="24944000" />
       <workItem from="1654481490126" duration="11573000" />
+      <workItem from="1654539012057" duration="1864000" />
     </task>
     <servers />
   </component>

@@ -55,26 +55,26 @@ class APIController extends Controller
     {
         /* Informações do Boleto */
         $body = array(
-            'numeroConvenio' => 3128557,
-            'numeroCarteira' => 17,
-            'numeroVariacaoCarteira' => 35,
-            'codigoModalidade' => 1,
-            'dataEmissao' => '09.02.2021',
-            'dataVencimento' => '12.02.2021',
-            'valorOriginal' => 123.50,
-            'valorAbatimento' => 0,
-            'quantidadeDiasProtesto' => 0,
-            'indicadorNumeroDiasLimiteRecebimento' => 'N',
-            'numeroDiasLimiteRecebimento' => 0,
-            'codigoAceite' => 'A',
-            'codigoTipoTitulo' => 4,
-            'descricaoTipoTitulo' => 'DS',
-            'indicadorPermissaoRecebimentoParcial' => 'N',
-            'numeroTituloBeneficiario' => '000101',
-            'textoCampoUtilizacaoBeneficiario' => 'RPPS',
-            'codigoTipoContaCaucao' => 0,
-            'numeroTituloCliente' => '0003128557700040300',
-            'textoMensagemBloquetoOcorrencia' => 'TESTE',
+            "numeroConvenio" => 3128557,
+            "numeroCarteira" => 17,
+            "numeroVariacaoCarteira" => 35,
+            "codigoModalidade" => 1,
+            "dataEmissao" => "04.05.2022",
+            "dataVencimento" => "12.06.2022",
+            "valorOriginal" => 123.50,
+            "valorAbatimento" => 0,
+            "quantidadeDiasProtesto" => 0,
+            "indicadorNumeroDiasLimiteRecebimento" => "N",
+            "numeroDiasLimiteRecebimento" => 0,
+            "codigoAceite" => "A",
+            "codigoTipoTitulo" => 4,
+            "descricaoTipoTitulo" => "DS",
+            "indicadorPermissaoRecebimentoParcial" => "N",
+            "numeroTituloBeneficiario" => "000101",
+            "textoCampoUtilizacaoBeneficiario" => "RPPS",
+            "codigoTipoContaCaucao" => 0,
+            "numeroTituloCliente" => "00031285570008004000",
+            "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
                 "tipoInscricao" => 2,
@@ -86,8 +86,8 @@ class APIController extends Controller
                 "bairro" => "ESPERANCA",
                 "uf" => "AC",
                 "telefone" => "000000000"
-            ),
-           "indicadorPix" => "S"
+            )
+
         );
 
         /* Converte array em json */
@@ -107,7 +107,7 @@ class APIController extends Controller
 
 
             /* Requisição */
-            $response = $guzzle->request('POST', 'https://api.hm.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key'),
+            $response = $guzzle->request('POST', 'https://api.sandbox.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key'),
 
                 [
                     'body' => $body
@@ -171,7 +171,7 @@ class APIController extends Controller
     }
 
     public function consultar(){
-        $id = '0003128557700000600';
+        $id = '00031285570008004000';
         try {
             $guzzle = new Client([
                 'headers' => [
