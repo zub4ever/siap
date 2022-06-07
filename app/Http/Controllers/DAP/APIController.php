@@ -207,7 +207,7 @@ class APIController extends Controller
             $boleto = json_decode($contents);
 
 
-            dd($boleto);
+            //dd($boleto);
 
 
             $dadosboleto = $boleto;

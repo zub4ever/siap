@@ -5,7 +5,7 @@
     <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
 <head>
-    <title><?php echo $dadosboleto["identificacao"]; ?></title>
+x   <title>{{--<?php echo $dadosboleto["identificacao"]; ?>--}}</title>
     <META http-equiv=Content-Type content=text/html charset=ISO-8859-1>
     <meta name="Generator" content="Projeto BoletoPHP - www.boletophp.com.br - Licen�a GPL" />
 
@@ -57,7 +57,7 @@
         /* *** CABECALHO *** */
 
         #instr_header {
-            background: url('public/css/bol_bb/logobb.jpg') no-repeat top left;
+    {{--background: url('/css/bol_bb/logo02.jpg') no-repeat top left;--}}
             padding-left: 160px;
             height: 65px;
         }
@@ -160,7 +160,7 @@
             font-family: 'Arial Narrow';
             font-size: 9px;
             color: navy;
-            border-left: 5px #ffe000 solid;
+            border-left: 5px #151c48 solid;
             padding-left: 2px;
         }
 
@@ -168,7 +168,7 @@
             height: 12px;
             font-size: 10px;
             color: black;
-            border-left: 5px #ffe000 solid;
+            border-left: 5px #151c48 solid;
             padding-left: 2px;
         }
 
@@ -290,7 +290,7 @@
             /* width: 180px; */
             width: 175px;
             padding-right: 5px;
-            background-color: #ffc ;
+            background-color: #61c7ff ;
         }
 
         table.line td.sacado {
@@ -305,7 +305,7 @@
             /* width: 180px; */
             width: 175px;
             padding-right: 5px;
-            background-color: #ffc;
+            background-color: #61c7ff;
         }
 
         table.line td.cedente2 {
@@ -346,7 +346,7 @@
 
         table.line td.reservado {
             width: 93px;
-            background-color: #ffc;
+            background-color: #61c7ff;
         }
 
         table.line td.carteira {
@@ -404,7 +404,7 @@
             /* width: 180px; */
             width: 175px;
             padding-right: 5px;
-            background-color: #ffc ;
+            background-color: #61c7ff ;
         }
 
         table.line td.sacado2 {
@@ -443,8 +443,8 @@
 
 
         div.barcode {
-            width: 666px;
-            margin-bottom: 20px;
+            width: 300px;
+            margin-bottom: 10px;
         }
 
     }
@@ -469,9 +469,9 @@
 <div id="container">
 
     <div id="instr_header">
-        <h1>{{dadosboleto.identificacao}}<?php echo isset($dadosboleto["cpf_cnpj"]) ? $dadosboleto["cpf_cnpj"] : '' ?></h1>
-        <address><?php echo $dadosboleto["endereco"]; ?><br></address>
-        <address><?php echo $dadosboleto["cidade_uf"]; ?></address>
+        <h1>{{--dadosboleto.identificacao}}<?php echo isset($dadosboleto["cpf_cnpj"]) ? $dadosboleto["cpf_cnpj"] : '' ?>--}}</h1>
+        <address>{{--<?php echo $dadosboleto["endereco"]; ?>--}}<br></address>
+        <address>{{--<?php echo $dadosboleto["cidade_uf"]; ?>--}}</address>
     </div>	<!-- id="instr_header" -->
 
     <div id="">
@@ -516,11 +516,11 @@
         <table class="header" border=0 cellspacing="0" cellpadding="0">
             <tbody>
             <tr>
-                <td width=150><IMG SRC="imagens/logobb.jpg"></td>
+                <td width=150><IMG SRC="/css/bol_bb/logo02.jpg"></td>
                 <td width=50>
-                    <div class="field_cod_banco"><?php echo $dadosboleto["codigo_banco_com_dv"]?></div>
+                    <div class="field_cod_banco"></div>
                 </td>
-                <td class="linha_digitavel"><?php echo $dadosboleto["linha_digitavel"]?></td>
+                <td class="linha_digitavel"></td>
             </tr>
             </tbody>
         </table>
@@ -536,11 +536,11 @@
             </tr>
 
             <tr class="campos">
-                <td class="cedente"><?php echo $dadosboleto["cedente"]; ?>&nbsp;</td>
-                <td class="ag_cod_cedente"><?php echo $dadosboleto["agencia_codigo"]?> &nbsp;</td>
-                <td class="especie"><?php echo $dadosboleto["especie"]?>&nbsp;</td>
-                <TD class="qtd"><?php echo $dadosboleto["quantidade"]?>&nbsp;</td>
-                <TD class="nosso_numero"><?php echo $dadosboleto["nosso_numero"]?>&nbsp;</td>
+                <td class="cedente">{{--<?php echo $dadosboleto["cedente"]; ?>--}}&nbsp;</td>
+                <td class="ag_cod_cedente">{{--<?php echo $dadosboleto["agencia_codigo"]?> --}}&nbsp;</td>
+                <td class="especie">{{--<?php echo $dadosboleto["especie"]?>--}}&nbsp;</td>
+                <TD class="qtd">{{--<?php echo $dadosboleto["quantidade"]?>--}}&nbsp;</td>
+                <TD class="nosso_numero">{{--<?php echo $dadosboleto["nosso_numero"]?>--}}&nbsp;</td>
             </tr>
             </tbody>
         </table>
@@ -555,11 +555,11 @@
                 <td class="valor_doc">Valor documento</TD>
             </tr>
             <tr class="campos">
-                <td class="num_doc"><?php echo $dadosboleto["numero_documento"]?></td>
-                <td class="contrato"><?php echo $dadosboleto["contrato"]?></td>
-                <td class="cpf_cei_cnpj"><?php echo $dadosboleto["cpf_cnpj"]?></td>
-                <td class="vencimento"><?php echo $dadosboleto["data_vencimento"]?></td>
-                <td class="valor_doc"><?php echo $dadosboleto["valor_boleto"]?></td>
+                <td class="num_doc">{{--$dadosboleto["numero_documento--}}</td>
+                <td class="contrato">{{--<?php echo $dadosboleto["contrato"]?>--}}</td>
+                <td class="cpf_cei_cnpj">{{--<?php echo $dadosboleto["cpf_cnpj"]?>--}}</td>
+                <td class="vencimento">{{$dadosboleto->dataVencimentoTituloCobranca}}</td>
+                <td class="valor_doc">{{$dadosboleto->valorOriginalTituloCobranca}}</td>
             </tr>
             </tbody>
         </table>
@@ -578,7 +578,7 @@
                 <td class="outras_deducoes">&nbsp;</td>
                 <td class="mora_multa">&nbsp;</td>
                 <td class="outros_acrescimos">&nbsp;</td>
-                <td class="valor_cobrado">&nbsp;</td>
+                <td class="valor_cobrado">{{$dadosboleto->valorAtualTituloCobranca}}&nbsp;</td>
             </tr>
             </tbody>
         </table>
@@ -590,7 +590,7 @@
                 <td class="sacado">Sacado</td>
             </tr>
             <tr class="campos">
-                <td class="sacado"><?php echo $dadosboleto["sacado"]?></td>
+                <td class="sacado">{{--<?php echo $dadosboleto["sacado"]?>--}}</td>
             </tr>
             </tbody>
         </table>
@@ -609,11 +609,11 @@
         <table class="header" border=0 cellspacing="0" cellpadding="0">
             <tbody>
             <tr>
-                <td width=150><IMG SRC="imagens/logobb.jpg"></td>
+                <td width=150><IMG SRC="/css/bol_bb/logo02.jpg"></td>
                 <td width=50>
-                    <div class="field_cod_banco"><?php echo $dadosboleto["codigo_banco_com_dv"]?></div>
+                    <div class="field_cod_banco">{{--<?php echo $dadosboleto["codigo_banco_com_dv"]?>--}}</div>
                 </td>
-                <td class="linha_digitavel"><?php echo $dadosboleto["linha_digitavel"]?></td>
+                <td class="linha_digitavel">{{--<?php echo $dadosboleto["linha_digitavel"]?>--}}</td>
             </tr>
             </tbody>
         </table>
@@ -626,7 +626,7 @@
             </tr>
             <tr class="campos">
                 <td class="local_pagto">QUALQUER BANCO AT&Eacute; O VENCIMENTO</td>
-                <td class="vencimento2"><?php echo $dadosboleto["data_vencimento"]?></td>
+                <td class="vencimento2">{{$dadosboleto->dataVencimentoTituloCobranca}}</td>
             </tr>
             </tbody>
         </table>
@@ -638,8 +638,8 @@
                 <td class="ag_cod_cedente2">Ag&ecirc;ncia/C&oacute;digo cedente</td>
             </tr>
             <tr class="campos">
-                <td class="cedente2"><?php echo $dadosboleto["cedente"]?></td>
-                <td class="ag_cod_cedente2"><?php echo $dadosboleto["agencia_codigo"]?></td>
+                <td class="cedente2">{{--<?php echo $dadosboleto["cedente"]?>--}}</td>
+                <td class="ag_cod_cedente2">{{--<?php echo $dadosboleto["agencia_codigo"]?>--}}</td>
             </tr>
             </tbody>
         </table>
@@ -655,12 +655,12 @@
                 <td class="nosso_numero2">Nosso n&uacute;mero</td>
             </tr>
             <tr class="campos">
-                <td class="data_doc"><?php echo $dadosboleto["data_documento"]?></td>
-                <td class="num_doc2"><?php echo $dadosboleto["numero_documento"]?></td>
-                <td class="especie_doc"><?php echo $dadosboleto["especie_doc"]?></td>
-                <td class="aceite"><?php echo $dadosboleto["aceite"]?></td>
-                <td class="data_process"><?php echo $dadosboleto["data_processamento"]?></td>
-                <td class="nosso_numero2"><?php echo $dadosboleto["nosso_numero"]?></td>
+                <td class="data_doc">{{--<?php echo $dadosboleto["data_documento"]?>--}}</td>
+                <td class="num_doc2">{{--<?php echo $dadosboleto["numero_documento"]?>--}}</td>
+                <td class="especie_doc">{{--<?php echo $dadosboleto["especie_doc"]?>--}}</td>
+                <td class="aceite">{{--<?php echo $dadosboleto["aceite"]?>--}}</td>
+                <td class="data_process">{{--<?php echo $dadosboleto["data_processamento"]?>--}}</td>
+                <td class="nosso_numero2">{{--<?php echo $dadosboleto["nosso_numero"]?>--}}</td>
             </tr>
             </tbody>
         </table>
@@ -677,11 +677,11 @@
             </tr>
             <tr class="campos">
                 <td class="reservado">&nbsp;</td>
-                <td class="carteira"><?php echo $dadosboleto["carteira"]?> <?php echo isset($dadosboleto["variacao_carteira"]) ? $dadosboleto["variacao_carteira"] : '&nbsp;' ?></td>
-                <td class="especie2"><?php echo $dadosboleto["especie"]?></td>
-                <td class="qtd2"><?php echo $dadosboleto["quantidade"]?></td>
-                <td class="xvalor"><?php echo $dadosboleto["valor_unitario"]?></td>
-                <td class="valor_doc2"><?php echo $dadosboleto["valor_boleto"]?></td>
+                <td class="carteira">{{--<?php echo $dadosboleto["carteira"]?> <?php echo isset($dadosboleto["variacao_carteira"]) ? $dadosboleto["variacao_carteira"] : '&nbsp;' ?>--}}</td>
+                <td class="especie2">{{--<?php echo $dadosboleto["especie"]?>--}}</td>
+                <td class="qtd2">{{--<?php echo $dadosboleto["quantidade"]?>--}}</td>
+                <td class="xvalor">{{--<?php echo $dadosboleto["valor_unitario"]?>--}}</td>
+                <td class="valor_doc2">{{$dadosboleto->valorOriginalTituloCobranca}}</td>
             </tr>
             </tbody>
         </table>
@@ -698,14 +698,14 @@
                             </td>
                         </tr>
                         <tr class="campos">
-                            <td class="instrucoes" rowspan="5">
+                            <td class="instrucoes" rowspan="5"> {{--
                                 <p><?php echo $dadosboleto["demonstrativo1"]; ?></p>
                                 <p><?php echo $dadosboleto["demonstrativo2"]; ?></p>
                                 <p><?php echo $dadosboleto["demonstrativo3"]; ?></p>
                                 <p><?php echo $dadosboleto["instrucoes1"]; ?></p>
                                 <p><?php echo $dadosboleto["instrucoes2"]; ?></p>
                                 <p><?php echo $dadosboleto["instrucoes3"]; ?></p>
-                                <p><?php echo $dadosboleto["instrucoes4"]; ?></p>
+                                <p><?php echo $dadosboleto["instrucoes4"]; ?></p>--}}
                             </td>
                         </tr>
                         </tbody>
@@ -786,10 +786,10 @@
                 <td class="sacado2">Sacado</td>
             </tr>
             <tr class="campos">
-                <td class="sacado2">
+                <td class="sacado2">{{--
                     <p><?php echo $dadosboleto["sacado"]?></p>
                     <p><?php echo $dadosboleto["endereco1"]?></p>
-                    <p><?php echo $dadosboleto["endereco2"]?></p>
+                    <p><?php echo $dadosboleto["endereco2"]?></p> --}}
                 </td>
             </tr>
             </tbody>
@@ -806,9 +806,12 @@
             </tr>
             </tbody>
         </table>
-        <table cellspacing=0 cellpadding=0 width=666 border=0><TBODY><TR><TD width=666 align=right ><font style="font-size: 10px;">Autentica&ccedil;&atilde;o mec&acirc;nica - Ficha de Compensa��o</font></TD></tr></tbody></table>
+        <br>
+{{--        <table cellspacing=0 cellpadding=0 width=500 border=0><TBODY><TR><TD width=500 align=right ><font style="font-size: 10px;">Autentica&ccedil;&atilde;o mec&acirc;nica - Ficha de Compensa��o</font></TD></tr></tbody></table>--}}
         <div class="barcode">
-            <p><?php fbarcode($dadosboleto["codigo_barras"]); ?></p>
+
+{{--            <div class="mb-3">{!! DNS2D::getBarcodeHTML("$dadosboleto->qrcode", 'QRCODE') !!}</div>--}}
+            <div class="mb-3">{!! DNS1D::getBarcodeHTML("$dadosboleto->textoCodigoBarrasTituloCobranca", 'I25') !!}</div>
         </div>
         <div class="cut">
             <p>Corte na linha pontilhada</p>
