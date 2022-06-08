@@ -811,7 +811,7 @@ x   <title>{{--<?php echo $dadosboleto["identificacao"]; ?>--}}</title>
         <div class="barcode">
 
 {{--            <div class="mb-3">{!! DNS2D::getBarcodeHTML("$dadosboleto->qrcode", 'QRCODE') !!}</div>--}}
-            <div class="mb-3">{!! DNS1D::getBarcodeHTML("$dadosboleto->textoCodigoBarrasTituloCobranca", 'I25') !!}</div>
+            <div class="mb-3">{!! DNS1D::getBarcodeHTML("$dadosboleto->codigoLinhaDigitavel", "C39") !!}</div>
         </div>
         <div class="cut">
             <p>Corte na linha pontilhada</p>

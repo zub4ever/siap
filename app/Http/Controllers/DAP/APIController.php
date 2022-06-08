@@ -74,7 +74,7 @@ class APIController extends Controller
             "numeroTituloBeneficiario" => "000101",
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
-            "numeroTituloCliente" => "00031285570007004000",
+            "numeroTituloCliente" => "00031285570006004000",
             "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
@@ -126,10 +126,12 @@ class APIController extends Controller
             $boleto = json_decode($contents);
 
 
-            $dadosboleto = $boleto;
+            //$dadosboleto = $boleto;
+
+            dd($boleto);
 
 
-            return view("dap.guiaCNPJ.verGuiaPDF", compact('dadosboleto'));
+            //return view("dap.guiaCNPJ.verGuiaPDF", compact('dadosboleto'));
 
 
 
