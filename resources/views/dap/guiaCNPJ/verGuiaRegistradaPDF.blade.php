@@ -578,7 +578,7 @@ x   <title>{{--<?php echo $dadosboleto["identificacao"]; ?>--}}</title>
                 <td class="outras_deducoes">&nbsp;</td>
                 <td class="mora_multa">&nbsp;</td>
                 <td class="outros_acrescimos">&nbsp;</td>
-                <td class="valor_cobrado">{{$dadosboleto->valorAtualTituloCobranca}}&nbsp;</td>
+                <td class="valor_cobrado">{{$boletos->valorAtualTituloCobranca}}&nbsp;</td>
             </tr>
             </tbody>
         </table>
@@ -626,7 +626,7 @@ x   <title>{{--<?php echo $dadosboleto["identificacao"]; ?>--}}</title>
             </tr>
             <tr class="campos">
                 <td class="local_pagto">QUALQUER BANCO AT&Eacute; O VENCIMENTO</td>
-                <td class="vencimento2">{{$dadosboleto->dataVencimentoTituloCobranca}}</td>
+                <td class="vencimento2">{{$boletos->dataVencimentoTituloCobranca}}</td>
             </tr>
             </tbody>
         </table>
@@ -681,7 +681,7 @@ x   <title>{{--<?php echo $dadosboleto["identificacao"]; ?>--}}</title>
                 <td class="especie2">{{--<?php echo $dadosboleto["especie"]?>--}}</td>
                 <td class="qtd2">{{--<?php echo $dadosboleto["quantidade"]?>--}}</td>
                 <td class="xvalor">{{--<?php echo $dadosboleto["valor_unitario"]?>--}}</td>
-                <td class="valor_doc2">{{$dadosboleto->valorOriginalTituloCobranca}}</td>
+                <td class="valor_doc2">{{$boletos->valorOriginalTituloCobranca}}</td>
             </tr>
             </tbody>
         </table>

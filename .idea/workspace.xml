@@ -5,12 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="23fdc650-e149-4b55-bf70-b9e8d1aae735" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Requests/DapFormRequest/DapFormRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/Models/DAP/DAP_API.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/dap/guiaCNPJ/verGuiaRegistradaPDF.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/DAP/APIController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/DAP/APIController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Models/DAP/DAP_API.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Models/DAP/DAP_API.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/dap/guiaCNPJ/verGuiaRegistradaPDF.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/dap/guiaCNPJ/verGuiaRegistradaPDF.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -316,21 +314,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/xampp/htdocs/sisa/app/Http/Requests/DapFormRequest",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "yarn",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/xampp/htdocs/sisa/app/Http/Requests/DapFormRequest&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\sisa\app\Http\Requests\DapFormRequest" />
@@ -353,6 +351,7 @@
       <workItem from="1654481490126" duration="11573000" />
       <workItem from="1654539012057" duration="1864000" />
       <workItem from="1654554484583" duration="2525000" />
+      <workItem from="1654777711246" duration="16137000" />
     </task>
     <servers />
   </component>

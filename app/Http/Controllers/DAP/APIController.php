@@ -8,9 +8,11 @@ use App\Models\DAP\DAP_API;
 use App\Models\DAP\DAPAPI;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 use PDF;
+
 
 class APIController extends Controller
 {
@@ -58,11 +60,8 @@ class APIController extends Controller
 
     }
 
-    public function registrar(DapFormRequest $request){
-
-
-        $data = DAP_API::create($request->all());
-
+    public function registrar(Request $request)
+    {
 
 
         /* Informações do Boleto */
@@ -85,7 +84,7 @@ class APIController extends Controller
             "numeroTituloBeneficiario" => "000101",
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
-            "numeroTituloCliente" => "00031285570006001900",
+            "numeroTituloCliente" => "00031285570006004500",
             "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
@@ -135,41 +134,24 @@ class APIController extends Controller
 
             /* Conveter o JSON em array associativo PHP */
             $boleto = json_decode($contents);
+            //Delimitação do boleto
 
 
-            //$dadosboleto = $boleto;
+            $value = $request->get('boleto');
 
-            //dd($boleto);
+            $ArrContatos = [];
+            $ArrContatos = $value;
 
-
-            if ($boleto != "") {
-
-
+            return ($ArrContatos);
 
 
 
-                $data->boleto = $request->boleto;
 
-                $data->save();
-
-                DB::commit();
-
-                //$qrCode = $boleto->qrCode->emv;
-                //Posso passar url Payload
-
-
-//                return redirect(route('consultar', ['boleto' => $boleto
-//
-//                ]));
-
-                return redirect()->route('dap.index')->with(
-                    'success',
-                    "Atendimento cadastrado com sucesso."
-                );
-            }
         } catch (ClientException $e) {
             echo $e->getMessage();
         }
+
+        //return redirect("dap.guiaCNPJ.verGuiaRegistradapDF") ->with('boleto', 'boletos');
 
 
     }
@@ -189,7 +171,7 @@ class APIController extends Controller
             $response = $guzzle->request('GET', 'https://api.sandbox.bb.com.br/cobrancas/v2/boletos?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key') .
                 '&agenciaBeneficiario=' . '452' .
                 '&contaBeneficiario=' . '123873' .
-                '&indicadorSituacao=' . 'B' .
+                '&indicadorSituacao=' . 'A' .
                 '&indice=' . '20' .
                 '&codigoEstadoTituloCobranca=' . '7' .
                 '&dataInicioMovimento=' . '01.01.2021' .
@@ -212,20 +194,14 @@ class APIController extends Controller
         }
     }
 
-    public function consultar(Request $request)
+    public function consultar()
     {
 
-
-        $id = $request->boleto;
-
-
+         $this->registrar();
+        $id = '00031285570006004500';
 
 
-
-        //$id = $boleto->numero;
-
-        // dd($id);
-
+        //inicio
 
         try {
             $guzzle = new Client([
@@ -253,16 +229,16 @@ class APIController extends Controller
             $boleto = json_decode($contents);
 
 
-            //dd($boleto);
+            dd($boleto);
 
 
-            $dadosboleto = $boleto;
+            //$dadosboleto = $boleto;
 
 
+            //return view("dap.guiaCNPJ.verGuiaRegistradaPDF", compact('dadosboleto'));
 
-            return view("dap.guiaCNPJ.verGuiaRegistradaPDF", compact('dadosboleto'));
-
-        } catch (ClientException $e) {
+        } //FIM
+        catch (ClientException $e) {
             echo $e->getMessage();
         }
 
@@ -272,6 +248,8 @@ class APIController extends Controller
     {
 
     }
+
+
 
 
 }
