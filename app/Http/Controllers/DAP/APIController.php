@@ -3,7 +3,13 @@
 namespace App\Http\Controllers\DAP;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DapFormRequest\DapFormRequest;
+use App\Models\DAP\DAP_API;
+use App\Models\DAP\DAPAPI;
 use GuzzleHttp\Client;
+use Illuminate\Http\Request;
+
+use Illuminate\Support\Facades\DB;
 use PDF;
 
 class APIController extends Controller
@@ -52,8 +58,13 @@ class APIController extends Controller
 
     }
 
-    public function registrar()
-    {
+    public function registrar(DapFormRequest $request){
+
+
+        $data = DAP_API::create($request->all());
+
+
+
         /* Informações do Boleto */
         $body = array(
             "numeroConvenio" => 3128557,
@@ -62,7 +73,7 @@ class APIController extends Controller
             "codigoModalidade" => 1,
             "dataEmissao" => "04.05.2022",
             "dataVencimento" => "12.06.2022",
-            "valorOriginal" => 123.50,
+            "valorOriginal" => 2222.50,
             "valorAbatimento" => 0,
             "quantidadeDiasProtesto" => 0,
             "indicadorNumeroDiasLimiteRecebimento" => "N",
@@ -74,7 +85,7 @@ class APIController extends Controller
             "numeroTituloBeneficiario" => "000101",
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
-            "numeroTituloCliente" => "00031285570006004000",
+            "numeroTituloCliente" => "00031285570006001900",
             "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
@@ -88,7 +99,7 @@ class APIController extends Controller
                 "uf" => "AC",
                 "telefone" => "000000000"
             ),
-             "indicadorPix"=> "S"
+            "indicadorPix" => "S"
 
         );
 
@@ -128,14 +139,34 @@ class APIController extends Controller
 
             //$dadosboleto = $boleto;
 
-            dd($boleto);
+            //dd($boleto);
 
 
-            //return view("dap.guiaCNPJ.verGuiaPDF", compact('dadosboleto'));
+            if ($boleto != "") {
 
 
 
 
+
+                $data->boleto = $request->boleto;
+
+                $data->save();
+
+                DB::commit();
+
+                //$qrCode = $boleto->qrCode->emv;
+                //Posso passar url Payload
+
+
+//                return redirect(route('consultar', ['boleto' => $boleto
+//
+//                ]));
+
+                return redirect()->route('dap.index')->with(
+                    'success',
+                    "Atendimento cadastrado com sucesso."
+                );
+            }
         } catch (ClientException $e) {
             echo $e->getMessage();
         }
@@ -181,8 +212,21 @@ class APIController extends Controller
         }
     }
 
-    public function consultar(){
-        $id = '00031285570007004000';
+    public function consultar(Request $request)
+    {
+
+
+        $id = $request->boleto;
+
+
+
+
+
+        //$id = $boleto->numero;
+
+        // dd($id);
+
+
         try {
             $guzzle = new Client([
                 'headers' => [
@@ -193,10 +237,10 @@ class APIController extends Controller
             ]);
 
             /* Requisição */
-            $response = $guzzle->request('GET', 'https://api.hm.bb.com.br/cobrancas/v2/boletos/'.
+            $response = $guzzle->request('GET', 'https://api.hm.bb.com.br/cobrancas/v2/boletos/' .
                 $id .
                 '?gw-dev-app-key=' . config('apiCobranca.gw_dev_app_key') .
-                '&numeroConvenio=' .'3128557'
+                '&numeroConvenio=' . '3128557'
             );
 
             /* Recuperar o corpo da resposta da requisição */
@@ -215,7 +259,8 @@ class APIController extends Controller
             $dadosboleto = $boleto;
 
 
-            return view("dap.guiaCNPJ.verGuiaPDF", compact('dadosboleto'));
+
+            return view("dap.guiaCNPJ.verGuiaRegistradaPDF", compact('dadosboleto'));
 
         } catch (ClientException $e) {
             echo $e->getMessage();
