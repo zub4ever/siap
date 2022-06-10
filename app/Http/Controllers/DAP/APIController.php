@@ -84,7 +84,7 @@ class APIController extends Controller
             "numeroTituloBeneficiario" => "000101",
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
-            "numeroTituloCliente" => "00031285570006004500",
+            "numeroTituloCliente" => "00031285570006005400",
             "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
@@ -136,13 +136,33 @@ class APIController extends Controller
             $boleto = json_decode($contents);
             //Delimitação do boleto
 
+            if($boleto !=""){
 
-            $value = $request->get('boleto');
+            $jsonDecode = json_decode($boleto); // Decodifica o json e transforma em objeto
+            $leads = $jsonDecode->leads[0];
 
-            $ArrContatos = [];
-            $ArrContatos = $value;
+            $lead->numero = $leads->numero;
+            $lead->numeroCarteira = $leads->numeroCarteira;
+            $lead->numeroVariacaoCarteira = $leads->numeroVariacaoCarteira;
+            $lead->codigoCliente = $leads->codigoCliente;
+            $lead->linhaDigitavel = $leads->linhaDigitavel;
+            $lead->codigoBarraNumerico = $leads->codigoBarraNumerico;
+            $lead->numeroContratoCobranca = $leads->numeroContratoCobranca;
+//            $lead->number_conversions = $leads->number_conversions;
+//            $lead->opportunity = $leads->opportunity;
+//            $lead->number_conversions = $leads->number_conversions;
+//
+//            $lead->opportunity = $leads->opportunity;
+//            $lead->number_conversions = $leads->number_conversions;
+//            $lead->opportunity = $leads->opportunity;
+//            $lead->number_conversions = $leads->number_conversions;
 
-            return ($ArrContatos);
+            $lead->save();
+
+            }
+
+
+            return back()->with('success', 'Data successfully store in json format.');
 
 
 
@@ -155,6 +175,7 @@ class APIController extends Controller
 
 
     }
+
 
     public function listar()
     {
