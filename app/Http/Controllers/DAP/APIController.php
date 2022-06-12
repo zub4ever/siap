@@ -84,7 +84,11 @@ class APIController extends Controller
             "numeroTituloBeneficiario" => "000101",
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
+<<<<<<< HEAD
             "numeroTituloCliente" => "00031285570006005800",
+=======
+            "numeroTituloCliente" => "00031285570006005400",
+>>>>>>> 946271a9c510620a7cdb42644d2ae14144ea90d7
             "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
@@ -136,8 +140,38 @@ class APIController extends Controller
             $boletos = json_decode($contents);
             //Delimitação do boleto
 
+<<<<<<< HEAD
             echo json_encode($boletos);
             //return view("dap.boleto", compact('boletos'));
+=======
+            if($boleto !=""){
+
+            $jsonDecode = json_decode($boleto); // Decodifica o json e transforma em objeto
+            $leads = $jsonDecode->leads[0];
+
+            $lead->numero = $leads->numero;
+            $lead->numeroCarteira = $leads->numeroCarteira;
+            $lead->numeroVariacaoCarteira = $leads->numeroVariacaoCarteira;
+            $lead->codigoCliente = $leads->codigoCliente;
+            $lead->linhaDigitavel = $leads->linhaDigitavel;
+            $lead->codigoBarraNumerico = $leads->codigoBarraNumerico;
+            $lead->numeroContratoCobranca = $leads->numeroContratoCobranca;
+//            $lead->number_conversions = $leads->number_conversions;
+//            $lead->opportunity = $leads->opportunity;
+//            $lead->number_conversions = $leads->number_conversions;
+//
+//            $lead->opportunity = $leads->opportunity;
+//            $lead->number_conversions = $leads->number_conversions;
+//            $lead->opportunity = $leads->opportunity;
+//            $lead->number_conversions = $leads->number_conversions;
+
+            $lead->save();
+
+            }
+
+
+            return back()->with('success', 'Data successfully store in json format.');
+>>>>>>> 946271a9c510620a7cdb42644d2ae14144ea90d7
 
 
 
@@ -150,6 +184,7 @@ class APIController extends Controller
 
 
     }
+
 
     public function listar()
     {
