@@ -143,6 +143,9 @@
       <path value="$PROJECT_DIR$/vendor/psr/http-client" />
       <path value="$PROJECT_DIR$/vendor/psr/http-factory" />
       <path value="$PROJECT_DIR$/vendor/milon/barcode" />
+      <path value="$PROJECT_DIR$/vendor/neitanod/forceutf8" />
+      <path value="$PROJECT_DIR$/vendor/eduardokum/laravel-boleto" />
+      <path value="$PROJECT_DIR$/vendor/setasign/fpdf" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.2" />

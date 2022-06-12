@@ -84,7 +84,7 @@ class APIController extends Controller
             "numeroTituloBeneficiario" => "000101",
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
-            "numeroTituloCliente" => "00031285570006004500",
+            "numeroTituloCliente" => "00031285570006005800",
             "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
@@ -133,16 +133,11 @@ class APIController extends Controller
             $contents = $body->getContents();
 
             /* Conveter o JSON em array associativo PHP */
-            $boleto = json_decode($contents);
+            $boletos = json_decode($contents);
             //Delimitação do boleto
 
-
-            $value = $request->get('boleto');
-
-            $ArrContatos = [];
-            $ArrContatos = $value;
-
-            return ($ArrContatos);
+            echo json_encode($boletos);
+            //return view("dap.boleto", compact('boletos'));
 
 
 
@@ -229,13 +224,13 @@ class APIController extends Controller
             $boleto = json_decode($contents);
 
 
-            dd($boleto);
+
 
 
             //$dadosboleto = $boleto;
 
 
-            //return view("dap.guiaCNPJ.verGuiaRegistradaPDF", compact('dadosboleto'));
+            return view("dap.guiaCNPJ.boleto", compact('boleto'));
 
         } //FIM
         catch (ClientException $e) {

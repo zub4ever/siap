@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "83506bb6ce6a207af56ecfbaad8dc0d8",
+    "content-hash": "ec92b6ac1803ae4c368d0a88cc6c52f6",
     "packages": [
         {
             "name": "barryvdh/laravel-dompdf",
@@ -503,6 +503,63 @@
                 }
             ],
             "time": "2022-01-18T15:43:28+00:00"
+        },
+        {
+            "name": "eduardokum/laravel-boleto",
+            "version": "0.9.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eduardokum/laravel-boleto.git",
+                "reference": "a0aae411db845dba2da9a9205553af9766419d08"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eduardokum/laravel-boleto/zipball/a0aae411db845dba2da9a9205553af9766419d08",
+                "reference": "a0aae411db845dba2da9a9205553af9766419d08",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-intl": "*",
+                "ext-json": "*",
+                "ext-mbstring": "*",
+                "ext-openssl": "*",
+                "laravel/framework": "^5.0||^6.0||^7.0||^8.0||^9.0",
+                "neitanod/forceutf8": "^2.0",
+                "php": ">5.5.0",
+                "setasign/fpdf": "^1.8"
+            },
+            "require-dev": {
+                "orchestra/testbench": "*",
+                "phpunit/phpunit": ">=6.0||^8.0||^9.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Eduardokum\\LaravelBoleto\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Eduardo Gusmão",
+                    "email": "eduguscontra3@hotmail.com"
+                }
+            ],
+            "description": "Biblioteca com boletos para o laravel",
+            "homepage": "https://github.com/eduardokum/laravel-boleto",
+            "keywords": [
+                "eduardokum",
+                "laravel-boleto"
+            ],
+            "support": {
+                "issues": "https://github.com/eduardokum/laravel-boleto/issues",
+                "source": "https://github.com/eduardokum/laravel-boleto/tree/0.9.3"
+            },
+            "time": "2022-06-07T14:01:01+00:00"
         },
         {
             "name": "egulias/email-validator",
@@ -1965,6 +2022,47 @@
             "time": "2022-05-10T09:36:00+00:00"
         },
         {
+            "name": "neitanod/forceutf8",
+            "version": "v2.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/neitanod/forceutf8.git",
+                "reference": "c1fbe70bfb5ad41b8ec5785056b0e308b40d4831"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/neitanod/forceutf8/zipball/c1fbe70bfb5ad41b8ec5785056b0e308b40d4831",
+                "reference": "c1fbe70bfb5ad41b8ec5785056b0e308b40d4831",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "ForceUTF8\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Sebastián Grignoli",
+                    "email": "grignoli@gmail.com"
+                }
+            ],
+            "description": "PHP Class Encoding featuring popular Encoding::toUTF8() function --formerly known as forceUTF8()-- that fixes mixed encoded strings.",
+            "homepage": "https://github.com/neitanod/forceutf8",
+            "support": {
+                "issues": "https://github.com/neitanod/forceutf8/issues",
+                "source": "https://github.com/neitanod/forceutf8/tree/master"
+            },
+            "time": "2019-12-10T14:09:14+00:00"
+        },
+        {
             "name": "nesbot/carbon",
             "version": "2.58.0",
             "source": {
@@ -3198,6 +3296,52 @@
                 "source": "https://github.com/sabberworm/PHP-CSS-Parser/tree/8.4.0"
             },
             "time": "2021-12-11T13:40:54+00:00"
+        },
+        {
+            "name": "setasign/fpdf",
+            "version": "1.8.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Setasign/FPDF.git",
+                "reference": "b0ddd9c5b98ced8230ef38534f6f3c17308a7974"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Setasign/FPDF/zipball/b0ddd9c5b98ced8230ef38534f6f3c17308a7974",
+                "reference": "b0ddd9c5b98ced8230ef38534f6f3c17308a7974",
+                "shasum": ""
+            },
+            "require": {
+                "ext-gd": "*",
+                "ext-zlib": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "fpdf.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Olivier Plathey",
+                    "email": "oliver@fpdf.org",
+                    "homepage": "http://fpdf.org/"
+                }
+            ],
+            "description": "FPDF is a PHP class which allows to generate PDF files with pure PHP. F from FPDF stands for Free: you may use it for any kind of usage and modify it to suit your needs.",
+            "homepage": "http://www.fpdf.org",
+            "keywords": [
+                "fpdf",
+                "pdf"
+            ],
+            "support": {
+                "source": "https://github.com/Setasign/FPDF/tree/1.8.4"
+            },
+            "time": "2021-08-30T07:50:06+00:00"
         },
         {
             "name": "spatie/laravel-permission",
@@ -8875,5 +9019,5 @@
         "php": "^7.2.5|^8.0.9"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "plugin-api-version": "2.3.0"
 }

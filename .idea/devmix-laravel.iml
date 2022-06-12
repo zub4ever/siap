@@ -148,6 +148,9 @@
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-client" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/psr/http-factory" />
       <excludeFolder url="file://$MODULE_DIR$/vendor/milon/barcode" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/neitanod/forceutf8" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/eduardokum/laravel-boleto" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/setasign/fpdf" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
