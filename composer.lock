@@ -1074,6 +1074,7 @@
         },
         {
             "name": "laravel/framework",
+<<<<<<< Updated upstream
             "version": "v8.83.16",
             "source": {
                 "type": "git",
@@ -1084,6 +1085,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/laravel/framework/zipball/6be5abd144faf517879af7298e9d79f06f250f75",
                 "reference": "6be5abd144faf517879af7298e9d79f06f250f75",
+=======
+            "version": "v8.83.15",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/framework.git",
+                "reference": "bf8fbdd9061611b2c05562fa14f6987cc5145d78"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/bf8fbdd9061611b2c05562fa14f6987cc5145d78",
+                "reference": "bf8fbdd9061611b2c05562fa14f6987cc5145d78",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1243,7 +1256,11 @@
                 "issues": "https://github.com/laravel/framework/issues",
                 "source": "https://github.com/laravel/framework"
             },
+<<<<<<< Updated upstream
             "time": "2022-06-07T15:09:06+00:00"
+=======
+            "time": "2022-05-31T14:57:02+00:00"
+>>>>>>> Stashed changes
         },
         {
             "name": "laravel/serializable-closure",
@@ -1507,6 +1524,7 @@
         },
         {
             "name": "league/commonmark",
+<<<<<<< Updated upstream
             "version": "2.3.3",
             "source": {
                 "type": "git",
@@ -1517,6 +1535,18 @@
                 "type": "zip",
                 "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/0da1dca5781dd3cfddbe328224d9a7a62571addc",
                 "reference": "0da1dca5781dd3cfddbe328224d9a7a62571addc",
+=======
+            "version": "2.3.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/thephpleague/commonmark.git",
+                "reference": "cb36fee279f7fca01d5d9399ddd1b37e48e2eca1"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/thephpleague/commonmark/zipball/cb36fee279f7fca01d5d9399ddd1b37e48e2eca1",
+                "reference": "cb36fee279f7fca01d5d9399ddd1b37e48e2eca1",
+>>>>>>> Stashed changes
                 "shasum": ""
             },
             "require": {
@@ -1609,7 +1639,11 @@
                     "type": "tidelift"
                 }
             ],
+<<<<<<< Updated upstream
             "time": "2022-06-07T21:28:26+00:00"
+=======
+            "time": "2022-05-14T15:37:39+00:00"
+>>>>>>> Stashed changes
         },
         {
             "name": "league/config",
@@ -1842,6 +1876,7 @@
                 }
             ],
             "time": "2022-04-17T13:12:02+00:00"
+<<<<<<< Updated upstream
         },
         {
             "name": "milon/barcode",
@@ -1916,6 +1951,8 @@
                 }
             ],
             "time": "2022-02-15T15:18:46+00:00"
+=======
+>>>>>>> Stashed changes
         },
         {
             "name": "monolog/monolog",
@@ -2020,6 +2057,7 @@
                 }
             ],
             "time": "2022-05-10T09:36:00+00:00"
+<<<<<<< Updated upstream
         },
         {
             "name": "neitanod/forceutf8",
@@ -2061,6 +2099,8 @@
                 "source": "https://github.com/neitanod/forceutf8/tree/master"
             },
             "time": "2019-12-10T14:09:14+00:00"
+=======
+>>>>>>> Stashed changes
         },
         {
             "name": "nesbot/carbon",
