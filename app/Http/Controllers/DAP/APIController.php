@@ -5,13 +5,16 @@ namespace App\Http\Controllers\DAP;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DapFormRequest\DapFormRequest;
 use App\Models\DAP\DAP_API;
-use App\Models\DAP\DAPAPI;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
-use PDF;
+
+use Eduardokum;
+use Eduardokum\LaravelBoleto\Boleto\Render\Pdf as renderPDF;
+use Eduardokum\LaravelBoleto\Boleto\Render\Html;
+use stdClass;
 
 
 class APIController extends Controller
@@ -84,11 +87,10 @@ class APIController extends Controller
             "numeroTituloBeneficiario" => "000101",
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
-<<<<<<< HEAD
-            "numeroTituloCliente" => "00031285570006005800",
-=======
-            "numeroTituloCliente" => "00031285570006005400",
->>>>>>> 946271a9c510620a7cdb42644d2ae14144ea90d7
+
+            "numeroTituloCliente" => "00031285570006008100",
+
+
             "textoMensagemBloquetoOcorrencia" => "TESTE",
 
             "pagador" => array(
@@ -137,43 +139,22 @@ class APIController extends Controller
             $contents = $body->getContents();
 
             /* Conveter o JSON em array associativo PHP */
-            $boletos = json_decode($contents);
+            $boleto = json_decode($contents, true);
             //Delimitação do boleto
 
-<<<<<<< HEAD
-            echo json_encode($boletos);
-            //return view("dap.boleto", compact('boletos'));
-=======
-            if($boleto !=""){
+            if($boleto != ""){
 
-            $jsonDecode = json_decode($boleto); // Decodifica o json e transforma em objeto
-            $leads = $jsonDecode->leads[0];
 
-            $lead->numero = $leads->numero;
-            $lead->numeroCarteira = $leads->numeroCarteira;
-            $lead->numeroVariacaoCarteira = $leads->numeroVariacaoCarteira;
-            $lead->codigoCliente = $leads->codigoCliente;
-            $lead->linhaDigitavel = $leads->linhaDigitavel;
-            $lead->codigoBarraNumerico = $leads->codigoBarraNumerico;
-            $lead->numeroContratoCobranca = $leads->numeroContratoCobranca;
-//            $lead->number_conversions = $leads->number_conversions;
-//            $lead->opportunity = $leads->opportunity;
-//            $lead->number_conversions = $leads->number_conversions;
-//
-//            $lead->opportunity = $leads->opportunity;
-//            $lead->number_conversions = $leads->number_conversions;
-//            $lead->opportunity = $leads->opportunity;
-//            $lead->number_conversions = $leads->number_conversions;
 
-            $lead->save();
 
+            $pdf = new Eduardokum\LaravelBoleto\Boleto\Render\Pdf();
+
+                //$pdf->gerarBoleto();
+                $pdf->showPrint();
+                //$pdf->gerarBoleto(Pdf::OUTPUT_SAVE, storage_path('app/boletos/meu_boleto.pdf'));
+                //$pdf_inline = $pdf->gerarBoleto(Pdf::OUTPUT_STRING);
+                //$pdf->gerarBoleto(Pdf::OUTPUT_DOWNLOAD);
             }
-
-
-            return back()->with('success', 'Data successfully store in json format.');
->>>>>>> 946271a9c510620a7cdb42644d2ae14144ea90d7
-
-
 
 
         } catch (ClientException $e) {
@@ -227,7 +208,7 @@ class APIController extends Controller
     public function consultar()
     {
 
-         $this->registrar();
+
         $id = '00031285570006004500';
 
 
@@ -259,9 +240,6 @@ class APIController extends Controller
             $boleto = json_decode($contents);
 
 
-
-
-
             //$dadosboleto = $boleto;
 
 
@@ -278,8 +256,6 @@ class APIController extends Controller
     {
 
     }
-
-
 
 
 }
