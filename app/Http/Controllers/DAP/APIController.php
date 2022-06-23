@@ -88,7 +88,7 @@ class APIController extends Controller
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
 
-            "numeroTituloCliente" => "00031285570006008100",
+            "numeroTituloCliente" => "00031285570006008700",
 
 
             "textoMensagemBloquetoOcorrencia" => "TESTE",
@@ -142,19 +142,14 @@ class APIController extends Controller
             $boleto = json_decode($contents, true);
             //Delimitação do boleto
 
-            if($boleto != ""){
 
 
 
+//
+//                $html = new \Eduardokum\LaravelBoleto\Boleto\Render\Html();
+//                $boleto->renderHTML();
+//                return response($boleto->renderHTML());
 
-            $pdf = new Eduardokum\LaravelBoleto\Boleto\Render\Pdf();
-
-                //$pdf->gerarBoleto();
-                $pdf->showPrint();
-                //$pdf->gerarBoleto(Pdf::OUTPUT_SAVE, storage_path('app/boletos/meu_boleto.pdf'));
-                //$pdf_inline = $pdf->gerarBoleto(Pdf::OUTPUT_STRING);
-                //$pdf->gerarBoleto(Pdf::OUTPUT_DOWNLOAD);
-            }
 
 
         } catch (ClientException $e) {
@@ -209,7 +204,7 @@ class APIController extends Controller
     {
 
 
-        $id = '00031285570006004500';
+        $id = '00031285570006007100';
 
 
         //inicio
