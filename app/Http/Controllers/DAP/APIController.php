@@ -73,8 +73,8 @@ class APIController extends Controller
             "numeroCarteira" => 17,
             "numeroVariacaoCarteira" => 35,
             "codigoModalidade" => 1,
-            "dataEmissao" => "04.05.2022",
-            "dataVencimento" => "12.06.2022",
+            "dataEmissao" => "03.07.2022",
+            "dataVencimento" => "09.07.2022",
             "valorOriginal" => 2222.50,
             "valorAbatimento" => 0,
             "quantidadeDiasProtesto" => 0,
@@ -88,7 +88,7 @@ class APIController extends Controller
             "textoCampoUtilizacaoBeneficiario" => "RPPS",
             "codigoTipoContaCaucao" => 0,
 
-            "numeroTituloCliente" => "00031285570006008700",
+            "numeroTituloCliente" => "00031285578284859149",
 
 
             "textoMensagemBloquetoOcorrencia" => "TESTE",
@@ -141,6 +141,11 @@ class APIController extends Controller
             /* Conveter o JSON em array associativo PHP */
             $boleto = json_decode($contents, true);
             //Delimitação do boleto
+
+
+
+
+            dd($boleto);
 
 
 
