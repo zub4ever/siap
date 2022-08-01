@@ -9,7 +9,7 @@ class RequerimentoAposentadoriaVoluntaria extends Model {
     protected $table = 'requerimento_aposentadoria_voluntaria';
     public $timestamps = true;
     protected $fillable = [
-        'nm_reequerente',
+        'nm_requerente',
         'matricula',
         'cpf',
         'data_nascimento',
