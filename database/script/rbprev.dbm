@@ -3,7 +3,7 @@
 CAUTION: Do not modify this file unless you know what you are doing.
          Unexpected results may occur if the code is changed deliberately.
 -->
-<dbmodel pgmodeler-ver="0.9.3-alpha1" last-position="0,0" last-zoom="1" max-obj-count="39"
+<dbmodel pgmodeler-ver="0.9.3-alpha1" last-position="0,2472" last-zoom="1" max-obj-count="44"
 	 default-schema="public" default-owner="postgres">
 <database name="rbprev_instituto" encoding="UTF8" lc-collate="Portuguese_Brazil.1252" lc-ctype="Portuguese_Brazil.1252" is-template="false" allow-conns="true">
 	<role name="postgres"/>
@@ -21,7 +21,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="address" layer="0" collapse-mode="2" max-obj-count="12" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="120"/>
+	<position x="60" y="60"/>
 	<column name="id" not-null="true" sequence="public.address_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -65,7 +65,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="aposentadoria" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="380" y="120"/>
+	<position x="380" y="60"/>
 	<column name="id" not-null="true" sequence="public.aposentadoria_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -91,7 +91,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="atendimento" layer="0" collapse-mode="2" max-obj-count="14" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="720" y="120"/>
+	<position x="720" y="60"/>
 	<column name="id" not-null="true" sequence="public.atendimento_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -107,15 +107,6 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<column name="numero_telefone">
 		<type name="character varying" length="55"/>
 	</column>
-	<column name="email">
-		<type name="character varying" length="30"/>
-	</column>
-	<column name="cpf">
-		<type name="character varying" length="15"/>
-	</column>
-	<column name="descricao">
-		<type name="character varying" length="400"/>
-	</column>
 	<column name="status" not-null="true" default-value="true">
 		<type name="boolean" length="0"/>
 	</column>
@@ -127,6 +118,15 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	</column>
 	<column name="updated_at">
 		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="descricao">
+		<type name="character varying" length="400"/>
+	</column>
+	<column name="cpf">
+		<type name="character varying" length="15"/>
+	</column>
+	<column name="email">
+		<type name="character varying" length="30"/>
 	</column>
 	<constraint name="atendimento_pkey" type="pk-constr" table="public.atendimento">
 		<columns names="id" ref-type="src-columns"/>
@@ -141,7 +141,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="atendimento_status" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1180" y="220"/>
+	<position x="1140" y="60"/>
 	<column name="id" not-null="true" sequence="public.atendimento_status_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -167,7 +167,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="certidao_tempo" layer="0" collapse-mode="2" max-obj-count="15" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1460" y="120"/>
+	<position x="1460" y="60"/>
 	<column name="id" not-null="true" sequence="public.certidao_tempo_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -220,7 +220,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="city" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="440"/>
+	<position x="60" y="480"/>
 	<column name="id" not-null="true" sequence="public.city_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -246,7 +246,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="contract" layer="0" collapse-mode="2" max-obj-count="10" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="340" y="440"/>
+	<position x="340" y="480"/>
 	<column name="id" not-null="true" sequence="public.contract_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -287,7 +287,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="folhapagto" layer="0" collapse-mode="2" max-obj-count="20" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="680" y="440"/>
+	<position x="680" y="480"/>
 	<column name="id" not-null="true" sequence="public.folhapagto_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -352,7 +352,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="funcao" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1020" y="440"/>
+	<position x="1020" y="480"/>
 	<column name="id" not-null="true" sequence="public.funcao_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -381,7 +381,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="marital_status" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1340" y="440"/>
+	<position x="1340" y="480"/>
 	<column name="id" not-null="true" sequence="public.marital_status_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -407,7 +407,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="migrations" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="840"/>
+	<position x="60" y="880"/>
 	<column name="id" not-null="true" sequence="public.migrations_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -425,7 +425,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="model_has_permissions" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="360" y="840"/>
+	<position x="360" y="880"/>
 	<column name="permission_id" not-null="true">
 		<type name="bigint" length="0"/>
 	</column>
@@ -443,7 +443,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="model_has_roles" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="840" y="840"/>
+	<position x="840" y="880"/>
 	<column name="role_id" not-null="true">
 		<type name="bigint" length="0"/>
 	</column>
@@ -466,7 +466,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="obito" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1280" y="840"/>
+	<position x="1280" y="880"/>
 	<column name="id" not-null="true" sequence="public.obito_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -497,7 +497,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="orgao_expedidor" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="1040"/>
+	<position x="60" y="1080"/>
 	<column name="id" not-null="true" sequence="public.orgao_expedidor_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -518,7 +518,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="orgao" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1560" y="840"/>
+	<position x="1560" y="880"/>
 	<column name="id" not-null="true" sequence="public.orgao_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -544,7 +544,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="origin" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="380" y="1040"/>
+	<position x="380" y="1080"/>
 	<column name="id" not-null="true" sequence="public.origin_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -565,7 +565,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="password_resets" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="660" y="1040"/>
+	<position x="660" y="1080"/>
 	<column name="email" not-null="true">
 		<type name="character varying" length="50"/>
 	</column>
@@ -585,7 +585,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="pedido" layer="0" collapse-mode="2" max-obj-count="34" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="980" y="1040"/>
+	<position x="980" y="1080"/>
 	<column name="id" not-null="true" sequence="public.pedido_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -686,7 +686,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="permissions" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1360" y="1040"/>
+	<position x="1360" y="1080"/>
 	<column name="id" not-null="true" sequence="public.permissions_id_seq">
 		<type name="bigint" length="0"/>
 	</column>
@@ -713,7 +713,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="role_has_permissions" layer="0" collapse-mode="2" max-obj-count="3" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="1680"/>
+	<position x="60" y="1720"/>
 	<column name="permission_id" not-null="true">
 		<type name="bigint" length="0"/>
 	</column>
@@ -733,7 +733,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="roles" layer="0" collapse-mode="2" max-obj-count="6" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="500" y="1680"/>
+	<position x="500" y="1720"/>
 	<column name="id" not-null="true" sequence="public.roles_id_seq">
 		<type name="bigint" length="0"/>
 	</column>
@@ -765,7 +765,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="serve" layer="0" collapse-mode="2" max-obj-count="22" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="880" y="1680"/>
+	<position x="880" y="1720"/>
 	<column name="id" not-null="true" sequence="public.serve_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -836,7 +836,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="sexo" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1260" y="1680"/>
+	<position x="1260" y="1720"/>
 	<column name="id" not-null="true" sequence="public.sexo_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -862,7 +862,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="state" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1540" y="1680"/>
+	<position x="1540" y="1720"/>
 	<column name="id" not-null="true" sequence="public.state_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -888,7 +888,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpAposentadoriaEspecial" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="120" y="2100"/>
+	<position x="60" y="2260"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpAposentadoriaEspecial_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -914,7 +914,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpPCCR" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="440" y="2220"/>
+	<position x="440" y="2260"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpPCCR_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -940,7 +940,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpProfessor" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="720" y="2220"/>
+	<position x="720" y="2260"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpProfessor_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -966,7 +966,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpServicoMilitar" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1020" y="2220"/>
+	<position x="1020" y="2260"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpServicoMilitar_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -992,7 +992,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpServicoPublico" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="1340" y="2220"/>
+	<position x="1340" y="2260"/>
 	<column name="id" not-null="true" sequence="public.&quot;tpServicoPublico_id_seq&quot;">
 		<type name="integer" length="0"/>
 	</column>
@@ -1013,7 +1013,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="tpservidor" layer="0" collapse-mode="2" max-obj-count="2" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="60" y="2400"/>
+	<position x="60" y="2440"/>
 	<column name="id" not-null="true">
 		<type name="integer" length="0"/>
 	</column>
@@ -1033,7 +1033,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="type_serve" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="360" y="2400"/>
+	<position x="360" y="2440"/>
 	<column name="id" not-null="true" sequence="public.type_serve_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -1059,7 +1059,7 @@ CAUTION: Do not modify this file unless you know what you are doing.
 <table name="users" layer="0" collapse-mode="2" max-obj-count="10" z-value="0">
 	<schema name="public"/>
 	<role name="postgres"/>
-	<position x="660" y="2400"/>
+	<position x="660" y="2440"/>
 	<column name="id" not-null="true" sequence="public.users_id_seq">
 		<type name="integer" length="0"/>
 	</column>
@@ -1124,6 +1124,188 @@ CAUTION: Do not modify this file unless you know what you are doing.
 			<column name="email"/>
 		</idxelement>
 </index>
+
+<sequence name="termos_aposentadoria_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="termos_aposentadoria" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1020" y="2440"/>
+	<column name="id" not-null="true" sequence="public.termos_aposentadoria_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_termos">
+		<type name="character varying" length="500"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="termos_aposentadoria_pkey" type="pk-constr" table="public.termos_aposentadoria">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="termos_aposentadoria_responsavel_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="termos_aposentadoria_responsavel" layer="0" collapse-mode="2" max-obj-count="7" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="1360" y="2440"/>
+	<column name="id" not-null="true" sequence="public.termos_aposentadoria_responsavel_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_local">
+		<type name="character varying" length="250"/>
+	</column>
+	<column name="data_solicitacao">
+		<type name="date" length="0"/>
+	</column>
+	<column name="nm_reponsavel">
+		<type name="character varying" length="250"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="termos_aposentadoria_responsavel_pkey" type="pk-constr" table="public.termos_aposentadoria_responsavel">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="vinculo_municipio_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="vinculo_municipio" layer="0" collapse-mode="2" max-obj-count="4" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="60" y="2720"/>
+	<column name="id" not-null="true" sequence="public.vinculo_municipio_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_vinculo">
+		<type name="character varying" length="250"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="vinculo_municipio_pkey" type="pk-constr" table="public.vinculo_municipio">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
+
+<sequence name="requerimento_aposentadoria_voluntaria_id_seq" cycle="false" start="1" increment="1" min-value="1" max-value="2147483647" cache="1">
+	<schema name="public"/>
+	<role name="postgres"/>
+</sequence>
+
+<table name="requerimento_aposentadoria_voluntaria" layer="0" collapse-mode="2" max-obj-count="33" z-value="0">
+	<schema name="public"/>
+	<role name="postgres"/>
+	<position x="520" y="2720"/>
+	<column name="id" not-null="true" sequence="public.requerimento_aposentadoria_voluntaria_id_seq">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="nm_requerente">
+		<type name="character varying" length="250"/>
+	</column>
+	<column name="matricula">
+		<type name="character varying" length="10"/>
+	</column>
+	<column name="cpf">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="data_nascimento">
+		<type name="date" length="0"/>
+	</column>
+	<column name="pis_pasep">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="rg">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="nm_rua">
+		<type name="character varying" length="40"/>
+	</column>
+	<column name="numero_casa">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="complemento">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="cep">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="nm_bairro">
+		<type name="character varying" length="30"/>
+	</column>
+	<column name="nm_uf">
+		<type name="character varying" length="2"/>
+	</column>
+	<column name="nr_telefone">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="nm_lotacao">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="data_solicitacao">
+		<type name="date" length="0"/>
+	</column>
+	<column name="nm_local">
+		<type name="character varying" length="16"/>
+	</column>
+	<column name="sexo_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="status_civil_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="termos_aposentadoria_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="termos_aposentadoria_responsavel_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="vinculo_municipio_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="orgao_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="funcao_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="city_id" not-null="true">
+		<type name="integer" length="0"/>
+	</column>
+	<column name="status" not-null="true" default-value="true">
+		<type name="boolean" length="0"/>
+	</column>
+	<column name="created_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<column name="updated_at">
+		<type name="timestamp" length="0" precision="0"/>
+	</column>
+	<constraint name="requerimento_aposentadoria_voluntaria_pkey" type="pk-constr" table="public.requerimento_aposentadoria_voluntaria">
+		<columns names="id" ref-type="src-columns"/>
+	</constraint>
+</table>
 
 <constraint name="address_city_id_foreign" type="fk-constr" comparison-type="MATCH SIMPLE"
 	 upd-action="NO ACTION" del-action="CASCADE" ref-table="public.city" table="public.address">
@@ -1293,172 +1475,268 @@ CAUTION: Do not modify this file unless you know what you are doing.
 	<columns names="id" ref-type="dst-columns"/>
 </constraint>
 
+<constraint name="requerimento_aposentadoria_voluntaria_sexo_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.sexo" table="public.requerimento_aposentadoria_voluntaria">
+	<columns names="sexo_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="requerimento_aposentadoria_voluntaria_status_civil_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.marital_status" table="public.requerimento_aposentadoria_voluntaria">
+	<columns names="status_civil_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="requerimento_aposentadoria_volunta_termos_aposentadoria_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.termos_aposentadoria" table="public.requerimento_aposentadoria_voluntaria">
+	<columns names="termos_aposentadoria_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="requerimento_aposentadoria_vo_termos_aposentadoria_respons_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.termos_aposentadoria_responsavel" table="public.requerimento_aposentadoria_voluntaria">
+	<columns names="termos_aposentadoria_responsavel_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="requerimento_aposentadoria_voluntaria_vinculo_municipio_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.vinculo_municipio" table="public.requerimento_aposentadoria_voluntaria">
+	<columns names="vinculo_municipio_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="requerimento_aposentadoria_voluntaria_orgao_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.orgao" table="public.requerimento_aposentadoria_voluntaria">
+	<columns names="orgao_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="requerimento_aposentadoria_voluntaria_funcao_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.funcao" table="public.requerimento_aposentadoria_voluntaria">
+	<columns names="funcao_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
+<constraint name="requerimento_aposentadoria_voluntaria_city_id_fkey" type="fk-constr" comparison-type="MATCH SIMPLE"
+	 upd-action="NO ACTION" del-action="NO ACTION" ref-table="public.city" table="public.requerimento_aposentadoria_voluntaria">
+	<columns names="city_id" ref-type="src-columns"/>
+	<columns names="id" ref-type="dst-columns"/>
+</constraint>
+
 <relationship name="rel_address_city" type="relfk" layer="0"
-	 custom-color="#b4f060"
+	 custom-color="#480a78"
 	 src-table="public.address"
 	 dst-table="public.city" reference-fk="address_city_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_address_serve" type="relfk" layer="0"
-	 custom-color="#11e14b"
+	 custom-color="#ae75b2"
 	 src-table="public.address"
 	 dst-table="public.serve" reference-fk="address_serve_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_address_state" type="relfk" layer="0"
-	 custom-color="#1d5fad"
+	 custom-color="#01a814"
 	 src-table="public.address"
 	 dst-table="public.state" reference-fk="address_state_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_atendimento_atendimento_status" type="relfk" layer="0"
-	 custom-color="#1d6130"
+	 custom-color="#098f31"
 	 src-table="public.atendimento"
 	 dst-table="public.atendimento_status" reference-fk="atendimento_atendimento_status_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpAposentadoriaEspecial&quot;" type="relfk" layer="0"
-	 custom-color="#869646"
+	 custom-color="#e1e7c6"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpAposentadoriaEspecial&quot;" reference-fk="certidao_tempo_tpaposentadoriaespecial_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpPCCR&quot;" type="relfk" layer="0"
-	 custom-color="#a842c1"
+	 custom-color="#e3230f"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpPCCR&quot;" reference-fk="certidao_tempo_tppccr_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpProfessor&quot;" type="relfk" layer="0"
-	 custom-color="#a1c84e"
+	 custom-color="#023971"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpProfessor&quot;" reference-fk="certidao_tempo_tpprofessor_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpServicoMilitar&quot;" type="relfk" layer="0"
-	 custom-color="#795d06"
+	 custom-color="#5409b6"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpServicoMilitar&quot;" reference-fk="certidao_tempo_tpservicomilitar_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="&quot;rel_certidao_tempo_tpServicoPublico&quot;" type="relfk" layer="0"
-	 custom-color="#ffaa26"
+	 custom-color="#de7b0c"
 	 src-table="public.certidao_tempo"
 	 dst-table="public.&quot;tpServicoPublico&quot;" reference-fk="certidao_tempo_tpservicopublico_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_contract_funcao" type="relfk" layer="0"
-	 custom-color="#a7cd9e"
+	 custom-color="#aaef13"
 	 src-table="public.contract"
 	 dst-table="public.funcao" reference-fk="contract_funcao_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_contract_orgao" type="relfk" layer="0"
-	 custom-color="#56adfb"
+	 custom-color="#6c93c1"
 	 src-table="public.contract"
 	 dst-table="public.orgao" reference-fk="contract_orgao_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_contract_origin" type="relfk" layer="0"
-	 custom-color="#6570f3"
+	 custom-color="#37a311"
 	 src-table="public.contract"
 	 dst-table="public.origin" reference-fk="contract_origin_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_contract_serve" type="relfk" layer="0"
-	 custom-color="#017447"
+	 custom-color="#8f6a6e"
 	 src-table="public.contract"
 	 dst-table="public.serve" reference-fk="contract_serve_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_funcao_orgao" type="relfk" layer="0"
-	 custom-color="#8edd8a"
+	 custom-color="#452011"
 	 src-table="public.funcao"
 	 dst-table="public.orgao" reference-fk="funcao_orgao_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_model_has_permissions_permissions" type="relfk" layer="0"
-	 custom-color="#094336"
+	 custom-color="#35460e"
 	 src-table="public.model_has_permissions"
 	 dst-table="public.permissions" reference-fk="model_has_permissions_permission_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_model_has_roles_roles" type="relfk" layer="0"
-	 custom-color="#fb6662"
+	 custom-color="#aa6ec9"
 	 src-table="public.model_has_roles"
 	 dst-table="public.roles" reference-fk="model_has_roles_role_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_pedido_aposentadoria" type="relfk" layer="0"
-	 custom-color="#db5855"
+	 custom-color="#26765f"
 	 src-table="public.pedido"
 	 dst-table="public.aposentadoria" reference-fk="pedido_aposentadoria_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_pedido_certidao_tempo" type="relfk" layer="0"
-	 custom-color="#f0986f"
+	 custom-color="#b7ba03"
 	 src-table="public.pedido"
 	 dst-table="public.certidao_tempo" reference-fk="pedido_certidao_tempo_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_pedido_serve" type="relfk" layer="0"
-	 custom-color="#bd6448"
+	 custom-color="#a568b5"
 	 src-table="public.pedido"
 	 dst-table="public.serve" reference-fk="pedido_serve_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_role_has_permissions_permissions" type="relfk" layer="0"
-	 custom-color="#9b5b16"
+	 custom-color="#ecff83"
 	 src-table="public.role_has_permissions"
 	 dst-table="public.permissions" reference-fk="role_has_permissions_permission_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_role_has_permissions_roles" type="relfk" layer="0"
-	 custom-color="#95b866"
+	 custom-color="#f0fd10"
 	 src-table="public.role_has_permissions"
 	 dst-table="public.roles" reference-fk="role_has_permissions_role_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_marital_status" type="relfk" layer="0"
-	 custom-color="#f7031b"
+	 custom-color="#f1f059"
 	 src-table="public.serve"
 	 dst-table="public.marital_status" reference-fk="serve_marital_status_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_obito" type="relfk" layer="0"
-	 custom-color="#f52946"
+	 custom-color="#4e2cb0"
 	 src-table="public.serve"
 	 dst-table="public.obito" reference-fk="serve_obito_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_orgao_expedidor" type="relfk" layer="0"
-	 custom-color="#e22ef4"
+	 custom-color="#a9a8fb"
 	 src-table="public.serve"
 	 dst-table="public.orgao_expedidor" reference-fk="serve_orgao_expedidor_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_origin" type="relfk" layer="0"
-	 custom-color="#51d07c"
+	 custom-color="#4c1e46"
 	 src-table="public.serve"
 	 dst-table="public.origin" reference-fk="serve_origin_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_sexo" type="relfk" layer="0"
-	 custom-color="#1ce23e"
+	 custom-color="#72a2e5"
 	 src-table="public.serve"
 	 dst-table="public.sexo" reference-fk="serve_sexo_id_foreign"
 	 src-required="false" dst-required="true"/>
 
 <relationship name="rel_serve_tpservidor" type="relfk" layer="0"
-	 custom-color="#ce91e1"
+	 custom-color="#eb5351"
 	 src-table="public.serve"
 	 dst-table="public.tpservidor" reference-fk="serve_tp_servidor_id_foreign"
 	 src-required="false" dst-required="false"/>
 
 <relationship name="rel_serve_type_serve" type="relfk" layer="0"
-	 custom-color="#531b39"
+	 custom-color="#61a6d3"
 	 src-table="public.serve"
 	 dst-table="public.type_serve" reference-fk="serve_type_serve_id_foreign"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_requerimento_aposentadoria_voluntaria_sexo" type="relfk" layer="0"
+	 custom-color="#af1e79"
+	 src-table="public.requerimento_aposentadoria_voluntaria"
+	 dst-table="public.sexo" reference-fk="requerimento_aposentadoria_voluntaria_sexo_id_fkey"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_requerimento_aposentadoria_voluntaria_marital_status" type="relfk" layer="0"
+	 custom-color="#5d476d"
+	 src-table="public.requerimento_aposentadoria_voluntaria"
+	 dst-table="public.marital_status" reference-fk="requerimento_aposentadoria_voluntaria_status_civil_id_fkey"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_requerimento_aposentadoria_voluntaria_termos_aposentadoria" type="relfk" layer="0"
+	 custom-color="#a3041f"
+	 src-table="public.requerimento_aposentadoria_voluntaria"
+	 dst-table="public.termos_aposentadoria" reference-fk="requerimento_aposentadoria_volunta_termos_aposentadoria_id_fkey"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_requerimento_aposentadoria_voluntaria_termos_aposentadoria_" type="relfk" layer="0"
+	 custom-color="#7fda6b"
+	 src-table="public.requerimento_aposentadoria_voluntaria"
+	 dst-table="public.termos_aposentadoria_responsavel" reference-fk="requerimento_aposentadoria_vo_termos_aposentadoria_respons_fkey"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_requerimento_aposentadoria_voluntaria_vinculo_municipio" type="relfk" layer="0"
+	 custom-color="#02ccad"
+	 src-table="public.requerimento_aposentadoria_voluntaria"
+	 dst-table="public.vinculo_municipio" reference-fk="requerimento_aposentadoria_voluntaria_vinculo_municipio_id_fkey"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_requerimento_aposentadoria_voluntaria_orgao" type="relfk" layer="0"
+	 custom-color="#c13fa6"
+	 src-table="public.requerimento_aposentadoria_voluntaria"
+	 dst-table="public.orgao" reference-fk="requerimento_aposentadoria_voluntaria_orgao_id_fkey"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_requerimento_aposentadoria_voluntaria_funcao" type="relfk" layer="0"
+	 custom-color="#de7654"
+	 src-table="public.requerimento_aposentadoria_voluntaria"
+	 dst-table="public.funcao" reference-fk="requerimento_aposentadoria_voluntaria_funcao_id_fkey"
+	 src-required="false" dst-required="true"/>
+
+<relationship name="rel_requerimento_aposentadoria_voluntaria_city" type="relfk" layer="0"
+	 custom-color="#f2db34"
+	 src-table="public.requerimento_aposentadoria_voluntaria"
+	 dst-table="public.city" reference-fk="requerimento_aposentadoria_voluntaria_city_id_fkey"
 	 src-required="false" dst-required="true"/>
 
 <permission>
