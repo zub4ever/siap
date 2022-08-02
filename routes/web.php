@@ -54,9 +54,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Requerimentos de Aposentadoria
 
 Route::resource('administracao/reqAposentadorias','Administracao\reqAposentadorias\reqAposentadoriasController');
+//Requerimentos de Aposentadoria Voluntaria
 Route::resource('administracao/reqVoluntaria','Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController');
 Route::get('administracao/reqVoluntaria/create','Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@create')->name('apVoluntaria.create');
-
+Route::get('administracao/reqVoluntaria/create','Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@store');
 
 
 
