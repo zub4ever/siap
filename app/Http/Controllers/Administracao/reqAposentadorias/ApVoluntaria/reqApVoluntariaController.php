@@ -10,22 +10,33 @@ use App\Http\Requests\ApRequerimentosResquest\RequerimentoAposentadoriaVoluntari
 use App\Models\ApRequerimentos\TermosAposentadoria;
 use App\Models\ApRequerimentos\TermosAposentadoriaResponsavel;
 use App\Models\ApRequerimentos\VinculoMunicipio;
+use App\Models\ApRequerimentos\RequerimentoAposentadoriaVoluntaria;
 use App\Sexo;
 use App\Orgao;
 use App\Funcao;
 use App\City;
+use App\Marital_Status;
 
-class reqApVoluntariaController extends Controller {
+class reqApVoluntariaController extends Controller
+{
 
-    public function index() {
+    
+    public function index()
+    {
+
+        $reqApVoluntaria = RequerimentoAposentadoriaVoluntaria::where('status',1 ) 
+        //->where('atendimento_status_id',1)
+        ->orderBY('id', 'asc')
+        ->get();
 
 
-        return view("administracao.reqAposentadorias.reqVoluntaria.index");
+        return view("diprev.reqAposentadorias.reqVoluntaria.index", compact('reqApVoluntaria'));
     }
 
-    public function create() {
+    public function create()
+    {
 
-        
+
         $sexo = Sexo::all();
         $marital_status = Marital_Status::all();
         $termo_aposentadoria = TermosAposentadoria::all();
@@ -35,32 +46,52 @@ class reqApVoluntariaController extends Controller {
         $funcao = Funcao::all();
         $city = City::all();
 
-        return view("administracao.reqAposentadorias.reqVoluntaria.create",
-                compact('sexo', 'marital_status', 'termo_aposentadoria','termo_aposentadoria_responsavel',
-                        'vinculo_municipio','orgao','funcao','city'));
+        return view(
+            "diprev.reqAposentadorias.reqVoluntaria.create",
+            compact(
+                'sexo',
+                'marital_status',
+                'termo_aposentadoria',
+                'termo_aposentadoria_responsavel',
+                'vinculo_municipio',
+                'orgao',
+                'funcao',
+                'city'
+            )
+
+
+        );
     }
 
-    public function store(RequerimentoAposentadoriaVoluntariaFormRequest $request) {
-        
+    public function store(RequerimentoAposentadoriaVoluntariaFormRequest $request)
+    {
+
+
+
         DB::beginTransaction();
-        
+
+
+
+
         $reqApVoluntaria = RequerimentoAposentadoriaVoluntaria::create($request->all());
+
+        //dd($reqApVoluntaria);
+
         
-          if (!$reqApVoluntaria) {
+
+
+
+        if (!$reqApVoluntaria) {
             DB::rollBack();
             return redirect()->route('reqVoluntaria.index')->with('error', "Falha ao cadastrar requerimento.");
         }
+
         $reqApVoluntaria->save();
         DB::commit();
 
         return redirect()->route('reqVoluntaria.index')->with(
-                        'success',
-                        "Requerimento cadastrado com sucesso."
+            'success',
+            "Requerimento cadastrado com sucesso."
         );
     }
-
-
-        
-    
-
 }

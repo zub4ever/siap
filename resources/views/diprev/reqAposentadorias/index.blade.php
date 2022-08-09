@@ -12,13 +12,13 @@ Página inicial
 <div class ="row">
 
     <div class="cards-lista">
-        <a href="https://www.w3schools.com">
+        <a href="{{route('reqVoluntaria.index')}}">
             <div class="cardAp 1">
 
                 <div class="card_image"> 
                     <img src="https://media.giphy.com/media/QAsBwSjx9zVKoGp9nr/giphy.gif" /> </div>
                 <div class="card_title title-white">
-                    <p>Card Title</p>
+                    <p>Voluntaria</p>
                 </div>
             </div>
         </a>

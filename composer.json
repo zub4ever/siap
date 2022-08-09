@@ -13,6 +13,7 @@
         "eduardokum/laravel-boleto": "^0.9.3",
         "fideloper/proxy": "^4.2",
         "guzzlehttp/guzzle": "^7.0",
+        "igorescobar/jquery-mask-plugin": "^1.14",
         "laravel/framework": "^8.0",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.3.2",

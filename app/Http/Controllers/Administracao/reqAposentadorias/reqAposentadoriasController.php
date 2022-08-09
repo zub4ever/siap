@@ -23,7 +23,7 @@ class reqAposentadoriasController extends Controller
     public function index(){
        
 
-        return view("administracao.reqAposentadorias.index");
+        return view("diprev.reqAposentadorias.index");
     }
     
     

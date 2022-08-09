@@ -22,22 +22,25 @@ class RequerimentoAposentadoriaVoluntariaFormRequest extends FormRequest {
      */
     public function rules() {
         return [
+
+            
+
             'nm_requerente' => ['required', 'max:250'],
-            'matricula' => ['max:10'],
+            'matricula' => ['required','max:10'],
             'cpf'  => ['max:16'],
-            'data_nascimento' => ['required', 'date_format:"d/m/Y"'],        
+            'data_nascimento' => ['required', 'date_format:"d/m/Y"'],
             'pis_pasep' => ['max:30'],
             'rg' => ['required', 'max:10'],
-            'nm_rua' => ['required', 'max:10'],
+            'nm_rua' => ['required', 'max:100'],
             'numero_casa' => ['required', 'max:10'],
-            'complemento' => ['required', 'max:10'],
+            'complemento' => ['required', 'max:25'],
             'cep' => ['required', 'max:10'],
-            'nm_bairro' => ['required', 'max:10'],
+            'nm_bairro' => ['required', 'max:50'],
             'nm_uf' => ['required', 'max:10'],
-            'nr_telefone' => ['required', 'max:10'],
-            'nm_lotacao' => ['required', 'max:10'],
-            'data_solicitacao' => ['required', 'max:10'],
-            'nm_local' => ['required', 'max:10'],
+            'nr_telefone' => ['required', 'max:15'],
+            'nm_lotacao' => ['required', 'max:200'],
+            'data_solicitacao' => ['required', 'date_format:"d/m/Y"'],    
+            'nm_local' => ['max:100'],
             'sexo_id'=> ['required'],
             'status_civil_id'=> ['required'],
             'termos_aposentadoria_id'=> ['required'],
@@ -45,7 +48,8 @@ class RequerimentoAposentadoriaVoluntariaFormRequest extends FormRequest {
             'vinculo_municipio_id'=> ['required'],
             'orgao_id'=> ['required'],
             'funcao_id'=> ['required'],
-            'city_id'=> ['required']
+            'city_id'=> ['required'],
+            'nm_cargo' => ['required', 'max:50'] 
             
         ];
     }

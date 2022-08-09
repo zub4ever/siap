@@ -7,6 +7,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset("assets/css/bootstrap.min.css")}}">
 <link rel="stylesheet" type="text/css" href="{{asset("assets/css/ApVoluntaria.css")}}">
 
+
 @endsection
 
 @section('main-content')
@@ -23,7 +24,7 @@
                 <h4 class="card_title">Cadastrar requerimento</h4>
                 <form action="{{route('reqVoluntaria.store')}}" method="POST">
                     @csrf
-                    @include('administracao.reqAposentadorias.reqVoluntaria.form')
+                    @include('diprev.reqAposentadorias.reqVoluntaria.form')
                 </form>
             </div>
         </div>
@@ -31,11 +32,16 @@
 </div>
 @endsection
 @section('js')
- 
 
-<script src="{{asset('js/reqAposentadorias/ApVoluntaria/script.js')}}"></script>
+
+
+<script src="{{asset('assets/js/requerimentos/script.js')}}"></script>
+<script src="{{asset('assets/vendors/smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
+<script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+<script src="{{Config::get('app.url')}}/node_modules/select2/jquery.select2.js"></script>
+<script src="{{Config::get('app.url')}}/node_modules/select2/dist/js/select2.min.js"></script>
 
 <!------ Include the above in your HEAD tag ---------->
 @endsection
-
-

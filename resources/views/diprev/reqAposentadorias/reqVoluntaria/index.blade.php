@@ -22,7 +22,7 @@ Requerimentos
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="{{route('apVoluntaria.create')}}" role="button">
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="{{route('reqVoluntaria.create')}}" role="button">
                     Novo requerimento
                 </a>
             </div>
@@ -33,21 +33,51 @@ Requerimentos
     <div class="col-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Requerimentos voluntários</h4>
+                <h4 class="card_title">Requerimentos Ap Voluntárias</h4>
                 <div class="table-responsive">
                     <table id="dataTable" class="table text-center">
                         <thead class="bg-light text-capitalize">
                             <tr>
                                 <th class="text-center">Id</th>
-                                <th class="text-center">Nome assegurado</th>
+                                <th class="text-center">Nome requerente</th>
                                 <th class="text-center">Tipo de requerimento</th>
                                 <th class="text-center">CPF</th>
                                 <th class="text-center">Data</th>
                                 <th class="text-center">Ação</th>
                             </tr>
                         </thead>
-                        
-                       
+                        <tbody>
+                            @foreach ($reqApVoluntaria as $fcn)
+                            <tr>
+                                <td class="text-center">{{$fcn->id}}</td>
+                                <td class="text-center">{{$fcn->nm_requerente}}</td>
+                                <td class="text-center">Aposentadoria Voluntaria</td>
+                                <td class="text-center">{{$fcn->cpf}}</td>
+                                
+                                <td>{{ date( 'd/m/Y' , strtotime($fcn->data_soliitacao))}}</td>
+                                <td>
+                                 
+                                    <a href="">
+                                        <i class="ti-pencil mr-1 btn btn-success"></i>
+                                    </a>
+                                    <a href="" target="_blank
+                                       ">
+                                        <i class="ti-printer mr-1 btn btn-warning"></i>
+                                    </a>
+                                    
+                                    <form action="" method="POST"
+                                          id="" style="display:inline-block;">
+                                        
+                                       
+                                        <span class="submit" idform="">
+                                            <i class="ti-trash btn btn-danger"></i>
+                                        </span>
+                                    </form>
+                                    
+                                </td>
+                            </tr>                          
+                            @endforeach
+                        </tbody>                                     
                     </table>
                     <div class="d-flex justify-content-end">
                         

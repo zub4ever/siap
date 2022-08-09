@@ -113,12 +113,8 @@
                                     <i class="feather ft-users"></i>
                                     <span>Atendimentos</span>
                                 </a>
-                            </li><li {!! (request()->is('administracao/reqAposentadorias*') ? 'class="active"' : "")!!}>
-                                <a href="{{route('reqAposentadorias.index')}}">
-                                    <i class="feather ft-users"></i>
-                                    <span>Requerimentos</span>
-                                </a>
                             </li>
+                            
                             @role('Admin')
                             <!-- Usuario -->
                             <li {!! (request()->is('administracao/users*') ? 'class="active"' : "")!!}>
@@ -187,9 +183,24 @@
                             </li>
                         </ul>
                     </li>
-
-
                     <!--Fim de DAP-->
+                    <!--Inicio  de dIPREV -->
+                    <li {!! (request()->is('diprev*') ? 'class="active"' : "")!!}>
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class="ti-money"></i>
+                            <span>DIPREV</span>
+                        </a>
+
+                        <ul class="collapse">
+                            <li {!! (request()->is('diprev/*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('diprev.index')}}">
+                                    <i class="ti-money"></i>
+                                    <span>Requerimentos</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--Fim de Diprev-->
 
                 </ul>
             </nav>

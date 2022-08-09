@@ -10,8 +10,8 @@ class RequerimentoAposentadoriaVoluntaria extends Model {
     public $timestamps = true;
     protected $fillable = [
         'nm_requerente',
-        'matricula',
-        'cpf',
+        'matricula',  
+        'cpf', 
         'data_nascimento',
         'pis_pasep',
         'rg',
@@ -23,8 +23,9 @@ class RequerimentoAposentadoriaVoluntaria extends Model {
         'nm_uf',
         'nr_telefone',
         'nm_lotacao',
-        'data_solicitacao',
+        'data_solicitacao',  
         'nm_local',
+        'nm_cargo',
         'sexo_id',
         'status_civil_id',
         'termos_aposentadoria_id',
