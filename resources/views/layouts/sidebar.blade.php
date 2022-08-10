@@ -187,7 +187,7 @@
                     <!--Inicio  de dIPREV -->
                     <li {!! (request()->is('diprev*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
-                            <i class="ti-money"></i>
+                            <i class="ti-agenda"></i>
                             <span>DIPREV</span>
                         </a>
 
@@ -201,6 +201,23 @@
                         </ul>
                     </li>
                     <!--Fim de Diprev-->
+                    <!--Inicio  de DAF -->
+                    <li {!! (request()->is('daf*') ? 'class="active"' : "")!!}>
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class="ti-briefcase"></i>
+                            <span>DAF</span>
+                        </a>
+
+                        <ul class="collapse">
+                            <li {!! (request()->is('daf/*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('almoxarifado.index')}}">
+                                    <i class="ti-layers-alt"></i>
+                                    <span>Almoxarifado</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--Fim de DAF-->
 
                 </ul>
             </nav>

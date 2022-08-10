@@ -78,6 +78,23 @@ Route::resource('/dap','DAP\DapController');
     //Route::get('/dap/guiaCNPJ/verGuiaPDF','DAP\APIController')->name('atendimentos.Verpdf');
 //Fim DAP
 
+
+//Rotas do DAF
+
+Route::resource('/daf','DAF\DafController');
+//
+Route::resource('/almoxarifado','DAF\AlmoxarifadoController');
+Route::get('/almoxarifado/create','DAF\AlmoxarifadoController@create')->name('almoxarifado.create');
+Route::post('/almoxarifado/create','DAF\AlmoxarifadoController@store');
+Route::delete('/almoxarifado/{id}/destroy','DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
+
+
+    
+//Fim DAP
+
+
+
+
 });
 Auth::routes();
 
