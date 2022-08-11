@@ -12,6 +12,8 @@ class AlmoContrato extends Model
     public $timestamps = true;
     protected $fillable = [
         'nr_contrato',
+		'ano_contrato',
+		'status'
         
 
     ];

@@ -27,6 +27,18 @@ Almoxarifado
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('almoxarifado.create')}}" role="button">
                     Novo Item
                 </a>
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('departamento.create')}}" role="button">
+                    Cadastrar departamento
+                </a>
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('contrato.create')}}" role="button">
+                   Cadastrar contrato
+                </a>
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('responsavel.create')}}" role="button">
+                   Cadastrar responsavel
+                </a>
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('marca.create')}}" role="button">
+                   Cadastrar marca
+                </a>
 
             </div>
         </div>

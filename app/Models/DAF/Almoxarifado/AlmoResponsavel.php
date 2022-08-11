@@ -12,6 +12,7 @@ class AlmoResponsavel extends Model
     public $timestamps = true;
     protected $fillable = [
         'nm_responsavel',
+		'status'
         
 
     ];

@@ -12,6 +12,7 @@ class AlmoLocalizacaoDPTO extends Model
     public $timestamps = true;
     protected $fillable = [
         'nm_departamento',
+        'status'
         
 
     ];

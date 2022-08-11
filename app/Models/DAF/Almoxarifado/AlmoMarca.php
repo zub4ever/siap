@@ -12,6 +12,7 @@ class AlmoMarca extends Model
     public $timestamps = true;
     protected $fillable = [
         'nm_marca',
+		'status'
         
 
     ];

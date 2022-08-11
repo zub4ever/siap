@@ -87,9 +87,26 @@ Route::resource('/almoxarifado','DAF\AlmoxarifadoController');
 Route::get('/almoxarifado/create','DAF\AlmoxarifadoController@create')->name('almoxarifado.create');
 Route::post('/almoxarifado/create','DAF\AlmoxarifadoController@store');
 Route::delete('/almoxarifado/{id}/destroy','DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
-
-
-    
+//Departamento Almofaxirado
+Route::resource('/departamento','DAF\AlmoDptoController');
+Route::get('/departamento/create','DAF\AlmoDptoController@create')->name('departamento.create');
+Route::post('/departamento/create','DAF\AlmoDptoController@store');
+Route::delete('/departamento/{id}/destroy','DAF\AlmoDptoController@destroy')->name('departamento.destroy');
+//Contratos
+Route::resource('/contrato','DAF\AlmoContratoController');
+Route::get('/contrato/create','DAF\AlmoContratoController@create')->name('contrato.create');
+Route::post('/contrato/create','DAF\AlmoContratoController@store');
+Route::delete('/contrato/{id}/destroy','DAF\AlmoContratoController@destroy')->name('contrato.destroy');
+//Responsavel
+Route::resource('/responsavel','DAF\AlmoResponsavelController');
+Route::get('/responsavel/create','DAF\AlmoResponsavelController@create')->name('responsavel.create');
+Route::post('/responsavel/create','DAF\AlmoResponsavelController@store');
+Route::delete('/responsavel/{id}/destroy','DAF\AlmoResponsavelController@destroy')->name('responsavel.destroy'); 
+//Marcas
+Route::resource('/marca','DAF\AlmoMarcaController');
+Route::get('/marca/create','DAF\AlmoMarcaController@create')->name('marca.create');
+Route::post('/marca/create','DAF\AlmoMarcaController@store');
+Route::delete('/marca/{id}/destroy','DAF\AlmoMarcaController@destroy')->name('marca.destroy');  
 //Fim DAP
 
 
