@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('page-title')
-Responsavel
+Responsável
 @endsection
 @section('css')
 <!-- Start datatable css -->
@@ -17,15 +17,15 @@ Responsavel
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Responsavel</a></li>
+    <li class="breadcrumb-item active"><a>Responsável</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Departamento" href="{{route('responsavel.create')}}" role="button">
-                    Cadastrar responsavel
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo responsável" href="{{route('responsavel.create')}}" role="button">
+                    Cadastrar responsável
                 </a>
 
             </div>
@@ -36,14 +36,13 @@ Responsavel
     <div class="col-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Cadastrado de Responsavel</h4>
+                <h4 class="card_title">Cadastrado de Responsável</h4>
                 <div class="table-responsive">
                     <table id="dataTable" class="table text-center">
                         <thead class="bg-light text-capitalize">
                             <tr>
                                 <th class="text-center">ID</th>
-                                <th class="text-center">Nome do Responsavel</th>
-                                
+                                <th class="text-center">Nome do Responsável</th>                               
                                 <th class="text-center">Ações</th>
                             </tr>
                         </thead>
@@ -80,9 +79,6 @@ Responsavel
         </div>
     </div>
 </div>
-
-
-
 @endsection
 @section('js')
 <!-- Data Table js -->

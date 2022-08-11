@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title') Cadastrar Departamento @endsection
+@section('page-title') Cadastrar marca @endsection
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/select2/select2.min.css")}}">
@@ -31,10 +31,7 @@
     </div>
 </div>
 @endsection
-
-
 @section('js')
-
 <script src="{{asset('assets/vendors/smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
 <script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
