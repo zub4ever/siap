@@ -51,4 +51,9 @@ class Almo extends Model
     {
         return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_marca_id');
     }
+	
+	public static function busca($criterio)
+    {
+      return static::where('nm_patrimonio', '=', $criterio)->get();
+    }
 }

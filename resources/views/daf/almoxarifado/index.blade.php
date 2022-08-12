@@ -31,13 +31,13 @@ Almoxarifado
                     Cadastrar departamento
                 </a>
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('contrato.create')}}" role="button">
-                   Cadastrar contrato
+                    Cadastrar contrato
                 </a>
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('responsavel.create')}}" role="button">
-                   Cadastrar responsavel
+                    Cadastrar responsavel
                 </a>
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('marca.create')}}" role="button">
-                   Cadastrar marca
+                    Cadastrar marca
                 </a>
 
             </div>
@@ -92,13 +92,16 @@ Almoxarifado
                                 @endif
                                 @endforeach
                                 <td>
+                                    <a href="{{route('almoxarifado.Verpdf',$fcn->id)}}" target="_blank
+                                       ">
+                                        <i class="ti-printer mr-1 btn btn-warning"></i>
+                                    </a>
                                     <a href="{{route('almoxarifado.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
                                     @can('excluir')
                                     &nbsp;
-                                    <form action="{{route('almoxarifado.destroy', $fcn->id)}}" method="POST"
-                                          id="formLaravel{{$fcn->id}}" style="display:inline-block;">
+                                    <form action="{{route('almoxarifado.destroy', $fcn->id)}}" method="POST" id="formLaravel{{$fcn->id}}" style="display:inline-block;">
                                         @method('DELETE')
                                         @csrf
                                         <span class="submit" idform="{{$fcn->id}}">

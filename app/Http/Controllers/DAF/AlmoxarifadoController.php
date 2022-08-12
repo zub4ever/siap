@@ -122,6 +122,51 @@ class AlmoxarifadoController extends Controller {
             "Item deletado com sucesso."
         );
     }
+    
+    public function Verpdf($id) {
+        
+        $almoxarifado = Almo::findOrFail($id);
+
+
+        $almo_condicao = AlmoCondicao::get();
+        $almo_contrato = AlmoContrato::get();
+        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
+        $almo_marca = AlmoMarca::get();
+        $almo_responsavel = AlmoResponsavel::get();
+        $almo_tipo = AlmoTipo::get();
+        
+
+        return \PDF::loadView('daf.almoxarifado.pdf.Verpdf',
+        compact('almoxarifado','almo_condicao','almo_contrato','almo_localizacao_dpto','almo_marca','almo_responsavel','almo_tipo')
+                        )
+                        ->setPaper('A4', 'portrait')
+                        ->stream();
+    }
+
+
+	public function consulta()   {
+        //$almoxarifado = Almo::busca($request->criterio);
+        return view('daf.almoxarifado.consultaPublica.consulta');
+    }
+	public function busca(Request $request)   {
+
+
+        $query = Almo::query();
+
+        if ($request->has('nm_patrimonio')) {
+            $query->where('nm_patrimonio', 'LIKE', '%' . $request->nm_patrimonio . '%');
+        }
+    
+        $almoxarifado = $query->paginate();
+
+
+
+
+        return view('daf.almoxarifado.consultaPublica.resultado', [
+            'almoxarifado' => $almoxarifado,
+            'nm_patrimonio' => $request->nm_patrimonio
+        ]);
+    }
 
   
 }

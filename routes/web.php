@@ -86,6 +86,8 @@ Route::resource('/daf','DAF\DafController');
 Route::resource('/almoxarifado','DAF\AlmoxarifadoController');
 Route::get('/almoxarifado/create','DAF\AlmoxarifadoController@create')->name('almoxarifado.create');
 Route::post('/almoxarifado/create','DAF\AlmoxarifadoController@store');
+Route::get('/almoxarifado/{id?}/pdf','DAF\AlmoxarifadoController@Verpdf')->name('almoxarifado.Verpdf');
+
 Route::delete('/almoxarifado/{id}/destroy','DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
 //Departamento Almofaxirado
 Route::resource('/departamento','DAF\AlmoDptoController');
@@ -122,6 +124,8 @@ Auth::routes();
     Route::post('requerimentos/create','Publico\PedidoPubliController@store');
 
 
+    Route::get('/consultaPublica','DAF\AlmoxarifadoController@consulta');
+    Route::post('/consultaPublica/resultado','DAF\AlmoxarifadoController@busca')->name('consulta.publica');;
 
 
 
