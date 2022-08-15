@@ -14,16 +14,21 @@ use App\Models\DAF\Almoxarifado\AlmoMarca;
 use App\Models\DAF\Almoxarifado\AlmoResponsavel;
 use App\Models\DAF\Almoxarifado\AlmoTipo;
 use Illuminate\Support\Facades\DB;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
-class AlmoxarifadoController extends Controller {
 
-    public function index(){
-        
+
+class AlmoxarifadoController extends Controller
+{
+
+    public function index()
+    {
+
         //$almoxarifado = DB::table('almoxarifado')->get()->all();
-        $almoxarifado = Almo::where('status',1 ) 
-        ->orderBY('id', 'asc')
-        ->get();
+        $almoxarifado = Almo::where('status', 1)
+            ->orderBY('id', 'asc')
+            ->get();
 
         $almo_condicao = DB::table('almoxarifado_condicao')->get()->all();
         $almo_contrato = DB::table('almoxarifado_contrato')->get()->all();
@@ -31,13 +36,14 @@ class AlmoxarifadoController extends Controller {
         $almo_marca = DB::table('almoxarifado_marca')->get()->all();
         $almo_responsavel = DB::table('almoxarifado_responsavel')->get()->all();
         $almo_tipo = DB::table('almoxarifado_tipo')->get()->all();
-      
 
-        return view('daf.almoxarifado.index',compact('almoxarifado','almo_condicao','almo_contrato','almo_localizacao_dpto','almo_marca','almo_responsavel','almo_tipo'));        
+
+        return view('daf.almoxarifado.index', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
     }
 
 
-    public function create() {
+    public function create()
+    {
 
         $almo_condicao = AlmoCondicao::all();
         $almo_contrato = AlmoContrato::all();
@@ -45,10 +51,11 @@ class AlmoxarifadoController extends Controller {
         $almo_marca = AlmoMarca::all();
         $almo_responsavel = AlmoResponsavel::all();
         $almo_tipo = AlmoTipo::all();
-        return view('daf.almoxarifado.create',compact('almo_condicao','almo_contrato','almo_localizacao_dpto','almo_marca','almo_responsavel','almo_tipo'));
+        return view('daf.almoxarifado.create', compact('almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
     }
 
-    public function store(AlmoFormRequest $request) {
+    public function store(AlmoFormRequest $request)
+    {
 
         DB::beginTransaction();
 
@@ -62,11 +69,12 @@ class AlmoxarifadoController extends Controller {
         DB::commit();
 
         return redirect()->route('almoxarifado.index')->with(
-                        'success',
-                        "Item cadastrado com sucesso."
+            'success',
+            "Item cadastrado com sucesso."
         );
     }
-    public function edit($id){
+    public function edit($id)
+    {
 
         $almoxarifado = Almo::findOrFail($id);
 
@@ -77,40 +85,41 @@ class AlmoxarifadoController extends Controller {
         $almo_responsavel = AlmoResponsavel::get();
         $almo_tipo = AlmoTipo::get();
 
-        
-        
-        return view('daf.almoxarifado.edit',compact('almoxarifado','almo_condicao','almo_contrato','almo_localizacao_dpto','almo_marca','almo_responsavel','almo_tipo'));
-      }   
-      
-      public function update(AlmoFormRequest $request, $id) {
-       
-          $almoxarifado = Almo::findOrFail($id);
 
-       
-          DB::beginTransaction();
-  
-          if (!$almoxarifado->update($request->all())) {
 
-              DB::rollBack();
-              return redirect()->route('almoxarifado.index')->with('error', "Falha na alteração do item.");
-          }
-  
-          DB::commit();
-  
-          return redirect()->route('almoxarifado.index')->with(
-              'success',
-              "Item alterado com sucesso."
-          );
-      }
-      public function destroy($id)
+        return view('daf.almoxarifado.edit', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
+    }
+
+    public function update(AlmoFormRequest $request, $id)
     {
-        
+
         $almoxarifado = Almo::findOrFail($id);
 
 
         DB::beginTransaction();
 
-        if (!$almoxarifado->update(['status'=> 0])) {
+        if (!$almoxarifado->update($request->all())) {
+
+            DB::rollBack();
+            return redirect()->route('almoxarifado.index')->with('error', "Falha na alteração do item.");
+        }
+
+        DB::commit();
+
+        return redirect()->route('almoxarifado.index')->with(
+            'success',
+            "Item alterado com sucesso."
+        );
+    }
+    public function destroy($id)
+    {
+
+        $almoxarifado = Almo::findOrFail($id);
+
+
+        DB::beginTransaction();
+
+        if (!$almoxarifado->update(['status' => 0])) {
             DB::rollBack();
             return redirect()->route('almoxarifado.index')->with('error', "Falha ao deletar o Item.");
         }
@@ -122,9 +131,10 @@ class AlmoxarifadoController extends Controller {
             "Item deletado com sucesso."
         );
     }
-    
-    public function Verpdf($id) {
-        
+
+    public function Verpdf($id)
+    {
+
         $almoxarifado = Almo::findOrFail($id);
 
 
@@ -134,39 +144,46 @@ class AlmoxarifadoController extends Controller {
         $almo_marca = AlmoMarca::get();
         $almo_responsavel = AlmoResponsavel::get();
         $almo_tipo = AlmoTipo::get();
-        
 
-        return \PDF::loadView('daf.almoxarifado.pdf.Verpdf',
-        compact('almoxarifado','almo_condicao','almo_contrato','almo_localizacao_dpto','almo_marca','almo_responsavel','almo_tipo')
-                        )
-                        ->setPaper('A4', 'portrait')
-                        ->stream();
+
+        return \PDF::loadView(
+            'daf.almoxarifado.pdf.Verpdf',
+            compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo')
+        )
+            ->setPaper('A4', 'portrait')
+            ->stream();
     }
 
 
-	public function consulta()   {
+    public function consulta()
+    {
         //$almoxarifado = Almo::busca($request->criterio);
         return view('daf.almoxarifado.consultaPublica.consulta');
     }
-	public function busca(Request $request)   {
-
-
+    public function busca(Request $request)
+    {
         $query = Almo::query();
 
         if ($request->has('nm_patrimonio')) {
             $query->where('nm_patrimonio', 'LIKE', '%' . $request->nm_patrimonio . '%');
         }
-    
+        $almo_tipo = AlmoTipo::get();
         $almoxarifado = $query->paginate();
-
-
-
-
         return view('daf.almoxarifado.consultaPublica.resultado', [
             'almoxarifado' => $almoxarifado,
-            'nm_patrimonio' => $request->nm_patrimonio
+            'nm_patrimonio' => $request->nm_patrimonio,
+            'almo_tipo' => $almo_tipo
         ]);
     }
+    
+    public function qrCode ($id)
+    {
+        $almoxarifado = Almo::findOrFail($id);
+        $qrcode = QrCode::size(200)
+        ->format('svg')
+        ->generate($almoxarifado->nm_patrimonio, public_path('imagem/owt.svg'));
 
-  
+        return view('daf.almoxarifado.qrcode',compact('qrcode'));
+    }
+    
 }

@@ -19,6 +19,7 @@
         "laravel/ui": "^3.3.2",
         "laravelcollective/html": "^6.2",
         "milon/barcode": "^9.0",
+        "simplesoftwareio/simple-qrcode": "^4.2",
         "spatie/laravel-permission": "^5.5"
     },
     "require-dev": {

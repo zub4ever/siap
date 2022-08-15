@@ -96,6 +96,10 @@ Almoxarifado
                                        ">
                                         <i class="ti-printer mr-1 btn btn-warning"></i>
                                     </a>
+                                    <a href="{{route('qrcode',$fcn->id)}}" target="_blank
+                                       ">
+                                        <i class="ti-printer mr-1 btn btn-danger"></i>
+                                    </a>
                                     <a href="{{route('almoxarifado.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
