@@ -20,7 +20,7 @@
             <div class="col-xs-6 col-md-4">
                 <h4>
                     <br>
-                    <font color="BDB76B"><strong>Resultados para o protocolo:</strong></font> 
+                    <h2>consulta de Almoxarifado</h2>
                 </h4>
             </div>
             <div class="col-xs-6 col-md-4"></div>

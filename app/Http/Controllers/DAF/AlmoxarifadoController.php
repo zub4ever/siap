@@ -17,17 +17,20 @@ use Illuminate\Support\Facades\DB;
 
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
+use SimpleSoftwareIO\QrCode\Generator;
 
 
 
-class AlmoxarifadoController extends Controller {
+class AlmoxarifadoController extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
 
         //$almoxarifado = DB::table('almoxarifado')->get()->all();
         $almoxarifado = Almo::where('status', 1)
-                ->orderBY('id', 'asc')
-                ->get();
+            ->orderBY('id', 'asc')
+            ->get();
 
         $almo_condicao = DB::table('almoxarifado_condicao')->get()->all();
         $almo_contrato = DB::table('almoxarifado_contrato')->get()->all();
@@ -39,7 +42,8 @@ class AlmoxarifadoController extends Controller {
         return view('daf.almoxarifado.index', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
     }
 
-    public function create() {
+    public function create()
+    {
 
         $almo_condicao = AlmoCondicao::all();
         $almo_contrato = AlmoContrato::all();
@@ -50,7 +54,8 @@ class AlmoxarifadoController extends Controller {
         return view('daf.almoxarifado.create', compact('almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
     }
 
-    public function store(AlmoFormRequest $request) {
+    public function store(AlmoFormRequest $request)
+    {
 
         DB::beginTransaction();
 
@@ -64,12 +69,13 @@ class AlmoxarifadoController extends Controller {
         DB::commit();
 
         return redirect()->route('almoxarifado.index')->with(
-                        'success',
-                        "Item cadastrado com sucesso."
+            'success',
+            "Item cadastrado com sucesso."
         );
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
 
         $almoxarifado = Almo::findOrFail($id);
 
@@ -83,7 +89,8 @@ class AlmoxarifadoController extends Controller {
         return view('daf.almoxarifado.edit', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
     }
 
-    public function update(AlmoFormRequest $request, $id) {
+    public function update(AlmoFormRequest $request, $id)
+    {
 
         $almoxarifado = Almo::findOrFail($id);
 
@@ -98,12 +105,13 @@ class AlmoxarifadoController extends Controller {
         DB::commit();
 
         return redirect()->route('almoxarifado.index')->with(
-                        'success',
-                        "Item alterado com sucesso."
+            'success',
+            "Item alterado com sucesso."
         );
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
 
         $almoxarifado = Almo::findOrFail($id);
 
@@ -117,13 +125,14 @@ class AlmoxarifadoController extends Controller {
         DB::commit();
 
         return redirect()->route('almoxarifado.index')->with(
-                        'success',
-                        "Item deletado com sucesso."
+            'success',
+            "Item deletado com sucesso."
         );
     }
 
-    public function Verpdf($id) {
-
+    public function Verpdf($id)
+    {
+        //carrega o PDF
         $almoxarifado = Almo::findOrFail($id);
 
         $almo_condicao = AlmoCondicao::get();
@@ -134,19 +143,21 @@ class AlmoxarifadoController extends Controller {
         $almo_tipo = AlmoTipo::get();
 
         return \PDF::loadView(
-                                'daf.almoxarifado.pdf.Verpdf',
-                                compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo')
-                        )
-                        ->setPaper('A4', 'portrait')
-                        ->stream();
+            'daf.almoxarifado.pdf.Verpdf',
+            compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo')
+        )
+            ->setPaper('A4', 'portrait')
+            ->stream();
     }
 
-    public function consulta() {
-        //$almoxarifado = Almo::busca($request->criterio);
+    public function consulta()
+    {
+        //Renderiza a pagina de Consulta
         return view('daf.almoxarifado.consultaPublica.consulta');
     }
 
-    public function busca(Request $request) {
+    public function busca(Request $request)
+    {
         $query = Almo::query();
 
         if ($request->has('nm_patrimonio')) {
@@ -161,28 +172,35 @@ class AlmoxarifadoController extends Controller {
         ]);
     }
 
-    public function qrCode() {       
-       
+    public function qrCodeGerador(Request $request, $id)
+    {
 
-        
-        
-        return view('daf.almoxarifado.qrcode');
-    }
-    
-    
-    
-    
-    
-    
-    public function buscaQrCode(Request $request, $id) {
-        $almoxarifado = Almo::buscaQrCode($request->id);
-        $almo_tipo = AlmoTipo::get();               
+        $almoxarifado = Almo::QrCodeGera($request->id);
         //dd($almoxarifado);
-        return view('daf.almoxarifado.consultaPublica.resultadoqrCode',
-                
-                ['almoxarifado' => $almoxarifado,
-                'id' => $request->id],          
-                compact('almoxarifado', 'almo_tipo'));
+        return view(
+            'daf.almoxarifado.qrcode',
+            [
+                'almoxarifado' => $almoxarifado,
+                'id' => $request->id
+
+            ],
+            compact('almoxarifado')
+        );
     }
 
+    public function buscaQrCode(Request $request, $id)
+    {
+        $almoxarifado = Almo::buscaQrCode($request->id);
+        $almo_tipo = AlmoTipo::get();
+        //dd($almoxarifado);
+        return view(
+            'daf.almoxarifado.consultaPublica.resultadoqrCode',
+
+            [
+                'almoxarifado' => $almoxarifado,
+                'id' => $request->id
+            ],
+            compact('almoxarifado', 'almo_tipo')
+        );
+    }
 }

@@ -80,8 +80,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/almoxarifado/create', 'DAF\AlmoxarifadoController@create')->name('almoxarifado.create');
     Route::post('/almoxarifado/create', 'DAF\AlmoxarifadoController@store');
     Route::get('/almoxarifado/{id?}/pdf', 'DAF\AlmoxarifadoController@Verpdf')->name('almoxarifado.Verpdf');
-
     Route::delete('/almoxarifado/{id}/destroy', 'DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
+    //geradorQrCode
+    Route::get('/qrcode{id?}', 'DAF\AlmoxarifadoController@qrCodeGerador')->name('qrcode');
     //Departamento Almofaxirado
     Route::resource('/departamento', 'DAF\AlmoDptoController');
     Route::get('/departamento/create', 'DAF\AlmoDptoController@create')->name('departamento.create');
@@ -110,24 +111,13 @@ Route::resource("/requerimentos", "Publico\PedidoPubliController");
 Route::get('requerimentos/create', 'Publico\PedidoPubliController@create')->name('requerimentos.create');
 Route::post('requerimentos/create', 'Publico\PedidoPubliController@store');
 
+
+
+
+
+//ConsultaPublica
 Route::get('/consultaPublica', 'DAF\AlmoxarifadoController@consulta');
 Route::post('/consultaPublica/resultado', 'DAF\AlmoxarifadoController@busca')->name('consulta.publica');
 
-//Route::get('qrcode/{id}', [AlmoxarifadoController::class, 'qrCode'])->name('qrcode');
-
-
-Route::get('/qrcode', 'DAF\AlmoxarifadoController@qrCode')->name('qrcode');
-
-
-
-
 //Consulta do QrCode
 Route::get('/consulta/{id?}', 'DAF\AlmoxarifadoController@buscaQrCode');
-
-/*Route::get('/consulta/{id?}', function($id = ''){
-        
-        
-          
-        return view('daf.almoxarifado.consultaPublica.resultadoqrCode',['id' => $id]);
-       
-});*/
