@@ -34,7 +34,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('cadastrosAuxiliares/funcao/create', 'CadastrosAuxiliares\Funcao\FuncaoController@create')->name('funcao.create');
     Route::post('cadastrosAuxiliares/funcao/create', 'CadastrosAuxiliares\Funcao\FuncaoController@store');
 
-
     Route::resource('pedido', 'Pedido\PedidoController');
 
     Route::resource('folhaPagamento', 'FolhaPagamento\FolhaPagamentoController');
@@ -59,10 +58,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reqVoluntaria/create', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@create')->name('reqVoluntaria.create');
     Route::post('/reqVoluntaria/create', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@store');
 
-
-
     //FimRequerimentosAposentadoria
-
     //Rotas do Dap
 
     Route::resource('/dap', 'DAP\DapController');
@@ -74,11 +70,8 @@ Route::group(['middleware' => ['auth']], function () {
     //Route::get('baixar', 'DAP\APIController@baixar')->name('baixar');
     Route::get('atualizar', 'DAP\APIController@atualizar')->name('atualizar');
 
-
     //Route::get('/dap/guiaCNPJ/verGuiaPDF','DAP\APIController')->name('atendimentos.Verpdf');
     //Fim DAP
-
-
     //Rotas do DAF
 
     Route::resource('/daf', 'DAF\DafController');
@@ -110,22 +103,31 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/marca/create', 'DAF\AlmoMarcaController@store');
     Route::delete('/marca/{id}/destroy', 'DAF\AlmoMarcaController@destroy')->name('marca.destroy');
     //Fim DAP
-
-
-
-
 });
 Auth::routes();
-
-
 
 Route::resource("/requerimentos", "Publico\PedidoPubliController");
 Route::get('requerimentos/create', 'Publico\PedidoPubliController@create')->name('requerimentos.create');
 Route::post('requerimentos/create', 'Publico\PedidoPubliController@store');
 
-
 Route::get('/consultaPublica', 'DAF\AlmoxarifadoController@consulta');
 Route::post('/consultaPublica/resultado', 'DAF\AlmoxarifadoController@busca')->name('consulta.publica');
 
 //Route::get('qrcode/{id}', [AlmoxarifadoController::class, 'qrCode'])->name('qrcode');
-Route::get('/qrcode/{id}', 'DAF\AlmoxarifadoController@qrCode')->name('qrcode');
+
+
+Route::get('/qrcode', 'DAF\AlmoxarifadoController@qrCode')->name('qrcode');
+
+
+
+
+//Consulta do QrCode
+Route::get('/consulta/{id?}', 'DAF\AlmoxarifadoController@buscaQrCode');
+
+/*Route::get('/consulta/{id?}', function($id = ''){
+        
+        
+          
+        return view('daf.almoxarifado.consultaPublica.resultadoqrCode',['id' => $id]);
+       
+});*/

@@ -32,12 +32,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th class="text-center">ID</th>
+                        <th class="text-center">ID de Registro</th>
                         <th class="text-center">Número de patrimônio</th>
                         <th class="text-center">Tipo de patrimônio</th>
                     </tr>
                 </thead>
-                <tbody>                                                        
+                <tbody>
                     @foreach($almoxarifado as $busca)
                     <tr>
                         <td style="text-align:center;"> {{ $busca->id }}</td>
