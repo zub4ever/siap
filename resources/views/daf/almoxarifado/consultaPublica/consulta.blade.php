@@ -11,16 +11,19 @@
 
 <body>
     <div class="container-fluid p-5 bg-primary text-white text-center">
-        <h1>Pesquisa de almoxarifado</h1>
-        <p>Página de pesquisa de almoxarifado</p>
+        <img src="/imagem/logo2.png" height="100" width="100">
     </div>
     <div class="container mt-5">
         <div class="row d-flex justify-content-center">
-            <div class="col-sm-4">
+            <div class="col-sm-8">
                 <form action="{{route('consulta.publica')}}" method="post">
                     {{ csrf_field() }}
                     <input type="text" class="form-control" name="nm_patrimonio" placeholder="Digite o número de patrimônio..."> <br>
-                    <button type="submit" class="btn btn-primary ">Pesquisar</button>
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-sm-2">
+                            <button type="submit" class="btn btn-primary">Pesquisar</button>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
