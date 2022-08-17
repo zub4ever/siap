@@ -20,7 +20,9 @@ class Almo extends Model
         'almoxarifado_responsavel_id',
         'almoxarifado_contrato_id',
         'almoxarifado_marca_id',
-        'status'
+		'almoxarifado_cedido_id',
+        'status',
+		'cedido_localizacao'
 
     ];
     protected $guarded = [];
@@ -50,6 +52,10 @@ class Almo extends Model
     public function almoxarifado_marca()
     {
         return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_marca_id');
+    }
+	public function almoxarifado_cedido()
+    {
+        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_cedido_id');
     }
 	
     public static function busca($criterio)

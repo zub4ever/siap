@@ -72,6 +72,18 @@
     </tr>
 </table>
 <br>
+<table class="tgB" style="table-layout: fixed; width: 700px">
+    <tr>
+                     
+        @foreach ($almo_cedido as $cedido)
+        @if($almoxarifado->almoxarifado_cedido_id == $cedido->id)
+        <th class="tgB-lnuh" ><strong>Item cedido: </strong> <a>{{$cedido->nm_cedido}}</a></th>
+        @endif
+        @endforeach              
+        <th class="tgB-lnuh" ><strong>Localização do Item: </strong> <a>{{$almoxarifado->cedido_localizacao}}</a></th>             
+    </tr>
+</table>
+<br>
 <table class="tg" style="table-layout: fixed; width: 700px">
         <colgroup>
             <col style="width: 700px">

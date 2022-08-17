@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\DafFormRequest\AlmoxarifadoFormRequest\AlmoFormRequest;
 use App\Models\DAF\Almoxarifado\Almo;
+use App\Models\DAF\Almoxarifado\AlmoCedido;
 use App\Models\DAF\Almoxarifado\AlmoCondicao;
 use App\Models\DAF\Almoxarifado\AlmoContrato;
 use App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO;
@@ -38,8 +39,8 @@ class AlmoxarifadoController extends Controller
         $almo_marca = DB::table('almoxarifado_marca')->get()->all();
         $almo_responsavel = DB::table('almoxarifado_responsavel')->get()->all();
         $almo_tipo = DB::table('almoxarifado_tipo')->get()->all();
-
-        return view('daf.almoxarifado.index', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
+        $almo_cedido = DB::table('almoxarifado_cedido')->get()->all();
+        return view('daf.almoxarifado.index', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo','almo_cedido'));
     }
 
     public function create()
@@ -51,7 +52,8 @@ class AlmoxarifadoController extends Controller
         $almo_marca = AlmoMarca::all();
         $almo_responsavel = AlmoResponsavel::all();
         $almo_tipo = AlmoTipo::all();
-        return view('daf.almoxarifado.create', compact('almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
+        $almo_cedido = AlmoCedido::all();
+        return view('daf.almoxarifado.create', compact('almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo','almo_cedido'));
     }
 
     public function store(AlmoFormRequest $request)
@@ -78,7 +80,7 @@ class AlmoxarifadoController extends Controller
     {
 
         $almoxarifado = Almo::findOrFail($id);
-
+        $almo_cedido = AlmoCedido::get();
         $almo_condicao = AlmoCondicao::get();
         $almo_contrato = AlmoContrato::get();
         $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
@@ -86,7 +88,7 @@ class AlmoxarifadoController extends Controller
         $almo_responsavel = AlmoResponsavel::get();
         $almo_tipo = AlmoTipo::get();
 
-        return view('daf.almoxarifado.edit', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo'));
+        return view('daf.almoxarifado.edit', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo','almo_cedido'));
     }
 
     public function update(AlmoFormRequest $request, $id)
@@ -136,6 +138,7 @@ class AlmoxarifadoController extends Controller
         $almoxarifado = Almo::findOrFail($id);
 
         $almo_condicao = AlmoCondicao::get();
+        $almo_cedido = AlmoCedido::get();
         $almo_contrato = AlmoContrato::get();
         $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
         $almo_marca = AlmoMarca::get();
@@ -144,7 +147,7 @@ class AlmoxarifadoController extends Controller
 
         return \PDF::loadView(
             'daf.almoxarifado.pdf.Verpdf',
-            compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo')
+            compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo','almo_cedido')
         )
             ->setPaper('A4', 'portrait')
             ->stream();

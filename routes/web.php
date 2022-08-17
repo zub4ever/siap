@@ -118,6 +118,5 @@ Route::post('requerimentos/create', 'Publico\PedidoPubliController@store');
 //ConsultaPublica
 Route::get('/consultaPublica', 'DAF\AlmoxarifadoController@consulta');
 Route::post('/consultaPublica/resultado', 'DAF\AlmoxarifadoController@busca')->name('consulta.publica');
-
 //Consulta do QrCode
 Route::get('/consulta/{id?}', 'DAF\AlmoxarifadoController@buscaQrCode');

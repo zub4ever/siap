@@ -108,7 +108,6 @@
         </div>
     </div>
 </div>
-
 <br>
 <div class="card-header">
     <h5>Gerais</h5>
@@ -127,7 +126,7 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
             <label for="observacao" class="form-control-label">Observação:
                 <span class="text-danger">*</span>
@@ -138,8 +137,35 @@
             @endif
         </div>
     </div>
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+        <div class="wrap">
+            <label for="almoxarifado_cedido_id" class="form-control-label">Item cedido?:
+                <span class="text-danger">*</span>
+            </label>
+            <select name="almoxarifado_cedido_id" class="form-control almoxarifado_cedido_id" id="almoxarifado_cedido_id">               
+                @foreach ($almo_cedido as $cedido)
+                <option value="{{$cedido->id}}" {{(empty(old('almoxarifado_cedido_id')) ? @$almoxarifado->almoxarifado_cedido_id : old('almoxarifado_cedido_id')) == $cedido->id ? 'selected' : ''}}>
+                    {{$cedido->nm_cedido}}
+                </option>
+                @endforeach
+            </select>
+            @if ($errors->has('almoxarifado_cedido_id'))
+            <h6 class="heading text-danger">{{$errors->first('almoxarifado_cedido_id')}}</h6>
+            @endif
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-4" id="cedido_localizacao" style='display:none;'>
+        <div class="wrap">
+            <label for="cedido_localizacao" class="form-control-label">Para onde?:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="textarea" class="form-control" name="cedido_localizacao" value="{{ @$almoxarifado->cedido_localizacao}}">
+            @if ($errors->has('cedido_localizacao'))
+            <h6 class="heading text-danger">{{$errors->first('cedido_localizacao')}}</h6>
+            @endif
+        </div>
+    </div>
 </div>
-
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
         <div class="wrap">
