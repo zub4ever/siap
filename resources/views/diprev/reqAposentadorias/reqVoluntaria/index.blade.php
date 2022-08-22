@@ -53,34 +53,38 @@ Requerimentos
                                 <td class="text-center">{{$fcn->nm_requerente}}</td>
                                 <td class="text-center">Aposentadoria Voluntaria</td>
                                 <td class="text-center">{{$fcn->cpf}}</td>
-                                
-                                <td>{{ date( 'd/m/Y' , strtotime($fcn->data_soliitacao))}}</td>
+
+                                <td>{{ date( 'd/m/Y' , strtotime($fcn->data_solicitacao))}}</td>
                                 <td>
-                                 
-                                    <a href="">
+                                    <a href="{{route('reqVoluntaria.show', $fcn->id)}}" target="_blank">
+                                        <i class="ti-clipboard mr-1 btn btn-info" data-toggle="tooltip" title="Visualizar informações"></i>
+                                    </a>
+
+                                    <a href="{{route('reqVoluntaria.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
-                                    <a href="" target="_blank
+                                    <a href="{{route('reqVoluntaria.pdf', $fcn->id)}}" target="_blank
                                        ">
                                         <i class="ti-printer mr-1 btn btn-warning"></i>
                                     </a>
-                                    
-                                    <form action="" method="POST"
-                                          id="" style="display:inline-block;">
-                                        
-                                       
-                                        <span class="submit" idform="">
+                                    @can('excluir')
+                                    &nbsp;
+                                    <form action="{{route('reqVoluntaria.destroy', $fcn->id)}}" method="POST" id="formLaravel{{$fcn->id}}" style="display:inline-block;">
+                                        @method('DELETE')
+                                        @csrf
+                                        <span class="submit" idform="{{$fcn->id}}">
                                             <i class="ti-trash btn btn-danger"></i>
                                         </span>
                                     </form>
-                                    
+                                    @endcan
+
                                 </td>
-                            </tr>                          
+                            </tr>
                             @endforeach
-                        </tbody>                                     
+                        </tbody>
                     </table>
                     <div class="d-flex justify-content-end">
-                        
+
                     </div>
                 </div>
             </div>

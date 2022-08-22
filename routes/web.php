@@ -57,6 +57,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/reqVoluntaria', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController');
     Route::get('/reqVoluntaria/create', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@create')->name('reqVoluntaria.create');
     Route::post('/reqVoluntaria/create', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@store');
+    Route::get('/reqVoluntaria/show/{id?}', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@show')->name('reqVoluntaria.show');
+    Route::delete('/reqVoluntaria/destroy/{id?}', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@destroy')->name('reqVoluntaria.destroy');
+    Route::get('/reqVoluntaria/pdf/{id?}', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@pdf')->name('reqVoluntaria.pdf');
 
     //FimRequerimentosAposentadoria
     //Rotas do Dap

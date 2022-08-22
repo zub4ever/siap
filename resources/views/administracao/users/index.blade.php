@@ -65,9 +65,9 @@ Usuários
                                 @endif
                             </td>
                             <td>
-                                <a class="btn btn-info" href="{{ route('users.show',$user->id) }}">Show</a>
-                                <a class="btn btn-primary" href="{{ route('users.edit',$user->id) }}">Editar</a>
-                                <a class="btn btn-success" href="{{ route('users.destroy',$user->id) }}"> Deletar</a>
+                                <a class="btn btn-info" href="{{route('users.show',$user->id)}}">Show</a>
+                                <a class="btn btn-primary" href="{{route('users.edit',$user->id)}}">Editar</a>
+                                <a class="btn btn-success" href="{{route('users.destroy',$user->id)}}"> Deletar</a>
                             </td>
                         </tr>
                         @endforeach
