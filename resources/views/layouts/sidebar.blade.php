@@ -168,7 +168,7 @@
                     </li>
                     <!--fim de Cadastros-->
                     <!--Inicio  de DAP -->
-                    <li {!! (request()->is('dap*') ? 'class="active"' : "")!!}>
+                    <!--<li {!! (request()->is('dap*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="ti-money"></i>
                             <span>DAP</span>
@@ -182,7 +182,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li> -->
                     <!--Fim de DAP-->
                     <!--Inicio  de dIPREV -->
                     <li {!! (request()->is('diprev*') ? 'class="active"' : "")!!}>

@@ -14,7 +14,7 @@ Requerimentos
 @endsection
 @section('main-content')
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="">Início</a></li>
+    <li class="breadcrumb-item"><a href="{{route("reqVoluntaria.index")}}">Início</a></li>
     <li class="breadcrumb-item active"><a>Volunária</a></li>
 </ol>
 <div class="mt-5">
@@ -375,7 +375,7 @@ Requerimentos
 </div>
 <div class="col-sm-12 mt-5">
     <div class="wrap mt-1" style="text-align: center;">
-        <a href="">
+        <a href="{{route('reqVoluntaria.pdf',$reqApVoluntaria->id)}}">
             <button type="submit" class="btn btn-warning">
                 Imprimir
             </button>

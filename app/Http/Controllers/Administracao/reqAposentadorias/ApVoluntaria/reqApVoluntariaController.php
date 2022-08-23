@@ -189,7 +189,13 @@ class reqApVoluntariaController extends Controller
         $orgao = Orgao::all();
         $funcao = Funcao::all();
         $city = City::all();
-
+        $nome_responsavel = '';
+        foreach ($termo_aposentadoria_responsavel as $termos){
+        if($reqApVoluntaria->termos_aposentadoria_responsavel_id == $termos->id){
+          $nome_responsavel = $termos->nm_responsavel;
+        }
+        }
+        //dd($nome_responsavel);
         return \PDF::loadView(
             'diprev.reqAposentadorias.reqVoluntaria.pdf.Verpdf',
             compact(
@@ -201,7 +207,8 @@ class reqApVoluntariaController extends Controller
                 'orgao',
                 'funcao',
                 'city',
-                'reqApVoluntaria'
+                'reqApVoluntaria',
+                'nome_responsavel'
             )
         )
             ->setPaper('A4', 'portrait')

@@ -1,74 +1,222 @@
 <html lang="pt-br">
-
-<head>
-    <!DOCTYPE html>
+    <head>
+        <!DOCTYPE html>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Atendimento PDF</title>
-    
-
-
+    <title> Requerimento PDF</title>
 </head>
-
 <body>
     <div align="center"><img class="imgcabecalho" src="../public/imagem/rbPrevlogo2.jpg"></div>
-    <h3 align="center">Instituto de Previdência do Município de Rio Branco</h3>
-    <table class="tg" style="table-layout: fixed; width: 700px">
-        <colgroup>
-            <col style="width: 700px">
-        </colgroup>
-        <tr>
-            <th class="tg-0pky">
-                <center><strong>Solicitação de Aposentadoria Voluntária</strong></center>
-            </th>
-        </tr>
-    </table>
-    <br>
-    <table>
-       
-        <tr>
-            <td>Nome requerente: <a>{{$reqApVoluntaria->nm_requerente}}</a></td>
-            <td>Maria Anders</td>
-            <td>Germany</td>
-        </tr>
-        <tr>
-            <td>Centro comercial Moctezuma</td>
-            <td>Francisco Chang</td>
-            <td>Mexico</td>
-        </tr>
-        <tr>
-            <td>Ernst Handel</td>
-            <td>Roland Mendel</td>
-            <td>Austria</td>
-        </tr>
-        <tr>
-            <td>Island Trading</td>
-            <td>Helen Bennett</td>
-            <td>UK</td>
-        </tr>
-        <tr>
-            <td>Laughing Bacchus Winecellars</td>
-            <td>Yoshi Tannamuri</td>
-            <td>Canada</td>
-        </tr>
-        <tr>
-            <td>Magazzini Alimentari Riuniti</td>
-            <td>Giovanni Rovelli</td>
-            <td>Italy</td>
-        </tr>
-    </table>
 
+    <h4 align="center"><a>Instituto de Previdência do Município de Rio Branco - RBPREV</a></h4>
+    <table>       
+        <tr>
+        <tr>       
+            <td><center><strong>Solicitação de Aposentadoria Voluntária</strong></center></td>
+</tr>
+</tr>
+</table>
+<br>
+<table>       
+    <tr>
 
+        <td style="width: 500px">Nome requerente: <strong>{{$reqApVoluntaria->nm_requerente}}</strong></td>
+        <td>Matrícula: <strong>{{$reqApVoluntaria->matricula}}</strong></td>  
 
+    </tr>       
+</table>
+<table>       
+    <tr>
+        <td>Data Nascimento: <strong>{{date( 'd/m/Y' , strtotime($reqApVoluntaria->data_nascimento))}}</strong></td>
 
+        <td>CPF: <strong>{{$reqApVoluntaria->cpf}}</strong></td> 
+        <td>RG: <strong>{{$reqApVoluntaria->rg}}</strong></td>  
+        <td>PIS/PASEP: <strong>{{$reqApVoluntaria->pis_pasep}}</strong></td>           
+    </tr>       
+</table>
+<table>       
+    <tr>
+        @foreach ($sexo as $sexo)
+        @if($reqApVoluntaria->sexo_id == $sexo->id)
+        <td>Sexo: <strong>{{$sexo->nm_sexo}}</strong></td>
+        @endif
+        @endforeach
+        @foreach ($marital_status as $mt)
+        @if($reqApVoluntaria->status_civil_id == $mt->id)
+        <td>Status Civil: <strong>{{$mt->status_civil}}</strong></td>
+        @endif
+        @endforeach
+        <td>Contato: <strong>{{$reqApVoluntaria->nr_telefone}}</strong></td>
+    </tr>       
+</table>
+<br>
+<table>       
+    <tr>
+    <tr>       
+        <td><center><strong>Informações de endereço</strong></center></td>
+</tr>
+</tr>
+</table>
+<br><!-- comment -->
+<table>       
+    <tr>
+        <td style="width: 500px">Endereço: <strong>{{$reqApVoluntaria->nm_rua}}</strong></td>
+        <td>Número: <strong>{{$reqApVoluntaria->numero_casa}}</strong></td>           
+    </tr>       
+</table>
+<table>       
+    <tr>       
+        <td style="width: 500px">Complemento: <strong>{{$reqApVoluntaria->complemento}}</strong></td>
+        <td>CEP: <strong>{{$reqApVoluntaria->cep}}</strong></td>
+    </tr>       
+</table>
+<table>       
+    <tr>
+        <td style="width: 300px">Bairro: <strong>{{$reqApVoluntaria->nm_bairro}}</strong></td>
+        @foreach ($city as $city)
+        @if($reqApVoluntaria->city_id == $city->id)
+        <td>Cidade: <strong>{{$city->nm_cidade}}</strong></td>
+        @endif
+        @endforeach
+        <td>UF: <strong>{{$reqApVoluntaria->nm_uf}}</strong></td>
 
-    <div class="footer" align="center"><img width="100" height="100" src="../public/imagem/pfrb.jpg">
+    </tr>       
+</table>
+<br>
+<table>       
+    <tr>
+    <tr>       
+        <td><center><strong>Informações de Contato</strong></center></td>
+</tr>
+</tr>
+</table>
+<br><!-- comment -->
+<table>       
+    <tr>
+
+        @foreach ($vinculo_municipio as $vinculo)
+        @if($reqApVoluntaria->vinculo_municipio_id == $vinculo->id)
+        <td style="width: 200px">Vinculo: <strong>{{$vinculo->nm_vinculo}}</strong></td>
+        @endif
+        @endforeach       
+        @foreach ($orgao as $orgao)
+        @if($reqApVoluntaria->orgao_id == $orgao->id)
+        <td>Orgão: <strong>{{$orgao->nm_orgao}}</strong></td>
+        @endif
+        @endforeach                    
+    </tr>       
+</table>
+<table>
+    <tr>
+        @foreach ($funcao as $funcao)
+        @if($reqApVoluntaria->funcao_id == $funcao->id)
+        <td style="width: 400px">Função: <strong>{{$funcao->nm_funcao}}</strong></td>
+        @endif
+        @endforeach
+        <td>Cargo Efetivo: <strong>{{$reqApVoluntaria->nm_cargo}}</strong></td>
+    </tr>
+</table>
+<table>
+    <tr>       
+        <td>Lotação: <strong>{{$reqApVoluntaria->nm_lotacao}}</strong></td>
+    </tr>
+</table>
+
+<br>
+<table>       
+    <tr>
+    <tr>       
+        <td><center><strong>Informações de Base Legal</strong></center></td>
+</tr>
+</tr>
+</table>
+<table>
+    <tr>
+        <td>Nos termos de:</td>        
+    </tr>
+</table>
+<table>
+    <tr>
+    <tr>
+        @foreach ($termo_aposentadoria as $termo)
+        @if($reqApVoluntaria->termos_aposentadoria_id == $termo->id)
+        <td><strong>{{$termo->nm_termos}}</strong></td>
+        @endif
+        @endforeach</tr>
+</tr>
+</table>
+<br><br>
+<table>
+    <tr>       
+        <td style="width: 120px">Local: <strong>RBPREV</strong></td>
+
+        <td>Data Solicitação: <strong>{{date( 'd/m/Y' , strtotime($reqApVoluntaria->data_solicitacao))}}</strong></td>
+        <td style="width: 300px">Responsável: 
+            @foreach ($termo_aposentadoria_responsavel as $termos)
+            @if($reqApVoluntaria->termos_aposentadoria_responsavel_id == $termos->id)   
+            <strong>{{$termos->nm_responsavel}}</strong>
+            @endif
+            @endforeach
+        </td>
+
+    </tr>
+</table>
+
+<br><br>
+<div class="container">
+    <div class="box-orange">
+        <br>
+        <p style="text-align:center">__________________________________________</p>
+        <p style="text-align:center">{{$reqApVoluntaria->nm_requerente}}</p>
+        <p style="text-align:center">Requerente</p>
     </div>
+    <div class="box-blue">
+        <br>
+        <p style="text-align:center">__________________________________________</p>
+
+        <p style="text-align:center">{{$nome_responsavel}}</p>
+
+        <p style="text-align:center">Responsável</p>
+
+    </div>
+
+
+</div>
+
+
+<div class="footer" align="center"><img width="80" height="80" src="../public/imagem/pfrb.jpg">
+</div>
 
 </body>
 
 </html>
 
 <style>
+    container {
+        position: absolute;
+        background: lightgray;
+        width: 50%;
+        margin: 0 auto;
+        height: 100px;
+        display: inline-block;
+
+    }
+    .box-orange {
+        background: #ABA9A9;
+        width: 345px;
+        height: 150px;
+        position: center;
+        right: 18px;
+        display: inline-block
+    }
+
+    .box-blue {
+        background: #ABA9A9;
+        width: 350px;
+        height: 150px;
+        right: 18px;
+        display: inline-block
+    }
+
     .html,
     body {
         display: block;
@@ -88,13 +236,11 @@
 
     .left {
         float: left;
-        width: 100px;
+        width: 80px;
     }
 
     .html,
-    body {
-        display: block;
-    }
+
 
     .cabecalho {
         position: absolute;
@@ -102,11 +248,7 @@
         width: 100%;
     }
 
-    .footer {
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-    }
+
 
     .left {
         float: left;
@@ -134,14 +276,14 @@
 
 
     .imgcabecalho {
-        width: 120px;
-        height: 90px;
+        width: 100px;
+        height: 70px;
         alignment: center;
     }
 
     .imgrodape {
-        width: 740px;
-        height: 40px;
+        width: 440px;
+        height: 20px;
         alignment: center;
     }
 
@@ -156,7 +298,7 @@
     th {
         border: 1px solid #dddddd;
         text-align: left;
-        padding: 8px;
+        padding: 4px;
     }
 
     tr:nth-child(even) {
@@ -166,4 +308,5 @@
     th .tg-0pky {
         background-color: #dddddd;
     }
+
 </style>
