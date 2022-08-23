@@ -194,7 +194,7 @@
                         <ul class="collapse">
                             <li {!! (request()->is('diprev/*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('diprev.index')}}">
-                                    <i class="ti-money"></i>
+                                    <i class="ti-archive"></i>
                                     <span>Requerimentos</span>
                                 </a>
                             </li>

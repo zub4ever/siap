@@ -25,6 +25,9 @@ Requerimentos
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="{{route('reqVoluntaria.create')}}" role="button">
                     Novo requerimento
                 </a>
+                <div class="pull-right">
+                    <a class="btn btn-primary btn-md" href="/diprev">Voltar</a>
+                </div>
             </div>
         </div>
     </div>
