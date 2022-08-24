@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title') Cadastrar item de Almoxarifado @endsection
+@section('page-title') Editar  @endsection
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/select2/select2.min.css")}}">
@@ -12,19 +12,20 @@
 
 @section('main-content')
 <ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("almoxarifado.index")}}">Almoxarifado</a></li>
-    <li class="breadcrumb-item active"><a>Cadastrar item</a></li>
+    <li class="breadcrumb-item"><a href="{{route("home")}}">Início</a></li>
+    <li class="breadcrumb-item"><a href="{{route("contratos.index")}}">Contrato</a></li>
+    <li class="breadcrumb-item active"><a>Editar Contrato</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Cadastrar item de almoxarifado</h4>
-                <form action="{{route('almoxarifado.store')}}" method="POST">
+                <h4 class="card_title">Editar </h4>
+                <form action="{{route('contratos.update', $contrato->id)}}" method="POST">
                     @csrf
-                    @include('daf.almoxarifado.form')
+                    @method('PUT')
+                    @include('contratos.form')
                 </form>
             </div>
         </div>
@@ -32,14 +33,10 @@
 </div>
 @endsection
 
-
 @section('js')
-
 <script src="{{asset('assets/vendors/smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
 <script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
-<script src="{{asset('js/almoxarifado/almoxarifado.js')}}"></script>
-
-
+<script src="{{asset('js/contratos/script.js')}}"></script>
 @endsection

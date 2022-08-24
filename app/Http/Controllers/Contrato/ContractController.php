@@ -24,7 +24,7 @@ class ContractController extends Controller {
         $origin = DB::table('origin')->get()->all();
         $orgao = DB::table('orgao')->get()->all();
         $funcao = DB::table('funcao')->get()->all();
-        return view('contrato.index', compact('servidor', 'origin', 'funcao', 'orgao', 'contrato'));
+        return view('contratos.index', compact('servidor', 'origin', 'funcao', 'orgao', 'contrato'));
     }
 
     public function create() {
@@ -34,7 +34,7 @@ class ContractController extends Controller {
         $orgao = Orgao::all();
         $funcao = Funcao::all();
 
-        return view('contrato.create', compact('servidor', 'orgao', 'funcao', 'origin'));
+        return view('contratos.create', compact('servidor', 'orgao', 'funcao', 'origin'));
     }
 
     public function store(ContractFormRequest $request) {
@@ -45,12 +45,12 @@ class ContractController extends Controller {
 
         if (!$contrato) {
             DB::rollBack();
-            return redirect()->route('contrato.index')->with('error', "Falha ao cadastrar um Contrato.");
+            return redirect()->route('contratos.index')->with('error', "Falha ao cadastrar um Contrato.");
         }
         $contrato->save();
         DB::commit();
 
-        return redirect()->route('contrato.index')->with(
+        return redirect()->route('contratos.index')->with(
                         'success',
                         "Contrato cadastrada com sucesso."
         );
@@ -63,7 +63,7 @@ class ContractController extends Controller {
         $servidor = Serve::all();
         $orgao = Orgao::all();
         $funcao = Funcao::all();
-        return view('contrato.edit', compact('contrato','servidor', 'orgao', 'funcao', 'origin'));
+        return view('contratos.edit', compact('contrato','servidor', 'orgao', 'funcao', 'origin'));
     }
 
     public function update(ContractFormRequest $request, $id) {
@@ -75,12 +75,12 @@ class ContractController extends Controller {
         if (!$contrato->update($request->all())) {
 
             DB::rollBack();
-            return redirect()->route('contrato.index')->with('error', "Falha na alteração contrato.");
+            return redirect()->route('contratos.index')->with('error', "Falha na alteração contrato.");
         }
 
         DB::commit();
 
-        return redirect()->route('contrato.index')->with(
+        return redirect()->route('contratos.index')->with(
                         'success',
                         "Contrato alterado com sucesso."
         );
@@ -95,12 +95,12 @@ class ContractController extends Controller {
 
         if (!$contrato->update(['status'=> 0])) {
             DB::rollBack();
-            return redirect()->route('atendimentos.index')->with('error', "Falha ao deletar o Contrato.");
+            return redirect()->route('contratos.index')->with('error', "Falha ao deletar o Contrato.");
         }
 
         DB::commit();
 
-        return redirect()->route('atendimentos.index')->with(
+        return redirect()->route('contratos.index')->with(
             'success',
             "Contrato deletado com sucesso."
         );

@@ -4,7 +4,7 @@
             <label for="origin_id" class="form-control-label">Órgão:
                 <span class="text-danger">*</span>
             </label>
-            <select name="origin_id" class="form-control" id="titula1" >
+            <select name="origin_id" class="form-control" id="titula1" disabled>
                 <option value="">Selecione uma opção</option>
                 @foreach ($origin as $orgao)
                 <option value="{{$orgao->id}}"
@@ -23,7 +23,7 @@
             <label for="tp_servidor_id" class="form-control-label">Tipo de servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select name="tp_servidor_id" class="form-control" id="titula1">
+            <select name="tp_servidor_id" class="form-control" id="titula1" disabled>
                 <option value="">Selecione uma opção</option>
                 @foreach ($tpservidor as $tp)
                 <option value="{{$tp->id}}"
@@ -46,7 +46,7 @@
             <label for="matricula" class="form-control-label">Matrícula:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="matricula" value="{{ @$serve->matricula}}">
+            <input type="text" class="form-control" name="matricula" value="{{ @$serve->matricula}}" disabled>
             @if ($errors->has('matricula'))
             <h6 class="heading text-danger">{{$errors->first('matricula')}}</h6>
             @endif
@@ -57,7 +57,7 @@
             <label for="nm_servidor" class="form-control-label">Nome do servidor:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="nm_servidor" value="{{ @$serve->nm_servidor}}">
+            <input type="text" class="form-control" name="nm_servidor" value="{{ @$serve->nm_servidor}}" disabled>
             @if ($errors->has('nm_servidor'))
             <h6 class="heading text-danger">{{$errors->first('nm_servidor')}}</h6>
             @endif
@@ -76,7 +76,7 @@
                 <span class="text-danger">*</span>
             </label>
             <input type="text" class="form-control" name='data_nascimento' placeholder="11/11/1111" data-mask="00/00/0000" autocomplete="off"
-            value="{{date('d-m-Y', strtotime(@$serve->data_nascimento))}}">
+            value="{{date('d-m-Y', strtotime(@$serve->data_nascimento))}}" disabled>
            
         </div>
     </div>
@@ -85,7 +85,7 @@
             <label for="rg" class="form-control-label">RG:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="rg" value="{{ @$serve->rg}}" maxlength="8">
+            <input type="text" class="form-control" name="rg" value="{{ @$serve->rg}}" maxlength="8" disabled>
             @if ($errors->has('rg'))
             <h6 class="heading text-danger">{{$errors->first('rg')}}</h6>
             @endif
@@ -96,7 +96,7 @@
             <label for="orgao_expedidor_id" class="form-control-label">Órgão Expedidor:
                 <span class="text-danger">*</span>
             </label>
-            <select name="orgao_expedidor_id" class="form-control">
+            <select name="orgao_expedidor_id" class="form-control" disabled>
                 <option value="">Selecione uma opção</option>
                 @foreach ($orgao_expedidor as $ex)
                 <option value="{{$ex->id}}"
@@ -116,7 +116,7 @@
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control focus" name="cpf" id="cpf" value="{{empty(old('cpf')) ? @$serve->cpf : old('cpf')}}" data-mask="999.999.999-99"  autocomplete="off" maxlength="14">
+            <input type="text" class="form-control focus" name="cpf" id="cpf" value="{{empty(old('cpf')) ? @$serve->cpf : old('cpf')}}" data-mask="999.999.999-99"  autocomplete="off" maxlength="14" disabled>
             @if ($errors->has('cpf'))
             <h6 class="heading text-danger">{{$errors->first('cpf')}}</h6>
             @endif
@@ -135,7 +135,7 @@
             <label for="pis_pasep" class="form-control-label">PIS/PASESP:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="pis_pasep" value="{{@$serve->pis_pasep}}" maxlength="14">
+            <input type="text" class="form-control" name="pis_pasep" value="{{@$serve->pis_pasep}}" maxlength="14" disabled>
             @if ($errors->has('pis_pasep'))
             <h6 class="heading text-danger">{{$errors->first('pis_pasep')}}</h6>
             @endif
@@ -146,7 +146,7 @@
             <label for="nm_pai" class="form-control-label">Nome do Pai:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control focus" name="nm_pai" value="{{@$serve->nm_pai}}">
+            <input type="text" class="form-control focus" name="nm_pai" value="{{@$serve->nm_pai}}" disabled>
             @if ($errors->has('nm_pai'))
             <h6 class="heading text-danger">{{$errors->first('nm_pai')}}</h6>
             @endif
@@ -158,7 +158,7 @@
             <label for="nm_mae" class="form-control-label">Nome da Mãe:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="nm_mae" value="{{@$serve->nm_mae}}">
+            <input type="text" class="form-control" name="nm_mae" value="{{@$serve->nm_mae}}" disabled>
             @if ($errors->has('nm_pai'))
             <h6 class="heading text-danger">{{$errors->first('nm_pai')}}</h6>
             @endif
@@ -173,7 +173,7 @@
                 <span class="text-danger">*</span>
             </label>
 
-            <select name="marital_status_id" class="form-control" id="titula1">
+            <select name="marital_status_id" class="form-control" id="titula1" disabled>
                 <option value="">Selecione uma opção</option>
                 @foreach ($marital_status as $ms)
                 <option value="{{$ms->id}}"
@@ -194,7 +194,7 @@
                 <span class="text-danger">*</span>
             </label>
 
-            <select name="sexo_id" class="form-control" id="titula1">
+            <select name="sexo_id" class="form-control" id="titula1" disabled>
                 <option value="">Selecione uma opção</option>
                 @foreach ($sexo as $sx)
                 <option value="{{$sx->id}}"
@@ -214,7 +214,7 @@
                 <span class="text-danger">*</span>
             </label>
 
-            <select name="obito_id" class="form-control" id="titula1">
+            <select name="obito_id" class="form-control" id="titula1" disabled>
                 <option value="">Selecione uma opção</option>
                 @foreach ($obito as $ob)
                 <option value="{{$ob->id}}"
@@ -236,7 +236,7 @@
                 <span class="text-danger">*</span>
             </label>
 
-            <select name="type_serve_id" class="form-control" id="titula1">
+            <select name="type_serve_id" class="form-control" id="titula1" disabled>
                 <option value="">Selecione uma opção</option>
                 @foreach ($type_serve as $tp)
                 <option value="{{$tp->id}}"

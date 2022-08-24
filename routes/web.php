@@ -12,11 +12,12 @@ Route::group(['middleware' => ['auth']], function () {
     //Cadastro de ervidpr
     Route::resource('servidor', 'Servidor\ServeController');
     Route::get('servidor/create', 'Servidor\ServeController@create')->name('servidor.create');
+    Route::get('servidor/show/{id?}', 'Servidor\ServeController@show')->name('servidor.show');
     Route::post('servidor/create', 'Servidor\ServeController@store');
     //Contrato atrelado a servidor
-    Route::resource('contrato', 'Contrato\ContractController');
-    Route::get('contrato/create', 'Contrato\ContractController@create')->name('contrato.create');
-    Route::post('contrato/create', 'Contrato\ContractController@store');
+    Route::resource('contratos', 'Contrato\ContractController');
+    Route::get('contratos/create', 'Contrato\ContractController@create')->name('contratos.create');
+    Route::post('contratos/create', 'Contrato\ContractController@store');
     //
     Route::resource('endereco', 'Endereco\EnderecoController');
     Route::get('endereco/create', 'Endereco\EnderecoController@create')->name('endereco.create');

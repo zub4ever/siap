@@ -24,10 +24,10 @@
                         </a>
                         <ul class="collapse">
                             <li {!! (request()->is('folhaPagamento*') ? 'class="active"' : "")!!}>
-                                <a href="{{route('home') }}">Inicio</a></li>
+                                <a href="{{route('home')}}">Inicio</a></li>
 
                         </ul>
-                    </li>
+                    </li> 
                     <!-- Inicio de Servidor -->
                     <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
@@ -45,7 +45,7 @@
                             </li>
                             <!-- Fim do -->
                             <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
-                                <a href="{{route('contrato.index')}}">
+                                <a href="{{route('contratos.index')}}">
                                     <i class="icon-documents"></i>
                                     <span>Contratos</span>
                                 </a>

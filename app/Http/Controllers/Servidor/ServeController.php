@@ -22,14 +22,15 @@ class ServeController extends Controller {
 
     public function show($id){
         
-        
-        $tpservidor = DB::table('tpservidor')->get()->all();
-        $servidor = Serve::where('status', 1)
-                ->orderBY('id')
-                ->get();
-        $origin = DB::table('origin')->get()->all();
-
-        return view('servidor.show', compact('servidor', 'origin', 'tpservidor'));        
+        $serve = Serve::findOrFail($id);
+        $origin = Origin::all();
+        $sexo = Sexo::all();
+        $orgao_expedidor = Orgao_Expedidor::all();
+        $obito = Obito::all();
+        $type_serve = Type_Serve::all();
+        $marital_status = Marital_Status::all();
+        $tpservidor = TipoServidor::all();
+        return view('servidor.show', compact('serve','origin', 'marital_status', 'sexo', 'orgao_expedidor', 'obito', 'type_serve', 'tpservidor'));       
     }
 
     public function index() {

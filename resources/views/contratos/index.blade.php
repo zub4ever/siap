@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('page-title')
-Contrato
+Contratos dos servidores
 @endsection
 @section('css')
 <!-- Start datatable css -->
@@ -17,55 +17,59 @@ Contrato
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Contrato</a></li>
+    <li class="breadcrumb-item active"><a>Contratos dos servidores</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar " href="{{route('contrato.create')}}" role="button">
-                    Novo contrato
-                </a> 
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('endereco.create')}}" role="button">
-                    Cadastrar endereço
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('contratos.create')}}" role="button">
+                    Novo contrato servidor
                 </a>
-            </div>
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo item" href="{{route('endereco.create')}}" role="button">
+                    Cadastrar endereco servidor
+                </a>               
 
+            </div>
         </div>
     </div>
-
 </div>
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Contratos</h4>
+                <h4 class="card_title">Contratos dos servidores</h4>
                 <div class="table-responsive">
-                    <table id="dataTable" class="table text-center">
+                <table id="dataTable" class="table text-center">
                         <thead class="bg-light text-capitalize">
                             <tr>
-                                <th class="text-center">Matrícula</th>
-                                <th class="text-center">Contrato</th>
-                                <th class="text-center">Nome servidor</th>
+                                <th class="text-center">Servidor</th>
+                                <th class="text-center">Contrato</th>                                
                                 <th class="text-center">Origem</th>
+                                <th class="text-center">Função</th>
                                 <th class="text-center">Ações</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach ($contrato as $svd)
                             <tr>
+                                
+                            
                                 @foreach($servidor as $kf)
                                 @if($svd->serve_id == $kf->id)
-                                <td class="text-center">{{$kf->matricula}}</td>
-                                <td class="text-center">{{$svd->nr_contrato}}</td>
-                                <td class="text-center">{{$kf->nm_servidor}}</td>
-                                @endif
+                                <td class="text-center">{{$kf->matricula}} - {{$kf->nm_servidor}}</td>                                                              
+                                @endif                               
                                 @endforeach
+                                <td class="text-center">{{$svd->nr_contrato}}</td>
                                 @foreach($origin as $mnc)
                                 @if($svd->origin_id == $mnc->id)
                                 <td class="text-center">{{$mnc->nm_origem}}</td>
+                                @endif
+                                @endforeach
+                                @foreach($funcao as $funcao)
+                                @if($svd->funcao_id == $funcao->id)
+                                <td class="text-center">{{$funcao->nm_funcao}}</td>
                                 @endif
                                 @endforeach
                                 <td>
