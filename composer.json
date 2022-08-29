@@ -10,7 +10,7 @@
     "require": {
         "php": "^7.2.5|^8.0.9",
         "barryvdh/laravel-dompdf": "^0.9.0",
-        "eduardokum/laravel-boleto": "^0.9.3",
+        
         "fideloper/proxy": "^4.2",
         "guzzlehttp/guzzle": "^7.0",
         "igorescobar/jquery-mask-plugin": "^1.14",
