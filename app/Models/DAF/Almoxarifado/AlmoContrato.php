@@ -21,6 +21,6 @@ class AlmoContrato extends Model
 
     public function almoxarifado()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_contrato_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado', 'almoxarifado_contrato_id');
     }
 }

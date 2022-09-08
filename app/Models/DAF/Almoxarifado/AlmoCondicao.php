@@ -20,6 +20,6 @@ class AlmoCondicao extends Model
     public function almoxarifado()
     {
 
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_condicao_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado', 'almoxarifado_condicao_id');
     }
 }

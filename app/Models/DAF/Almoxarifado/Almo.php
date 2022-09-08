@@ -29,35 +29,34 @@ class Almo extends Model
 
     public function almoxarifado_condicao()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_condicao_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoCondicao', 'almoxarifado_condicao_id');
     }
     public function almoxarifado_contrato()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_contrato_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoContrato', 'almoxarifado_contrato_id');
     }
     public function almoxarifado_localizacao_dpto()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_localizacao_dpto_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO', 'almoxarifado_localizacao_dpto_id');
     }
     public function almoxarifado_responsavel()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_responsavel_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoResponsavel', 'almoxarifado_responsavel_id');
     }
 
-    public function almoxarifado_tipo()
-    {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_tipo_id');
+    public function almoxarifado_tipo(){
+        return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoTipo', 'almoxarifado_tipo_id');
     }
 
     public function almoxarifado_marca()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_marca_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoMarca', 'almoxarifado_marca_id');
     }
 	public function almoxarifado_cedido()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_cedido_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoCedido', 'almoxarifado_cedido_id');
     }
-	
+
     public static function busca($criterio)
     {
       return static::where('nm_patrimonio', '=', $criterio)->get();

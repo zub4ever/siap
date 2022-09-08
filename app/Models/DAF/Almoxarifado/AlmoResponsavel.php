@@ -20,6 +20,6 @@ class AlmoResponsavel extends Model
 
     public function almoxarifado()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_responsavel_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado', 'almoxarifado_responsavel_id');
     }
 }

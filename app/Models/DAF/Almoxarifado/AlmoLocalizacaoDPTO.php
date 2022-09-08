@@ -20,6 +20,6 @@ class AlmoLocalizacaoDPTO extends Model
 
     public function almoxarifado()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_localizacao_dpto_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado', 'almoxarifado_localizacao_dpto_id');
     }
 }

@@ -20,6 +20,6 @@ class AlmoMarca extends Model
 
     public function almoxarifado()
     {
-        return $this->belongsToMany('App\Models\DAF\Almoxarifado', 'almoxarifado_marca_id');
+        return $this->belongsTo('App\Models\DAF\Almoxarifado', 'almoxarifado_marca_id');
     }
 }
