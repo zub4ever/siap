@@ -15,6 +15,18 @@ Almoxarifado
     <li class="breadcrumb-item"><a href="">Início</a></li>
     <li class="breadcrumb-item active"><a>Almoxarifado</a></li>
 </ol>
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <div class="pull-right">
+                    <a class="btn btn-primary btn-md" href="/almoxarifado">Voltar</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
 <div class="card">
     <div class="card-body">
         <hr />
@@ -32,14 +44,11 @@ Almoxarifado
                         <input type="text" class="form-control" name="nm_patrimonio" value="{{isset($request) ? $request->input('nm_patrimonio') : '' }}">
                     </div>
                 </div>
-
-
                 <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
                     <div class="wrap">
                         <label for="almoxarifado_condicao_id" class="form-control-label">Condição de Item:
                             <span class="text-danger">*</span>
                         </label>
-
                         <select class="form-control" name="almoxarifado_condicao_id">
                             <option value="">Selecione uma opção</option>
                             @foreach ($almo_condicao as $tipo)
@@ -50,13 +59,11 @@ Almoxarifado
                         </select>
                     </div>
                 </div>
-
                 <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
                     <div class="wrap">
                         <label for="almoxarifado_tipo_id" class="form-control-label">Tipo de Item:
                             <span class="text-danger">*</span>
                         </label>
-
                         <select class="form-control" name="almoxarifado_tipo_id">
                             <option value="">Selecione uma opção</option>
                             @foreach ($almo_tipo as $tipo)
@@ -72,7 +79,6 @@ Almoxarifado
                         <label for="almoxarifado_localizacao_dpto_id" class="form-control-label">Departamento:
                             <span class="text-danger">*</span>
                         </label>
-
                         <select class="form-control" name="almoxarifado_localizacao_dpto_id">
                             <option value="">Selecione uma opção</option>
                             @foreach ($almo_localizacao_dpto as $projeto)
@@ -104,6 +110,7 @@ Almoxarifado
         <div class="card">
             <div class="card-body">
                 <h4 class="card_title">Resultado da Busca</h4>
+
                 <div class="table-responsive">
                     <table id="" class="table text-center">
                         <thead class="bg-light text-capitalize">
