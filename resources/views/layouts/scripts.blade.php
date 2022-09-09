@@ -50,5 +50,4 @@
           All JS
 *===========================-->
 
-<script src="{{asset('js/all.js')}}"></script>
-<script src="{{asset('js/logout.js')}}"></script>
+

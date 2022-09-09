@@ -77,7 +77,7 @@
                                 </a>
                             </li>
 
-                    <!-- Fim do cadastros auxiliares
+                    <!- Fim do cadastros auxiliares 
                 </ul>
             </li>  
             <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
