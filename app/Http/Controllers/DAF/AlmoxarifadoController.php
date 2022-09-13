@@ -195,6 +195,7 @@ class AlmoxarifadoController extends Controller
     {
         $almoxarifado = Almo::buscaQrCode($request->id);
         $almo_tipo = AlmoTipo::get();
+        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
         //dd($almoxarifado);
         return view(
             'daf.almoxarifado.consultaPublica.resultadoqrCode',
@@ -203,7 +204,7 @@ class AlmoxarifadoController extends Controller
                 'almoxarifado' => $almoxarifado,
                 'id' => $request->id
             ],
-            compact('almoxarifado', 'almo_tipo')
+            compact('almoxarifado', 'almo_tipo','almo_localizacao_dpto')
         );
     }
 }
