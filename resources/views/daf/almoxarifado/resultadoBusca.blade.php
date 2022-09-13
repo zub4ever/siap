@@ -125,10 +125,6 @@ Almoxarifado
                             </tr>
                         </thead>
                         <tbody>
-
-
-
-
                             @foreach ($almoxarifado as $fcn)
                             <tr>
                                 <td class="text-center">{{$fcn->nm_patrimonio}}</td>

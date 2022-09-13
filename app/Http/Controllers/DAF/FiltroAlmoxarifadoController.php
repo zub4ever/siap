@@ -15,6 +15,8 @@ use App\Models\DAF\Almoxarifado\AlmoMarca;
 use App\Models\DAF\Almoxarifado\AlmoResponsavel;
 use App\Models\DAF\Almoxarifado\AlmoTipo;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Paginator;
+
 
 
 
