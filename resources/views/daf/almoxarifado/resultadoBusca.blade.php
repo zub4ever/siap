@@ -134,6 +134,9 @@ Almoxarifado
                                 <td class="text-center">{{$fcn->almoxarifado_contrato->nr_contrato}}</td>
                                 <td class="text-center">{{$fcn->almoxarifado_condicao->nm_condicao}}</td>
                                 <td>
+                                    <a href="{{ route('almoxarifado.show',$fcn->id) }}">
+                                        <i class="ti-clipboard mr-1 btn btn-info"></i>
+                                    </a>
                                     <a href="{{route('almoxarifado.Verpdf',$fcn->id)}}" target="_blank
                                        ">
                                         <i class="ti-printer mr-1 btn btn-warning"></i>
@@ -163,7 +166,6 @@ Almoxarifado
                     <div class="d-flex justify-content-end">
                         {!! $almoxarifado->appends(Request::only('almoxarifado_condicao_id', 'almoxarifado_tipo_id',
                         'almoxarifado_localizacao_dpto_id', 'nm_patrimonio'))->links() !!}
-
                     </div>
                 </div>
             </div>

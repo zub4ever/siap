@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\DAF;
 
+use App\Serve;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
@@ -24,6 +25,19 @@ use SimpleSoftwareIO\QrCode\Generator;
 
 class AlmoxarifadoController extends Controller
 {
+    public function show($id){
+
+        $almoxarifado = Almo::findOrFail($id);
+        $almo_condicao = DB::table('almoxarifado_condicao')->get()->all();
+        $almo_contrato = DB::table('almoxarifado_contrato')->get()->all();
+        $almo_localizacao_dpto = DB::table('almoxarifado_localizacao_dpto')->get()->all();
+        $almo_marca = DB::table('almoxarifado_marca')->get()->all();
+        $almo_responsavel = DB::table('almoxarifado_responsavel')->get()->all();
+        $almo_tipo = DB::table('almoxarifado_tipo')->get()->all();
+        $almo_cedido = DB::table('almoxarifado_cedido')->get()->all();
+
+        return view('daf.almoxarifado.show',  compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo','almo_cedido'));
+    }
 
     public function index()
     {

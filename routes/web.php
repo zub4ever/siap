@@ -83,14 +83,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/almoxarifado', 'DAF\AlmoxarifadoController');
     Route::get('/almoxarifado/create', 'DAF\AlmoxarifadoController@create')->name('almoxarifado.create');
     Route::post('/almoxarifado/create', 'DAF\AlmoxarifadoController@store');
+    Route::get('almoxarifado/show/{id?}', 'DAF\AlmoxarifadoController@show')->name('almoxarifado.show');
     Route::get('/almoxarifado/{id?}/pdf', 'DAF\AlmoxarifadoController@Verpdf')->name('almoxarifado.Verpdf');
     Route::delete('/almoxarifado/{id}/destroy', 'DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
     //geradorQrCode
     Route::get('/qrcode{id?}', 'DAF\AlmoxarifadoController@qrCodeGerador')->name('qrcode');
     //Consulta Filtro
-    Route::post('/almoxarifado/busca', 'DAF\FiltroAlmoxarifadoController@index')
+    Route::post('/almoxarifado/busca/', 'DAF\FiltroAlmoxarifadoController@index')
     ->name('almo.buscar');
-    Route::get('/almoxarifado/busca', 'DAF\FiltroAlmoxarifadoController@index');
+    Route::get('/almoxarifado/busca/', 'DAF\FiltroAlmoxarifadoController@index');
     //
 
     //Departamento Almofaxirado

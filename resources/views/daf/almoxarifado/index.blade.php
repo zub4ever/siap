@@ -142,7 +142,7 @@ Almoxarifado
                                 <th class="text-center">Tipo de item</th>
                                 <th class="text-center">Marca</th>
                                 <th class="text-center">Localização</th>
-                                <th class="text-center">Contrato</th>
+
                                 <th class="text-center">Condição</th>
                                 <th class="text-center">Ações</th>
                             </tr>
@@ -166,17 +166,16 @@ Almoxarifado
                                 <td class="text-center">{{$lc->nm_departamento}}</td>
                                 @endif
                                 @endforeach
-                                @foreach($almo_contrato as $contrato)
-                                @if($fcn->almoxarifado_contrato_id == $contrato->id)
-                                <td class="text-center">{{$contrato->nr_contrato}}/{{$contrato->ano_contrato}}</td>
-                                @endif
-                                @endforeach
+
                                 @foreach($almo_condicao as $condicao)
                                 @if($fcn->almoxarifado_condicao_id == $condicao->id)
                                 <td class="text-center">{{$condicao->nm_condicao}}</td>
                                 @endif
                                 @endforeach
                                 <td>
+                                    <a href="{{ route('almoxarifado.show',$fcn->id) }}">
+                                        <i class="ti-clipboard mr-1 btn btn-info"></i>
+                                    </a>
                                     <a href="{{route('almoxarifado.Verpdf',$fcn->id)}}" target="_blank
                                        ">
                                         <i class="ti-printer mr-1 btn btn-warning"></i>

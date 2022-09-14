@@ -77,7 +77,7 @@
             </label>
             <input type="text" class="form-control" name='data_nascimento' placeholder="11/11/1111" data-mask="00/00/0000" autocomplete="off"
             value="{{date('d-m-Y', strtotime(@$serve->data_nascimento))}}" disabled>
-           
+
         </div>
     </div>
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -251,10 +251,4 @@
         </div>
     </div>
 </div>
-<div class="col-sm-12 mt-5">
-    <div class="wrap mt-1" style="text-align: center;">
-        <button type="submit" class="btn btn-success">
-            Salvar Servidor
-        </button>
-    </div>
-</div>
+

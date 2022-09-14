@@ -388,8 +388,6 @@ Requerimentos
             </button>
         </a>
     </div>
-
-
 </div>
 @endsection
 @section('js')

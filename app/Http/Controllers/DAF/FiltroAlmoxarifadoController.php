@@ -28,6 +28,8 @@ class FiltroAlmoxarifadoController extends Controller
     {
 
 
+
+
         $query  =  Almo::with('almoxarifado_tipo','almoxarifado_condicao','almoxarifado_localizacao_dpto')->where('status',1);
 
 
@@ -58,7 +60,7 @@ class FiltroAlmoxarifadoController extends Controller
             }
         }
 
-        $almoxarifado = $query->orderBy('id', 'asc')->paginate(10);
+        $almoxarifado = $query->paginate(20);
         //dd($almoxarifado);
 
 
