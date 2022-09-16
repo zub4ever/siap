@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="{{asset('assets/images/rbprev-2.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('assets/images/logo-fav.png')}}" type="image/x-icon">
     <link rel="stylesheet" href="{{asset('/css/ligin.css')}}">
 
 </head>

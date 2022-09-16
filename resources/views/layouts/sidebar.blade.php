@@ -4,7 +4,7 @@
                       Logo
         *===========================-->
         <div class="logo">
-            <a href="{{ URL::to('home') }}"><img src="{{asset('assets/images/logo.svg')}}" alt="logo"></a>
+            <a href="{{ URL::to('home') }}"><img src="{{asset('assets/images/sisa.gif')}}" alt="logo"></a>
         </div>
         <!--=========================*
                     End Logo
@@ -27,7 +27,7 @@
                                 <a href="{{route('home')}}">Inicio</a></li>
 
                         </ul>
-                    </li> 
+                    </li>
                     <!-- Inicio de Servidor -->
                     <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
@@ -61,7 +61,7 @@
                         </ul>
                     </li>
                     <!--fim de Servidor-->
-                    <!-- Inicio de Contrato 
+                    <!-- Inicio de Contrato
                     <li {!! (request()->is('contrato*') ? 'class="active"' : "")!!}>
                         <a href="javascript:void(0)" aria-expanded="true">
                             <i class="icon-pencil"></i>
@@ -77,9 +77,9 @@
                                 </a>
                             </li>
 
-                    <!- Fim do cadastros auxiliares 
+                    <!- Fim do cadastros auxiliares
                 </ul>
-            </li>  
+            </li>
             <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
                 <a href="javascript:void(0)" aria-expanded="true">
                     <i class=" icon-streetsign"></i>
@@ -95,7 +95,7 @@
                         </a>
                     </li>
 
-                 
+
                 </ul>
             </li> -->
                     <!--fim de-->
@@ -114,7 +114,7 @@
                                     <span>Atendimentos</span>
                                 </a>
                             </li>
-                            
+
                             @role('Admin')
                             <!-- Usuario -->
                             <li {!! (request()->is('administracao/users*') ? 'class="active"' : "")!!}>
@@ -156,13 +156,13 @@
                                     <i class="icon-clipboard"></i>
                                     <span>Orgão</span>
                                 </a>
-                            </li> 
+                            </li>
                             <li {!! (request()->is('cadastrosAuxiliares/funcao*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('funcao.index')}}">
                                     <i class="icon-clipboard"></i>
                                     <span>Funções</span>
                                 </a>
-                            </li>                              
+                            </li>
                             <!-- Fim do cadastros auxiliares -->
                         </ul>
                     </li>

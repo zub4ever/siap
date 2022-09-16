@@ -30,7 +30,17 @@ class FiltroAlmoxarifadoController extends Controller
 
 
 
+
+
         $query  =  Almo::with('almoxarifado_tipo','almoxarifado_condicao','almoxarifado_localizacao_dpto')->where('status',1);
+
+        /*$query  =  Almo::join('almoxarifado_tipo','almoxarifado_tipo.id','=', 'almoxaridado.almoxarifado_tipo_id')
+            ->join('almoxarifado_condicao','almoxarifado_condicao.id','=','almoxarifado.almoxarifado_condicao_id')
+            ->join('almoxarifado_localizacao_dpto','almoxarifado_localizacao_dpto.id','=','almoxarifado.almoxarifado_localizacao_dpto_id')
+            ->where ('almoxarifado.status', '=', 1)
+            ->select ('almoxarifado.*'); */
+
+
 
 
 
@@ -60,8 +70,7 @@ class FiltroAlmoxarifadoController extends Controller
             }
         }
 
-        $almoxarifado = $query->paginate(20);
-        //dd($almoxarifado);
+        $almoxarifado = $query->paginate(10);
 
 
         $almo_condicao = AlmoCondicao::where('status', 1)->get();
