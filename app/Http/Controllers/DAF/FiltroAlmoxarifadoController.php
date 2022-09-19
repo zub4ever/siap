@@ -32,13 +32,20 @@ class FiltroAlmoxarifadoController extends Controller
 
 
 
-        $query  =  Almo::with('almoxarifado_tipo','almoxarifado_condicao','almoxarifado_localizacao_dpto')->where('status',1);
+        //$query  =  Almo::with('almoxarifado_tipo','almoxarifado_condicao','almoxarifado_localizacao_dpto')->where('status',1);
 
-        /*$query  =  Almo::join('almoxarifado_tipo','almoxarifado_tipo.id','=', 'almoxaridado.almoxarifado_tipo_id')
+             $query  = DB::table('almoxarifado')
+             ->join('almoxarifado_tipo','almoxarifado_tipo.id','=', 'almoxaridado.almoxarifado_tipo_id')
             ->join('almoxarifado_condicao','almoxarifado_condicao.id','=','almoxarifado.almoxarifado_condicao_id')
             ->join('almoxarifado_localizacao_dpto','almoxarifado_localizacao_dpto.id','=','almoxarifado.almoxarifado_localizacao_dpto_id')
             ->where ('almoxarifado.status', '=', 1)
-            ->select ('almoxarifado.*'); */
+            ->select ('almoxarifado.id','almoxarifado.nm_patrimonio',
+                'almoxarifado_tipo.id','almoxarifado_tipo.nm_tipo',
+                'almoxarifado_condicao.id','almoxarifado_condicao.nm_condicao',
+                'almoxarifado_localizacao_dpto.id','almoxarifado_localizacao_dpto.nm_departamento'
+
+
+            );
 
 
 
