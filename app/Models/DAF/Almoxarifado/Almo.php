@@ -57,10 +57,12 @@ class Almo extends Model
         return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoCedido', 'almoxarifado_cedido_id');
     }
 
-    public static function busca($criterio)
+    /*public static function busca($criterio)
     {
       return static::where('nm_patrimonio', '=', $criterio)->get();
-    }
+    }*/
+
+
     public static function buscaQrCode($id)
     {
       return static::where('id', '=', $id)->get();
