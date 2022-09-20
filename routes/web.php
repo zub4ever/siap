@@ -91,8 +91,12 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Consulta Filtro
     Route::post('/almoxarifado/filtro', 'DAF\FiltroAlmoxarifadoController@index')->name('almo.buscar');
-    Route::get('/almoxarifado/filtro/{$query}', 'DAF\FiltroAlmoxarifadoController@index');
+    Route::get('/almoxarifado/filtro/{query}', 'DAF\FiltroAlmoxarifadoController@index');
     //
+    //PDF
+    //Relatório PDF
+    Route::get("/filtros/relatorios",'DAF\AlmoxarifadoController@indexRelatorio')->name('relatorio.indexRelatorio');
+    Route::get("/filtros/relatorios/{almo_tipo}/{almo_condicao}/{almo_localizacao_dpto}/pdf",'DAF\AlmoxarifadoController@GeraRelatorioPDF');
 
     //Departamento Almofaxirado
     Route::resource('/departamento', 'DAF\AlmoDptoController');

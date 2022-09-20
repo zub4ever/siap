@@ -45,7 +45,7 @@ class FiltroAlmoxarifadoController extends Controller
 
             )
             ->orderBy('almoxarifado.id', 'asc')
-            ->paginate(2);// Quantidade por página
+            ->paginate(50);// Quantidade por página
 
         $iguais = $request->only(
             'almoxarifado_tipo_id',
@@ -68,6 +68,7 @@ class FiltroAlmoxarifadoController extends Controller
 
         $almoxarifado = $query;
 
+        dd($query);
         $almo_condicao = AlmoCondicao::where('status', 1)->get();
         $almo_tipo = AlmoTipo::where('status', 1)->get();
         $almo_localizacao_dpto = AlmoLocalizacaoDPTO::where('status', 1)->get();
@@ -86,5 +87,6 @@ class FiltroAlmoxarifadoController extends Controller
             )
         );
     }
+
 
 }

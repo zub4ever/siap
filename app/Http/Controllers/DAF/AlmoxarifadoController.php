@@ -54,7 +54,16 @@ class AlmoxarifadoController extends Controller
         $almo_responsavel = DB::table('almoxarifado_responsavel')->get()->all();
         $almo_tipo = DB::table('almoxarifado_tipo')->get()->all();
         $almo_cedido = DB::table('almoxarifado_cedido')->get()->all();
-        return view('daf.almoxarifado.index', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo','almo_cedido'));
+
+        return view('daf.almoxarifado.index', compact('almoxarifado', 'almo_condicao', 'almo_contrato', 'almo_localizacao_dpto', 'almo_marca', 'almo_responsavel', 'almo_tipo','almo_cedido'),
+            [
+                'almoxarifado'=>$almoxarifado,
+                'almo_condicao'=>$almo_condicao,
+                'almo_tipo'=>$almo_tipo,
+                'almo_localizacao_dpto'=>$almo_localizacao_dpto,
+
+            ]
+        );
     }
 
     public function create()
@@ -220,5 +229,55 @@ class AlmoxarifadoController extends Controller
             ],
             compact('almoxarifado', 'almo_tipo','almo_localizacao_dpto')
         );
+    }
+
+    public function indexRelatorio(Request $request)
+    {
+        $almo_tipo = $request ->query('almo_tipo');
+        $almo_condicao = $request ->query('almo_condicao');
+        $almo_localizacao_dpto =$request ->query('almo_localizacao_dpto');
+
+        $i=0;
+        $users = DB::table('users')->get()->all();
+        $almoxarifado = Almo::get();
+        $almo_condicao = AlmoCondicao::get();
+        $almo_tipo = AlmoTipo::get();
+        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
+
+        return view('daf.almoxarifado.indexRelatorio',['i'=>$i,
+                'almoxarifado'=>$almoxarifado,
+                'almo_condicao'=>$almo_condicao,
+                'almo_tipo'=>$almo_tipo,
+                'almo_localizacao_dpto'=>$almo_localizacao_dpto,
+                'users'=>$users
+            ]
+        );
+    }
+    public function GeraRelatorioPDF($almo_tipo,$almo_condicao,$almo_localizacao_dpto){
+
+
+        $i=0;
+        $users = DB::table('users')->get()->all();
+        $i=0;
+        $users = DB::table('users')->get()->all();
+        $almoxarifado = Almo::get();
+        $almo_condicao = AlmoCondicao::get();
+        $almo_tipo = AlmoTipo::get();
+        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
+
+
+
+        return PDF::loadView('daf.almoxarifado.pdf.relatoriopdf',['i'=>$i,
+                'almoxarifado'=>$almoxarifado,
+                'almo_condicao'=>$almo_condicao,
+                'almo_tipo'=>$almo_tipo,
+                'almo_localizacao_dpto'=>$almo_localizacao_dpto,
+                'users'=>$users
+            ]
+        )
+            ->setPaper('A4', "landscape" )
+            // Altera o papel para modo paisagem.  "landscape"
+            //Altera o papel para modo Retrato.    'portrait'
+            ->stream('relatorio_daf.pdf');
     }
 }
