@@ -16,7 +16,7 @@ use App\Models\DAF\Almoxarifado\AlmoMarca;
 use App\Models\DAF\Almoxarifado\AlmoResponsavel;
 use App\Models\DAF\Almoxarifado\AlmoTipo;
 use Illuminate\Support\Facades\DB;
-
+use PDF;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 use SimpleSoftwareIO\QrCode\Generator;
@@ -243,6 +243,7 @@ class AlmoxarifadoController extends Controller
         $almo_condicao = AlmoCondicao::get();
         $almo_tipo = AlmoTipo::get();
         $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
+        $almo_localizacao_dpto = Atendimento::get();
 
         return view('daf.almoxarifado.indexRelatorio',['i'=>$i,
                 'almoxarifado'=>$almoxarifado,

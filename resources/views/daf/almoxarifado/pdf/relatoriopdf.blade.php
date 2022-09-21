@@ -140,7 +140,7 @@
 @if ($almo_tipo==1)
     <?php $i = 0; ?>
     @foreach($almo_tipo as $mnc)
-        @if($fcn->almoxarifado_tipo_id == $mnc->id)
+        @if($mnc->almoxarifado_tipo_id == $mnc->id)
             <td class="text-center">{{$mnc->nm_tipo}}</td>
             <?php $i = 1 + $i; ?>
         @endif

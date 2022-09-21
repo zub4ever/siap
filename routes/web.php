@@ -118,7 +118,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/marca/create', 'DAF\AlmoMarcaController@create')->name('marca.create');
     Route::post('/marca/create', 'DAF\AlmoMarcaController@store');
     Route::delete('/marca/{id}/destroy', 'DAF\AlmoMarcaController@destroy')->name('marca.destroy');
-    //Fim DAP
+    //Fim DAF
 });
 Auth::routes();
 
