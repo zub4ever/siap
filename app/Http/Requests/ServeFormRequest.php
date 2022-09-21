@@ -8,7 +8,7 @@ use Illuminate\Foundation\Http\FormRequest;
 class ServeFormRequest extends FormRequest {
 
     public function authorize() {
-       
+
         return true;
     }
 
@@ -22,11 +22,11 @@ class ServeFormRequest extends FormRequest {
             'matricula' => ['required', 'max:200'],
             'nm_servidor' => ['required', 'max:200'],
             'data_nascimento' => ['required', 'date_format:"d/m/Y"'],
-            'rg' => ['required', 'max:15'],
+            'rg' => ['max:15'],
             'cpf' => ['required', 'max:15'],
-            'pis_pasep' => ['required', 'max:15'],
-            'nm_pai' => ['required', 'max:200'],
-            'nm_mae' => ['required', 'max:200'],
+            'pis_pasep' => ['max:15'],
+            'nm_pai' => ['max:200'],
+            'nm_mae' => ['max:200'],
             'origin_id' => ['required'],
             'marital_status_id' => ['required'],
             'type_serve_id'=> ['required'],
@@ -36,5 +36,5 @@ class ServeFormRequest extends FormRequest {
             'tp_servidor_id'=> ['required']
         ];
     }
-   
+
 }
