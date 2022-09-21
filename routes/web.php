@@ -96,7 +96,7 @@ Route::group(['middleware' => ['auth']], function () {
     //PDF
     //Relatório PDF
     Route::get("/filtros/relatorios",'DAF\AlmoxarifadoController@indexRelatorio')->name('relatorio.indexRelatorio');
-    Route::get("/filtros/relatorios/{almo_tipo}/{almo_condicao}/{almo_localizacao_dpto}/pdf",'DAF\AlmoxarifadoController@GeraRelatorioPDF');
+    Route::any("/filtros/relatorios/{almo_tipo}/{almo_condicao}/{almo_localizacao_dpto}/pdf",'DAF\AlmoxarifadoController@GeraRelatorioPDF');
 
     //Departamento Almofaxirado
     Route::resource('/departamento', 'DAF\AlmoDptoController');
