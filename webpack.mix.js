@@ -39,6 +39,9 @@ mix.combine([
 ], 'public/js/all.js');
 
 
-mix.js('resources/js/app.js', 'public/js')    
+mix.js('resources/js/app.js', 'public/js')
 .sass('resources/sass/app.scss', 'public/css');
 
+//wizard
+mix.copy('vendor/techlab/smartwizard', 'public/assets/vendors/smartwizard')
+// fim wizard
