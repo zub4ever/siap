@@ -26,29 +26,41 @@ Página inicial
                 <div class="card_image">
                     <img src="/imagem/voluntaria.png" />
                 </div>
-                
+
             </div>
         </a>
+
+        <a href="{{route('reqCompulsoria.index')}}">
+            <div class="cardAp 1">
+
+                <div class="card_image">
+                    <img src="/imagem/compulsoria.png" />
+                </div>
+
+            </div>
+        </a>
+
+
 
 
         <div class="cardAp 2">
             <div class="card_image">
                 <img src="/imagem/compulsoria.png" />
             </div>
-            
+
         </div>
 
         <div class="cardAp 3">
             <div class="card_image">
                 <img src="/imagem/apinvalidez.png" />
             </div>
-            
+
         </div>
 
         <div class="cardAp 4">
             <div class="card_image">
                 <img src="/imagem/especial.png" />
-            </div>            
+            </div>
         </div>
 
     </div>
@@ -61,8 +73,8 @@ Página inicial
     <div class="col-sm-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <div class="row d-flex justify-content-center">                       
-                     
+                <div class="row d-flex justify-content-center">
+
                     <div class="col-sm-5">
                         <script src="https://code.highcharts.com/highcharts.js"></script>
                         <script src="https://code.highcharts.com/modules/variable-pie.js"></script>

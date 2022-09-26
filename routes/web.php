@@ -63,6 +63,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reqVoluntaria/pdf/{id?}', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@pdf')->name('reqVoluntaria.pdf');
 
     //FimRequerimentosAposentadoria
+    //Inicio de Requerimentos Comulsorios
+    Route::resource('/reqCompulsoria', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaController');
+    Route::get('/reqCompulsoria/create', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaController@create')->name('reqCompulsoria.create');
+    Route::post('/reqCompulsoria/create', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaController@store');
+    //
+    Route::resource('/dependentes', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaDependenteController')->except(['create', 'show']);
+    Route::get('/dependentes/{compulsoria}', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaDependenteController@create')->name('dependentes.create');
+    //
+
+
+    //Fim de Requerimentos Comulsorios
+
+
     //Rotas do Dap
 
     Route::resource('/dap', 'DAP\DapController');
@@ -95,8 +108,8 @@ Route::group(['middleware' => ['auth']], function () {
     //
     //PDF
     //Relatório PDF
-    Route::get("/filtros/relatorios",'DAF\AlmoxarifadoController@indexRelatorio')->name('relatorio.indexRelatorio');
-    Route::any("/filtros/relatorios/{almo_tipo}/{almo_condicao}/{almo_localizacao_dpto}/pdf",'DAF\AlmoxarifadoController@GeraRelatorioPDF');
+    Route::get("/filtros/relatorios", 'DAF\AlmoxarifadoController@indexRelatorio')->name('relatorio.indexRelatorio');
+    Route::any("/filtros/relatorios/{almo_tipo}/{almo_condicao}/{almo_localizacao_dpto}/pdf", 'DAF\AlmoxarifadoController@GeraRelatorioPDF');
 
     //Departamento Almofaxirado
     Route::resource('/departamento', 'DAF\AlmoDptoController');
@@ -125,9 +138,6 @@ Auth::routes();
 Route::resource("/requerimentos", "Publico\PedidoPubliController");
 Route::get('requerimentos/create', 'Publico\PedidoPubliController@create')->name('requerimentos.create');
 Route::post('requerimentos/create', 'Publico\PedidoPubliController@store');
-
-
-
 
 
 //ConsultaPublica

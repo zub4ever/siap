@@ -190,7 +190,7 @@
                                     @endforeach
                                     <td>
                                         <a href="{{ route('almoxarifado.show',$fcn->id) }}">
-                                            <i class="ti-clipboard mr-1 btn btn-info"></i>
+                                            <i class="ti-eye mr-1 btn btn-info"></i>
                                         </a>
                                         <a href="{{route('almoxarifado.Verpdf',$fcn->id)}}" target="_blank
                                        ">
