@@ -26,6 +26,7 @@ class DependenteFormRequest extends FormRequest
     {
         return [
             'nm_dependente' => ['required', 'max:300'],
+            'requerimento_aposentadoria_compulsoria_id',
 
 
 

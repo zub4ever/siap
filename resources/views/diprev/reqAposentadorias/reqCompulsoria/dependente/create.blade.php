@@ -11,7 +11,7 @@
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route("home")}}">Início</a></li>
     <li class="breadcrumb-item">
-        <a href="{{route("reqCompulsoria.show", $compulsoria->id."#step-2")}}">Beneficiário</a>
+        <a href="{{route("reqCompulsoria.show", $compulsoria_id."#step-2")}}">Beneficiário</a>
     </li>
     <li class="breadcrumb-item active"><a>Cadastrar Beneficiário</a></li>
 </ol>
@@ -23,8 +23,8 @@
                 <h4 class="card_title">Cadastrar Familiares</h4>
                 <form action="{{route('dependentes.store')}}" method="POST" id="formCompulsoria">
                     @csrf
-                    <input type="hidden" name="requerimento_aposentadoria_compulsoria_id" value="{{$compulsoria->id}}">
-                    <input type="hidden" name="requerimento_aposentadoria_compulsoria_id" value="{{$compulsoria}}">
+
+                    <input type="hidden" name="requerimento_aposentadoria_compulsoria_id" value="{{$compulsoria_id}}">
                     @include('diprev.reqAposentadorias.reqCompulsoria.dependente.form')
                 </form>
             </div>

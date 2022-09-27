@@ -11,6 +11,7 @@ class RequerimentoDependente extends Model {
     public $timestamps = true;
     protected $fillable = [
         'nm_dependente',
+        'requerimento_aposentadoria_compulsoria_id'
 
 
     ];
@@ -18,7 +19,7 @@ class RequerimentoDependente extends Model {
 
     public function requerimento_aposentadoria_compulsoria()
     {
-        return $this->belongsTo('App\Models\ApRequerimentosCompulsoria\RequerimentoDependente', 'requerimento_aposentadoria_compulsoria_id');
+        return $this->belongsTo('App\Models\ApRequerimentosCompulsoria\RequerimentoApCompulsoria', 'requerimento_aposentadoria_compulsoria_id');
     }
 
 }

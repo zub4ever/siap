@@ -19,23 +19,37 @@ class reqApCompulsoriaDependenteController extends Controller
     public function create(int $compulsoria_id)
     {
 
-        $compulsoria = RequerimentoApCompulsoria ::where('id', $compulsoria_id)->first();
+        //$compulsoria_id = RequerimentoApCompulsoria ::where('id', $compulsoria_id)->first();
 
              return view("diprev.reqAposentadorias.reqCompulsoria.dependente.create", compact(
-                 'compulsoria'
+                 'compulsoria_id'
              ));
     }
 
     public function store(DependenteFormRequest $request)
     {
-        $dependente = RequerimentoDependente::create($request->all());
+        $compulsoria_id = RequerimentoApCompulsoria::findOrFail($request->input('requerimento_aposentadoria_compulsoria_id'));
 
-        if ($dependente) {
-            return redirect()->route('reqCompulsoria.show', $request->input('compulsoria') . "#step-2")->with(
-                'success',
-                "Familiar cadastrado com sucesso."
-            );
+        //$compulsoria_id->requerimento_aposentadoria_compulsoria_id = $request->get('compulsoria_id');
+
+
+        //dd($compulsoria_id);
+        if (!$compulsoria_id->requerimento_aposentadoria_compulsoria()->create($request->all())) {
+            DB::rollBack();
+            return redirect()->route('reqCompulsoria.show', $compulsoria_id->id . "#step-2")
+                ->with('error', "Falha ao cadastrar um proponente.");
         }
+
+
+
+        DB::commit();
+
+        return redirect()->route('reqCompulsoria.show',
+
+            $compulsoria_id->id . "#step-2")->with(
+            'success',
+            "** cadastrado com sucesso."
+        );
 
 
 
