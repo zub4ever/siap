@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administracao\reqAposentadorias\reqCompulsoria;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\DiprevFormRequest\CompulsoriaFormRequest\AcumuloCargosFormRequest;
 use App\Http\Requests\DiprevFormRequest\CompulsoriaFormRequest\DependenteFormRequest;
 use App\Models\ApRequerimentosCompulsoria\RequerimentoDependente;
 use Illuminate\Http\Request;
@@ -13,18 +14,17 @@ use App\Models\ApRequerimentosCompulsoria\RequerimentoApCompulsoria;
 
 use Barryvdh\DomPDF\PDF;
 
-class reqApCompulsoriaDependenteController extends Controller
+class reqApCompulsoriaAcumuloCargosController extends Controller
 {
 
     public function create(int $compulsoria_id)
     {
 
-             return view("diprev.reqAposentadorias.reqCompulsoria.dependente.create", compact(
-                 'compulsoria_id'
-             ));
+        return view("diprev.reqAposentadorias.reqCompulsoria.acumuloCargos.create", compact(
+            'compulsoria_id'
+        ));
     }
-    public function store(DependenteFormRequest $request)
-    {
+    public function store(AcumuloCargosFormRequest $request){
         $compulsoria_id = RequerimentoApCompulsoria::findOrFail($request->input('requerimento_aposentadoria_compulsoria_id'));
         //dd($compulsoria_id);
         if (!$compulsoria_id->requerimento_aposentadoria_compulsoria()->create($request->all())) {
@@ -32,18 +32,20 @@ class reqApCompulsoriaDependenteController extends Controller
             return redirect()->route('reqCompulsoria.show', $compulsoria_id->id . "#step-2")
                 ->with('error', "Falha ao cadastrar um proponente.");
         }
-
-
-
         DB::commit();
-
         return redirect()->route('reqCompulsoria.show',
-
-            $compulsoria_id->id . "#step-2")->with(
+            $compulsoria_id->id . "#step-3")->with(
             'success',
-            "Dependente cadastrado com sucesso."
+            "Cargos cadastrado com sucesso."
         );
+    }
 
+
+    public function show(int $compulsoria_id, int $acumuloCargo_id)
+    {
+        $meta = ProjetoMeta::with('unidade', 'status')->findOrFail($acumuloCargo_id);
+
+        return view('programa.projeto.meta.show', compact('compulsoria_id', 'meta', 'subMetas'));
     }
 
 }

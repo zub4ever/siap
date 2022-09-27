@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Administracao\reqAposentadorias\reqCompulsoria;
 
 use App\Http\Controllers\Controller;
+use App\Models\ApRequerimentosCompulsoria\RequerimentoAcumuloCargos;
 use App\Models\ApRequerimentosCompulsoria\RequerimentoDependente;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -150,6 +151,9 @@ class reqApCompulsoriaController extends Controller
                 'requerimento_aposentadoria_dependentes.id',
                 'requerimento_aposentadoria_dependentes.nm_dependente')
                 ->get();
+
+
+
 
 
 

@@ -71,6 +71,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/dependentes', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaDependenteController')->except(['create', 'show']);
     Route::get('/dependentes/{compulsoria}', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaDependenteController@create')->name('dependentes.create');
     //
+    //
+    Route::resource('/acumuloCargos', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaAcumuloCargosController')->except(['create', 'show']);
+    Route::get('/acumuloCargos/{compulsoria}', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaAcumuloCargosController@create')->name('acumuloCargos.create');
+    Route::get(
+        '/programa/acumuloCargos/dadosMeta/{compulsoria}/{acumuloCargos}', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaAcumuloCargosController@show')->name('acumuloCargos.show');
+    //
 
 
     //Fim de Requerimentos Comulsorios

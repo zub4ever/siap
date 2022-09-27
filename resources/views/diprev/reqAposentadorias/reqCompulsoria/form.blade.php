@@ -13,10 +13,6 @@
         </li>
 
 
-
-
-
-
     </ul>
 
     <div class="tab-content">
@@ -42,11 +38,7 @@
                 </div>
 
 
-
-
             </div>
-
-
 
 
         </div>
@@ -59,7 +51,22 @@
 
         <div id="step-3" class="tab-pane" role="tabpanel" aria-labelledby="step-3"
              style="position: static; width: 100vh; display: block; padding: 2%;">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 mt-5">
+                    <div class="wrap">
+                        <label for="nm_requerente" class="form-control-label">Nome do Requerente:
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control focus required" name="nm_requerente" placeholder="Nome"
+                               value="{{empty(old('nome')) ? @$compulsoria->nm_requerente : old('nm_requerente')}}">
+                        @if ($errors->has('nm_requerente'))
+                            <h6 class="heading text-danger">{{$errors->first('nm_requerente')}}</h6>
+                        @endif
+                    </div>
+                </div>
 
+
+            </div>
 
         </div>
 

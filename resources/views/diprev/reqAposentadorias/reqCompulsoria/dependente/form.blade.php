@@ -1,5 +1,4 @@
 <font color="red">Cadastrar somente os familiares que residem no mesmo estabelecimento</font>
-
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-5">
         <div class="wrap">
@@ -14,9 +13,7 @@
         </div>
     </div>
 </div>
-
 <br>
-
 <div class="col-sm-12 mt-5">
     <div class="wrap mt-1 text-center">
         <button type="submit" class="btn btn-success">
