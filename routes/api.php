@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\APIs\ServeAPIController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -19,4 +20,8 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 
 
+// List
+Route::get('servidor', 'APIs\ServeAPIController@index');
 
+// List single
+Route::get('servidor/{id}', [ServeAPIController::class, 'show']);
