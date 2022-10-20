@@ -17,7 +17,7 @@ use App\Type_Serve;
 use App\Orgao_Expedidor;
 use App\Sexo;
 use App\TipoServidor;
-use App\Funcao;
+//use App\Funcao;
 
 class ServeAPIController extends Controller {
 
@@ -36,91 +36,11 @@ class ServeAPIController extends Controller {
 
     public function index() {
 
-        $servidor = Serve::get()->toJson(JSON_PRETTY_PRINT);
-        return response($servidor, 200);
+        $servidor = Serve::all();
+        
+       return response()->json(['servidor'=>$servidor], 200);
     }
 
-    public function create() {
-        $origin = Origin::all();
-        $sexo = Sexo::all();
-        $orgao_expedidor = Orgao_Expedidor::all();
-        $obito = Obito::all();
-        $type_serve = Type_Serve::all();
-        $marital_status = Marital_Status::all();
-        $tpservidor = TipoServidor::all();
-        return view('servidor.create', compact('origin', 'marital_status', 'sexo', 'orgao_expedidor', 'obito', 'type_serve', 'tpservidor'));
-    }
-
-    public function store(ServeFormRequest $request) {
-
-        DB::beginTransaction();
-
-        $serve = Serve::create($request->all());
-
-        if (!$serve) {
-            DB::rollBack();
-            return redirect()->route('servidor.index')->with('error', "Falha ao cadastrar o Servidor.");
-        }
-        $serve->save();
-        DB::commit();
-
-        return redirect()->route('servidor.index')->with(
-                        'success',
-                        "Servidor cadastrado com sucesso."
-        );
-    }
-
-    public function edit($id) {
-
-        $origin = Origin::get();
-        $sexo = Sexo::get();
-        $orgao_expedidor = Orgao_Expedidor::get();
-        $obito = Obito::get();
-        $type_serve = Type_Serve::get();
-        $marital_status = Marital_Status::get();
-        $tpservidor = TipoServidor::get();
-
-        $serve = Serve::findOrFail($id);
-        return view('servidor.edit', compact('serve', 'origin', 'sexo', 'orgao_expedidor', 'obito', 'type_serve', 'marital_status', 'tpservidor'));
-    }
-
-    public function update(ServeFormRequest $request, $id) {
-
-        $serve = Serve::findOrFail($id);
-
-        DB::beginTransaction();
-
-        if (!$serve->update($request->all())) {
-
-            DB::rollBack();
-            return redirect()->route('servidor.index')->with('error', "Falha na alteração do servidor.");
-        }
-
-        DB::commit();
-
-        return redirect()->route('servidor.index')->with(
-                        'success',
-                        "Servidor alterado com sucesso."
-        );
-    }
-
-    public function destroy($id) {
-
-        $serve = Serve::findOrFail($id);
-
-        DB::beginTransaction();
-
-        if (!$serve->update(['status' => 0])) {
-            DB::rollBack();
-            return redirect()->route('servidor.index')->with('error', "Falha ao deletar o Servidor.");
-        }
-
-        DB::commit();
-
-        return redirect()->route('servidor.index')->with(
-                        'success',
-                        "Servidor deletado com sucesso."
-        );
-    }
-
+    
+   
 }
