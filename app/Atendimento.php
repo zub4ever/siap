@@ -11,14 +11,16 @@ class Atendimento extends Model
     public $timestamps = true;
     protected $fillable = [
         'nm_assegurado',
-        'cpf',
-        'email',
-        'nm_cidade',
-        'nm_atendimento',
         'numero_telefone',
-        'status',
+        'email',
+        'cpf',
+        'descricao',
+        'atendimento_assunto_id',
+        'city_id',
+        'state_id',
+        'almoxarifado_localizacao_dpto_id',
         'atendimento_status_id'
-        ,'descricao'
+        
     ];
    
     
@@ -27,6 +29,22 @@ class Atendimento extends Model
           return $this->hasMany(AtendimentoStatus::class,'atendimento_status_id');
     }
     
+    public function atendimento_assunto(){
+
+          return $this->hasMany(AtendimentoStatus::class,'atendimento_assunto_id');
+    }
+    public function city(){
+
+          return $this->hasMany(AtendimentoStatus::class,'city_id');
+    }
     
+    public function state(){
+
+          return $this->hasMany(AtendimentoStatus::class,'state_id');
+    }
+     public function almoxarifado_localizacao_dpto()
+    {
+        return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO', 'almoxarifado_localizacao_dpto_id');
+    }
     
 }

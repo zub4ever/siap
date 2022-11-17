@@ -23,14 +23,15 @@ class AtendimentoFormRequest extends FormRequest {
     public function rules() {
         return [
             'nm_assegurado' => ['required', 'max:100'],
-            'cpf' => ['max:15'],
-            'email'  => ['max:30'],
-            'nm_cidade' => ['max:100'],         
-            'nm_atendimento' => ['max:100'],
-            'numero_telefone' => ['required', 'max:15'],
-            'descricao' => ['max:300']
-           
-            
+            'numero_telefone' => ['max:15'],
+            'email'  => ['max:150'],
+            'cpf' => ['max:15'],         
+            'descricao' => ['max:400'],
+            'atendimento_assunto_id' => ['required'],
+            'city_id' => ['required'],
+           'state_id' => ['required'],
+            'almoxarifado_localizacao_dpto_id' => ['required'],
+            'atendimento_status_id' => ['required']
         ];
     }
     

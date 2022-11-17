@@ -54,12 +54,19 @@ Atendimentos
                             <tr>
                                 <td class="text-center">{{$fcn->id}}</td>
                                 <td class="text-center">{{$fcn->nm_assegurado}}</td>
-                                <td class="text-center">{{$fcn->nm_atendimento}}</td>
+                                
+                                @foreach($atendimento_assunto as $mnc)
+                                @if($fcn->atendimento_assunto_id == $mnc->id)
+                                <td class="text-center">{{$mnc->nm_assunto}}</td>
+                                @endif
+                                @endforeach
+                                
+                                
                                 <td class="text-center">{{$fcn->cpf}}</td>
                                 <td class="text-center">{{$fcn->numero_telefone}}</td>
                                 <td>{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</td>
                                 <td>
-                                    <a href="" data-target="#modal-detalhes-{{$fcn->id}}" data-toggle="modal">
+                                    <a href="{{route('atendimentos.show',$fcn->id)}}" target="_blank">
                                         <i class="ti-clipboard mr-1 btn btn-info"></i>
                                     </a>
                                     <a href="{{route('atendimentos.edit', $fcn->id)}}">

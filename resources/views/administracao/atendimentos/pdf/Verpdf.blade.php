@@ -17,25 +17,40 @@
         </colgroup>
         <tr>
             <th class="tg-0pky">
-        <center><strong>Solicitação de Atendimento ao Assegurado</strong></center>
+        <center><strong>Solicitação de Atendimento</strong></center>
     </th>
 </tr>
 </table>
-<br>    
+<br> 
 <table class="tgB" style="table-layout: fixed; width: 700px">
     <tr>
         <th class="tgB-lnuh" ><strong>Protocolo: </strong> <a>{{$atendimentos->id}}</a></th>
-        <th class="tgB-s9fk"><strong>Nome do Assegurado: </strong>{{$atendimentos->nm_assegurado}}<br></th>
+        
+    </tr>
+</table>
+<table class="tgB" style="table-layout: fixed; width: 700px">
+    <tr>
+        
+        <th class="tgB-s9fk"><strong>Nome do requerente: </strong>{{$atendimentos->nm_assegurado}}<br></th>
         <th class="tgB-lnuh"><strong>CPF: </strong> <a>{{$atendimentos->cpf}}</a></th>
     </tr>
 </table>
 <table class="tgB" style="table-layout: fixed; width: 700px">   
-    <tr>
-        <th class="tgB-lnuh"><strong>Cidade: </strong> <a>{{$atendimentos->nm_cidade}}</a><br></th>
-        <th class="tgB-s9fk"><strong>Número do telefone: </strong>{{$atendimentos->numero_telefone}}<br></th>
-        
+    <tr>            
+        @foreach ($city as $sexo)
+        @if($atendimentos->city_id == $sexo->id)
+        <th class="tgB-lnuh"><strong>Cidade: </strong> <a>{{$sexo->nm_cidade}}</a><br></th>
+        @endif
+        @endforeach
+        @foreach ($state as $st)
+        @if($atendimentos->state_id == $st->id)
+        <th class="tgB-lnuh"><strong>Estado: </strong> <a>{{$st->nm_estado}}</a><br></th>
+        @endif
+        @endforeach  
+        <th class="tgB-s9fk"><strong>Número do telefone: </strong>{{$atendimentos->numero_telefone}}<br></th>  
     </tr>
 </table>
+
 <table class="tgB" style="table-layout: fixed; width: 700px">   
     <tr>
         
@@ -43,14 +58,35 @@
         
     </tr>
 </table>
-<table class="tgd" style="table-layout: fixed; width: 700px">
-    <colgroup>
-        <col style="width: 700px">
-    </colgroup>
-    <tr>
-        <th class="tgd-x4j0"><p style="width: 20m; word-wrap: break-word;"><strong>Tipo de solicitação de atendimento: </strong>{{ $atendimentos->nm_atendimento }}</p></th>
+<br>
+<table class="tg" style="table-layout: fixed; width: 700px">
+        <colgroup>
+            <col style="width: 700px">
+        </colgroup>
+        <tr>
+            <th class="tg-0pky">
+        <center><strong>Informações de Atendimento</strong></center>
+    </th>
+</tr>
+</table>
+<br>
+<table class="tgB" style="table-layout: fixed; width: 700px">   
+    <tr>            
+        @foreach ($almo_localizacao_dpto as $dpto)
+        @if($atendimentos->almoxarifado_localizacao_dpto_id == $dpto->id)
+        <th class="tgB-lnuh"><strong>Departamento de atendimento: </strong> <a>{{$dpto->nm_departamento}}</a><br></th>
+        @endif
+        @endforeach
+        
+        @foreach ($atendimento_assunto as $assunto)
+        @if($atendimentos->atendimento_assunto_id == $assunto->id)
+        <th class="tgB-lnuh"><strong>Tipo de atendimento: </strong> <a>{{$assunto->nm_assunto}}</a><br></th>
+        @endif
+        @endforeach  
+        
     </tr>
 </table>
+<br>
 <table class="tgd" style="table-layout: fixed; width: 700px">
     <colgroup>
         <col style="width: 700px">
@@ -66,7 +102,8 @@
 
 
 
-<div class="footer" align="center"><img width="100" height="100" src="../public/imagem/pfrb.jpg">   
+<div class="footer" align="center"><img width="100" height="100" src="../public/imagem/pfrb.jpg">
+    <p> <h7>Data: </h7>{{\Carbon\Carbon::now()->format('d/m/Y')}} <h7>às</h7> {{\Carbon\Carbon::now()->format('H:i')}} <h7> Feito por: </h7>{{auth()->user()->name}}</p>
 </div>
 
 </body>

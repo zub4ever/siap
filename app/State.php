@@ -18,5 +18,7 @@ class State extends Model
         return $this->belongsTo(Address::class, 'state_id');
     }
 
-   
+   public function atendimento() {
+        return $this->belongsTo(Atendimento::class, 'state_id');
+    }
 }

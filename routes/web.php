@@ -42,7 +42,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('administracao/atendimentos', 'Administracao\Atendimentos\AtendimentosController');
     Route::get('administracao/atendimentos/create', 'Administracao\Atendimentos\AtendimentosController@create')->name('atendimentos.create');
     Route::post('administracao/atendimentos/create', 'Administracao\Atendimentos\AtendimentosController@store');
-    Route::get('/atendimentos/{id?}/pdf', 'Administracao\Atendimentos\AtendimentosController@Verpdf')->name('atendimentos.Verpdf');
+    Route::get('/atendimentos/pdf/{id?}', 'Administracao\Atendimentos\AtendimentosController@Verpdf')->name('atendimentos.Verpdf');
+    Route::get('/atendimentos/show/{id?}', 'Administracao\Atendimentos\AtendimentosController@show')->name('atendimentos.show');
     Route::delete('/atendimentos/{id}/destroy', 'Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
 
     //USUARIOS

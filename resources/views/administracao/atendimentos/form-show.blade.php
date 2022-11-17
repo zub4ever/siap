@@ -4,7 +4,7 @@
             <label for="atendimento_status_id" class="form-control-label">Status atendimento:
                 <span class="text-danger">*</span>
             </label>
-            <select name="atendimento_status_id" class="form-control" id="titula1">
+            <select name="atendimento_status_id" class="form-control" id="titula1" disabled>
                 <option value="">Selecione uma opção</option>
                 @foreach ($atendimento_status as $atendimento)
                 <option value="{{$atendimento->id}}"
@@ -23,7 +23,7 @@
             <label for="nm_assegurado" class="form-control-label">Nome do Requerente:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="nm_assegurado"  value="{{ @$atendimentos->nm_assegurado }}">
+            <input type="text" class="form-control" name="nm_assegurado"  value="{{ @$atendimentos->nm_assegurado }}" disabled>
             @if ($errors->has('nm_assegurado'))
             <h6 class="heading text-danger">{{$errors->first('nm_assegurado')}}</h6>
             @endif
@@ -34,7 +34,7 @@
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control focus" name="cpf" value="{{empty(old('cpf')) ? @$atendimentos->cpf : old('cpf')}}" data-mask="999.999.999-99" autocomplete="off" maxlength="14">
+            <input type="text" class="form-control focus" name="cpf" value="{{empty(old('cpf')) ? @$atendimentos->cpf : old('cpf')}}" data-mask="999.999.999-99" autocomplete="off" maxlength="14" disabled>
             @if ($errors->has('cpf'))
             <h6 class="heading text-danger">{{$errors->first('cpf')}}</h6>
             @endif
@@ -47,7 +47,7 @@
             <label for="city_id" class="form-control-label">Cidade:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control cidadeSelect2" name="city_id" id="city_id">
+            <select class="form-control cidadeSelect2" name="city_id" id="city_id" disabled>
                 <option value="">Selecione a cidade</option>
                 @foreach ($city as $ct)
                 <option value="{{$ct->id}}"
@@ -66,7 +66,7 @@
             <label for="state_id" class="form-control-label">Estado:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control estadoSelect2" name="state_id" id="state_id">
+            <select class="form-control estadoSelect2" name="state_id" id="state_id" disabled>
                 <option value="">Selecione o estado</option>
                 @foreach ($state as $st)
                 <option value="{{$st->id}}"
@@ -87,7 +87,7 @@
             <label for="atendimento_assunto_id" class="form-control-label">Tipo de atendimento:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control cidadeSelect2" name="atendimento_assunto_id" id="atendimento_assunto_id">
+            <select class="form-control cidadeSelect2" name="atendimento_assunto_id" id="atendimento_assunto_id" disabled>
                 <option value="">Selecione o atendimento</option>
                 @foreach ($atendimento_assunto as $assunto)
                 <option value="{{$assunto->id}}"
@@ -106,7 +106,7 @@
             <label for="almoxarifado_localizacao_dpto_id" class="form-control-label">Departamento de Atendimento:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control estadoSelect2" name="almoxarifado_localizacao_dpto_id" id="almoxarifado_localizacao_dpto_id">
+            <select class="form-control estadoSelect2" name="almoxarifado_localizacao_dpto_id" id="almoxarifado_localizacao_dpto_id" disabled>
                 <option value="">Selecione o departamento</option>
                 @foreach ($almo_localizacao_dpto as $dpto)
                 <option value="{{$dpto->id}}"
@@ -127,7 +127,8 @@
             <label for="numero_telefone" class="form-control-label">Numero de telefone:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="numero_telefone" placeholder="(00)00000-0000" data-mask="(00)00000-0000" maxlength="13" autocomplete="off" value="{{ @$atendimentos->numero_telefone }}">
+            <input type="text" class="form-control" name="numero_telefone" placeholder="(00)00000-0000" data-mask="(00)00000-0000" maxlength="13" autocomplete="off" value="{{ @$atendimentos->numero_telefone }}"
+                   disabled>
             @if ($errors->has('numero_telefone'))
             <h6 class="heading text-danger">{{$errors->first('numero_telefone')}}</h6>
             @endif
@@ -138,7 +139,7 @@
             <label for="email" class="form-control-label">E-mail informado:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" name="email" value="{{ @$atendimentos->email }}">
+            <input type="text" class="form-control" name="email" value="{{ @$atendimentos->email }}" disabled>
             @if ($errors->has('email'))
             <h6 class="heading text-danger">{{$errors->first('email')}}</h6>
             @endif
@@ -156,7 +157,7 @@
 
         <div class="form-group">
             <textarea type="text" class="form-control" name="descricao"
-                      rows="4" value="{{@$atendimentos->descricao}}">
+                      rows="4" value="{{@$atendimentos->descricao}}" disabled>
             </textarea>
         </div>
     </div>
@@ -164,8 +165,17 @@
 
 <div class="col-sm-12 mt-5">
     <div class="wrap mt-1" style="text-align: center;">
-        <button type="submit" class="btn btn-success">
-            Salvar
-        </button>
+        <a href="{{route('atendimentos.Verpdf',$atendimentos->id)}}">
+            <button type="submit" class="btn btn-warning">
+                Imprimir
+            </button>
+        </a>
+    </div>
+    <div class="wrap mt-1" style="text-align: center;">
+        <a href="{{route('atendimentos.index')}}">
+            <button type="submit" class="btn btn-info">
+                Voltar
+            </button>
+        </a>
     </div>
 </div>

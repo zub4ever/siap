@@ -22,4 +22,8 @@ class AlmoLocalizacaoDPTO extends Model
     {
         return $this->belongsTo('App\Models\DAF\Almoxarifado', 'almoxarifado_localizacao_dpto_id');
     }
+    
+    public function atendimento() {
+        return $this->belongsTo(Atendimento::class, 'almoxarifado_localizacao_dpto_id');
+    }
 }

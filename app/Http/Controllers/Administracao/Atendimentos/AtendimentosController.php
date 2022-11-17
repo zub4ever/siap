@@ -13,20 +13,38 @@ use App\AtendimentoStatus;
 use PDF;
 use Carbon\Carbon;
 use Gate;
+use App\AtendimentoAssunto;
+use App\City;
+use App\State;
+use App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO;
 
 
 class AtendimentosController extends Controller {
-
+    public function show($id) {
+        
+      $atendimentos = Atendimento::findOrFail($id);
+        
+        $atendimento_status = AtendimentoStatus::all();
+        $city = City::all();
+        $state = State::all();
+        $atendimento_assunto = AtendimentoAssunto::all();
+        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::all();
+        
+        return view('administracao.atendimentos.show', 
+                compact('atendimentos','atendimento_status',
+                        'atendimento_assunto','city','state',
+                        'almo_localizacao_dpto'));
+    }
     public function index() {
         
         $atendimentos = Atendimento::where('status',1 ) 
                 ->where('atendimento_status_id',1)
                 ->orderBY('id', 'asc')
                 ->get();
+        $atendimento_assunto = DB::table('atendimento_assunto')->get();
         
         
-        
-        return view("administracao.atendimentos.index", compact('atendimentos'));
+        return view("administracao.atendimentos.index", compact('atendimentos','atendimento_assunto'));
     }
 
     public function create(){
@@ -34,9 +52,12 @@ class AtendimentosController extends Controller {
        
 
         $atendimento_status = DB::table('atendimento_status')->get();
+        $atendimento_assunto = DB::table('atendimento_assunto')->get();
+        $city = DB::table('city')->get();
+        $state = DB::table('state')->get();
+        $almo_localizacao_dpto = DB::table('almoxarifado_localizacao_dpto')->get()->all();
 
-        return view('administracao.atendimentos.create', 
-        ['atendimento_status'=>$atendimento_status]);
+        return view('administracao.atendimentos.create', compact('atendimento_status','atendimento_assunto','almo_localizacao_dpto','city','state' ));
     }
 
     public function store(AtendimentoFormRequest $request) {
@@ -67,9 +88,15 @@ class AtendimentosController extends Controller {
     public function edit($id) {
 
         $atendimentos = Atendimento::findOrFail($id);
-        $atendimento_status = AtendimentoStatus::all();
         
-        return view('administracao.atendimentos.edit', compact('atendimentos','atendimento_status'));
+        $atendimento_status = AtendimentoStatus::all();
+        $city = City::all();
+        $state = State::all();
+        $atendimento_assunto = AtendimentoAssunto::all();
+        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::all();
+        
+        
+        return view('administracao.atendimentos.edit', compact('atendimentos','atendimento_status','atendimento_assunto','city','state','almo_localizacao_dpto'));
     }
 
     public function update(AtendimentoFormRequest $request, $id) {
@@ -93,8 +120,14 @@ class AtendimentosController extends Controller {
 
     public function Verpdf($id) {
         $atendimentos = Atendimento::findOrFail($id);
+        $city = City::all();
+        $state = State::all();
+        $atendimento_assunto = AtendimentoAssunto::all();
+        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::all();
+        
+        
         return \PDF::loadView('administracao.atendimentos.pdf.Verpdf',
-                                compact('atendimentos')
+                                compact('atendimentos','city','state','atendimento_assunto','almo_localizacao_dpto')
                         )
                         ->setPaper('A4', 'portrait')
                         ->stream();
