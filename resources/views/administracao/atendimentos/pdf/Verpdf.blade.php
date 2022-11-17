@@ -96,14 +96,33 @@
     </tr>
 </table>
 
+<br><br><br><br><br><br><br><br><br>
+<div class="container">
+    <div class="box-orange">
+        <br>
+        <p style="text-align:center">__________________________________________</p>
+        <p style="text-align:center">{{$atendimentos->nm_assegurado}}</p>
+        <p style="text-align:center">Requerente</p>
+    </div>
+    <div class="box-blue">
+        <br>
+        <p style="text-align:center">__________________________________________</p>
 
+        <p style="text-align:center">{{auth()->user()->name}}</p>
+
+        <p style="text-align:center">Responsável</p>
+
+    </div>
+
+
+</div>
 
 
 
 
 
 <div class="footer" align="center"><img width="100" height="100" src="../public/imagem/pfrb.jpg">
-    <p> <h7>Data: </h7>{{\Carbon\Carbon::now()->format('d/m/Y')}} <h7>às</h7> {{\Carbon\Carbon::now()->format('H:i')}} <h7> Feito por: </h7>{{auth()->user()->name}}</p>
+    <p> <h7>Emitido em </h7>{{\Carbon\Carbon::now()->format('d/m/Y')}} <h7>às</h7> {{\Carbon\Carbon::now()->format('H:i')}} <h7>  por </h7>{{auth()->user()->name}}</p>
 </div>
 
 </body>
@@ -111,6 +130,31 @@
 </html>
 
 <style>
+     container {
+        position: absolute;
+        background: lightgray;
+        width: 50%;
+        margin: 0 auto;
+        height: 100px;
+        display: inline-block;
+
+    }
+    .box-orange {
+        background: #ABA9A9;
+        width: 345px;
+        height: 150px;
+        position: center;
+        right: 18px;
+        display: inline-block
+    }
+
+    .box-blue {
+        background: #ABA9A9;
+        width: 350px;
+        height: 150px;
+        right: 18px;
+        display: inline-block
+    }
     .html, body {
         display: block;
     }
