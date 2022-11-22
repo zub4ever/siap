@@ -13,6 +13,7 @@
     <li class="breadcrumb-item"><a href="{{route("home")}}">Início</a></li>
     <li class="breadcrumb-item"><a href="{{route("atendimentos.index")}}">Atendimentos</a></li>
     <li class="breadcrumb-item active"><a>ver atendimento</a></li>
+    
 </ol>
 
 <div class="row">

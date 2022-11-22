@@ -23,6 +23,7 @@ class AtendimentoFormRequest extends FormRequest {
     public function rules() {
         return [
             'nm_assegurado' => ['required', 'max:100'],
+            'matricula' => ['max:15'],
             'numero_telefone' => ['max:15'],
             'email'  => ['max:150'],
             'cpf' => ['max:15'],         

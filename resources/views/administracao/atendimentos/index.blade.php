@@ -43,9 +43,11 @@ Atendimentos
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Nome assegurado</th>
                                 <th class="text-center">Tipo de atendimento</th>
+                                
                                 <th class="text-center">CPF</th>
                                 <th class="text-center">Número</th>
                                 <th class="text-center">Data</th>
+                                <th class="text-center">Status atendimento</th>
                                 <th class="text-center">Ação</th>
                             </tr>
                         </thead>
@@ -53,7 +55,7 @@ Atendimentos
                             @foreach ($atendimentos as $fcn)
                             <tr>
                                 <td class="text-center">{{$fcn->id}}</td>
-                                <td class="text-center">{{$fcn->nm_assegurado}}</td>
+                                <td class="text-center">{{$fcn->matricula}}-{{$fcn->nm_assegurado}}</td>
                                 
                                 @foreach($atendimento_assunto as $mnc)
                                 @if($fcn->atendimento_assunto_id == $mnc->id)
@@ -62,11 +64,17 @@ Atendimentos
                                 @endforeach
                                 
                                 
+                                
                                 <td class="text-center">{{$fcn->cpf}}</td>
                                 <td class="text-center">{{$fcn->numero_telefone}}</td>
                                 <td>{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</td>
+                                @foreach($atendimento_status as $mc)
+                                @if($fcn->atendimento_status_id == $mc->id)
+                                <td class="text-center">{{$mc->statusAtendimento}}</td>
+                                @endif
+                                @endforeach
                                 <td>
-                                    <a href="{{route('atendimentos.show',$fcn->id)}}" target="_blank">
+                                    <a href="{{route('atendimentos.show',$fcn->id)}}">
                                         <i class="ti-clipboard mr-1 btn btn-info"></i>
                                     </a>
                                     <a href="{{route('atendimentos.edit', $fcn->id)}}">

@@ -1,5 +1,5 @@
 <div class="row">
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="atendimento_status_id" class="form-control-label">Status atendimento:
                 <span class="text-danger">*</span>
@@ -18,6 +18,17 @@
             @endif
         </div>
     </div>
+       <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+        <div class="wrap">
+            <label for="matricula" class="form-control-label">Matrícula:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="matricula" value="{{ @$atendimentos->matricula}}">
+            @if ($errors->has('matricula'))
+            <h6 class="heading text-danger">{{$errors->first('matricula')}}</h6>
+            @endif
+        </div>
+    </div>
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
             <label for="nm_assegurado" class="form-control-label">Nome do Requerente:
@@ -29,7 +40,7 @@
             @endif
         </div>
     </div>
-       <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+       <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>

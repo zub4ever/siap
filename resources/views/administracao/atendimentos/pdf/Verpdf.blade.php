@@ -30,7 +30,7 @@
 </table>
 <table class="tgB" style="table-layout: fixed; width: 700px">
     <tr>
-        
+        <th class="tgB-s9fk"><strong>Matrícula: </strong>{{$atendimentos->matricula}}<br></th>
         <th class="tgB-s9fk"><strong>Nome do requerente: </strong>{{$atendimentos->nm_assegurado}}<br></th>
         <th class="tgB-lnuh"><strong>CPF: </strong> <a>{{$atendimentos->cpf}}</a></th>
     </tr>

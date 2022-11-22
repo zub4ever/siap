@@ -1,5 +1,32 @@
+@extends('layouts.app')
+{{-- Page Title --}}
+@section('page-title')
+Atendimentos
+@endsection
+@section('css')
+<!-- Start datatable css -->
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/jquery.dataTables.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/dataTables.bootstrap4.min.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/responsive.bootstrap.min.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/responsive.jqueryui.min.css")}}">
+<!-- Sweet Alert Css -->
+<link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
+@endsection
+@section('main-content')
+<ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="{{route("atendimentos.index")}}">Início</a></li>
+    <li class="breadcrumb-item active"><a>Ver atendimento</a></li>
+</ol>
+
+<div class="mt-5">
+    <hr />
+    <h4>Informações Gerais</h4>
+    <hr />
+</div>
+
+
 <div class="row">
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="atendimento_status_id" class="form-control-label">Status atendimento:
                 <span class="text-danger">*</span>
@@ -18,6 +45,17 @@
             @endif
         </div>
     </div>
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+        <div class="wrap">
+            <label for="matricula" class="form-control-label">Matrícula:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="matricula" value="{{ @$atendimentos->matricula}} " disabled>
+            @if ($errors->has('matricula'))
+            <h6 class="heading text-danger">{{$errors->first('matricula')}}</h6>
+            @endif
+        </div>
+    </div>
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
             <label for="nm_assegurado" class="form-control-label">Nome do Requerente:
@@ -29,7 +67,7 @@
             @endif
         </div>
     </div>
-       <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+       <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
@@ -163,6 +201,7 @@
     </div>
 </div>
 
+
 <div class="col-sm-12 mt-5">
     <div class="wrap mt-1" style="text-align: center;">
         <a href="{{route('atendimentos.Verpdf',$atendimentos->id)}}">
@@ -179,3 +218,18 @@
         </a>
     </div>
 </div>
+@endsection
+@section('js')
+<!-- Data Table js -->
+<script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/dataTables.bootstrap4.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/dataTables.responsive.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/responsive.bootstrap.min.js")}}"></script>
+<!-- Data table Init -->
+<script src="{{asset("assets/js/init/data-table.js")}}"></script>
+<!-- Sweet Alert Js -->
+<!-- Sweet Alert Js -->
+<script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
+<script src="{{asset('js/delete.js')}}"></script>
+@endsection
