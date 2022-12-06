@@ -19,7 +19,8 @@ use App\State;
 use App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO;
 
 
-class AtendimentosController extends Controller {
+class HistoricoAtendimentosController extends Controller {
+    
     public function show($id) {
         
       $atendimentos = Atendimento::findOrFail($id);
@@ -38,7 +39,7 @@ class AtendimentosController extends Controller {
     public function index() {
         
         $atendimentos = Atendimento::where('status',1 ) 
-                ->where('atendimento_status_id',1)
+                //->where('atendimento_status_id','=', '2')
                 ->orderBY('id', 'asc')
                 ->get();
         $atendimento_assunto = DB::table('atendimento_assunto')->get();
@@ -46,7 +47,7 @@ class AtendimentosController extends Controller {
         $atendimento_status = DB::table('atendimento_status')->get();
         
         
-        return view("administracao.atendimentos.index", compact('atendimentos','atendimento_assunto','atendimento_status'));
+        return view("administracao.atendimentosHistorico.index", compact('atendimentos','atendimento_assunto','atendimento_status'));
     }
 
     public function create(){

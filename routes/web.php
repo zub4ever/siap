@@ -45,7 +45,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/atendimentos/{id?}/pdf', 'Administracao\Atendimentos\AtendimentosController@Verpdf')->name('atendimentos.Verpdf');
     Route::get('/atendimentos/show/{id?}', 'Administracao\Atendimentos\AtendimentosController@show')->name('atendimentos.show');
     Route::delete('/atendimentos/{id}/destroy', 'Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
-
+    //
+    Route::resource('administracao/atendimentos/historico', 'Administracao\Atendimentos\HistoricoAtendimentosController');
+    
+    //FimatendimentoHistorico
     //USUARIOS
     Route::resource('administracao/users', 'Administracao\Usuarios\UserController');
     Route::resource('administracao/roles', 'Administracao\Usuarios\RoleController');
