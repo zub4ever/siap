@@ -38,8 +38,8 @@ class HistoricoAtendimentosController extends Controller {
     }
     public function index() {
         
-        $atendimentos = Atendimento::where('status',1 ) 
-                //->where('atendimento_status_id','=', '2')
+        $atendimentos = Atendimento::where('status',0 ) 
+                ->orWhere('atendimento_status_id',2)
                 ->orderBY('id', 'asc')
                 ->get();
         $atendimento_assunto = DB::table('atendimento_assunto')->get();

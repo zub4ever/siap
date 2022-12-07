@@ -17,25 +17,23 @@ Historico de Atendimentos
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Atendimentos</a></li>
+    <li class="breadcrumb-item active"><a>Atendimentos encerrados</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
-            <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('atendimentos.create')}}" role="button">
-                    Novo atendimento
-                </a>
-            </div>
+
         </div>
+
+       
     </div>
 </div>
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Solicitações de atendimento</h4>
+                <h4 class="card_title">Atendimentos encerrados</h4>
                 <div class="table-responsive">
                     <table id="dataTable" class="table text-center">
                         <thead class="bg-light text-capitalize">
@@ -43,7 +41,7 @@ Historico de Atendimentos
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Nome assegurado</th>
                                 <th class="text-center">Tipo de atendimento</th>
-                                
+
                                 <th class="text-center">CPF</th>
                                 <th class="text-center">Número</th>
                                 <th class="text-center">Data</th>
@@ -56,21 +54,25 @@ Historico de Atendimentos
                             <tr>
                                 <td class="text-center">{{$fcn->id}}</td>
                                 <td class="text-center">{{$fcn->matricula}}-{{$fcn->nm_assegurado}}</td>
-                                
+
                                 @foreach($atendimento_assunto as $mnc)
                                 @if($fcn->atendimento_assunto_id == $mnc->id)
                                 <td class="text-center">{{$mnc->nm_assunto}}</td>
                                 @endif
                                 @endforeach
-                                
-                                
-                                
+
+
+
                                 <td class="text-center">{{$fcn->cpf}}</td>
                                 <td class="text-center">{{$fcn->numero_telefone}}</td>
                                 <td>{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</td>
                                 @foreach($atendimento_status as $mc)
                                 @if($fcn->atendimento_status_id == $mc->id)
-                                <td class="text-center">{{$mc->statusAtendimento}}</td>
+                                
+                              
+                                <td class="text-center">
+                                    <label class="badge badge-danger">   {{$mc->statusAtendimento}}</label>
+                                </td>
                                 @endif
                                 @endforeach
                                 <td>
@@ -102,7 +104,7 @@ Historico de Atendimentos
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end">
-                        
+
                     </div>
                 </div>
             </div>

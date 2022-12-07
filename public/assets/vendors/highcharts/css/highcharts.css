@@ -238,12 +238,12 @@ g.highcharts-series,
 /* Series options */
 /* Default colors */
 .highcharts-color-0 {
-  fill: #6e0a4c;
+  fill: #ff6f02;     /*Muda a cor do Higchart */
   stroke: #7cb5ec;
 }
 
 .highcharts-color-1 {
-  fill: #4ebd37;
+  fill: #8637bd;
   stroke: #434348;
 }
 

@@ -46,7 +46,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/atendimentos/show/{id?}', 'Administracao\Atendimentos\AtendimentosController@show')->name('atendimentos.show');
     Route::delete('/atendimentos/{id}/destroy', 'Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
     //
-    Route::resource('administracao/atendimentos/historico', 'Administracao\Atendimentos\HistoricoAtendimentosController');
+    Route::resource('atendimentos/historico', 'Administracao\Atendimentos\HistoricoAtendimentosController');
     
     //FimatendimentoHistorico
     //USUARIOS

@@ -27,9 +27,14 @@ Atendimentos
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('atendimentos.create')}}" role="button">
                     Novo atendimento
                 </a>
-            </div>
-        </div>
+                    <div class="pull-right">
+                <a class="btn btn-inverse-primary btn-md" href="/atendimentos/historico">Histórico de atendimentos</a>
+            </div>               
+            </div>           
+        </div>       
     </div>
+    
+
 </div>
 <div class="row">
     <div class="col-12 mb-4">
@@ -43,7 +48,7 @@ Atendimentos
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Nome assegurado</th>
                                 <th class="text-center">Tipo de atendimento</th>
-                                
+
                                 <th class="text-center">CPF</th>
                                 <th class="text-center">Número</th>
                                 <th class="text-center">Data</th>
@@ -56,21 +61,25 @@ Atendimentos
                             <tr>
                                 <td class="text-center">{{$fcn->id}}</td>
                                 <td class="text-center">{{$fcn->matricula}}-{{$fcn->nm_assegurado}}</td>
-                                
+
                                 @foreach($atendimento_assunto as $mnc)
                                 @if($fcn->atendimento_assunto_id == $mnc->id)
                                 <td class="text-center">{{$mnc->nm_assunto}}</td>
                                 @endif
                                 @endforeach
-                                
-                                
-                                
+
+
+
                                 <td class="text-center">{{$fcn->cpf}}</td>
                                 <td class="text-center">{{$fcn->numero_telefone}}</td>
                                 <td>{{ date( 'd/m/Y' , strtotime($fcn->created_at))}}</td>
                                 @foreach($atendimento_status as $mc)
                                 @if($fcn->atendimento_status_id == $mc->id)
-                                <td class="text-center">{{$mc->statusAtendimento}}</td>
+                                <td class="text-center">
+                                    
+                                    <label class="badge badge-success">{{$mc->statusAtendimento}}</label>
+                                
+                                </td>
                                 @endif
                                 @endforeach
                                 <td>
@@ -102,7 +111,7 @@ Atendimentos
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end">
-                        
+
                     </div>
                 </div>
             </div>
