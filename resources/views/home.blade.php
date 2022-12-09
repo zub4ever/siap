@@ -60,42 +60,95 @@ Página inicial
         </div>
     </div>
 </div>
+<div class="row">
+    <div class="col-sm-12 mb-4">
+        <script src="https://code.highcharts.com/highcharts.js"></script>
+        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
+        <script src="https://code.highcharts.com/modules/exporting.js"></script>
+        <script src="https://code.highcharts.com/modules/export-data.js"></script>
+        <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+        <figure class="highcharts-figure">
+            <div id="containerAposentadorias"></div>
+            <p class="highcharts-description">
+                
+            </p>
+        </figure>  
+
+
+    </div>
+</div>
+
 
 <script>
-var atendimentos = <?php echo json_encode($atendimentos) ?>;
-var atendimentosAbertos = <?php echo json_encode($atendimentosAbertos) ?>;
-var atendimentosFechados = <?php echo json_encode($atendimentosFechados) ?>;
-Highcharts.chart('containerATER', {
+Highcharts.chart('containerAposentadorias', {
     chart: {
-        type: 'column',
-        styledMode: true
+        type: 'pie',
+        options3d: {
+            enabled: true,
+            alpha: 45
+        }
     },
     title: {
-        text: 'Atendimentos 2022'
-    },
-    yAxis: [{
-            className: 'highcharts-color-6',
-            title: {
-                text: 'Quantidade'
-            }
-        }, ],
+        text: 'Requerimentos aposentadorias'
+    }
+    ,
     plotOptions: {
-        column: {
-            borderRadius: 3
+        pie: {
+            innerSize: 150,
+            depth: 60
         }
     },
     series: [{
-            name: 'Geral',
-            data: [atendimentos]
-        }, {
-            name: 'Abertos',
-            data: [atendimentosAbertos]
-        }, {
-            name: 'Fechados',
-            data: [atendimentosFechados]
-        }
-    ]
+            name: 'Quantidade',
+            data: [
+                ['Requerimentos totais', 50],
+                ['Aposentadorias Voluntária', 12],
+                ['Aposentadorias Invalidez', 8],
+                ['Aposentadorias Compulsoria', 8],
+                ['Aposentadorias Especial', 8]
+            ]
+        }]
 });
+
+
+</script>
+
+<script>
+    var atendimentos = <?php echo json_encode($atendimentos) ?>;
+    var atendimentosAbertos = <?php echo json_encode($atendimentosAbertos) ?>;
+    var atendimentosFechados = <?php echo json_encode($atendimentosFechados) ?>;
+    Highcharts.chart('containerATER', {
+        chart: {
+            type: 'column',
+            styledMode: true
+        },
+        title: {
+            text: 'Atendimentos 2022'
+        },
+        yAxis: [{
+                className: 'highcharts-color-6',
+                title: {
+                    text: 'Quantidade'
+                }
+            }],
+        plotOptions: {
+            column: {
+                borderRadius: 3
+            }
+        },
+        series: [{
+                name: 'Geral',
+                data: [atendimentos]
+            }, {
+                name: 'Abertos',
+                data: [atendimentosAbertos]
+            }, {
+                name: 'Fechados',
+                data: [atendimentosFechados]
+            }
+        ]
+    });
 </script>
 
 <script>
@@ -116,7 +169,7 @@ Highcharts.chart('containerATER', {
                 title: {
                     text: 'Quantidade'
                 }
-            }, ],
+            } ],
         plotOptions: {
             column: {
                 borderRadius: 5
@@ -146,8 +199,8 @@ Highcharts.chart('containerATER', {
         tooltip: {
             headerFormat: '',
             pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
-                    'Area (square km): <b>{point.y}</b><br/>' +
-                    'Population density (people per square km): <b>{point.z}</b><br/>'
+                    'Itens Totais: <b>{point.y}</b><br/>' +
+                    'Item descrito: <b>{point.z}</b><br/>'
         },
         series: [{
                 minPointSize: 10,
