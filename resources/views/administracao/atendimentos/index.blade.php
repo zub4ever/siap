@@ -28,6 +28,7 @@ Atendimentos
                     Novo atendimento
                 </a>
                     <div class="pull-right">
+                <a class="btn btn-inverse-dark btn-md" href="/atendimentos/dash">Dashboard de atendimentos</a>
                 <a class="btn btn-inverse-primary btn-md" href="/atendimentos/historico">Histórico de atendimentos</a>
             </div>               
             </div>           

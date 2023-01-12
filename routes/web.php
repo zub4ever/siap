@@ -47,8 +47,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/atendimentos/{id}/destroy', 'Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
     //
     Route::resource('atendimentos/historico', 'Administracao\Atendimentos\HistoricoAtendimentosController');
-    
     //FimatendimentoHistorico
+    Route::resource('atendimentos/dash', 'Administracao\Atendimentos\DashAtendimentosController');
     //USUARIOS
     Route::resource('administracao/users', 'Administracao\Usuarios\UserController');
     Route::resource('administracao/roles', 'Administracao\Usuarios\RoleController');
