@@ -156,7 +156,7 @@ return [
         Milon\Barcode\BarcodeServiceProvider::class,
         SimpleSoftwareIO\QrCode\QrCodeServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
-        ConsoleTVs\Charts\ChartsServiceProvider::class
+        ConsoleTVs\Charts\ChartsServiceProvider::class,
 
 
 

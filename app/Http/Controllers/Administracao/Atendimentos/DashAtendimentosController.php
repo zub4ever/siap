@@ -18,6 +18,8 @@ use App\City;
 use App\State;
 use App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO;
 use Khill\Lavacharts\Lavacharts;
+use App\Charts\UserChart;
+
 
 class DashAtendimentosController extends Controller {
 
@@ -42,192 +44,152 @@ class DashAtendimentosController extends Controller {
                         ->select('c.id', 'c.atendimento_status_id')
                         ->where('c.atendimento_status_id', '=', '3')->count();
 
-        $domingoAberta = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 0	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 1');
-        $segundaAberta = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 1	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 1');
+        $domingoAberta = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'1')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'0')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+             
+         $segundaAberta = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'1')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'1')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+                          
+        $tercaAberta = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'1')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'2')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $tercaAberta = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 2	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 1');
+        $quartaAberta = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'1')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'3')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $quartaAberta = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 3	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 1');
+        $quintaAberta = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'1')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'4')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $quintaAberta = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 4	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 1');
+        $sextaAberta = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'1')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'5')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $sextaAberta = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 5	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 1');
-
-        $sabadoAberta = DB::select('select  count(*)  from atendimento 
-                                   inner join atendimento_status 
-                                   on atendimento_status.id = atendimento.atendimento_status_id  
-                                   where extract (dow from atendimento.created_at) = 6	
-                                   and 
-                                   extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                   and 
-                                   atendimento.atendimento_status_id = 1');
+        $sabadoAberta = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'1')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'6')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
 //Fechadas
-        $domingoFechada = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 0	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 2');
-        $segundaFechada = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 1	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 2');
+        $domingoFechada = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'2')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'0')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        
+        $segundaFechada = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'2')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'1')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $tercaFechada = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 2	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 2');
+        $tercaFechada  = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'2')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'2')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $quartaFechada = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 3	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 2');
+        $quartaFechada  = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'2')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'3')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $quintaFechada = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 4	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 2');
+        $quintaFechada =   DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'2')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'4')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $sextaFechada = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 5	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 2');
+        $sextaFechada  = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'2')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'5')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $sabadoFechada = DB::select('select  count(*)  from atendimento 
-                                   inner join atendimento_status 
-                                   on atendimento_status.id = atendimento.atendimento_status_id  
-                                   where extract (dow from atendimento.created_at) = 6	
-                                   and 
-                                   extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                   and 
-                                   atendimento.atendimento_status_id = 2');
+        $sabadoFechada =  DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'2')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'6')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
         //SEMANA EM ANDAMENTO
-        $domingoAndamento = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 0	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 3');
-        $segundaAndamento = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 1	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 3');
+        $domingoAndamento   = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'3')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'0')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaAndamento =DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'3')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'1')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $tercaAndamento = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 2	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 3');
+        $tercaAndamento = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'3')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'2')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $quartaAndamento = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 3	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 3');
+        $quartaAndamento = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'3')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'3')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $quintaAndamento = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 4	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 3');
+        $quintaAndamento = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'3')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'4')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $sextaAndamento = DB::select('select  count(*)  from atendimento 
-                                    inner join atendimento_status 
-                                    on atendimento_status.id = atendimento.atendimento_status_id  
-                                    where extract (dow from atendimento.created_at) = 5	
-                                    and
-                                    extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                    and 
-                                    atendimento.atendimento_status_id = 3');
+        $sextaAndamento = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'3')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'5')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $sabadoAndamento = DB::select('select  count(*)  from atendimento 
-                                   inner join atendimento_status 
-                                   on atendimento_status.id = atendimento.atendimento_status_id  
-                                   where extract (dow from atendimento.created_at) = 6	
-                                   and 
-                                   extract (WEEK from atendimento.created_at) = extract (WEEK from CURRENT_DATE)
-                                   and 
-                                   atendimento.atendimento_status_id = 3');
+        $sabadoAndamento = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id','=' ,'3')
+                        ->where(DB::raw("extract (dow from c.created_at)") ,'6')                                                      
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $lava = new Lavacharts;
         $finances = \Lava::DataTable();
@@ -262,51 +224,68 @@ class DashAtendimentosController extends Controller {
             ]
         ]);
         //DENÚNCIAS DIA                             
-        $totalDi = DB::select('select count(*)as totalDia from atendimento 
-        inner join atendimento_status 
-        on atendimento_status.id = atendimento.atendimento_status_id
-        where extract (day from atendimento.created_at) = extract (day from CURRENT_DATE)');
-        
-       $totalDia = DB::select('select count(atendimento.id) from atendimento 
-inner join atendimento_status 
-on atendimento_status.id = atendimento.atendimento_status_id
-where extract (day from atendimento.created_at) = extract (day from CURRENT_DATE)
-GROUP BY
-	atendimento.id');
+        $totalDia = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $totalDiaAberta = DB::select('select count(*) as totalDiaAberta from atendimento 
-        inner join atendimento_status 
-        on atendimento_status.id = atendimento.atendimento_status_id
-        where extract (day from atendimento.created_at) = extract (day from CURRENT_DATE)
-        and 
-        atendimento.atendimento_status_id = 1');
+        $totalDiaAberta = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $totalDiaFechada = DB::select('select count(*) as totalDiaFechada from atendimento 
-        inner join atendimento_status 
-        on atendimento_status.id = atendimento.atendimento_status_id
-        where extract (day from atendimento.created_at) = extract (day from CURRENT_DATE)
-        and 
-        atendimento.atendimento_status_id = 2');
+        $totalDiaFechada = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $totalDiaIndeferida = DB::select('select count(*) as totalDiaIndeferida from atendimento 
-        inner join atendimento_status 
-        on atendimento_status.id = atendimento.atendimento_status_id
-        where extract (day from atendimento.created_at) = extract (day from CURRENT_DATE)
-        and 
-        atendimento.atendimento_status_id = 3');
+        $totalDiaIndeferida = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+
         $data = Carbon::now();
 
-        
-        
-        
         $atual = Carbon::parse($data)->format('d/m/Y');
 
+        $reasons = \Lava::DataTable();
+
+        $reasons->addStringColumn('Denuncias')
+                ->addNumberColumn('%');
+        //->addRoleColumn('string', 'style');
+        $reasons->addRow(['Total', $totalDia])
+                ->addRow(['Abertas', $totalDiaAberta])
+                ->addRow(['Fechadas', $totalDiaFechada])
+                ->addRow(['Indeferidas', $totalDiaIndeferida]);
+
+        \LAVA::PieChart('IMDB', $reasons, [
+            'title' => '',
+            'is3D' => true,
+            'legend' => 'none',
+            'backgroundColor' => '#EAEAEE',
+            'titleTextStyle' => [
+                'color' => '#0000',
+                'fontSize' => 14
+            ],
+            'colors' => array('#F68936', '#67CB42', '#17B7B5', '#CDD71C'),
+            'slices' => [
+                ['offset' => 0.1],
+                ['offset' => 0.25],
+                ['offset' => 0.35],
+                ['offset' => 0.4]
+            ]
+        ]);
+
         return view("administracao.atendimentosDash.index", compact('atendimentos', 'countFechadas', 'countAndamento',
-                        'totalDia',
                         'totalDiaAberta',
                         'totalDiaFechada',
-                        'totalDiaIndeferida'
-                       
+                        'totalDiaIndeferida',
+                        'totalDia',
+                        'segundaAberta',
+                'countTotal','counts','countFechadas','countAndamento'
                 ),
                 [
                     "counts" => $counts,
@@ -315,6 +294,5 @@ GROUP BY
                     "sabadoAberta" => $sabadoAberta
         ]);
     }
-
     //Historico de atendimentos
 }
