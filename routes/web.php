@@ -48,7 +48,7 @@ Route::group(['middleware' => ['auth']], function () {
     //
     Route::resource('atendimentos/historico', 'Administracao\Atendimentos\HistoricoAtendimentosController');
     //FimatendimentoHistorico
-    Route::resource('atendimentos/dash', 'Administracao\Atendimentos\DashAtendimentosController');
+    Route::get('atendimentos/dash', 'Administracao\Atendimentos\DashAtendimentosController@index');
     //USUARIOS
     Route::resource('administracao/users', 'Administracao\Usuarios\UserController');
     Route::resource('administracao/roles', 'Administracao\Usuarios\RoleController');

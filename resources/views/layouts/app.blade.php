@@ -10,78 +10,79 @@
     </head>
 
     <body>
-    <!--[if lt IE 8]>
-    <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
-    <!--=========================*
-             Page Container
-    *===========================-->
-    <div class="page-container" id="teste">
+        <!--[if lt IE 8]>
+        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
 
         <!--=========================*
-                 Side Bar Menu
+                 Page Container
         *===========================-->
-        @include('layouts.sidebar')
-        <!--=========================*
-               End Side Bar Menu
-        *===========================-->
+        <div class="page-container" id="teste">
 
-        <!--==================================*
-                   Main Content Section
-        *====================================-->
-        <div class="main-content">
-
-            <!--==================================*
-                       Header Section
-            *====================================-->
-            @include('layouts.header')
-            <!--==================================*
-                       End Header Section
-            *====================================-->
+            <!--=========================*
+                     Side Bar Menu
+            *===========================-->
+            @include('layouts.sidebar')
+            <!--=========================*
+                   End Side Bar Menu
+            *===========================-->
 
             <!--==================================*
-                       Main Section
+                       Main Content Section
             *====================================-->
-            <div class="main-content-inner">
-                {{-- @include('mensagem.flash-message') --}}
-                @yield('main-content')
+            <div class="main-content">
+
+                <!--==================================*
+                           Header Section
+                *====================================-->
+                @include('layouts.header')
+                <!--==================================*
+                           End Header Section
+                *====================================-->
+
+                <!--==================================*
+                           Main Section
+                *====================================-->
+                <div class="main-content-inner">
+                    {{-- @include('mensagem.flash-message') --}}
+                    @yield('main-content')
+
+                </div>
+                <!--==================================*
+                           End Main Section
+                *====================================-->
             </div>
-            <!--==================================*
-                       End Main Section
-            *====================================-->
+            <!--=================================*
+                   End Main Content Section
+            *===================================-->
+
+            <!--=================================*
+                          Footer Section
+            *===================================-->
+            @include('layouts.footer')
+            <!--=================================*
+                        End Footer Section
+            *===================================-->
+
         </div>
-        <!--=================================*
-               End Main Content Section
-        *===================================-->
+        <!--=========================*
+                End Page Container
+        *===========================-->
 
-        <!--=================================*
-                      Footer Section
-        *===================================-->
-        @include('layouts.footer')
-        <!--=================================*
-                    End Footer Section
-        *===================================-->
+        <!--=========================*
+              Offset Sidebar Menu
+        *===========================-->
+        @include('layouts.offset-menu')
+        <!--================================*
+                 End Offset Sidebar Menu
+        *==================================-->
+        <!--=========================*
+                    Scripts
+        *===========================-->
 
-    </div>
-    <!--=========================*
-            End Page Container
-    *===========================-->
+        @include('layouts.scripts')
 
-    <!--=========================*
-          Offset Sidebar Menu
-    *===========================-->
-    @include('layouts.offset-menu')
-    <!--================================*
-             End Offset Sidebar Menu
-    *==================================-->
-    <!--=========================*
-                Scripts
-    *===========================-->
-
-    @include('layouts.scripts')
-
-    @yield('js')
-    @include('mensagem.alert-message')
+        @yield('js')
+        @include('mensagem.alert-message')
     </body>
 </html>
