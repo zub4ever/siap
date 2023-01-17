@@ -20,7 +20,6 @@ use App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO;
 use Khill\Lavacharts\Lavacharts;
 use App\Charts\UserChart;
 
-
 class DashAtendimentosController extends Controller {
 
     public function index() {
@@ -47,148 +46,148 @@ class DashAtendimentosController extends Controller {
         $domingoAberta = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'1')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'0')                                                      
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
-             
-         $segundaAberta = DB::table('atendimento as c')
+
+        $segundaAberta = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'1')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'1')                                                      
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
-                          
+
         $tercaAberta = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'1')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'2')                                                      
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $quartaAberta = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'1')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'3')                                                      
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $quintaAberta = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'1')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'4')                                                      
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $sextaAberta = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'1')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'5')                                                      
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $sabadoAberta = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'1')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'6')                                                      
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
 //Fechadas
         $domingoFechada = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'2')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'0')                                                      
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
-        
+
         $segundaFechada = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'2')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'1')                                                      
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $tercaFechada  = DB::table('atendimento as c')
+        $tercaFechada = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'2')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'2')                                                      
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $quartaFechada  = DB::table('atendimento as c')
+        $quartaFechada = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'2')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'3')                                                      
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $quintaFechada =   DB::table('atendimento as c')
+        $quintaFechada = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'2')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'4')                                                      
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $sextaFechada  = DB::table('atendimento as c')
+        $sextaFechada = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'2')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'5')                                                      
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
-        $sabadoFechada =  DB::table('atendimento as c')
+        $sabadoFechada = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'2')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'6')                                                      
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
         //SEMANA EM ANDAMENTO
-        $domingoAndamento   = DB::table('atendimento as c')
+        $domingoAndamento = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'3')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'0')                                                      
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
-        $segundaAndamento =DB::table('atendimento as c')
+        $segundaAndamento = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'3')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'1')                                                      
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $tercaAndamento = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'3')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'2')                                                      
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $quartaAndamento = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'3')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'3')                                                      
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $quintaAndamento = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'3')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'4')                                                      
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $sextaAndamento = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'3')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'5')                                                      
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $sabadoAndamento = DB::table('atendimento as c')
                         ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
                         ->select('c.id', 'c.atendimento_status_id', 'c.created_at')
-                        ->where('c.atendimento_status_id','=' ,'3')
-                        ->where(DB::raw("extract (dow from c.created_at)") ,'6')                                                      
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')
                         ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
 
         $lava = new Lavacharts;
@@ -279,13 +278,557 @@ class DashAtendimentosController extends Controller {
             ]
         ]);
 
+        //Atendimentos Semana por tipo de atendimento
+        //Atendimento Tipo_Assunto 1 Consultar pagamento
+        //Status 1 Aberta
+        $domingoAbertaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaAbertaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaAbertaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaAbertaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaAbertaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaAbertaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoAbertaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado               
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+
+        //Status 2 Fechada 
+        $domingoFechadaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaFechadaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaFechadaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaFechadaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaFechadaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaFechadaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoFechadaTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        //Status 3 Andamento
+
+        $domingoAndamentoTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaAndamentoTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaAndamentoTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaAndamentoTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaAndamentoTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaAndamentoTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoAndamentoTipoAtendimentoCP = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '1') //Consultar Pagamento
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+
+        //Atendimento Tipo_Assunto 2 Consultar Consignado
+        //Status 1 Aberta
+        $domingoAbertaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaAbertaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaAbertaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaAbertaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaAbertaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaAbertaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consigando
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoAbertaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado               
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+
+        //Status 2 Fechada 
+        $domingoFechadaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaFechadaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaFechadaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaFechadaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaFechadaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaFechadaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoFechadaTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        //Status 3 Andamento
+
+        $domingoAndamentoTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaAndamentoTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaAndamentoTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaAndamentoTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaAndamentoTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaAndamentoTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoAndamentoTipoAtendimentoCC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '2') //Consultar Consignado
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        
+        //Atendimento Tipo_Assunto 3 Imprimir Contracheque
+        //Status 1 Aberta
+        $domingoAbertaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimnir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaAbertaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaAbertaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaAbertaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir COntracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaAbertaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir COntracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaAbertaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoAbertaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '1')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado               
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+
+        //Status 2 Fechada 
+        $domingoFechadaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaFechadaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaFechadaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaFechadaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaFechadaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaFechadaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoFechadaTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '2')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        //Status 3 Andamento
+
+        $domingoAndamentoTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '0')       //Domingo
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $segundaAndamentoTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '1')       //Segunda Feira
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $tercaAndamentoTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir COntracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '2')       //Terça-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quartaAndamentoTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '3')       //Quarta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $quintaAndamentoTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '4')       //Quinta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sextaAndamentoTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '5')       //Sexta-feira                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        $sabadoAndamentoTipoAtendimentoIC = DB::table('atendimento as c')
+                        ->join('atendimento_status as sts', 'c.atendimento_status_id', '=', 'sts.id')
+                        ->join('atendimento_assunto as assunto', 'c.atendimento_assunto_id', '=', 'assunto.id')
+                        ->select('c.id', 'c.atendimento_assunto_id', 'c.atendimento_status_id', 'c.created_at')
+                        ->where('c.atendimento_status_id', '=', '3')
+                        ->where('c.atendimento_assunto_id', '=', '3') //Imprimir Contracheque
+                        ->where(DB::raw("extract (dow from c.created_at)"), '6')       //Sabado                
+                        ->where(DB::raw("extract (day from c.created_at)"), DB::raw("extract (day from CURRENT_DATE)"))->count();
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+
         return view("administracao.atendimentosDash.index", compact('atendimentos', 'countFechadas', 'countAndamento',
                         'totalDiaAberta',
                         'totalDiaFechada',
                         'totalDiaIndeferida',
                         'totalDia',
                         'segundaAberta',
-                'countTotal','counts','countFechadas','countAndamento'
+                        'countTotal', 'counts', 'countFechadas', 'countAndamento',
+                        
                 ),
                 [
                     "counts" => $counts,
@@ -293,6 +836,9 @@ class DashAtendimentosController extends Controller {
                     "lava" => $lava,
                     "sabadoAberta" => $sabadoAberta
         ]);
+
+        //function
     }
+
     //Historico de atendimentos
 }
