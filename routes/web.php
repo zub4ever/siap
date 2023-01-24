@@ -67,6 +67,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reqVoluntaria/pdf/{id?}', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@pdf')->name('reqVoluntaria.pdf');
 
     //FimRequerimentosAposentadoria
+    //INicio de CTC
+    Route::resource('/ctc', 'DIPREV\CTCController');
+    Route::get('/ctc/create', 'DIPREV\CTCController@create')->name('ctc.create');
+    
+    
+    
+    
+    
+    Route::get('/retornaSexoDoBeneficiario', 'DIPREV\CTCController@retornaSexoDoBeneficiario');
+    
+    //fim ctc
     //Inicio de Requerimentos Comulsorios
     Route::resource('/reqCompulsoria', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaController');
     Route::get('/reqCompulsoria/create', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaController@create')->name('reqCompulsoria.create');
