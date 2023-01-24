@@ -1,60 +1,90 @@
+
 @extends('layouts.app')
 
 
 {{-- Page Title --}}
 @section('page-title')
-Pedidos
+CTC
 @endsection
-
+@section('css')
+<!-- Start datatable css -->
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/jquery.dataTables.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/dataTables.bootstrap4.min.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/responsive.bootstrap.min.css")}}">
+<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/responsive.jqueryui.min.css")}}">
+<!-- Sweet Alert Css -->
+<link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
+@endsection
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Pedido</a></li>
+    <li class="breadcrumb-item active"><a>CTC</a></li>
 </ol>
 
-<h4>2.0 Informações de Contato</h4>
-           
-           <div class="row">
-              <div class="col-sm-12 col-md-12 col-lg-12 mt-5">
-                  <div class="wrap">
-                   <div class="table-responsive">                          
-                       
-                           <div class="table-responsive">
-                               <table class="table table-bordered">
-                                   <thead>
-                                       <tr>
-                                           <th class="text-center">Tipo de contato</th>
-                                           <th class="text-center">Contato</th>
-                                           <th class="text-center">Ação</th>
-                                       </tr>
-                                   </thead>
-                                   <tbody id="tbody">
-                                   </tbody>
-                               </table>
-                           </div>
-                           <button class="btn btn-md btn-info" 
-                                   id="addBtn" type="button">
-                               Adicionar Contato
-                           </button>
-                       
-                       <!<!-- comment -->
-                   </div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mt-5">
+        <div class="wrap">
+                              
 
-                  </div>
-               </div>        
-           </div> 
+                <div class="table-responsive">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th class="text-center">Ano</th>
+                                <th class="text-center">Tempo bruto</th>
+                                <th class="text-center">Faltas</th>
+                                <th class="text-center">Licenças</th><th class="text-center">Tempo  liquido</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @php
+                            $totalDays = 0;
+                            @endphp
+                            @foreach ($sortedDays as $year => $days)
+                            <tr>
+                                <td>{{ $year }}</td>
+                                 <td>{{ $count = count($days) }} dias</td>
+                                <td></td>
+                                <td></td>
+                                <td>{{ $count = count($days) }} dias</td>
+                            </tr>
+                            @php
+                            $totalDays += $count;
+                            @endphp
+                            @endforeach
+                        </tbody>
+                    </table>
+                    <p>Total de dias: {{ $totalDays }}</p>
+                </div>
+                
+               
+          
+
+        </div>
+    </div>        
+</div> 
+
+
+
+
+
+
 
 @endsection
 @section('js')
-
-<script src="{{asset('assets/vendors/smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
-<script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
-<script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
-<script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
-<script src="{{Config::get('app.url')}}/node_modules/select2/jquery.select2.js"></script>
-<script src="{{Config::get('app.url')}}/node_modules/select2/dist/js/select2.min.js"></script>
-<script src="{{asset('assets/js/jquery.min.js')}}"></script>
-<script src="{{asset('assets/js/pedido/create.js')}}"></script>
-
-
+<!-- Data Table js -->
+<script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/dataTables.bootstrap4.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/dataTables.responsive.min.js")}}"></script>
+<script src="{{asset("assets/vendors/data-table/js/responsive.bootstrap.min.js")}}"></script>
+<!-- Data table Init -->
+<script src="{{asset("assets/js/init/data-table.js")}}"></script>
+<!-- Sweet Alert Js -->
+<!-- Sweet Alert Js -->
+<script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
+<script src="{{asset('js/delete.js')}}"></script>
 @endsection
+
+
