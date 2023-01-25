@@ -10,6 +10,7 @@ use App\Origin;
 use App\Funcao;
 use App\Orgao;
 use App\Contract;
+
 class CTCController extends Controller {
 
     public function index(Request $request) {
@@ -36,8 +37,8 @@ class CTCController extends Controller {
     }
 
     public function create() {
-        
-        
+
+
         $origin = Origin::all();
         $servidor = Serve::all();
         $orgao = Orgao::all();
@@ -77,15 +78,10 @@ class CTCController extends Controller {
         );
     }
 
-    public function retornaSexoDoBeneficiario(Request $request) {
-        if ($request->ajax()) {
-            $beneficiario = Beneficiario::with([
-                        'pessoa',
-                        'pessoa.pessoaFisica',
-                    ])->findOrFail($request->query('beneficiarioId'));
-
-            return response()->json($beneficiario->pessoa->pessoaFisica[0]->sexo);
-        }
+    //Controller
+    public function getDetails($id) {
+        $user = User::find($id);
+        return response()->json(['sex' => $user->sex, 'dob' => $user->dob, 'cpf' => $user->cpf]);
     }
 
 }
