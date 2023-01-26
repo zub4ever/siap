@@ -60,7 +60,7 @@ class ContractController extends Controller {
 
         $contrato = Contract::findOrFail($id);
          $origin = Origin::all();
-        $servidor = Serve::all();
+         $servidor = Serve::all();
         $orgao = Orgao::all();
         $funcao = Funcao::all();
         return view('contratos.edit', compact('contrato','servidor', 'orgao', 'funcao', 'origin'));

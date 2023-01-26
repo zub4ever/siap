@@ -45,6 +45,10 @@ class CTC extends Model {
 
         return $this->belongsToMany(Sexo::class, 'sexo_id');
     }
+     public function tipocertidao() {
+
+        return $this->belongsToMany(\App\Models\DIPREV\CTC\TipoCertidao::class, 'tipo_certidao_id');
+    }
 
     
 }

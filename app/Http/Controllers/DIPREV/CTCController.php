@@ -11,6 +11,7 @@ use App\Funcao;
 use App\Orgao;
 use App\Contract;
 use App\Models\DIPREV\CTC\CTC;
+use App\Models\DIPREV\CTC\TipoCertidao;
 use App\Http\Requests\DiprevFormRequest\CTC\CTCFormRequest;
 use Illuminate\Support\Facades\DB;
 
@@ -46,6 +47,7 @@ class CTCController extends Controller {
         $servidor = Serve::all();
         $orgao = Orgao::all();
         $funcao = Funcao::all();
+        $tipo_certidao = TipoCertidao::all();
 
         //$atendimento_status = DB::table('atendimento_status')->get();
         //  $atendimento_assunto = DB::table('atendimento_assunto')->get();
@@ -53,7 +55,7 @@ class CTCController extends Controller {
         // $state = DB::table('state')->get();
         // $almo_localizacao_dpto = DB::table('almoxarifado_localizacao_dpto')->get()->all();
 
-        return view('diprev.ctc.create', compact('servidor', 'orgao', 'funcao', 'origin'));
+        return view('diprev.ctc.create', compact('servidor', 'orgao', 'funcao', 'origin','tipo_certidao'));
     }
 
     public function store(CTCFormRequest $request) {
@@ -67,7 +69,7 @@ class CTCController extends Controller {
         $ctc = CTC::create($request->all());
 
         $matricula = $request->input('serve_id');
-        //$matricula = Serve::find($serve_id);
+        
 
         if (!empty($matricula)) {
 
@@ -84,20 +86,17 @@ class CTCController extends Controller {
             $var1 = $matricula;
             $current_date = date('dmY');
             $random_number = rand(1000, 9999);
-
-            $ctc_numero_bruto = $var1 . '.' . $current_date . '.' . $random_number;
-            
-            $ctc_numero = $ctc_numero_bruto;
-            
-            //dd($ctc_numero);
-            
+            $ctc_numero_bruto = $var1 . '.' . $current_date . '.' . $random_number;           
+            $ctc_numero = $ctc_numero_bruto;                                 
             $request->request->add(['ctc_numero' => $ctc_numero]);
-            $ctc->ctc_numero = $ctc_numero;
-            
-            
+            $ctc->ctc_numero = $ctc_numero;                        
             $ctc->save();
             
         }
+       
+        
+        
+        
       
         if (!$ctc) {
             DB::rollBack();
