@@ -34,5 +34,11 @@
 <script src="{{asset('assets/vendors/select2/plugin/select2.js')}}"></script>
 <script src="{{asset('js/ctc/create.js')}}"></script>
 <script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
+<script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
+<script src="{{asset('assets/vendors/smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
+<script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
+<script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
+
 @endsection
 

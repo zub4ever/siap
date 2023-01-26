@@ -70,13 +70,13 @@ Route::group(['middleware' => ['auth']], function () {
     //INicio de CTC
     Route::resource('/ctc', 'DIPREV\CTCController');
     Route::get('/ctc/create', 'DIPREV\CTCController@create')->name('ctc.create');
-    
-    
-    
-    
-    
-    Route::get('/retornaSexoDoBeneficiario', 'DIPREV\CTCController@retornaSexoDoBeneficiario');
-    
+    Route::post('/ctc/create', 'DIPREV\CTCController@store');
+
+    //Route::get('/getDetails/{id?}', 'DIPREV\CTCController@getDetails');
+    // Route::post('get-details','DIPREV\CTCController@getDetails')->name('get-details');
+
+    Route::get('user/details', 'DIPREV\CTCController@getDetails')->name('user.details');
+
     //fim ctc
     //Inicio de Requerimentos Comulsorios
     Route::resource('/reqCompulsoria', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaController');
@@ -90,13 +90,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/acumuloCargos', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaAcumuloCargosController')->except(['create', 'show']);
     Route::get('/acumuloCargos/{compulsoria}', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaAcumuloCargosController@create')->name('acumuloCargos.create');
     Route::get(
-        '/programa/acumuloCargos/dadosMeta/{compulsoria}/{acumuloCargos}', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaAcumuloCargosController@show')->name('acumuloCargos.show');
+            '/programa/acumuloCargos/dadosMeta/{compulsoria}/{acumuloCargos}', 'Administracao\reqAposentadorias\reqCompulsoria\reqApCompulsoriaAcumuloCargosController@show')->name('acumuloCargos.show');
     //
-
-
     //Fim de Requerimentos Comulsorios
-
-
     //Rotas do Dap
 
     Route::resource('/dap', 'DAP\DapController');
@@ -159,7 +155,6 @@ Auth::routes();
 Route::resource("/requerimentos", "Publico\PedidoPubliController");
 Route::get('requerimentos/create', 'Publico\PedidoPubliController@create')->name('requerimentos.create');
 Route::post('requerimentos/create', 'Publico\PedidoPubliController@store');
-
 
 //ConsultaPublica
 Route::get('/consultaPublica', 'DAF\AlmoxarifadoController@consulta');
