@@ -77,35 +77,161 @@
                 @endif
             </div>
         </div>
-         <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+        <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
             <div class="wrap">
                 <div class="center">                             
-                <label for="tipo_certidao_id" class="form-control-label">Situação:
-                    <span class="text-danger">*</span>
-                </label>
-               <select class="form-control situacaoCTC-select2" name="tipo_certidao_id" id="tipo_certidao_id">
-                    <option value="">Selecione</option>
-                    @foreach ($tipo_certidao as $tipo_certidao)
-                    <option value="{{$tipo_certidao->id}}" {{(empty(old('tipo_certidao_id')) ? @$ctc->tipo_certidao_id : old('tipo_certidao_id')) == $tipo_certidao->id ? 'selected' : ''}}>
-                        {{$tipo_certidao->id}} - {{$tipo_certidao->nm_tipocertidao}}
-                    </option>
-                    @endforeach
-                </select>
-                @if ($errors->has('tipo_certidao_id'))
-                <h6 class="heading text-danger">{{$errors->first('tipo_certidao_id')}}</h6>
-                @endif
-                <br>
-              </div>
-                
+                    <label for="tipo_certidao_id" class="form-control-label">Situação:
+                        <span class="text-danger">*</span>
+                    </label>
+                    <select class="form-control situacaoCTC-select2" name="tipo_certidao_id" id="tipo_certidao_id">
+                        <option value="">Selecione</option>
+                        @foreach ($tipo_certidao as $tipo_certidao)
+                        <option value="{{$tipo_certidao->id}}" {{(empty(old('tipo_certidao_id')) ? @$ctc->tipo_certidao_id : old('tipo_certidao_id')) == $tipo_certidao->id ? 'selected' : ''}}>
+                            {{$tipo_certidao->id}} - {{$tipo_certidao->nm_tipocertidao}}
+                        </option>
+                        @endforeach
+                    </select>
+                    @if ($errors->has('tipo_certidao_id'))
+                    <h6 class="heading text-danger">{{$errors->first('tipo_certidao_id')}}</h6>
+                    @endif
+                    <br>
+                </div>
+
             </div>
         </div>
     </div>
     <br>
 </div>
-<br><br>
+<br>
+<div class="center">
+    <div class="row">
+        <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+            <div class="wrap">
+                <label for="nr_processo" class="form-control-label">Nº Processo:
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" name="nr_processo" value="{{@$ctc->nr_processo}}">
+                @if ($errors->has('nr_processo'))
+                <h6 class="heading text-danger">{{$errors->first('nr_processo')}}</h6>
+                @endif
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+            <div class="wrap">
+                <label for="data_pedido" class="form-control-label">Data do pedido:
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" name='data_pedido' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
+                       value="{{date('d-m-Y', strtotime(@$ctc->data_pedido))}}">
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+            <div class="wrap">
+                <label for="data_admissao" class="form-control-label">Data da Admissão:
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" name='data_admissao' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
+                       value="{{date('d-m-Y', strtotime(@$ctc->data_admissao))}}">
+            </div>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+            <div class="wrap">
+                <label for="data_exoneracao" class="form-control-label">Data da exoneração:
+                    <span class="text-danger">*</span>
+                </label>
+                <input type="text" class="form-control" name='data_exoneracao' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
+                       value="{{date('d-m-Y', strtotime(@$ctc->data_exoneracao))}}">
+            </div>
+        </div>
+
+
+        <br>
+    </div>
+    <br>
+</div>
+<br>
+
+<div class="row">
+    <div class="col-6 container-left">
+        <p align="center">Período de Compreendido nesta Certidão</p>
+        <!-- Conteúdo para o container esquerdo -->
+        <div class="center">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+                    <div class="wrap">
+                        <label for="start_date" class="form-control-label">Data de Inicio:
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" name='start_date' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
+                               value="{{date('d-m-Y', strtotime(@$ctc->start_date))}}">
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+                    <div class="wrap">
+                        <label for="end_date" class="form-control-label">Data final:
+                            <span class="text-danger">*</span>
+                        </label>
+                        <input type="text" class="form-control" name='end_date' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
+                               value="{{date('d-m-Y', strtotime(@$ctc->end_date))}}">
+                    </div>
+                </div> 
 
 
 
+
+            </div>
+            <br>
+            <div class="center">
+                <div class="container"><p align="center">Aproveitamento:</p>
+                    <div class="row justify-content-center align-items-center">
+                        
+                        <div class="col-6">
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="local_destino"  value="RBPREV">
+                                    <label class="form-check-label" for="option1">RBPREV</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="local_destino"  value="Outros Regimes">
+                                    <label class="form-check-label" for="option2"> Outros regimes</label>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <br>
+            
+        </div> 
+    </div>
+
+    <div class="col-6 container-right">
+        <p align="center">Outras informações:</p>
+        <div class ="center">
+            <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+                <div class="wrap">
+                    <label for="font_info" class="form-control-label">Fonte de informação:
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" name='font_info' placeholder=""  autocomplete="off"
+                           value="{{@$ctc->font_info}}">
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+                <div class="wrap">
+                    <label for="destinacao" class="form-control-label">Destinação:
+                        <span class="text-danger">*</span>
+                    </label>
+                    <input type="text" class="form-control" name='destinacao' placeholder=""  autocomplete="off"
+                           value="{{@$ctc->destinacao}}">
+                </div>
+            </div>
+            <br>
+        </div>
+    </div>
+</div>
 <div class="col-sm-12 mt-5">
     <div class="wrap mt-1" style="text-align: center;">
         <button type="submit" class="btn btn-success">
