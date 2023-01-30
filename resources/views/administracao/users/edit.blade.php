@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('page-title')
-Editar Atendimentos
+Alterar usuário
 @endsection
 
 @section('css')
@@ -11,8 +11,8 @@ Editar Atendimentos
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="{{route("home")}}">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("atendimentos.index")}}">Atendimentos</a></li>
-    <li class="breadcrumb-item active"><a>Editar atendimento</a></li>
+    <li class="breadcrumb-item"><a href="{{route("users.index")}}">Usuário</a></li>
+    <li class="breadcrumb-item active"><a>Alterar usuário</a></li>
 </ol>
 
 <div class="row">
