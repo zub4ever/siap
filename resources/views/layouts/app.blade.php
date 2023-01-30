@@ -46,82 +46,46 @@
                 <div class="main-content-inner">
                     {{-- @include('mensagem.flash-message') --}}
                     @yield('main-content')
-                    <!--Contenido-->
-                    <!-- Content Wrapper. Contains page content -->
-                    <div class="content-wrapper">
-                        <!-- Main content -->
-                        <section class="content">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="box">
-                                        <div class="box-header with-border">
-                                            <h3 class="box-title"></h3>
-                                            <div class="box-tools pull-right">
-                                                <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-
-                                                <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                                            </div>
-                                        </div>
-                                        <!-- /.box-header -->
-                                        <div class="box-body">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <!--Conteudo-->
-                                                    @yield('conteudo')
-                                                    <!--Fim Conteudo-->
-                                                </div>
-                                            </div>
-
-                                        </div>
-                                    </div><!-- /.row -->
-                                </div><!-- /.box-body -->
-                            </div><!-- /.box -->
-                            </section>
-                    </div><!-- /.col -->
-             
-
-                
-            
-            <!--Fin-Contenido-->
 
 
+
+
+                </div>
+                <!--==================================*
+                           End Main Section
+                *====================================-->
+            </div>
+            <!--=================================*
+                   End Main Content Section
+            *===================================-->
+
+            <!--=================================*
+                          Footer Section
+            *===================================-->
+            @include('layouts.footer')
+            <!--=================================*
+                        End Footer Section
+            *===================================-->
 
         </div>
-        <!--==================================*
-                   End Main Section
-        *====================================-->
-    </div>
-    <!--=================================*
-           End Main Content Section
-    *===================================-->
+        <!--=========================*
+                End Page Container
+        *===========================-->
 
-    <!--=================================*
-                  Footer Section
-    *===================================-->
-    @include('layouts.footer')
-    <!--=================================*
-                End Footer Section
-    *===================================-->
+        <!--=========================*
+              Offset Sidebar Menu
+        *===========================-->
+        @include('layouts.offset-menu')
+        <!--================================*
+                 End Offset Sidebar Menu
+        *==================================-->
+        <!--=========================*
+                    Scripts
+        *===========================-->
 
-</div>
-<!--=========================*
-        End Page Container
-*===========================-->
+        @include('layouts.scripts')
 
-<!--=========================*
-      Offset Sidebar Menu
-*===========================-->
-@include('layouts.offset-menu')
-<!--================================*
-         End Offset Sidebar Menu
-*==================================-->
-<!--=========================*
-            Scripts
-*===========================-->
-
-@include('layouts.scripts')
-
-@yield('js')
-@include('mensagem.alert-message')
-</body>
+        @yield('js')
+        @include('mensagem.alert-message')
+    </body>
 </html>

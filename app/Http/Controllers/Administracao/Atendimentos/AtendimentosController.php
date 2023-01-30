@@ -135,8 +135,7 @@ class AtendimentosController extends Controller {
                         ->stream();
     }
 
-    public function destroy($id)
-    {
+    public function destroy($id){
         
         $atendimentos = Atendimento::findOrFail($id);
 

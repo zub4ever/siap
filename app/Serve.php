@@ -64,4 +64,8 @@ class Serve extends Model {
 
         return $this->belongsTo(Type_Serve::class, 'tp_servidor_id');
     }
+    public function ctc_certidao() {
+
+        return $this->belongsTo(App\Models\DIPREV\CTC\CTC::class, 'serve_id');
+    }
 }

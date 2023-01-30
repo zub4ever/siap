@@ -31,7 +31,81 @@ CTC
         </div>
     </div>
 </div>
+<div class="row">
+        <div class="col-12 mb-4">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="card_title">Certidões emitidas</h4>
+                    <div class="table-responsive">
+                        <table id="dataTable" class="table text-center">
+                            <thead class="bg-light text-capitalize">
+                            <tr>
+                                <th class="text-center">CTC Número</th>
+                                <th class="text-center">Nome servidor</th>
+                                <th class="text-center">CPF</th>
+                                <th class="text-center">Função</th>
 
+                                <th class="text-center">Origem</th>
+                                <th class="text-center">Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach ($ctc as $ctc)
+                                <tr>
+                                    <td class="text-center">{{$ctc->ctc_numero}}</td>
+                                   
+                                    @foreach($serve as $servidor)
+                                        @if($ctc->serve_id == $servidor->id)
+                                            <td class="text-center"> {{$servidor->matricula}} - {{$servidor->nm_servidor}}</td>
+                                            <td class="text-center"> {{$servidor->cpf}}</td>
+                                        @endif
+                                    @endforeach
+                                    
+                                    @foreach($funcao as $lc)
+                                        @if($ctc->funcao_id == $lc->id)
+                                            <td class="text-center">{{$lc->nm_funcao}}</td>
+                                        @endif
+                                    @endforeach
+
+                                    @foreach($orgao as $org)
+                                        @if($ctc->orgao_id == $org->id)
+                                            <td class="text-center">{{$org->nm_orgao}}</td>
+                                        @endif
+                                    @endforeach
+                                    <td>
+                                        
+                                        <a href="{{route('events.pdf',$ctc->id)}}" target="_blank
+                                       ">
+                                            <i class="ti-printer mr-1 btn btn-warning"></i>
+                                        </a>
+                                       
+                                        <a href="{{route('ctc.edit', $ctc->id)}}">
+                                            <i class="ti-pencil mr-1 btn btn-success"></i>
+                                        </a>
+                                        @can('excluir')
+                                            &nbsp;
+                                            <form action="{{route('ctc.destroy', $ctc->id)}}" method="POST"
+                                                  id="formLaravel{{$ctc->id}}" style="display:inline-block;">
+                                                @method('DELETE')
+                                                @csrf
+                                                <span class="submit" idform="{{$ctc->id}}">
+                                            <i class="ti-trash btn btn-danger"></i>
+                                        </span>
+                                            </form>
+                                        @endcan
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-end">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
 

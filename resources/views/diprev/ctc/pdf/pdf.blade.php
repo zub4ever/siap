@@ -25,12 +25,12 @@ use Carbon\Carbon;
         </div><br>
 
 
+        <br>
+        <div class="col-4" style="float: right; border: 1px solid black; background-color: lightgray; text-align: center; padding: 10px; font-size: 12px;">
+  CTC Nº {{$ctc->ctc_numero}}
+        </div><br><br>
 
-        <table id="tabela-personalizada" align="center">      
-            <tr align="center">
-                <th align="center">CTC Nº {{$ctc->ctc_numero}}</th>                 
-            </tr>     
-        </table><br>
+
         <table style="width:100%; border: 1px solid black;">
             <tr>
                 <td style="width:60%; border: 1px solid black;"><strong>Orgão Expedidor: </strong><br>
@@ -55,17 +55,19 @@ use Carbon\Carbon;
 
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>SEXO:</strong><br>
-                    <p></p>
-
+                    @if($servidor->sexo_id == 1)
+                    <p>Masculino</p>
+                    @else
+                    <p>Feminino</p>
+                    @endif
                 </td>
             </tr>
         </table>
         <table style="width:100%; border: 1px solid black;">
             <tr>
-                <td style="width:50%; border: 1px solid black;"><strong>RG/ÓRGÃO EXPEDIDOR:: </strong><br>
+                <td style="width:50%; border: 1px solid black;"><strong>RG/ÓRGÃO EXPEDIDOR: </strong><br>
 
                     <p> {{$servidor->rg}}</p>
-
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>CPF:</strong><br>
                     <p>{{$servidor->cpf}}</p>
@@ -226,15 +228,8 @@ use Carbon\Carbon;
         <div class="break-page"></div>
         <!-- Essa tag quebra a pagina -->
 
-
-
-
-
-
         <p style="text-align:right;">CTC Nº {{$ctc->ctc_numero}}</p>
         <br>
-
-
         <table style="width: 100%">
             <tr>
                 <td style="width: 50%">
@@ -247,7 +242,7 @@ use Carbon\Carbon;
                         <p style="text-align: center">Assinatura e carimbo </p>   
                     </div>
                 </td>
-               <td style="width: 50%">
+                <td style="width: 50%">
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Visto do Dirigente do Órgão</strong></p>
                         <br><br><br><!-- comment -->
@@ -259,16 +254,6 @@ use Carbon\Carbon;
                 </td>
             </tr>
         </table>
-
-
-
-
-
-
-
-
-
-
 
 
         <br>
@@ -283,8 +268,193 @@ use Carbon\Carbon;
                 </td>
             </tr>
         </table>
+        <!-- Essa tag quebra a pagina -->
+        <div class="break-page"></div>
+        <!-- Essa tag quebra a pagina -->
+        <div class="header-image-container" align="center">
+            <img src="../public/imagem/azul_claro.png" align="center" alt="Imagem de cabeçalho">
+        </div>
+        <div class="texto-centralizado-12px">
+            PREFEITURA MUNICIPAL DE RIO BRANCO<br>            
+            <strong>INSTITUTO DE PREVIDÊNCIA DE RIO BRANCO - RBPREV</strong>
+        </div><br> 
+        <p style="text-align:right;"><strong>Certidão de Tempo de Contribuição Nº {{$ctc->ctc_numero}}</strong></p>
+
+        <table  style="width:100%; border: 1px solid black;" >
+            <td align="center">FREQUÊNCIA - DISCRIMINAÇÃO DAS DEDUÇÕES DO TEMPO BRUTO</td>      
+        </table>   
+        <table  style="width:100%; border: 1px solid black;" >
+            <thead>
+                <tr>
+                    <th style="width:40%; border: 1px solid black;">Períodos</th>
+                    <th style="width:20%; border: 1px solid black;">Tempo em dias</th>
+                    <th style="width:40%; border: 1px solid black;">Identificação da ocorrência</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr><!-- comment -->
+                <tr>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+            </tbody>
+        </table><br>
+        <table  style="width:100%; border: 1px solid black;">
+            <td align="center">TEMPO ESPECIAL INCLUÍDO, SEM CONVERSÃO, NO PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO</td>      
+        </table>   
+        <table  style="width:100%; border: 1px solid black;" >
+            <thead>
+                <tr>
+                    <th style="width:50%; border: 1px solid black;">Especificação do exercício do tempo especial</th>
+                    <th style="width:30%; border: 1px solid black;">Período</th>
+                    <th style="width:20%; border: 1px solid black;">Tempo em dias</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+
+                    <td colspan="3">I - Na condição de segurado com deficiência:</td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">a) grave</td>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">b) moderada</td>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+
+                <tr>
+                    <td style="border: 1px solid black;">c) leve</td>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">II - No cargo de policial, agente penitenciário ou de agente socioeducativo.</td>
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+
+                    <td colspan="2">
+                        III - Em atividades sob condições especiais que prejudiquem a saúde ou a integridade física ou com efetiva exposição a agentes químicos, físicos e biológicos prejudiciais à saúde.
+                    </td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
 
 
+                <tr>
+                    <td style="border: 1px solid black;">a)  com redução do tempo para 25 anos</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">b)  com redução do tempo para 20 anos</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+                    <td style="border: 1px solid black;">c)  com redução do tempo para 15 anos</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+            </tbody>
+        </table> 
+        <!-- Ultima parte -->
+        <br>
+
+        <table  style="width:100%; border: 1px solid black;">
+            <td align="center">TEMPO DE EFETIVO EXERCÍCIO DAS FUNÇÕES DE MAGISTÉRIO NA EDUCAÇÃO INFANTIL E NO ENSINO FUNDAMENTAL E MÉDIO NO PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO</td>      
+        </table>   
+        <table  style="width:100%; border: 1px solid black;" >
+            <thead>
+                <tr>
+                    <th style="width:50%; border: 1px solid black;">Períodos</th>
+                    <th style="width:50%; border: 1px solid black;">Tempo em dias</th>
+
+                </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+
+                <tr>
+
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+                <tr>
+
+                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
+                    <td style="border: 1px solid black;"></td>
+                </tr>
+
+            </tbody>
+        </table>      
+        <br>
+        <table style="width:100%; border: 1px solid black;">
+            <tr>
+                <td style="width:100%; border: 1px solid black;">
+                    <p class="justificado"><strong>Observações:</strong></p>
+
+
+                </td>
+            </tr>
+        </table>
+        <table style="width: 100%">
+            <tr>
+                <td style="width: 50%">
+                    <div style="border: 1px solid black; font-size: 10px; width: 100%">
+                        <p><strong>Servidor que lavrou a Certidão</strong></p>
+                        <br><br><br><!-- comment -->
+                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->data_pedido)) }}</p>
+                    </div>                    
+                </td>
+                <td style="width: 50%">
+                    <div style="border: 1px solid black; font-size: 10px; width: 100%">
+                        <p><strong>Assinatura do Dirigente do Órgão</strong></p>
+                        <br><br><br><!-- comment -->
+                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->data_pedido)) }}</p>
+                    </div>                  
+                </td>
+            </tr>
+        </table>
 
 
 
@@ -301,6 +471,13 @@ use Carbon\Carbon;
 </html>
 
 <style>
+    .rightsCTC {
+        position: absolute;
+        right: 0px;
+        width: 300px;
+        border: 3px solid #808080;
+        padding: 10px;
+    }
 
 
 
@@ -354,6 +531,8 @@ use Carbon\Carbon;
 
 
         #tabela-personalizada {
+
+
             border-collapse: collapse;
             width: 30%; /* Define a largura da tabela */
             margin: 0 auto; /* Centraliza a tabela na página */
@@ -383,8 +562,4 @@ use Carbon\Carbon;
         /*table tr {
             height: 30px;
         }*/
-
-
-
-
     </style>

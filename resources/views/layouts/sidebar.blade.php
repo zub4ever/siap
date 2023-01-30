@@ -199,6 +199,14 @@
                                 </a>
                             </li>
                         </ul>
+                         <ul class="collapse">
+                            <li {!! (request()->is('diprev/*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('ctc.index')}}">
+                                    <i class="ti-envelope"></i>
+                                    <span>CTC</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <!--Fim de Diprev-->
                     <!--Inicio  de DAF -->

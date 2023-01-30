@@ -1,5 +1,42 @@
-<div class="row">
+<table id="tabela-personalizada" align="center">      
+    <tr align="center">
+        <th align="center">CTC Nº {{$ctc->ctc_numero}}</th>                 
+    </tr>     
+</table><br>
+<style>
 
+        #tabela-personalizada {
+            border-collapse: collapse;
+            width: 30%; /* Define a largura da tabela */
+            margin: 0 auto; /* Centraliza a tabela na página */
+        }
+
+        #tabela-personalizada th, #tabela-personalizada td {
+            border: 2px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #tabela-personalizada th {
+            background-color: lightgray;
+        }
+        #tabela-personalizada tfoot {
+            background-color: lightgray;
+        }
+
+        /* Define borda */
+        .border {
+            border: 1px solid black;
+            padding: 14px;
+        }
+        table {
+            font-size: 14px; /* tamanho da fonte */
+        }
+        /*table tr {
+            height: 30px;
+        }*/
+    </style>
+<div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="serve_id" class="form-control-label">Servidor:
@@ -107,7 +144,7 @@
     <div class="row">
         <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
             <div class="wrap">
-                <label for="nr_processo" class="form-control-label">Nº Processo:
+                <label for="nr_processo" class="form-control-label">Nº do Processo:
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" class="form-control" name="nr_processo" value="{{@$ctc->nr_processo}}">
@@ -122,7 +159,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" class="form-control" name='data_pedido' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                       value="">
+                       value="{{date('d-m-Y', strtotime(@$ctc->data_pedido))}}">
             </div>
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -131,7 +168,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" class="form-control" name='data_admissao' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                       value="">
+                       value="{{date('d-m-Y', strtotime(@$ctc->data_admissao))}}">
             </div>
         </div>
         <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -140,7 +177,7 @@
                     <span class="text-danger">*</span>
                 </label>
                 <input type="text" class="form-control" name='data_exoneracao' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                       value="">
+                       value="{{date('d-m-Y', strtotime(@$ctc->data_exoneracao))}}">
             </div>
         </div>
 
@@ -163,7 +200,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control" name='start_date' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                               value="">
+                               value="{{date('d-m-Y', strtotime(@$ctc->start_date))}}">
                     </div>
                 </div>
                 <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
@@ -172,7 +209,7 @@
                             <span class="text-danger">*</span>
                         </label>
                         <input type="text" class="form-control" name='end_date' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                               value="">
+                               value="{{date('d-m-Y', strtotime(@$ctc->end_date))}}">
                     </div>
                 </div> 
 
@@ -184,11 +221,11 @@
             <div class="center">
                 <div class="container"><p align="center">Aproveitamento:</p>
                     <div class="row justify-content-center align-items-center">
-                        
+
                         <div class="col-6">
                             <div class="form-group">
                                 <div class="form-check form-check-inline">
-                                    <input class="form-check-input" type="radio" name="local_destino"  value="RBPREV" checked>
+                                    <input class="form-check-input" type="radio" name="local_destino"  value="RBPREV"checked>
                                     <label class="form-check-label" for="option1">RBPREV</label>
                                 </div>
                                 <div class="form-check form-check-inline">
@@ -203,7 +240,7 @@
 
             </div>
             <br>
-            
+
         </div> 
     </div>
 
@@ -212,11 +249,11 @@
         <div class ="center">
             <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
                 <div class="wrap">
-                    <label for="font_info" class="form-control-label">Fonte de informação:
+                    <label for="fonte_info" class="form-control-label">Fonte de informação:
                         <span class="text-danger">*</span>
                     </label>
-                    <input type="text" class="form-control" name='font_info' placeholder=""  autocomplete="off"
-                           value="{{@$ctc->font_info}}">
+                    <input type="text" class="form-control" name='fonte_info' placeholder=""  autocomplete="off"
+                           value="{{@$ctc->fonte_info}}">
                 </div>
             </div>
             <div class="col-sm-12 col-md-12 col-lg-12 mt-4">

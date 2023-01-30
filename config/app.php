@@ -57,7 +57,10 @@ return [
       | ahead and set this to a sensible default for you out of the box.
       |
      */
-    'timezone' => 'UTC',
+    /*'timezone' => 'UTC',*/
+    
+    'timezone' => 'America/Rio_Branco',
+
     /*
       |--------------------------------------------------------------------------
       | Application Locale Configuration
