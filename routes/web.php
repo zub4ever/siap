@@ -71,6 +71,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/ctc', 'DIPREV\CTCController');
     Route::get('/ctc/create', 'DIPREV\CTCController@create')->name('ctc.create');
     Route::post('/ctc/create', 'DIPREV\CTCController@store');
+    Route::get('events/{id}', 'DIPREV\CTCController@pdf')->name('events.pdf');
+    
 
     //Route::get('/getDetails/{id?}', 'DIPREV\CTCController@getDetails');
     // Route::post('get-details','DIPREV\CTCController@getDetails')->name('get-details');
