@@ -46,11 +46,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/atendimentos/show/{id?}', 'Administracao\Atendimentos\AtendimentosController@show')->name('atendimentos.show');
     Route::delete('/atendimentos/{id}/destroy', 'Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
     //
-    Route::resource('atendimentos/historico', 'Administracao\Atendimentos\HistoricoAtendimentosController');
+    Route::get('atendimentos/historico', 'Administracao\Atendimentos\HistoricoAtendimentosController@index')->name('atendimentosHistorico.historico');
     //FimatendimentoHistorico
     Route::get('atendimentos/dash', 'Administracao\Atendimentos\DashAtendimentosController@index');
     
-    Route::get('atendimentos/teste', 'Administracao\Atendimentos\DashAtendimentosController@countByDayWeek');
+    Route::get('atendimentos/dashboard', 'Administracao\Atendimentos\DashAtendimentosController@countByDayWeek')->name('atendimentos.dash');
     
     //USUARIOS
     Route::resource('administracao/users', 'Administracao\Usuarios\UserController');

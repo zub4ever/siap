@@ -21,13 +21,13 @@ img{
     overflow: hidden;
 }
 .login_box .left{
-    width: 45%;
+    width: 55%;
     height: 100%;
     padding: 25px 25px;
 
 }
 .login_box .right{
-    width: 55%;
+    width: 45%;
     height: 100%
 }
 .left .top_link a {
@@ -83,7 +83,7 @@ img{
 
 
 .right {
-    background: url(https://images2.imgbox.com/c8/56/SmpTViQ1_o.gif);
+    background: url(http://rbprev.riobranco.ac.gov.br/images/IconsIndex/rbprev.svg);
     background-repeat: no-repeat;
     background-position: center;
     color: rgb(241, 62, 8);

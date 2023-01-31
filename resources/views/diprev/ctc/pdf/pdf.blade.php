@@ -67,7 +67,11 @@ use Carbon\Carbon;
             <tr>
                 <td style="width:50%; border: 1px solid black;"><strong>RG/ÓRGÃO EXPEDIDOR: </strong><br>
 
-                    <p> {{$servidor->rg}}</p>
+                    @if($servidor->orgao_expedidor_id == 1)
+                    <p>{{$servidor->rg}} SSP/AC</p>
+                    @else
+                    <p>{{$servidor->rg}} SEPC/AC</p>
+                    @endif                                   
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>CPF:</strong><br>
                     <p>{{$servidor->cpf}}</p>

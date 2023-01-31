@@ -35,6 +35,7 @@ class HomeController extends Controller
         $atendimentos = DB::table('atendimento')->count();
         $atendimentosAbertos = Atendimento::where('atendimento_status_id', 1)->count();
         $atendimentosFechados = Atendimento::where('atendimento_status_id', 2)->count();
+        $atendimentosAndamento = Atendimento::where('atendimento_status_id', 3)->count();
         
         
         
@@ -66,6 +67,6 @@ class HomeController extends Controller
         
         
         
-        return view('/home', compact('serve','serveAp','servePs','atendimentos','atendimentosAbertos','atendimentosFechados'));
+        return view('/home', compact('serve','serveAp','servePs','atendimentos','atendimentosAbertos','atendimentosFechados','atendimentosAndamento'));
     }
 }

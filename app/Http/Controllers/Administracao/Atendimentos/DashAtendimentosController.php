@@ -25,7 +25,7 @@ class DashAtendimentosController extends Controller {
     public function countByDayWeek() {
 
         $results = [];
-        $weekdays = ['Domingo', 'Segunda-Feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado'];
+        $weekdays = ['Segunda-Feira', 'Terça-feira', 'Quarta-feira', 'Quinta-feira', 'Sexta-feira', 'Sábado', 'Domingo'];
         $today = Carbon::today();
         $startOfWeek = $today->startOfWeek();
 
@@ -37,25 +37,68 @@ class DashAtendimentosController extends Controller {
         }
 
 
+        //Contador de Dados
+        $dayOfWeek = [
+            1 => 'Segunda-feira',
+            2 => 'Terça-feira',
+            3 => 'Quarta-feira',
+            4 => 'Quinta-feira',
+            5 => 'Sexta-feira',
+            6 => 'Sábado',
+            7 => 'Domingo'
+        ];
 
+        $typeOfAttendance = [
+            1 => 'Consultar pagamento',
+            2 => 'Consultar consignado',
+            3 => 'Imprimir Contracheque',
+            4 => 'Tirar dúvidas',
+            5 => 'Solicitar alteração cadastral',
+            6 => 'Abertura de Processo de aposentadoria',
+            7 => 'Abertura de Processo de Pensão',
+            8 => 'Abertura de processo para Emissão de CTC',
+            9 => 'Recadastramento',
+            10 => 'Contracheque',
+            11 => 'Abertura de Processo de Imposto de Renda',
+            12 => 'Abertura de processo de 13º Salário',
+            13 => 'Cédula C'
+        ];
 
+        // Recupera o primeiro e o último dia da semana corrente
+        $firstDayOfWeek = date('Y-m-d', strtotime('Monday this week'));
+        $lastDayOfWeek = date('Y-m-d', strtotime('Sunday this week'));
 
-        return view("administracao.atendimentosDash.countByDayWeek", ['results' => $results]);
-    }
+        $data = [];
+        foreach ($dayOfWeek as $dayNumber => $dayName) {
+            foreach ($typeOfAttendance as $typeId => $typeName) {
+                $count = DB::table('atendimento')
+                        ->whereBetween('created_at', [$firstDayOfWeek, $lastDayOfWeek])
+                        ->where('atendimento_assunto_id', $typeId)
+                        ->whereRaw("EXTRACT(DOW FROM created_at) = {$dayNumber}")
+                        ->count();
 
-    public function countByDayOfWeek() {
-        $results = [];
-
-        $dates = YourModel::select(\DB::raw('date(created_at) as created_date, count(*) as total'))
-                ->groupBy(\DB::raw('date(created_at), date_part(\'dow\', created_at)'))
-                ->get();
-
-        foreach ($dates as $date) {
-            $dayOfWeek = Carbon::parse($date->created_date)->dayOfWeek;
-            $results[$dayOfWeek][] = $date->total;
+                $data[$dayName][$typeName] = $count;
+            }
         }
 
-        return response()->json($results);
+
+
+        //Grafico evolutivo
+        $dados = DB::table('atendimento')
+                ->select(
+                        DB::raw("to_char(created_at, 'YYYY-MM') as mes"),
+                        'atendimento_assunto_id',
+                        DB::raw('count(id) as quantidade')
+                )
+                ->groupBy('mes', 'atendimento_assunto_id')
+                ->get();
+
+        return view("administracao.atendimentosDash.countByDayWeek", ['results' => $results,
+            'data' => $data,
+            'typeOfAttendance' => $typeOfAttendance,
+            'dados' => $dados,
+            'dayOfWeek'=>$dayOfWeek
+        ]);
     }
 
     //Historico de atendimentos

@@ -118,13 +118,14 @@ Highcharts.chart('containerAposentadorias', {
     var atendimentos = <?php echo json_encode($atendimentos) ?>;
     var atendimentosAbertos = <?php echo json_encode($atendimentosAbertos) ?>;
     var atendimentosFechados = <?php echo json_encode($atendimentosFechados) ?>;
+    var atendimentosAndamento = <?php echo json_encode($atendimentosAndamento) ?>;
     Highcharts.chart('containerATER', {
         chart: {
             type: 'column',
             styledMode: true
         },
         title: {
-            text: 'Atendimentos 2022'
+            text: 'Atendimentos Gerais'
         },
         yAxis: [{
                 className: 'highcharts-color-6',
@@ -147,6 +148,10 @@ Highcharts.chart('containerAposentadorias', {
                 name: 'Fechados',
                 data: [atendimentosFechados]
             }
+            , {
+                name: 'Em Andamento',
+                data: [atendimentosAndamento]
+            }
         ]
     });
 </script>
@@ -162,7 +167,7 @@ Highcharts.chart('containerAposentadorias', {
             styledMode: true
         },
         title: {
-            text: 'Servidores'
+            text: 'Aposentados/Pensionistas'
         },
         yAxis: [{
                 className: 'highcharts-color-3',

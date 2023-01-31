@@ -36,8 +36,10 @@
             </div>
         </div>
         <div class="right">
-
-            <div class="right-inductor"><img src="" alt=""></div>
+           
+               <div class="right-inductor"><img src="" alt=""></div> 
+           
+            
         </div>
     </div>
 </section>

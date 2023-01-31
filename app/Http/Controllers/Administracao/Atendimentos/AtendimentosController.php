@@ -142,7 +142,7 @@ class AtendimentosController extends Controller {
 
         DB::beginTransaction();
 
-        if (!$atendimentos->update(['status'=> 0])) {
+        if (!$atendimentos->update(['atendimento_status_id'=> 2])) {
             DB::rollBack();
             return redirect()->route('atendimentos.index')->with('error', "Falha ao deletar o Atendimento.");
         }

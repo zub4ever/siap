@@ -4,10 +4,10 @@
             <label for="atendimento_status_id" class="form-control-label">Status atendimento:
                 <span class="text-danger">*</span>
             </label>
-            <select name="atendimento_status_id" class="form-control" id="titula1">
-                <option value="">Selecione uma opção</option>
+            <select name="atendimento_status_id" class="form-control" id="titula1" >
+                
                 @foreach ($atendimento_status as $atendimento)
-                <option value="{{$atendimento->id}}"
+                <option value="{{$atendimento->id}}" 
                         {{(empty(old('atendimento_status_id')) ? @$atendimentos->atendimento_status_id : old('atendimento_status_id')) == $atendimento->id ? 'selected' : ''}}>
                     {{$atendimento->statusAtendimento}}
                 </option>

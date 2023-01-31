@@ -4,7 +4,7 @@
                       Logo
         *===========================-->
         <div class="logo">
-            <a href="{{ URL::to('home') }}"><img src="{{asset('assets/images/sisa.gif')}}" alt="logo"></a>
+            <a href="{{ URL::to('home') }}"><img src="{{asset('assets/images/rbprev_siap.png')}}" alt="logo"></a>
         </div>
         <!--=========================*
                     End Logo
@@ -79,25 +79,37 @@
 
                     <!- Fim do cadastros auxiliares
                 </ul>
-            </li>
-            <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
-                <a href="javascript:void(0)" aria-expanded="true">
-                    <i class=" icon-streetsign"></i>
-                    <span>Endereço Servidor</span>
-                </a>
-
-                <ul class="collapse">
-
-                    <li {!! (request()->is('endereco*') ? 'class="active"' : "")!!}>
-                        <a href="{{route('endereco.index')}}">
-                            <i class="icon-map"></i>
-                            <span>Endereços</span>
-                        </a>
-                    </li>
-
-
-                </ul>
             </li> -->
+                    <li {!! (request()->is('atendimentos*') ? 'class="active"' : "")!!}>
+                        <a href="javascript:void(0)" aria-expanded="true">
+                            <i class=" icon-streetsign"></i>
+                            <span>Atendimentos</span>
+                        </a>
+
+                        <ul class="collapse">
+
+                            <li {!! (request()->is('atendimentos*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('atendimentos.index')}}">
+                                    <i class="icon-clipboard"></i>
+                                    <span>Atendimentos</span>
+                                </a>
+                            </li>
+                            <li {!! (request()->is('atendimentos*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('atendimentos.dash')}}" target="_blank">
+                                    <i class="icon-bargraph"></i>
+                                    <span>Dashboard</span>
+                                </a>
+                            </li>
+                            <li {!! (request()->is('atendimentos*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('atendimentosHistorico.historico')}}">
+                                    <i class="icon-book-open"></i>
+                                    <span>Historico</span>
+                                </a>
+                            </li>
+
+
+                        </ul>
+                    </li>
                     <!--fim de-->
                     <!-- Inicio de Administração -->
                     <li {!! (request()->is('administracao*') ? 'class="active"' : "")!!}>
@@ -199,7 +211,7 @@
                                 </a>
                             </li>
                         </ul>
-                         <ul class="collapse">
+                        <ul class="collapse">
                             <li {!! (request()->is('diprev/*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('ctc.index')}}">
                                     <i class="ti-envelope"></i>
