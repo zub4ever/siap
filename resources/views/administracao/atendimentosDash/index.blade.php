@@ -1,210 +1,296 @@
-@extends('layouts.app')
-{{-- Page Title --}}
-@section('page-title')
-Dash Atendimentos
-@endsection
-@section('css')
-<!-- Start datatable css -->
-<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/jquery.dataTables.css")}}">
-<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/dataTables.bootstrap4.min.css")}}">
-<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/responsive.bootstrap.min.css")}}">
-<link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/data-table/css/responsive.jqueryui.min.css")}}">
-<!-- Sweet Alert Css -->
-<link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
-<link rel="stylesheet" href="{{asset("css/admin.css")}}">
-@endsection
-@section('main-content')
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Atendimentos Dash</a></li>
-</ol>
-@section('conteudo')
-<div class="row">
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <!-- small box -->
-        <div class="small-box bg" style="background-color:#F68936">
-            <div class="inner">
-                <h3>{{$countTotal}}</h3>
-                <h4><strong>Total</strong></h4>
-            </div>
-            <div class="icon">
-                <i class="fa fa-line-chart" aria-hidden="true"></i>
-            </div>
+<?php
+
+use Carbon\Carbon;
+?>
+
+
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+        <title>Atendimentos</title>
+    </head>
+    <body>
+        <div class="header-image-container" align="center">
+            <img src="../public/imagem/azul_claro.png" align="center" alt="Imagem de cabeçalho">
         </div>
-    </div>
-    <!--  -->
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <!-- small box -->
-        <div class="small-box bg" style="background-color:#67CB42">
-            <div class="inner">
-                <h3>{{$counts}}</h3>
+        <div class="texto-centralizado-12px">
+            PREFEITURA MUNICIPAL DE RIO BRANCO<br>
+            INSTITUTO DE PREVIDÊNCIA DE RIO BRANCO - RBPREV<br>
+            <strong>RELATÓRIO GERAL DE ATENDIMENTOS</strong>
+        </div><br>
 
-                <h4><strong>Em Aberto</strong></h4>
-            </div>
-            <div class="icon">
-                <i class="fa fa-folder-open" aria-hidden="true"></i>
-            </div>
+
+
+
+
+
+
+
+
+        <div class="row">
+            <table id="minhaTabela">
+                <thead>
+                    <tr>
+                        <th>Dia da Semana</th>
+                        @foreach ($typeOfAttendance as $typeName)
+                        <th>{{ $typeName }}</th>
+                        @endforeach
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($data as $dayName => $attendanceData)
+                    <tr>
+                        <td>{{ $dayName }}</td>
+                        @foreach ($typeOfAttendance as $typeName)
+                        <td>{{ $attendanceData[$typeName] ?? 0 }}</td>
+                        @endforeach
+                    </tr>
+                    @endforeach
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="13">Total de registros na semana</td>
+
+                        <td>{{ array_sum($results) }}</td>
+
+                    </tr>
+                </tfoot>
+            </table>
         </div>
-    </div>
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <!-- small box -->
-        <div class="small-box bg" style="background-color:#17B7B5">
-            <div class="inner">
-                <h3>{{$countFechadas}}</h3>
 
-                <h4><strong>Fechadas</strong></h4>
-            </div>
-            <div class="icon">
-                <i class="fa fa-archive" aria-hidden="true"></i>
-            </div>
+        <!-- Essa tag quebra a pagina -->
+        <div class="break-page"></div>
+        <!-- Essa tag quebra a pagina -->
+        <div class="header-image-container" align="center">
+            <img src="../public/imagem/azul_claro.png" align="center" alt="Imagem de cabeçalho">
         </div>
-    </div>
-    <!--  -->
-    <div class="col-md-3 col-sm-6 col-xs-12">
-        <!-- small box -->
-        <div class="small-box bg" style="background-color:#CDD71C">
-            <div class="inner">
-                <h3>{{$countAndamento}}</h3>
-
-                <h4><strong>Em andamento</strong></h4>
-            </div>
-            <div class="icon">
-                <i class="fa fa-times-circle-o" aria-hidden="true"></i>
-            </div>
+        <div class="texto-centralizado-12px">
+            PREFEITURA MUNICIPAL DE RIO BRANCO<br>
+            INSTITUTO DE PREVIDÊNCIA DE RIO BRANCO - RBPREV<br>
+            <strong>RELATÓRIO GERAL DE ATENDIMENTOS</strong>
+        </div><br>
+        <table id="minhaTabela">
+            <thead>
+                <tr>
+                    <th scope="col">Dia da Semana</th>
+                    <th scope="col" aling="center">Quantidade de Atendimentos</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($results as $weekday => $count)
+                <tr>
+                    <td>{{ $weekday }}</td>
+                    <td aling="center">{{ $count }}</td>
+                </tr> 
+                @endforeach
+            </tbody>
+        </table>
+        <!-- Essa tag quebra a pagina -->
+        <div class="break-page"></div>
+        <!-- Essa tag quebra a pagina -->
+        <div class="header-image-container" align="center">
+            <img src="../public/imagem/azul_claro.png" align="center" alt="Imagem de cabeçalho">
         </div>
-    </div>
-</div>
-<section class="content">
-    <div class="row">
-        <div class="col-lg-7 col-sm-7 col-xs-12">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><strong>Atendimentos da Semana </strong></h3>
-                        <div class="box-tools pull-right">
-                           <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!--Conteudo-->
-                                <div id="ca_graph" class="overlay">
-                                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                                    @columnchart('Finances', 'ca_graph')
-                                </div>
-                                <!--Fim Conteudo-->
-                            </div>
-                        </div><!-- /.row -->
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
-            </div><!-- /.col -->
-        </div> 
-        <div class="col-lg-5 col-sm-5 col-xs-12">
-            <div class="col-md-12">
-                <div class="box">
-                    <div class="box-header with-border">
-                        <h3 class="box-title"><strong>Atendimentos de Hoje ({{$atual}})</strong></h3>
-                        <div class="box-tools pull-right">
-                            <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
-                            <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-                        </div>
-                    </div>
-                    <!-- /.box-header -->
-                    <div class="box-body">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <!--Conteudo-->
-                                <div id="chart-div" class="overlay">
-                                    <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
-                                    @piechart('IMDB', 'chart-div')
-                                </div>
-                                <!--Fim Conteudo-->
-                            </div>
-                        </div><!-- /.row -->
-                    </div><!-- /.box-body -->
-                </div><!-- /.box -->
-            </div><!-- /.col -->
-        </div> 
-    </div> 
-</section>
+        <div class="texto-centralizado-12px">
+            PREFEITURA MUNICIPAL DE RIO BRANCO<br>
+            INSTITUTO DE PREVIDÊNCIA DE RIO BRANCO - RBPREV<br>
+            <strong>RELATÓRIO GERAL DE ATENDIMENTOS</strong>
+        </div><br>
 
 
 
 
-    
-    
-    <div id="chart" >
-        
-   
-    
-</div>
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script>
+        <table id="minhaTabela">
+            <thead>
+                <tr>
+                    <th>Tipo de atendimento</th>
+                    @foreach ($meses as $mes)
+                    <th>{{ $mes }}</th>
+                    @endforeach
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($tipos_atendimento as $id => $tipo)
+                <tr>
+                    <td>{{ $tipo }}</td>
+                    @foreach ($meses as $chave => $mes)
+                    <td>
+                        @foreach ($dados as $dado)
+                        @if ($dado->atendimento_assunto_id == $id && substr($dado->mes, -2) == $chave)
+                        {{ $dado->quantidade }}
+                        @endif
+                        @endforeach
+                    </td>
+                    @endforeach
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
 
 
-      
-        var options = {
-          series: [{
-          data: [44, 55, 41, 64, 22, 43, 21]
-        }, {
-          data: [53, 32, 33, 52, 13, 44, 32]
-        }],
-          chart: {
-          type: 'bar',
-          height: 430
-        },
-        plotOptions: {
-          bar: {
-            horizontal: true,
-            dataLabels: {
-              position: 'top',
-            },
-          }
-        },
-        dataLabels: {
-          enabled: true,
-          offsetX: -6,
-          style: {
-            fontSize: '12px',
-            colors: ['#fff']
-          }
-        },
-        stroke: {
-          show: true,
-          width: 1,
-          colors: ['#fff']
-        },
-        tooltip: {
-          shared: true,
-          intersect: false
-        },
-        xaxis: {
-          categories: [2001, 2002, 2003, 2004, 2005, 2006, 2007],
-        },
-        };
 
-        var chart = new ApexCharts(document.querySelector("#chart"), options);
-        chart.render();
 
-</script>
 
-@endsection
-@endsection
-@section('js')
-<!-- Data Table js -->
-<script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.js")}}"></script>
-<script src="{{asset("assets/vendors/data-table/js/jquery.dataTables.min.js")}}"></script>
-<script src="{{asset("assets/vendors/data-table/js/dataTables.bootstrap4.min.js")}}"></script>
-<script src="{{asset("assets/vendors/data-table/js/dataTables.responsive.min.js")}}"></script>
-<script src="{{asset("assets/vendors/data-table/js/responsive.bootstrap.min.js")}}"></script>
-<!-- Data table Init -->
-<script src="{{asset("assets/js/init/data-table.js")}}"></script>
-<!-- Sweet Alert Js -->
-<!-- Sweet Alert Js -->
-<script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
-<script src="{{asset('js/delete.js')}}"></script>
 
-@endsection
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    </body>
+</html>
+
+<style>
+    .rightsCTC {
+        position: absolute;
+        right: 0px;
+        width: 300px;
+        border: 3px solid #808080;
+        padding: 10px;
+    }
+
+
+
+
+    .break-page {
+        page-break-after: always;
+    }
+
+    .justificado {
+        text-align: justify;
+    }
+    /* Arquivo CSS */
+    .texto-centralizado-12px {
+        text-align: center;
+        font-size: 12px;
+    }
+    /* Configuração da imagem de cabeçalho */
+    .header-image {
+        width: 100px;
+        height: 90px;
+        margin: 0 auto;
+        display: block;
+
+
+
+
+
+        #minhaTabela {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        #minhaTabela th, #minhaTabela td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #minhaTabela th {
+            background-color: lightgray;
+        }
+        #minhaTabela tfoot {
+            background-color: lightgray;
+        }
+        #minhaTabela {
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+
+
+        #tabela-personalizada {
+
+
+            border-collapse: collapse;
+            width: 30%; /* Define a largura da tabela */
+            margin: 0 auto; /* Centraliza a tabela na página */
+        }
+
+        #tabela-personalizada th, #tabela-personalizada td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        #tabela-personalizada th {
+            background-color: lightgray;
+        }
+        #tabela-personalizada tfoot {
+            background-color: lightgray;
+        }
+
+        /* Define borda */
+        .border {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        table {
+            font-size: 12px; /* tamanho da fonte */
+        }
+        /*table tr {
+            height: 30px;
+        }*/
+    </style>

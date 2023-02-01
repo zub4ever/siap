@@ -51,7 +51,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('atendimentos/dash', 'Administracao\Atendimentos\DashAtendimentosController@index');
     
     Route::get('atendimentos/dashboard', 'Administracao\Atendimentos\DashAtendimentosController@countByDayWeek')->name('atendimentos.dash');
-    
+    Route::get('tendimentos/pdf','Administracao\Atendimentos\DashAtendimentosController@index')->name('atendimentos.pdfGeral');
+
     //USUARIOS
     Route::resource('administracao/users', 'Administracao\Usuarios\UserController');
     Route::resource('administracao/roles', 'Administracao\Usuarios\RoleController');
