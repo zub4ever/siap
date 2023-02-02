@@ -19,10 +19,11 @@ Dash Atendimentos
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                
-                    <div class="pull-right">
-                <a class="ti-printer mr-1 btn btn-danger" href="{{route('atendimentos.pdfGeral')}}" target="_blank">Imprimir relatório</a>
-                
+              <div class="pull-right">
+                <a class="ti-printer mr-1 btn btn-danger" href="{{route('atendimentos.pdfGeralRecadastramento')}}" target="_blank">Imprimir relatório Recadastramento</a>               
+            </div>    
+             <div class="pull-right">
+                <a class="ti-printer mr-1 btn btn-danger" href="{{route('atendimentos.pdfGeral')}}" target="_blank">Imprimir relatório</a>               
             </div>               
             </div>           
         </div>       

@@ -106,6 +106,12 @@
                                     <span>Historico</span>
                                 </a>
                             </li>
+                            <li {!! (request()->is('atendimentos*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('atendimentos.pdfGeralRecadastramento')}}">
+                                    <i class="icon-book-open"></i>
+                                    <span>Relatorio recadastramento</span>
+                                </a>
+                            </li>
 
 
                         </ul>
