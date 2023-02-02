@@ -48,9 +48,9 @@ use Carbon\Carbon;
                 <tbody>
                     @foreach ($data as $dayName => $attendanceData)
                     <tr>
-                        <td>{{ $dayName }}</td>
+                        <td align="center">{{ $dayName }}</td>
                         @foreach ($typeOfAttendance as $typeName)
-                        <td>{{ $attendanceData[$typeName] ?? 0 }}</td>
+                        <td align="center">{{ $attendanceData[$typeName] ?? 0 }}</td>
                         @endforeach
                     </tr>
                     @endforeach
@@ -59,7 +59,7 @@ use Carbon\Carbon;
                     <tr>
                         <td colspan="13">Total de registros na semana</td>
 
-                        <td>{{ array_sum($results) }}</td>
+                        <td align="center">{{ array_sum($results) }}</td>
 
                     </tr>
                 </tfoot>
@@ -134,7 +134,6 @@ use Carbon\Carbon;
                 @endforeach
             </tbody>
         </table>
-
 
 
 

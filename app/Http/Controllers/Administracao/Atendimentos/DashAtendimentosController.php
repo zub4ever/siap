@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\View;
 use App\Atendimento;
 use App\AtendimentoStatus;
 use PDF;
+use DateTime;
 use Carbon\Carbon;
 use Gate;
 use App\AtendimentoAssunto;
@@ -211,8 +212,89 @@ class DashAtendimentosController extends Controller {
                                     'dados' => $dados,
                                     'dayOfWeek' => $dayOfWeek,
                                     'meses' => $meses,
-                                    'tipos_atendimento' =>$tipos_atendimento
+                                    'tipos_atendimento' => $tipos_atendimento
                                 ]
+                        )
+                        ->setPaper('A4', 'landscape')
+                        ->stream();
+    }
+
+    public function relatorioAnual() {
+
+        /*
+          $meses = [
+          'Janeiro',
+          'Fevereiro',
+          'Março',
+          'Abril',
+          'Maio',
+          'Junho',
+          'Julho',
+          'Agosto',
+          'Setembro',
+          'Outubro',
+          'Novembro',
+          'Dezembro'
+          ];
+
+          $atendimentos = Atendimento::where('atendimento_assunto_id', 9)
+          ->whereYear('created_at', 2023)
+          ->get();
+
+          $dados = [];
+          foreach ($meses as $index => $mes) {
+          $data = $atendimentos->whereBetween('created_at', [
+          Carbon::create(2023, $index + 1, 1, 0, 0, 0),
+          Carbon::create(2023, $index + 1, 31, 23, 59, 59)
+          ]);
+
+          if ($data->count()) {
+          $dados[$mes] = $data->map(function ($atendimento) {
+          return [
+          'nm_assegurado' => $atendimento->nm_assegurado,
+          'matricula' => $atendimento->matricula,
+          'cpf' => $atendimento->cpf
+          ];
+          });
+          }
+          } */
+        /* $meses = [
+          "01" => "Janeiro",
+          "02" => "Fevereiro",
+          "03" => "Março",
+          "03" => "Abril",
+          "05" => "Maio",
+          "06" => "Junho",
+          "07" => "Julho",
+          "08" => "Agosto",
+          "09" => "Setembro",
+          "10" => "Outubro",
+          "11" => "Novembro",
+          "12" => "Dezembro",
+          ]; */
+
+
+        $atendimentos = DB::table('atendimento')
+                ->select('nm_assegurado', 'matricula', 'cpf', DB::raw('date_trunc(\'month\', created_at) as month'))
+                ->where('atendimento_assunto_id', 9)
+                ->whereYear('created_at', 2023)
+                ->groupBy('nm_assegurado', 'matricula', 'cpf', 'month')
+                ->orderBy('month')
+                ->get();
+
+        $months = [];
+        foreach ($atendimentos as $atendimento) {
+            if (!in_array($atendimento->month, $months)) {
+                $months[] = $atendimento->month;
+            }
+        }
+
+
+
+
+        //dd($data);
+        return \PDF::loadView('administracao.atendimentosDash.relatorioAnualRecadastramento',
+                                compact('months','atendimentos')
                         )
                         ->setPaper('A4', 'landscape')
                         ->stream();

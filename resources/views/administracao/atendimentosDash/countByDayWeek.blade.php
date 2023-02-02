@@ -14,19 +14,20 @@ Dash Atendimentos
 <link rel="stylesheet" href="{{asset("css/admin.css")}}">
 @endsection
 @section('main-content')
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Atendimentos Dash</a></li>
-    <li>
-    <button style="float: right;">Button</button>
-  </li>
-</ol>
-<style>
-    li {
-  list-style: none;
-}
-    
-</style>
+
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                
+                    <div class="pull-right">
+                <a class="ti-printer mr-1 btn btn-danger" href="{{route('atendimentos.pdfGeral')}}" target="_blank">Imprimir relatório</a>
+                
+            </div>               
+            </div>           
+        </div>       
+    </div>  
+</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
