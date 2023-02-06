@@ -25,7 +25,7 @@ class CompulsoriaFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'nm_requerente' => ['required', 'max:300'],
+            'nm_requerente' => ['max:300'],
 
         ];
     }
