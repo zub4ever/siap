@@ -288,10 +288,6 @@ class DashAtendimentosController extends Controller {
                 $months[] = $atendimento->month;
             }
         }
-
-
-
-
         //dd($data);
         return \PDF::loadView('administracao.atendimentosDash.relatorioAnualRecadastramento',
                                 compact('months','atendimentos')
@@ -300,4 +296,15 @@ class DashAtendimentosController extends Controller {
                         ->stream();
     }
 
+    public function painel($id) {
+        
+        $atendimento = DB::table('atendimento')
+                ->where('atendimento_status_id', 1)
+                ->get();
+    
+      return view('administracao.atendimentosDash.painel', compact('atendimento'));  
+    } 
+    
+    
+    
 }

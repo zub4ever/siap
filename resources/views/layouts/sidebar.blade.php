@@ -107,7 +107,7 @@
                                 </a>
                             </li>
                             <li {!! (request()->is('atendimentos*') ? 'class="active"' : "")!!}>
-                                <a href="{{route('atendimentos.pdfGeralRecadastramento')}}">
+                                <a href="{{route('atendimentos.pdfGeralRecadastramento')}}" target="_blank">
                                     <i class="icon-book-open"></i>
                                     <span>Relatorio recadastramento</span>
                                 </a>

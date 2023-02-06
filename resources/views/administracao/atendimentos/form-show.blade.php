@@ -209,6 +209,9 @@ Atendimentos
                 Imprimir
             </button>
         </a>
+        
+                        <button class="btn btn-primary btn-show" data-id="{{ $atendimento->id }}">Exibir</button>
+
     </div>
     <div class="wrap mt-1" style="text-align: center;">
         <a href="{{route('atendimentos.index')}}">
@@ -218,6 +221,9 @@ Atendimentos
         </a>
     </div>
 </div>
+
+<div id="show-atendimento"></div>
+
 @endsection
 @section('js')
 <!-- Data Table js -->
@@ -233,3 +239,21 @@ Atendimentos
 <script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
 <script src="{{asset('js/delete.js')}}"></script>
 @endsection
+
+
+
+<script>
+    $(document).ready(function() {
+        $('.btn-show').click(function() {
+            let id = $(this).data('id');
+
+            $.ajax({
+                url: "/registro/" + id,
+                method: "GET",
+                success: function(response) {
+                    $('#show-atendimento').html(response);
+                }
+            });
+        });
+    });
+</script>
