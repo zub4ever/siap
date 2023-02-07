@@ -21,133 +21,123 @@ use Carbon\Carbon;
         <div class="texto-centralizado-12px">
             PREFEITURA MUNICIPAL DE RIO BRANCO<br>
             INSTITUTO DE PREVIDÊNCIA DE RIO BRANCO - RBPREV<br>
-            <strong>CERTIDAO DE TEMPO DE CONTRIBUIÇÃO</strong>
-        </div><br>
+            <strong>CERTIDÃO DE TEMPO DE CONTRIBUIÇÃO</strong>
+        </div> <br>
 
 
-        <br>
+
         <div class="col-4" style="float: right; border: 1px solid black; background-color: lightgray; text-align: center; padding: 10px; font-size: 12px;">
-  CTC Nº {{$ctc->ctc_numero}}
+            CTC Nº {{$ctc->ctc_numero}}
         </div><br><br>
 
 
-        <table style="width:100%; border: 1px solid black;">
-            <tr>
-                <td style="width:60%; border: 1px solid black;"><strong>Orgão Expedidor: </strong><br>
-                    <p>INSTITUTO DE PREVIDÊNCIA DO MUNICÍPIO DE RIO BRANCO</p>
-                </td>
-                <td style="width:40%; border: 1px solid black;"><strong>CNPJ</strong><br>
-                    <p>17.733.605/0001-94</p>
-
-                </td>
-            </tr>
+        <table style="width:100%; border: 1px solid black; font-size: 10px;">      
+            <td style="width:60%; border: 1px solid black;"><strong>Orgão Expedidor: </strong><br>
+                INSTITUTO DE PREVIDÊNCIA DO MUNICÍPIO DE RIO BRANCO
+            </td>
+            <td style="width:40%; border: 1px solid black;"><strong>CNPJ</strong><br>
+                17.733.605/0001-94
+            </td>        
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">          
             <tr>
                 <td style="width:50%; border: 1px solid black;"><strong>NOME DO SERVIDOR: </strong><br>
                     @foreach ($servidor as $servidor)
                     @if($ctc->serve_id == $servidor->id)
-                    <p> {{$servidor->nm_servidor}}</p>
-
+                    {{$servidor->nm_servidor}}
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>MATRÍCULA:</strong><br>
-                    <p>{{$servidor->matricula}}</p>
-
+                    {{$servidor->matricula}}
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>SEXO:</strong><br>
                     @if($servidor->sexo_id == 1)
-                    <p>Masculino</p>
+                    Masculino
                     @else
-                    <p>Feminino</p>
+                    Feminino
                     @endif
                 </td>
             </tr>
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:50%; border: 1px solid black;"><strong>RG/ÓRGÃO EXPEDIDOR: </strong><br>
-
                     @if($servidor->orgao_expedidor_id == 1)
-                    <p>{{$servidor->rg}} SSP/AC</p>
+                    {{$servidor->rg}} SSP/AC
                     @else
-                    <p>{{$servidor->rg}} SEPC/AC</p>
+                    {{$servidor->rg}} SEPC/AC
                     @endif                                   
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>CPF:</strong><br>
-                    <p>{{$servidor->cpf}}</p>
-
+                    {{$servidor->cpf}}
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>PIS/PASEP:</strong><br>
-                    <p>{{$servidor->pis_pasep}}</p>
-
+                    {{$servidor->pis_pasep}}
                 </td>
             </tr>
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:75%; border: 1px solid black;"><strong>FILIAÇÃO: </strong><br>
-
-                    <p> {{$servidor->nm_pai}} e {{$servidor->nm_mae}}</p>
-
+                    {{$servidor->nm_pai}} e {{$servidor->nm_mae}}
                 </td>
-
                 <td style="width:25%; border: 1px solid black;"><strong>DATA NASCIMENTO:</strong><br>
-                    <p>{{ date('d/m/Y', strtotime($servidor->data_nascimento)) }}</p>
+                    {{ date('d/m/Y', strtotime($servidor->data_nascimento)) }}
                     @endif
                     @endforeach
                 </td>
             </tr>
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>CARGO EFETIVO:</strong><br>
                     @foreach ($funcao as $funcao)
                     @if($ctc->funcao_id == $funcao->id)
-                    <p>{{$funcao->nm_funcao}}</p>
+                    {{$funcao->nm_funcao}}
                     @endif
                     @endforeach
                 </td>
+                
             </tr>
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>ORGÃO DE LOTAÇAO:</strong><br>
                     @foreach ($orgao as $orgao)
                     @if($ctc->orgao_id == $orgao->id)
-                    <p>{{$orgao->nm_orgao}}</p>
+                    {{$orgao->nm_orgao}}
                     @endif
                     @endforeach
                 </td>
             </tr>
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:50%; border: 1px solid black;"><strong>DATA DE ADMISSÃO:</strong><br>                   
-                    <p>{{ date('d/m/Y', strtotime($ctc->data_admissao)) }}</p>                    
+                    {{ date('d/m/Y', strtotime($ctc->data_admissao)) }}                    
                 </td>
                 <td style="width:50%; border: 1px solid black;"><strong>DATA DE EXONERAÇÃO/DEMISSÃO:</strong><br>                   
-                    <p>{{ date('d/m/Y', strtotime($ctc->data_exoneracao)) }}</p>                    
+                    {{ date('d/m/Y', strtotime($ctc->data_exoneracao)) }}                   
                 </td>                           
             </tr>
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO:</strong><br>
-                    <p>De {{ date('d/m/Y', strtotime($ctc->start_date)) }} A {{ date('d/m/Y', strtotime($ctc->end_date)) }}</p> 
+                    De {{ date('d/m/Y', strtotime($ctc->start_date)) }} A {{ date('d/m/Y', strtotime($ctc->end_date)) }} 
                 </td>
             </tr>
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>FONTE DE INFORMAÇÃO:</strong><br>
-                    <p>{{$ctc->fonte_info}}</p> 
+                    {{$ctc->fonte_info}}
                 </td>
             </tr>
         </table>
-        <table style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>DESTINAÇÃO DO TEMPO DE CONTRIBUIÇÃO:</strong><br>
-                    <p>PERÍODO DE {{ date('d/m/Y', strtotime($ctc->start_date)) }} A {{ date('d/m/Y', strtotime($ctc->end_date)) }} {{$ctc->destinacao}}</p> 
+                    PERÍODO DE {{ date('d/m/Y', strtotime($ctc->start_date)) }} A {{ date('d/m/Y', strtotime($ctc->end_date)) }} {{$ctc->destinacao}} 
                 </td>
             </tr>
         </table>
@@ -156,46 +146,46 @@ use Carbon\Carbon;
         </div>
 
 
-        <table id="minhaTabela">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <thead>
                 <tr>
-                    <th>Ano</th>
-                    <th>Tempo bruto</th>
-                    <th>Faltas</th>
-                    <th>Licença</th>
-                    <th>Licenças<br> sem vencimento</th>
-                    <th>Suspensões</th>
-                    <th>Disponibilidade</th>
-                    <th>Outras</th>
-                    <th>Total liquido</th>
+                    <th style="width:40%; border: 1px solid black;">Ano</th>
+                    <th style="width:40%; border: 1px solid black;">Tempo bruto</th>
+                    <th style="width:40%; border: 1px solid black;">Faltas</th>
+                    <th style="width:40%; border: 1px solid black;">Licença</th>
+                    <th style="width:40%; border: 1px solid black;">Licenças<br> sem vencimento</th>
+                    <th style="width:40%; border: 1px solid black;">Suspensões</th>
+                    <th style="width:40%; border: 1px solid black;">Disponibilidade</th>
+                    <th style="width:40%; border: 1px solid black;">Outras</th>
+                    <th style="width:40%; border: 1px solid black;">Total liquido</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($days_by_year as $year => $days)
                 <tr>
-                    <td>{{ $year }}</td>
-                    <td>{{ $days }} dias</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{ $days }} dias</td>
+                    <td style="border: 1px solid black;">{{ $year }}</td>
+                    <td style="border: 1px solid black;">{{ $days }} dias</td>
+                    <td style="border: 1px solid black;">0</td>
+                    <td style="border: 1px solid black;">0</td>
+                    <td style="border: 1px solid black;">0</td>
+                    <td style="border: 1px solid black;">0</td>
+                    <td style="border: 1px solid black;">0</td>
+                    <td style="border: 1px solid black;">0</td>
+                    <td style="border: 1px solid black;">{{ $days }} dias</td>
                 </tr>
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
                     <td>Total</td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td>{{ $diff }} dias</td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">{{ $diff }} dias</td>
 
                 </tr>
             </tfoot>
@@ -471,7 +461,7 @@ use Carbon\Carbon;
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    
+
     </body>
 </html>
 

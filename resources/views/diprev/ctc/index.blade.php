@@ -45,7 +45,7 @@ CTC
                                 <th class="text-center">CPF</th>
                                 <th class="text-center">Função</th>
 
-                                <th class="text-center">Origem</th>
+                                <th class="text-center">Orgão</th>
                                 <th class="text-center">Ações</th>
                             </tr>
                             </thead>

@@ -61,17 +61,14 @@
             <hr/>
             <h4>FILTRO DE PESQUISA</h4>
             <hr/>
-            <form action="{{route('almo.buscar')}}" method="post">
-                @csrf
+            
+                
                 <div class="row">
                     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
                         <div class="wrap">
-                            <label for="nm_patrimonio" class="form-control-label">Número de Patrimônio:
-                                <span class="text-danger">*</span>
-                            </label>
-
-                            <input type="text" class="form-control" name="nm_patrimonio"
-                                   value="{{isset($request) ? $request->input('nm_patrimonio') : '' }}">
+                             <button type="submit" class="btn btn-outline-primary btn-fixed-w mt-2">
+                            Pesquisar
+                        </button>
                         </div>
                     </div>
 
@@ -141,7 +138,7 @@
                     </div>
                     <div class="col-sm-12 col-md-4 col-lg-4"></div>
                 </div>
-            </form>
+            
         </div>
     </div>
 

@@ -45,15 +45,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/atendimentos/{id?}/pdf', 'Administracao\Atendimentos\AtendimentosController@Verpdf')->name('atendimentos.Verpdf');
     Route::get('/atendimentos/show/{id?}', 'Administracao\Atendimentos\AtendimentosController@show')->name('atendimentos.show');
     Route::delete('/atendimentos/{id}/destroy', 'Administracao\Atendimentos\AtendimentosController@destroy')->name('atendimentos.destroy');
+
     //
     Route::get('atendimentos/historico', 'Administracao\Atendimentos\HistoricoAtendimentosController@index')->name('atendimentosHistorico.historico');
     //FimatendimentoHistorico
     Route::get('atendimentos/dash', 'Administracao\Atendimentos\DashAtendimentosController@index');
-    
+
     Route::get('atendimentos/dashboard', 'Administracao\Atendimentos\DashAtendimentosController@countByDayWeek')->name('atendimentos.dash');
-    Route::get('tendimentos/pdf','Administracao\Atendimentos\DashAtendimentosController@index')->name('atendimentos.pdfGeral');
-    Route::get('tendimentos/pdfRecadastramento','Administracao\Atendimentos\DashAtendimentosController@relatorioAnual')->name('atendimentos.pdfGeralRecadastramento');
-    Route::get('registro/{id}','Administracao\Atendimentos\DashAtendimentosController@painel')->name('atendimentos.painel');
+    Route::get('tendimentos/pdf', 'Administracao\Atendimentos\DashAtendimentosController@index')->name('atendimentos.pdfGeral');
+    Route::get('tendimentos/pdfRecadastramento', 'Administracao\Atendimentos\DashAtendimentosController@relatorioAnual')->name('atendimentos.pdfGeralRecadastramento');
+    Route::get('registro/{id}', 'Administracao\Atendimentos\DashAtendimentosController@painel')->name('atendimentos.painel');
     //USUARIOS
     Route::resource('administracao/users', 'Administracao\Usuarios\UserController');
     Route::resource('administracao/roles', 'Administracao\Usuarios\RoleController');
@@ -77,7 +78,6 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/ctc/create', 'DIPREV\CTCController@create')->name('ctc.create');
     Route::post('/ctc/create', 'DIPREV\CTCController@store');
     Route::get('events/{id}', 'DIPREV\CTCController@pdf')->name('events.pdf');
-    
 
     //Route::get('/getDetails/{id?}', 'DIPREV\CTCController@getDetails');
     // Route::post('get-details','DIPREV\CTCController@getDetails')->name('get-details');
@@ -134,6 +134,8 @@ Route::group(['middleware' => ['auth']], function () {
     //Relatório PDF
     Route::get("/filtros/relatorios", 'DAF\AlmoxarifadoController@indexRelatorio')->name('relatorio.indexRelatorio');
     Route::any("/filtros/relatorios/{almo_tipo}/{almo_condicao}/{almo_localizacao_dpto}/pdf", 'DAF\AlmoxarifadoController@GeraRelatorioPDF');
+    
+    Route::get('/atendimentos/pdfdepartamento', 'DAF\FiltroAlmoxarifadoController@pdf_dpto')->name('pdf.departamento');
 
     //Departamento Almofaxirado
     Route::resource('/departamento', 'DAF\AlmoDptoController');
