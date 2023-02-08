@@ -17,6 +17,7 @@ use App\Models\DAF\Almoxarifado\AlmoTipo;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
 use PDF;
+
 class FiltroAlmoxarifadoController extends Controller {
 
     public function index(Request $request) {
@@ -109,6 +110,75 @@ class FiltroAlmoxarifadoController extends Controller {
         }
 
         return PDF::loadView('daf.almoxarifado.pdf.pdfDepartamento', compact('contadordpto', 'departamentos'))
+                        ->setPaper('A4', "landscape")
+                        // Altera o papel para modo paisagem.  "landscape"
+                        //Altera o papel para modo Retrato.    'portrait'
+                        ->stream('relatorio_daf.pdf');
+    }
+
+    public function pdf_condicao() {
+
+        $almoxarifados = Almo::with('almoxarifado_condicao', 'almoxarifado_localizacao_dpto')->get();
+
+        $lista = [];
+        foreach ($almoxarifados as $almoxarifado) {
+            $lista[$almoxarifado->almoxarifado_condicao->nm_condicao][] = [
+                'nm_patrimonio' => $almoxarifado->nm_patrimonio,
+                'condicao' => $almoxarifado->almoxarifado_condicao->nm_condicao,
+                'localizacao' => $almoxarifado->almoxarifado_localizacao_dpto->nm_departamento
+            ];
+        }
+
+
+
+        return PDF::loadView('daf.almoxarifado.pdf.pdfCondicao', compact('lista'))
+                        ->setPaper('A4', "landscape")
+                        // Altera o papel para modo paisagem.  "landscape"
+                        //Altera o papel para modo Retrato.    'portrait'
+                        ->stream('relatorio_daf.pdf');
+    }
+
+    public function pdf_tipo_item() {
+
+        $almoxarifados = Almo::with('almoxarifado_condicao', 'almoxarifado_localizacao_dpto', 'almoxarifado_tipo')->get();
+
+        $lista = [];
+
+        foreach ($almoxarifados as $almoxarifado) {
+            $lista[$almoxarifado->almoxarifado_tipo->nm_tipo][] = [
+                'nm_patrimonio' => $almoxarifado->nm_patrimonio,
+                'tipo' => $almoxarifado->almoxarifado_tipo->nm_tipo,
+                'condicao' => $almoxarifado->almoxarifado_condicao->nm_condicao,
+                'departamento' => $almoxarifado->almoxarifado_localizacao_dpto->nm_departamento
+            ];
+        }
+
+
+
+        return PDF::loadView('daf.almoxarifado.pdf.pdfTipoItem', compact('lista'))
+                        ->setPaper('A4', "landscape")
+                        // Altera o papel para modo paisagem.  "landscape"
+                        //Altera o papel para modo Retrato.    'portrait'
+                        ->stream('relatorio_daf.pdf');
+    }
+
+    public function pdf_responsavel() {
+
+        $almoxarifados = Almo::with('almoxarifado_condicao', 'almoxarifado_localizacao_dpto', 'almoxarifado_responsavel')->get();
+        $lista = [];
+        foreach ($almoxarifados as $almoxarifado) {
+            $lista[$almoxarifado->almoxarifado_responsavel->nm_responsavel][] = [
+                'nm_patrimonio' => $almoxarifado->nm_patrimonio,
+                'condicao' => $almoxarifado->almoxarifado_condicao->nm_condicao,
+                'tipo' => $almoxarifado->almoxarifado_tipo->nm_tipo,
+                    'departamento' => $almoxarifado->almoxarifado_localizacao_dpto->nm_departamento
+                    
+            ];
+        }
+
+
+
+        return PDF::loadView('daf.almoxarifado.pdf.pdfResponsavel', compact('lista'))
                         ->setPaper('A4', "landscape")
                         // Altera o papel para modo paisagem.  "landscape"
                         //Altera o papel para modo Retrato.    'portrait'

@@ -136,6 +136,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::any("/filtros/relatorios/{almo_tipo}/{almo_condicao}/{almo_localizacao_dpto}/pdf", 'DAF\AlmoxarifadoController@GeraRelatorioPDF');
     
     Route::get('/atendimentos/pdfdepartamento', 'DAF\FiltroAlmoxarifadoController@pdf_dpto')->name('pdf.departamento');
+    Route::get('/atendimentos/pdfcondicao', 'DAF\FiltroAlmoxarifadoController@pdf_condicao')->name('pdf.condicao');
+    Route::get('/atendimentos/pdftipoitem', 'DAF\FiltroAlmoxarifadoController@pdf_tipo_item')->name('pdf.tipoitem');
+    Route::get('/atendimentos/pdfresponsavel', 'DAF\FiltroAlmoxarifadoController@pdf_responsavel')->name('pdf.responsavel');
 
     //Departamento Almofaxirado
     Route::resource('/departamento', 'DAF\AlmoDptoController');
