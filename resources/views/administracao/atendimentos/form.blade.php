@@ -21,7 +21,7 @@
        <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="matricula" class="form-control-label">Matrícula:
-                <span class="text-danger">*</span>
+               
             </label>
             <input type="text" class="form-control" name="matricula" value="{{ @$atendimentos->matricula}}">
             @if ($errors->has('matricula'))

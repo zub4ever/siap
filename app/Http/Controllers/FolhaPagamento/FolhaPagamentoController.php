@@ -22,4 +22,23 @@ class FolhaPagamentoController extends Controller
 
         return view("folhaPagamento.index");
     }
+    
+    
+    public function inicioFolha() {
+        
+        
+        return view('folhaPagamento.folhamensal.index');
+    }
+    public function create() {
+        
+        
+        return view('folhaPagamento.folhamensal.create');
+    }
+    public function store() {
+        
+        
+        return view('folhaPagamento.folhamensal.index');
+    }
+    
+            
 }

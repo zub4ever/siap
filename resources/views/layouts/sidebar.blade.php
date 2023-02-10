@@ -244,6 +244,23 @@
                         </ul>
                     </li>
                     <!--Fim de DAF-->
+                     <!--Inicio  de Folha -->
+                    <li {!! (request()->is('folhaPagamento*') ? 'class="active"' : "")!!}>
+                        <a href="{{route('inicio.controle')}}" aria-expanded="true">
+                            <i class="ti-briefcase"></i>
+                            <span>Folha</span>
+                        </a>
+
+                       <!-- <ul class="collapse">
+                            <li {!! (request()->is('daf/*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('inicio.controle')}}">
+                                    <i class="ti-layers-alt"></i>
+                                    <span>Atualizar </span>
+                                </a>
+                            </li>
+                        </ul> -->
+                    </li>
+                    <!--Fim de DAF-->
 
                 </ul>
             </nav>

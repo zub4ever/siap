@@ -32,7 +32,7 @@ use Carbon\Carbon;
 
 
         <table style="width:100%; border: 1px solid black; font-size: 10px;">      
-            <td style="width:60%; border: 1px solid black;"><strong>Orgão Expedidor: </strong><br>
+            <td style="width:60%; border: 1px solid black;"><strong>ORGÃO EXPEDIDOR: </strong><br>
                 INSTITUTO DE PREVIDÊNCIA DO MUNICÍPIO DE RIO BRANCO
             </td>
             <td style="width:40%; border: 1px solid black;"><strong>CNPJ</strong><br>
@@ -142,22 +142,22 @@ use Carbon\Carbon;
             </tr>
         </table>
         <div style="text-align: center;">
-            <strong align="center">Frequência</strong>
+            <strong align="center">FREQUÊNCIA</strong>
         </div>
 
 
-        <table style="width:100%; border: 1px solid black;font-size: 10px;">
+        <table style="width:100%; border: 1px solid black;font-size: 8px;">
             <thead>
                 <tr>
-                    <th style="width:40%; border: 1px solid black;">Ano</th>
-                    <th style="width:40%; border: 1px solid black;">Tempo bruto</th>
-                    <th style="width:40%; border: 1px solid black;">Faltas</th>
-                    <th style="width:40%; border: 1px solid black;">Licença</th>
-                    <th style="width:40%; border: 1px solid black;">Licenças<br> sem vencimento</th>
-                    <th style="width:40%; border: 1px solid black;">Suspensões</th>
-                    <th style="width:40%; border: 1px solid black;">Disponibilidade</th>
-                    <th style="width:40%; border: 1px solid black;">Outras</th>
-                    <th style="width:40%; border: 1px solid black;">Total liquido</th>
+                    <th style="width:40%; border: 1px solid black;">ANO</th>
+                    <th style="width:40%; border: 1px solid black;">TEMPO BRUTO</th>
+                    <th style="width:40%; border: 1px solid black;">FALTAS</th>
+                    <th style="width:40%; border: 1px solid black;">LICENÇA</th>
+                    <th style="width:40%; border: 1px solid black;">LICENÇA<br>SEM VENCIMENTO</th>
+                    <th style="width:40%; border: 1px solid black;">SUSPENSÕES</th>
+                    <th style="width:40%; border: 1px solid black;">DISPONIBILIDADE</th>
+                    <th style="width:40%; border: 1px solid black;">OUTRAS</th>
+                    <th style="width:40%; border: 1px solid black;">TOTAL LÍQUIDO</th>
                 </tr>
             </thead>
             <tbody>

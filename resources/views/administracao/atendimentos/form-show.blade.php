@@ -67,7 +67,7 @@ Atendimentos
             @endif
         </div>
     </div>
-       <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
@@ -80,7 +80,7 @@ Atendimentos
     </div>
 </div>
 <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="city_id" class="form-control-label">Cidade:
                 <span class="text-danger">*</span>
@@ -89,7 +89,7 @@ Atendimentos
                 <option value="">Selecione a cidade</option>
                 @foreach ($city as $ct)
                 <option value="{{$ct->id}}"
-                    {{(empty(old('city_id')) ? @$atendimentos->city_id : old('city_id')) == $ct->id ? 'selected' : ''}}>  
+                        {{(empty(old('city_id')) ? @$atendimentos->city_id : old('city_id')) == $ct->id ? 'selected' : ''}}>  
                     {{$ct->nm_cidade}}
                 </option>
                 @endforeach
@@ -108,7 +108,7 @@ Atendimentos
                 <option value="">Selecione o estado</option>
                 @foreach ($state as $st)
                 <option value="{{$st->id}}"
-                    {{(empty(old('state_id')) ? @$atendimentos->state_id : old('state_id')) == $st->id ? 'selected' : ''}}>
+                        {{(empty(old('state_id')) ? @$atendimentos->state_id : old('state_id')) == $st->id ? 'selected' : ''}}>
                     {{$st->nm_estado}}
                 </option>
                 @endforeach
@@ -120,7 +120,7 @@ Atendimentos
     </div>
 </div>
 <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="atendimento_assunto_id" class="form-control-label">Tipo de atendimento:
                 <span class="text-danger">*</span>
@@ -129,7 +129,7 @@ Atendimentos
                 <option value="">Selecione o atendimento</option>
                 @foreach ($atendimento_assunto as $assunto)
                 <option value="{{$assunto->id}}"
-                    {{(empty(old('atendimento_assunto_id')) ? @$atendimentos->atendimento_assunto_id : old('atendimento_assunto_id')) == $assunto->id ? 'selected' : ''}}>  
+                        {{(empty(old('atendimento_assunto_id')) ? @$atendimentos->atendimento_assunto_id : old('atendimento_assunto_id')) == $assunto->id ? 'selected' : ''}}>  
                     {{$assunto->nm_assunto}}
                 </option>
                 @endforeach
@@ -148,7 +148,7 @@ Atendimentos
                 <option value="">Selecione o departamento</option>
                 @foreach ($almo_localizacao_dpto as $dpto)
                 <option value="{{$dpto->id}}"
-                    {{(empty(old('almoxarifado_localizacao_dpto_id')) ? @$atendimentos->almoxarifado_localizacao_dpto_id : old('almoxarifado_localizacao_dpto_id')) == $dpto->id ? 'selected' : ''}}>
+                        {{(empty(old('almoxarifado_localizacao_dpto_id')) ? @$atendimentos->almoxarifado_localizacao_dpto_id : old('almoxarifado_localizacao_dpto_id')) == $dpto->id ? 'selected' : ''}}>
                     {{$dpto->nm_departamento}}
                 </option>
                 @endforeach
@@ -172,7 +172,7 @@ Atendimentos
             @endif
         </div>
     </div>
-   <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="email" class="form-control-label">E-mail informado:
                 <span class="text-danger">*</span>
@@ -209,9 +209,6 @@ Atendimentos
                 Imprimir
             </button>
         </a>
-        
-                        <button class="btn btn-primary btn-show" data-id="{{ $atendimento->id }}">Exibir</button>
-
     </div>
     <div class="wrap mt-1" style="text-align: center;">
         <a href="{{route('atendimentos.index')}}">
@@ -243,17 +240,17 @@ Atendimentos
 
 
 <script>
-    $(document).ready(function() {
-        $('.btn-show').click(function() {
-            let id = $(this).data('id');
+$(document).ready(function () {
+    $('.btn-show').click(function () {
+        let id = $(this).data('id');
 
-            $.ajax({
-                url: "/registro/" + id,
-                method: "GET",
-                success: function(response) {
-                    $('#show-atendimento').html(response);
-                }
-            });
+        $.ajax({
+            url: "/registro/" + id,
+            method: "GET",
+            success: function (response) {
+                $('#show-atendimento').html(response);
+            }
         });
     });
+});
 </script>

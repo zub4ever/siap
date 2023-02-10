@@ -37,7 +37,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('pedido', 'Pedido\PedidoController');
 
-    Route::resource('folhaPagamento', 'FolhaPagamento\FolhaPagamentoController');
+    
+    //SEFPAG
+    Route::get('folhaPagamento', 'FolhaPagamento\FolhaPagamentoController@index')->name('inicio.controle');
+    Route::get('folhaMensal', 'FolhaPagamento\FolhaPagamentoController@inicioFolha')->name('inicio.folha');
+    Route::get('folhaMensal/create', 'FolhaPagamento\FolhaPagamentoController@create')->name('inicio.create');
+    Route::post('folhaMensal/create', 'FolhaPagamento\FolhaPagamentoController@store');
+    //FIM
+    
+    
     //Administração ATENDIMENTO
     Route::resource('administracao/atendimentos', 'Administracao\Atendimentos\AtendimentosController');
     Route::get('administracao/atendimentos/create', 'Administracao\Atendimentos\AtendimentosController@create')->name('atendimentos.create');
@@ -164,9 +172,9 @@ Route::group(['middleware' => ['auth']], function () {
 });
 Auth::routes();
 
-Route::resource("/requerimentos", "Publico\PedidoPubliController");
-Route::get('requerimentos/create', 'Publico\PedidoPubliController@create')->name('requerimentos.create');
-Route::post('requerimentos/create', 'Publico\PedidoPubliController@store');
+//Route::resource("/requerimentos", "Publico\PedidoPubliController");
+//Route::get('requerimentos/create', 'Publico\PedidoPubliController@create')->name('requerimentos.create');
+//Route::post('requerimentos/create', 'Publico\PedidoPubliController@store');
 
 //ConsultaPublica
 Route::get('/consultaPublica', 'DAF\AlmoxarifadoController@consulta');
