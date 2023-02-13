@@ -67,9 +67,9 @@ Contratos dos servidores
                                 <td class="text-center">{{$mnc->nm_origem}}</td>
                                 @endif
                                 @endforeach
-                                @foreach($funcao as $funcao)
-                                @if($svd->funcao_id == $funcao->id)
-                                <td class="text-center">{{$funcao->nm_funcao}}</td>
+                                @foreach($funcao as $funca)
+                                @if($svd->funcao_id == $funca->id)
+                                <td class="text-center">{{$funca->nm_funcao}}</td>
                                 @endif
                                 @endforeach
                                 <td>

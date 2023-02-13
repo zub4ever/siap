@@ -9,8 +9,8 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("ctc.index")}}">CTC</a></li>
-    <li class="breadcrumb-item active"><a>Cadastrar CTC</a></li>
+    <li class="breadcrumb-item"><a href="{{route("ctc.index")}}">Folha Mensal</a></li>
+    <li class="breadcrumb-item active"><a>Atualização dos números mensais</a></li>
 </ol>
 
 <div class="row">

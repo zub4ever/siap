@@ -23,5 +23,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 // List
 Route::get('servidor', 'APIs\ServeAPIController@index');
 
+
+
 // List single
 Route::get('servidor/{id}', [ServeAPIController::class, 'show']);
+
+
+//
+Route::get('folhaPagamentoMensal', 'APIs\FolhaPgtoAPIController@index');
