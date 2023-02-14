@@ -39,10 +39,14 @@ Route::group(['middleware' => ['auth']], function () {
 
     
     //SEFPAG
-    Route::get('folhaPagamento', 'FolhaPagamento\FolhaPagamentoController@index')->name('inicio.controle');
-    Route::get('folhaMensal', 'FolhaPagamento\FolhaPagamentoController@inicioFolha')->name('inicio.folha');
-    Route::get('folhaMensal/create', 'FolhaPagamento\FolhaPagamentoController@create')->name('inicio.create');
-    Route::post('folhaMensal/create', 'FolhaPagamento\FolhaPagamentoController@store');
+    Route::resource('folhaPagamento', 'FolhaPagamento\FolhaInicioController');
+    
+    
+    Route::resource('folhamensal', 'FolhaPagamento\FolhaPagamentoController');    
+    Route::get('folhaensal/create', 'FolhaPagamento\FolhaPagamentoController@create')->name('inicio.create');
+    Route::post('folhamensal/create', 'FolhaPagamento\FolhaPagamentoController@store');
+    //Route::get('folhaensal/{id}/edit', 'FolhaPagamento\FolhaPagamentoController@edit')->name('folhamensal.edit');
+   
     //FIM
     
     

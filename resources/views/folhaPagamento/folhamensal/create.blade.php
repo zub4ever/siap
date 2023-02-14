@@ -18,7 +18,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card_title">Folha</h4>
-                <form action="" method="POST">
+                <form action="{{route('folhamensal.store')}}" method="POST">
                     @csrf
                     @include('folhaPagamento.folhamensal.form')
                 </form>

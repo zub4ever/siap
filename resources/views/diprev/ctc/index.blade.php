@@ -78,11 +78,11 @@ CTC
                                        ">
                                             <i class="ti-printer mr-1 btn btn-warning"></i>
                                         </a>
-                                       
+                                       @can('excluir')
                                         <a href="{{route('ctc.edit', $ctc->id)}}">
                                             <i class="ti-pencil mr-1 btn btn-success"></i>
                                         </a>
-                                        @can('excluir')
+                                        
                                             &nbsp;
                                             <form action="{{route('ctc.destroy', $ctc->id)}}" method="POST"
                                                   id="formLaravel{{$ctc->id}}" style="display:inline-block;">

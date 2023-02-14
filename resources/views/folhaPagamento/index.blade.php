@@ -31,7 +31,7 @@ Folha Pagamento
                     <div class="card-body">
                         <h5 class="card-title">Atualizar folha</h5>
                         <p class="card-text">Clique para atualizar os números da folha de pagamento </p>
-                        <a href="#" class="btn btn-primary">Iniciar</a>
+                        <a href="{{route('folhamensal.index')}}" class="btn btn-primary">Iniciar</a>
                     </div>
                 </div>
             </div>  

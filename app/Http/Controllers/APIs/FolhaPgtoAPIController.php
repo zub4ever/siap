@@ -17,7 +17,8 @@ class FolhaPgtoAPIController extends Controller {
 
     public function index() {
         
-        $folhasPagamento = FolhaPagamento::all();
+       $folhasPagamento = FolhaPagamento::where('ano', 2023)->get();
+        
     return response()->json($folhasPagamento);
     }
 

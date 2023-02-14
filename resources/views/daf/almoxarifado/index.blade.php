@@ -145,10 +145,11 @@ Almoxarifado
                                        ">
                                         <i class="fa fa-qrcode mr-1 btn btn-info"></i>
                                     </a>
+                                    @can('excluir')
                                     <a href="{{route('almoxarifado.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
-                                    @can('excluir')
+                                    
                                     &nbsp;
                                     <form action="{{route('almoxarifado.destroy', $fcn->id)}}" method="POST"
                                           id="formLaravel{{$fcn->id}}" style="display:inline-block;">

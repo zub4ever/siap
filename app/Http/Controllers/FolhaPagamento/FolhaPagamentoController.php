@@ -10,16 +10,13 @@ use DB;
 
 class FolhaPagamentoController extends Controller {
 
+  
+
     public function index() {
 
+        $folhapgto = FolhaPagamento::all();
 
-        return view("folhaPagamento.index");
-    }
-
-    public function inicioFolha() {
-
-
-        return view('folhaPagamento.folhamensal.index');
+        return view('folhaPagamento.folhamensal.index',compact('folhapgto'));
     }
 
     public function create() {
@@ -46,9 +43,32 @@ class FolhaPagamentoController extends Controller {
 
         DB::commit();
 
-        return redirect()->route('inicio.controle')->with(
+        return redirect()->route('folhamensal.index')->with(
                         'success',
                         "Folha mensal cadastrada com sucesso."
+        );
+    }
+    public function edit($id) {        
+        $folhapgto = FolhaPagamento::findOrFail($id);
+        return view('folhaPagamento.folhamensal.edit', compact('folhapgto'));
+    }
+    
+    public function update(FolhaPagamentoFormRequest $request, $id) {
+        $folhapgto = FolhaPagamento::findOrFail($id);
+
+        DB::beginTransaction();
+
+        if (!$folhapgto->update($request->all())) {
+
+            DB::rollBack();
+            return redirect()->route('folhamensal.index')->with('error', "Falha em alterar.");
+        }
+
+        DB::commit();
+
+        return redirect()->route('folhamensal.index')->with(
+                        'success',
+                        "Alterada com sucesso."
         );
     }
 
