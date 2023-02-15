@@ -27,14 +27,14 @@ Atendimentos
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('atendimentos.create')}}" role="button">
                     Novo atendimento
                 </a>
-                    <div class="pull-right">
-                <a class="btn btn-inverse-dark btn-md" href="{{route('atendimentos.dash')}}">Dashboard de atendimentos</a>
-                <a class="btn btn-inverse-primary btn-md" href="/atendimentos/historico">Histórico de atendimentos</a>
-            </div>               
+                <div class="pull-right">
+                    <a class="btn btn-inverse-dark btn-md" href="{{route('atendimentos.dash')}}">Dashboard de atendimentos</a>
+                    <a class="btn btn-inverse-primary btn-md" href="/atendimentos/historico">Histórico de atendimentos</a>
+                </div>               
             </div>           
         </div>       
     </div>
-    
+
 
 </div>
 <div class="row">
@@ -77,9 +77,9 @@ Atendimentos
                                 @foreach($atendimento_status as $mc)
                                 @if($fcn->atendimento_status_id == $mc->id)
                                 <td class="text-center">
-                                    
+
                                     <label class="badge badge-success">{{$mc->statusAtendimento}}</label>
-                                
+
                                 </td>
                                 @endif
                                 @endforeach

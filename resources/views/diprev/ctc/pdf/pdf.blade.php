@@ -116,7 +116,7 @@ use Carbon\Carbon;
                     {{ date('d/m/Y', strtotime($ctc->data_admissao)) }}                    
                 </td>
                 <td style="width:50%; border: 1px solid black;"><strong>DATA DE EXONERAÇÃO/DEMISSÃO:</strong><br>                   
-                    {{ date('d/m/Y', strtotime($ctc->data_exoneracao)) }}                   
+                    {{ $ctc->data_exoneracao ? date('d/m/Y', strtotime($ctc->data_exoneracao)) : '' }}                  
                 </td>                           
             </tr>
         </table>
@@ -230,7 +230,7 @@ use Carbon\Carbon;
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Lavrei a Certidão que não contém emendas nem rasuras</strong></p>
                         <br><br><br><!-- comment -->
-                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->data_pedido)) }}</p>
+                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->created_at)) }}</p>
                     </div>
                     <div style="border: 1px solid black;font-size: 10px; width: 100%">
                         <p style="text-align: center">Assinatura e carimbo </p>   
@@ -240,7 +240,7 @@ use Carbon\Carbon;
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Visto do Dirigente do Órgão</strong></p>
                         <br><br><br><!-- comment -->
-                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->data_pedido)) }}</p>
+                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->created_at)) }}</p>
                     </div>
                     <div style="border: 1px solid black;font-size: 10px; width: 100%">
                         <p style="text-align: center">Assinatura </p>   
@@ -258,7 +258,7 @@ use Carbon\Carbon;
                     <p class="justificado"><strong>HOMOLOGO</strong> a presente Certidão de Tempo de Contribuição e declaro que as informações nela constantes
                         correspondem com a verdade.</p>
 
-                    <p style="text-align:left;">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->data_pedido)) }}</p> 
+                    <p style="text-align:left;">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->created_at)) }}</p> 
                 </td>
             </tr>
         </table>

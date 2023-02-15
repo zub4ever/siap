@@ -37,19 +37,18 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::resource('pedido', 'Pedido\PedidoController');
 
-    
     //SEFPAG
     Route::resource('folhaPagamento', 'FolhaPagamento\FolhaInicioController');
-    
-    
-    Route::resource('folhamensal', 'FolhaPagamento\FolhaPagamentoController');    
+
+    Route::resource('folhamensal', 'FolhaPagamento\FolhaPagamentoController');
     Route::get('folhaensal/create', 'FolhaPagamento\FolhaPagamentoController@create')->name('inicio.create');
     Route::post('folhamensal/create', 'FolhaPagamento\FolhaPagamentoController@store');
     //Route::get('folhaensal/{id}/edit', 'FolhaPagamento\FolhaPagamentoController@edit')->name('folhamensal.edit');
-   
     //FIM
-    
-    
+    Route::get('/upload-pdf', 'Dirf\DirfController@showUploadForm')->name('pdf.showUploadForm');
+    Route::post('/upload-pdf', 'Dirf\DirfController@upload')->name('pdf.upload');
+    Route::post('/pdfs', 'Dirf\DirfController@store')->name('pdf.store');
+
     //Administração ATENDIMENTO
     Route::resource('administracao/atendimentos', 'Administracao\Atendimentos\AtendimentosController');
     Route::get('administracao/atendimentos/create', 'Administracao\Atendimentos\AtendimentosController@create')->name('atendimentos.create');
@@ -146,7 +145,7 @@ Route::group(['middleware' => ['auth']], function () {
     //Relatório PDF
     Route::get("/filtros/relatorios", 'DAF\AlmoxarifadoController@indexRelatorio')->name('relatorio.indexRelatorio');
     Route::any("/filtros/relatorios/{almo_tipo}/{almo_condicao}/{almo_localizacao_dpto}/pdf", 'DAF\AlmoxarifadoController@GeraRelatorioPDF');
-    
+
     Route::get('/atendimentos/pdfdepartamento', 'DAF\FiltroAlmoxarifadoController@pdf_dpto')->name('pdf.departamento');
     Route::get('/atendimentos/pdfcondicao', 'DAF\FiltroAlmoxarifadoController@pdf_condicao')->name('pdf.condicao');
     Route::get('/atendimentos/pdftipoitem', 'DAF\FiltroAlmoxarifadoController@pdf_tipo_item')->name('pdf.tipoitem');
@@ -179,7 +178,6 @@ Auth::routes();
 //Route::resource("/requerimentos", "Publico\PedidoPubliController");
 //Route::get('requerimentos/create', 'Publico\PedidoPubliController@create')->name('requerimentos.create');
 //Route::post('requerimentos/create', 'Publico\PedidoPubliController@store');
-
 //ConsultaPublica
 Route::get('/consultaPublica', 'DAF\AlmoxarifadoController@consulta');
 Route::post('/consultaPublica/resultado', 'DAF\AlmoxarifadoController@busca')->name('consulta.publica');
