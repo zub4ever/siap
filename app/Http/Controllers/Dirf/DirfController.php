@@ -13,9 +13,7 @@ use Illuminate\Http\UploadedFile;
 use \setasign\Fpdi\Fpdi;
 use \setasign\Fpdi\PdfParser\StreamReader;
 use Smalot\PdfParser\Parser;
-
-
-
+use Sunra\PhpSimple\HtmlDomParser;
 
 class DirfController extends Controller {
 
@@ -24,86 +22,87 @@ class DirfController extends Controller {
         return view("dirf.upload-pdf");
     }
 
-    public function upload(DirfFormRequest $request) {
-        $pdfs = $request->file('pdfs');
-        $errors = [];
+    public function upload(Request $request) {
+        if ($request->hasFile('html_file')) {
+            $file = $request->file('html_file');
+            $fileName = $file->getClientOriginalName();
 
-        foreach ($pdfs as $pdf) {
-            $filename = $pdf->getClientOriginalName();
+            $fileContent = file_get_contents($file->getPathname());
+            $html = new \DOMDocument();
+            $html->loadHTML($fileContent);
 
-            // Extrair CPF e Nome do arquivo usando regex
-            $pdfData = file_get_contents($pdf->getPathname());
-            $parser = new \Smalot\PdfParser\Parser();
-            $pdf = $parser->parseContent($pdfData);
-            $text = $pdf->getText();
+            $cpfList = [];
+            $nameList = [];
 
-            if (preg_match('/CPF\s*(\d{3})\.?(\d{3})\.?(\d{3})-?(\d{2})\s*Nome Completo\s*(.+)/', $text, $matches)) {
-                $cpf = $matches[1] . $matches[2] . $matches[3] . $matches[4];
-                $nome = $matches[5];
-                $path = $pdf->storeAs('pdfs', "DIRF2023_{$cpf}.pdf");
-                DIRF2023::create([
-                    'path' => $path,
-                    'cpf' => $cpf,
-                    'nome' => $nome,
-                ]);
-            } else {
-                // Se o arquivo não seguir o padrão, adicionar erro à lista de erros
-                $errors[] = "O arquivo '{$filename}' não segue o padrão de nome esperado.";
+            $tables = $html->getElementsByTagName('table');
+            foreach ($tables as $table) {
+                $rows = $table->getElementsByTagName('tr');
+                foreach ($rows as $row) {
+                    $cols = $row->getElementsByTagName('td');
+                    if ($cols->length == 2) {
+                        $cpfTd = $cols->item(0);
+                        $nameTd = $cols->item(1);
+                        $cpf = $cpfTd->textContent;
+                        $name = $nameTd->textContent;
+
+                        // Verifica se o texto da célula contém um CPF
+                        if (preg_match('/[0-9]{3}\.[0-9]{3}\.[0-9]{3}\-[0-9]{2}/', $cpf)) {
+                            $cpfList[] = $cpf;
+                            $nameList[] = $name;
+                        }
+                    }
+                }
             }
-        }
 
-        if (!empty($errors)) {
-            return redirect()->back()->withErrors(new \Illuminate\Support\MessageBag($errors));
+            return view('dirf.upload-result', [
+                'cpfList' => $cpfList,
+                'nameList' => $nameList
+            ]);
         }
-
-        return redirect()->back()->with('success', 'Arquivos enviados com sucesso.');
     }
 
-    public function store(DirfFormRequest $request) {
-        $errors = [];
+    public function store(Request $request)
+    {
+        $path = $request->file('result')->store('results');
+        $file = Storage::get($path);
+        
+        $cpfList = array();
+        $nameList = array();
 
-        foreach ($request->file('pdfs') as $pdf) {
-            $path = $pdf->store('pdfs');
-            $filename = $pdf->getClientOriginalName();
-            $cpf = null;
-            $nome = null;
-
-            // Extrair CPF e Nome do arquivo usando regex
-            $pdfData = file_get_contents($pdf->getPathname());
-            $parser = new \Smalot\PdfParser\Parser();
-            $pdf = $parser->parseContent($pdfData);
-            $text = $pdf->getText();
-
-            if (preg_match('/CPF\s*(\d{3})\.?(\d{3})\.?(\d{3})-?(\d{2})\s*Nome Completo\s*(.+)/', $text, $matches)) {
-                $cpf = $matches[1] . $matches[2] . $matches[3] . $matches[4];
-                $nome = $matches[5];
-
-                // Copiar o arquivo para um novo arquivo com o nome esperado
-                $pdfCopy = new Fpdi();
-                $pdfCopy->AddPage();
-                $pdfCopy->setSourceFile($parser);
-                $tplIdx = $pdfCopy->importPage(1);
-                $pdfCopy->useTemplate($tplIdx, 0, 0);
-                $pdfCopy->Output(public_path("pdfs/DIRF2023_{$cpf}.pdf"), "F");
-
-                // Salvar os dados no banco de dados
-                DIRF2023::create([
-                    'path' => "pdfs/DIRF2023_{$cpf}.pdf",
-                    'cpf' => $cpf,
-                    'nome' => $nome,
-                    'filename' => "DIRF2023_{$cpf}.pdf",
-                ]);
-            } else {
-                // Se o arquivo não seguir o padrão, adicionar erro à lista de erros
-                $errors[] = "O arquivo '{$filename}' não segue o padrão de nome esperado.";
+        $dom = new \DOMDocument();
+        $dom->loadHTML($file);
+        $tables = $dom->getElementsByTagName('table');
+        
+        foreach ($tables as $table) {
+            $rows = $table->getElementsByTagName('tr');
+            foreach ($rows as $row) {
+                $cells = $row->getElementsByTagName('td');
+                $cpf = "";
+                $name = "";
+                foreach ($cells as $cell) {
+                    $text = trim($cell->nodeValue);
+                    if (preg_match('/[0-9]{3}\.[0-9]{3}\.[0-9]{3}-[0-9]{2}/', $text)) {
+                        $cpf = $text;
+                    } elseif (!empty($text)) {
+                        $name = $text;
+                    }
+                }
+                if (!empty($cpf) && !empty($name)) {
+                    $cpfList[] = $cpf;
+                    $nameList[] = $name;
+                }
             }
         }
 
-        if (!empty($errors)) {
-            return redirect()->back()->withErrors(new \Illuminate\Support\MessageBag($errors));
-        }
+        // Fazer algo com as listas de CPF e nomes (armazenar no banco, gerar relatório, etc.)
 
-        return redirect()->back()->with('success', 'Arquivos enviados com sucesso.');
+        return view('upload-result')->with('cpfList', $cpfList)->with('nameList', $nameList);
+    }
+    
+    
+    public function showUploadResult()
+    {
+        return view('dirf.upload-result');
     }
 
 }

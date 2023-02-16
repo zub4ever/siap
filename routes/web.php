@@ -48,6 +48,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/upload-pdf', 'Dirf\DirfController@showUploadForm')->name('pdf.showUploadForm');
     Route::post('/upload-pdf', 'Dirf\DirfController@upload')->name('pdf.upload');
     Route::post('/pdfs', 'Dirf\DirfController@store')->name('pdf.store');
+    
+    
+    Route::get('/upload-result', 'Dirf\DirfController@showUploadResult');
+
+    
 
     //Administração ATENDIMENTO
     Route::resource('administracao/atendimentos', 'Administracao\Atendimentos\AtendimentosController');

@@ -1,3 +1,4 @@
+
 @extends('layouts.app')
 
 
@@ -24,29 +25,27 @@ Dirf
 </ol>
 
 
-@if ($errors->any())
-<div>
-    <ul>
-        @foreach ($errors->all() as $error)
-        <li>{{ $error }}</li>
+<table>
+    <thead>
+        <tr>
+            <th>CPF</th>
+            <th>Nome Completo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($cpfList as $index => $cpf)
+            <tr>
+                <td>{{ $cpf }}</td>
+                <td>{{ $nameList[$index] }}</td>
+            </tr>
         @endforeach
-    </ul>
-</div>
-@endif
-
-<form action="{{ route('pdf.upload') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-
-    @csrf
-            <div>
-                <label for="html_file">Selecione o arquivo HTML:</label>
-                <input type="file" name="html_file" id="html_file">
-            </div>
-            <div>
-                <button type="submit">Enviar</button>
-            </div>
-</form>
-
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="2">Total: {{ count($cpfList) }}</td>
+        </tr>
+    </tfoot>
+</table>
 
 
 

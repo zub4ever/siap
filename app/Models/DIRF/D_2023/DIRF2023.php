@@ -9,9 +9,9 @@ class DIRF2023 extends Model {
     protected $table = 'documentos';
     public $timestamps = true;
     protected $fillable = [
-        'cpf',
-        'nome',
-        'path'
+        'txt_path',
+        'pdf_path',
+        'cpf'
     ];
     protected $guarded = [];
 
