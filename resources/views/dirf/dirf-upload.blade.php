@@ -24,27 +24,14 @@ Dirf
 </ol>
 
 
-<table>
-    <thead>
-        <tr>
-            <th>CPF</th>
-            <th>Nome Completo</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach ($cpfList as $index => $cpf)
-            <tr>
-                <td>{{ $cpf }}</td>
-                <td>{{ $nameList[$index] }}</td>
-            </tr>
-        @endforeach
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="2">Total: {{ count($cpfList) }}</td>
-        </tr>
-    </tfoot>
-</table>
+<form action="{{ route('dirf.upload') }}" method="post" enctype="multipart/form-data">
+    @csrf
+    <label for="pdfs">PDFs:</label>
+    <input type="file" name="pdfs[]" multiple>
+    <br>
+    <button type="submit">Enviar</button>
+</form>
+
 
 
 

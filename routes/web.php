@@ -48,10 +48,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/upload-pdf', 'Dirf\DirfController@showUploadForm')->name('pdf.showUploadForm');
     Route::post('/upload-pdf', 'Dirf\DirfController@upload')->name('pdf.upload');
     Route::post('/pdfs', 'Dirf\DirfController@store')->name('pdf.store');
-    
-    
     Route::get('/upload-result', 'Dirf\DirfController@showUploadResult');
 
+    Route::get('dirf', 'Dirf\DirfCedulaCController@index')->name('dirf.index');
+    Route::get('/dirf/download/{cpf}', 'Dirf\DirfCedulaCController@download')->name('dirf.download');
+
+    Route::get('/dirf/upload', function () {
+    return view('dirf.dirf-upload');
+})->name('dirf.up');
+    Route::post('/dirf/upload', 'Dirf\DirfCedulaCController@upload')->name('dirf.upload');
+    Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store')->name('dirf.store');
+    
     
 
     //Administração ATENDIMENTO
