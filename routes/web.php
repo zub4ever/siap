@@ -61,6 +61,11 @@ Route::group(['middleware' => ['auth']], function () {
     
     
 
+
+
+    
+    
+
     //Administração ATENDIMENTO
     Route::resource('administracao/atendimentos', 'Administracao\Atendimentos\AtendimentosController');
     Route::get('administracao/atendimentos/create', 'Administracao\Atendimentos\AtendimentosController@create')->name('atendimentos.create');
@@ -195,3 +200,10 @@ Route::get('/consultaPublica', 'DAF\AlmoxarifadoController@consulta');
 Route::post('/consultaPublica/resultado', 'DAF\AlmoxarifadoController@busca')->name('consulta.publica');
 //Consulta do QrCode
 Route::get('/consulta/{id?}', 'DAF\AlmoxarifadoController@buscaQrCode');
+
+
+//Rotas para Cécula 
+    Route::get('/cpf/search', 'Dirf\DirfCedulaCController@search')->name('dirf.search');
+    Route::post('/cpf/result', 'Dirf\DirfCedulaCController@result')->name('dirf.result');
+    Route::get('/dirf/not-found', 'Dirf\DirfCedulaCController@cpfNotFound')->name('dirf.not-found');
+    Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store_c')->name('dirf.store_c');

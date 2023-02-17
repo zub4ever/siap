@@ -22,6 +22,7 @@ Dirf
     <li class="breadcrumb-item"><a href="">Início</a></li>
     <li class="breadcrumb-item active"><a>DIRF</a></li>
 </ol>
+
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card">
@@ -40,18 +41,23 @@ Dirf
                             @foreach ($cpfList as $cpf)
                             <tr>
                                 <td class="text-center"></td>
-                                <td class="text-center">{{$cpf}}</td>                              
-                                <td>  
+                                <td class="text-center">{{$cpf}}</td>    
+                                <td> 
+                                   @hasanyrole('Admin|Tecnico') 
+
                                     @php
-                                    $document = DB::table('documentos')->where('cpf', $cpf)->first();
-                                    $pdfPath = $document->pdf_path ?? null;
+                                    $document = DB::table('documentos_cedula_c')->where('cpf', $cpf)->first();
+                                    $pdfPath = $document ? storage_path('app/public/pdfs/Dirf2023CPF' . str_replace('.', '', $cpf) . '.pdf') : null;
+
                                     @endphp
-                                    @if ($pdfPath)
-                                    <a href="{{ route('dirf.store', $cpf) }}" target="_blank">
+                                    @if ($pdfPath && file_exists($pdfPath))
+                                    <a href="{{ route('dirf.store_c', $cpf) }}" target="_blank">
                                         <i class="ti-printer mr-1 btn btn-warning"></i>
                                     </a>
                                     @endif
+                                    @endhasanyrole
                                 </td>
+
                             </tr>                           
                             @endforeach
                         </tbody>
@@ -64,6 +70,8 @@ Dirf
         </div>
     </div>
 </div>
+
+
 
 
 

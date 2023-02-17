@@ -249,10 +249,15 @@
                         <a href="{{route('folhaPagamento.index')}}" aria-expanded="true">
                             <i class="ti-dashboard"></i>
                             <span>Folha</span>
-                        </a>
-
-                        
-                      
+                        </a>                                          
+                    </li>
+                    <!--Fim de DAF-->
+                     <!--Inicio  de Cédula -->
+                    <li {!! (request()->is('dirf*') ? 'class="active"' : "")!!}>
+                        <a href="{{route('dirf.index')}}" aria-expanded="true">
+                            <i class="ti-money"></i>
+                            <span>Cédula C</span>
+                        </a>                                          
                     </li>
                     <!--Fim de DAF-->
 
