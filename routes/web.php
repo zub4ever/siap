@@ -103,6 +103,8 @@ Route::group(['middleware' => ['auth']], function () {
     //FimRequerimentosAposentadoria
     //INicio de CTC
     Route::resource('/ctc', 'DIPREV\CTCController');
+    
+    Route::get('/ctc/{id}/show', 'DIPREV\CTCController@show')->name('ctc.show');
     Route::get('/ctc/create', 'DIPREV\CTCController@create')->name('ctc.create');
     Route::post('/ctc/create', 'DIPREV\CTCController@store');
     Route::get('events/{id}', 'DIPREV\CTCController@pdf')->name('events.pdf');

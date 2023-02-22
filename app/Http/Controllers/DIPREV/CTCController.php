@@ -19,6 +19,19 @@ use PDF;
 
 class CTCController extends Controller {
 
+    public function show($id){
+        
+        $ctc = CTC::where('status', 1)
+                ->orderBY('id', 'asc')
+                ->get();
+        
+        
+        
+        return view("diprev.ctc.show", compact('ctc'));
+    }
+    
+    
+    
     public function index() {
 
         $ctc = CTC::where('status', 1)

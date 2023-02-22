@@ -74,9 +74,9 @@ CTC
                                     @endforeach
                                     <td>
                                         
-                                        <a href="{{route('events.pdf',$ctc->id)}}" target="_blank
+                                        <a href="{{route('ctc.show',$ctc->id)}}" target="_blank
                                        ">
-                                            <i class="ti-printer mr-1 btn btn-warning"></i>
+                                            <i class="ti-printer mr-1 btn btn-primary"></i>
                                         </a>
                                        
                                         <a href="{{route('ctc.edit', $ctc->id)}}">
