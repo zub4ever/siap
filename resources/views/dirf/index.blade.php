@@ -22,7 +22,24 @@ Dirf
     <li class="breadcrumb-item"><a href="">Início</a></li>
     <li class="breadcrumb-item active"><a>DIRF</a></li>
 </ol>
-
+@role('Admin')
+<div class="row">
+    <div class="col-lg-12 mb-4">
+        <div class="card">
+            <div class="card-body">
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('pdf.showUploadForm')}}" role="button">
+                    Subir HTML de processamento
+                </a>
+            </div>
+            <div class="card-body">
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('dirf.upload')}}" role="button">
+                    Subir nova Cédula
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+@endrole
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card">

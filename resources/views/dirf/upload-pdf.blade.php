@@ -43,7 +43,7 @@ Dirf
                 <input type="file" name="html_file" id="html_file">
             </div>
             <div>
-                <button type="submit">Enviar</button>
+                <button type="submit" class="btn btn-success">Enviar</button>
             </div>
 </form>
 

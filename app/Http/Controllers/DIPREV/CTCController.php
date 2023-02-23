@@ -19,19 +19,55 @@ use PDF;
 
 class CTCController extends Controller {
 
-    public function show($id){
-        
-        $ctc = CTC::where('status', 1)
-                ->orderBY('id', 'asc')
-                ->get();
-        
-        
-        
-        return view("diprev.ctc.show", compact('ctc'));
+    public function show($id) {
+
+        // Coletando as datas a partir do ID
+        $start_date = DB::table('ctc_certidao')->where('id', $id)->value('start_date');
+        $end_date = DB::table('ctc_certidao')->where('id', $id)->value('end_date');
+
+        // Convertendo as datas para o objeto Carbon
+        $start_date = Carbon::parse($start_date);
+        $end_date = Carbon::parse($end_date);
+
+        // Calculando a diferença entre as datas
+        $diff = $start_date->diffInDays($end_date);
+        $days_by_year = [];
+
+        // Contando a diferença de dias por ano
+        for ($i = $start_date->year; $i <= $end_date->year; $i++) {
+            $year_start = Carbon::createFromDate($i, 1, 1);
+            $year_end = Carbon::createFromDate($i, 12, 31);
+
+            if ($i == $start_date->year && $i == $end_date->year) {
+                $days_by_year[$i] = $start_date->diffInDays($end_date);
+            } elseif ($i == $start_date->year) {
+                $days_by_year[$i] = $start_date->diffInDays($year_end);
+            } elseif ($i == $end_date->year) {
+                $days_by_year[$i] = $year_start->diffInDays($end_date);
+            } else {
+                $days_by_year[$i] = $year_start->diffInDays($year_end);
+            }
+        }
+
+        $ctc = CTC::findOrFail($id);
+
+        $servidor = Serve::all();
+        $sexo = Sexo::all();
+        $funcao = Funcao::all();
+        $orgao = Orgao::all();
+        return view("diprev.ctc.show", [
+                            'diff' => $diff,
+                            'days_by_year' => $days_by_year,
+                            'ctc' => $ctc,
+                            'servidor' => $servidor,
+                            'sexo' => $sexo,
+                            'funcao' => $funcao,
+                            'orgao' => $orgao
+                        ]
+                
+                );
     }
-    
-    
-    
+
     public function index() {
 
         $ctc = CTC::where('status', 1)
@@ -39,7 +75,7 @@ class CTCController extends Controller {
                 ->get();
 
         $serve = DB::table('serve')->get()->all();
-       
+
         $orgao = Orgao::all();
         $funcao = Funcao::all();
 

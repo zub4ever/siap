@@ -29,7 +29,7 @@ Dirf
     <label for="pdfs">PDFs:</label>
     <input type="file" name="pdfs[]" multiple>
     <br>
-    <button type="submit">Enviar</button>
+    <button type="submit" class="btn btn-success">Enviar</button>
 </form>
 
 

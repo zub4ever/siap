@@ -22,6 +22,67 @@ View CTC
 
 
 
+<table style="width:100%; border: 1px solid black;font-size: 8px;">
+    <thead>
+        <tr>
+            <th style="width:0%; border: 1px solid black;">ANO</th>
+            <th style="width:0%; border: 1px solid black;">TEMPO BRUTO</th>
+            <th style="width:0%; border: 1px solid black;">FALTAS</th>
+            <th style="width:0%; border: 1px solid black;">LICENÇA</th>
+            <th style="width:0%; border: 1px solid black;">LICENÇA<br>SEM VENCIMENTO</th>
+            <th style="width:0%; border: 1px solid black;">SUSPENSÕES</th>
+            <th style="width:0%; border: 1px solid black;">DISPONIBILIDADE</th>
+            <th style="width:0%; border: 1px solid black;">OUTRAS</th>
+            <th style="width:0%; border: 1px solid black;">TOTAL LÍQUIDO</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($days_by_year as $year => $days)
+        <tr>
+            <td style="border: 1px solid black;">{{ $year }}</td>
+            <td style="border: 1px solid black;">{{ $days }} </td>
+            <td style="border: 1px solid black;">0</td>
+            <td style="border: 1px solid black;">0</td>
+            <td style="border: 1px solid black;">0</td>
+            <td style="border: 1px solid black;">0</td>
+            <td style="border: 1px solid black;">0</td>
+            <td style="border: 1px solid black;">0</td>
+            <td style="border: 1px solid black;">{{ $days }} </td>
+        </tr>
+        @endforeach
+    </tbody>
+    <tfoot>
+        <tr>
+            <td>Total</td>
+            <td style="border: 1px solid black;"></td>
+            <td style="border: 1px solid black;"></td>
+            <td style="border: 1px solid black;"></td>
+            <td style="border: 1px solid black;"></td>
+            <td style="border: 1px solid black;"></td>
+            <td style="border: 1px solid black;"></td>
+            <td style="border: 1px solid black;"></td>
+            <td style="border: 1px solid black;">{{ $diff }} dias</td>
+
+        </tr>
+    </tfoot>
+</table>
+<br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
