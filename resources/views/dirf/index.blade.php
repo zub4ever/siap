@@ -49,8 +49,8 @@ Dirf
                     <table id="dataTable" class="table text-center">
                         <thead class="bg-light text-capitalize">
                             <tr>
-                                <th class="text-center">#</th>                               
-                                <th class="text-center">CPF</th>                               
+                                <th class="text-center">#</th>
+                                <th class="text-center">CPF</th>
                                 <th class="text-center">Ação</th>
                             </tr>
                         </thead>
@@ -58,9 +58,9 @@ Dirf
                             @foreach ($cpfList as $cpf)
                             <tr>
                                 <td class="text-center"></td>
-                                <td class="text-center">{{$cpf}}</td>    
-                                <td> 
-                                   @hasanyrole('Admin|Tecnico') 
+                                <td class="text-center">{{$cpf}}</td>
+                                <td>
+                                   @hasanyrole('Admin|Tecnico')
 
                                     @php
                                     $document = DB::table('documentos_cedula_c')->where('cpf', $cpf)->first();
@@ -75,7 +75,7 @@ Dirf
                                     @endhasanyrole
                                 </td>
 
-                            </tr>                           
+                            </tr>
                             @endforeach
                         </tbody>
                     </table>
