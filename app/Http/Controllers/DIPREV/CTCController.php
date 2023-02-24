@@ -56,16 +56,15 @@ class CTCController extends Controller {
         $funcao = Funcao::all();
         $orgao = Orgao::all();
         return view("diprev.ctc.show", [
-                            'diff' => $diff,
-                            'days_by_year' => $days_by_year,
-                            'ctc' => $ctc,
-                            'servidor' => $servidor,
-                            'sexo' => $sexo,
-                            'funcao' => $funcao,
-                            'orgao' => $orgao
-                        ]
-                
-                );
+            'diff' => $diff,
+            'days_by_year' => $days_by_year,
+            'ctc' => $ctc,
+            'servidor' => $servidor,
+            'sexo' => $sexo,
+            'funcao' => $funcao,
+            'orgao' => $orgao
+                ]
+        );
     }
 
     public function index() {
@@ -134,28 +133,12 @@ class CTCController extends Controller {
 
     public function store(CTCFormRequest $request) {
 
-
-
         DB::beginTransaction();
-        //$denuncias->status_id ='1';
-        // $request->request->add(['id_status_liberacao_projeto' => 1]);
-        //$request->request->add(['atendimento_status_id' => 1]);       
         $ctc = CTC::create($request->all());
 
         $matricula = $request->input('serve_id');
 
         if (!empty($matricula)) {
-
-            /* $var = DB::table('ctc_certidao as c')
-              ->join('serve as sts', 'c.serve_id', '=', 'sts.id')
-              ->select('sts.matricula')
-              ->where('c.serve_id', '=', $matricula)
-              ->get('c.matricula'); */
-
-
-
-            //dd($var1);
-
             $var1 = $matricula;
             $current_date = date('dmY');
             $random_number = rand(1000, 9999);
@@ -166,14 +149,46 @@ class CTCController extends Controller {
             $ctc->save();
         }
 
-
-
-
-
         if (!$ctc) {
             DB::rollBack();
             return redirect()->route('ctc.index')->with('error', "Falha ao cadastrar Certidao.");
         }
+
+        $start_date = Carbon::parse($request->input('start_date'));
+        $end_date = Carbon::parse($request->input('end_date'));
+
+        $diff = $start_date->diffInDays($end_date);
+        $days_by_year = [];
+
+        for ($i = $start_date->year; $i <= $end_date->year; $i++) {
+            $year_start = Carbon::createFromDate($i, 1, 1);
+            $year_end = Carbon::createFromDate($i, 12, 31);
+
+            if ($i == $start_date->year && $i == $end_date->year) {
+                $days_by_year[$i] = $start_date->diffInDays($end_date);
+            } elseif ($i == $start_date->year) {
+                $days_by_year[$i] = $start_date->diffInDays($year_end) + 1;
+            } elseif ($i == $end_date->year) {
+                $days_by_year[$i] = $year_start->diffInDays($end_date) + 1;
+            } else {
+                $days_by_year[$i] = $year_start->diffInDays($year_end) + 1;
+            }
+        }
+
+
+        foreach ($days_by_year as $year => $days) {
+            DB::table('ctc_certidao_deducao')->insert([
+                'ctc_certidao_id' => $ctc->id,
+                'ano' => $year,
+                'tempo_bruto' => $days,
+            ]);
+        }
+
+
+
+
+
+
 
         DB::commit();
         $insertedId = $ctc->id;

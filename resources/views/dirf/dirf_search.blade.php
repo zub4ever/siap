@@ -36,7 +36,7 @@ body .no-padding{
     <body>
 
         <div class="bg-image" style=" background-image: url('http://rbprev.riobranco.ac.gov.br/images/IconsIndex/background_canais.png'); position:relative;">
-            <br><br>
+            <br>
             <div class="container d-flex flex-column align-items-center justify-content-center">
                 <img src="/imagem/logo2.png" alt="Imagem" width="120px" height="120px">
                 <br>
@@ -45,7 +45,7 @@ body .no-padding{
                 <h3 style="color: #ffffff; text-align: center;">COMPROVANTE DE RENDIMENTOS - 2023</h3>
 
             </div>
-            <br>
+            
         </div>
 
         <hr>
@@ -57,7 +57,7 @@ body .no-padding{
             </button>
         </div>
         <br>
-        <br>
+        
 <center>
     <div id="demo" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
