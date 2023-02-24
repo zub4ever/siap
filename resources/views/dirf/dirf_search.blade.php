@@ -56,6 +56,8 @@ body .no-padding{
                 </a>
             </button>
         </div>
+        <br>
+        <br>
 <center>
     <div id="demo" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
