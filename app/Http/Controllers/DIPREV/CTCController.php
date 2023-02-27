@@ -15,57 +15,28 @@ use App\Models\DIPREV\CTC\CTC;
 use App\Models\DIPREV\CTC\TipoCertidao;
 use App\Http\Requests\DiprevFormRequest\CTC\CTCFormRequest;
 use Illuminate\Support\Facades\DB;
+use App\Models\DIPREV\CTC\CTCDeducao;
 use PDF;
 
 class CTCController extends Controller {
 
-    public function show($id) {
+   public function show($id, Request $request) {
+    
+    // Busca o ctc_certidao correspondente ao id
+    $ctc_certidao = CTC::findOrFail($id);
 
-        // Coletando as datas a partir do ID
-        $start_date = DB::table('ctc_certidao')->where('id', $id)->value('start_date');
-        $end_date = DB::table('ctc_certidao')->where('id', $id)->value('end_date');
+    // Busca as deduções correspondentes ao ctc_certidao agrupadas por ano
+    $deducoes = CTCDeducao::where('ctc_certidao_id', $ctc_certidao->id)
+                ->orderBy('ano', 'desc')
+                ->get()
+                ->groupBy('ano');
 
-        // Convertendo as datas para o objeto Carbon
-        $start_date = Carbon::parse($start_date);
-        $end_date = Carbon::parse($end_date);
+    // Monta um array com os anos das deduções encontradas
+    $anos = $deducoes->keys();
 
-        // Calculando a diferença entre as datas
-        $diff = $start_date->diffInDays($end_date);
-        $days_by_year = [];
+    return view("diprev.ctc.show", compact('ctc_certidao', 'anos', 'deducoes'));
+}
 
-        // Contando a diferença de dias por ano
-        for ($i = $start_date->year; $i <= $end_date->year; $i++) {
-            $year_start = Carbon::createFromDate($i, 1, 1);
-            $year_end = Carbon::createFromDate($i, 12, 31);
-
-            if ($i == $start_date->year && $i == $end_date->year) {
-                $days_by_year[$i] = $start_date->diffInDays($end_date);
-            } elseif ($i == $start_date->year) {
-                $days_by_year[$i] = $start_date->diffInDays($year_end);
-            } elseif ($i == $end_date->year) {
-                $days_by_year[$i] = $year_start->diffInDays($end_date);
-            } else {
-                $days_by_year[$i] = $year_start->diffInDays($year_end);
-            }
-        }
-
-        $ctc = CTC::findOrFail($id);
-
-        $servidor = Serve::all();
-        $sexo = Sexo::all();
-        $funcao = Funcao::all();
-        $orgao = Orgao::all();
-        return view("diprev.ctc.show", [
-            'diff' => $diff,
-            'days_by_year' => $days_by_year,
-            'ctc' => $ctc,
-            'servidor' => $servidor,
-            'sexo' => $sexo,
-            'funcao' => $funcao,
-            'orgao' => $orgao
-                ]
-        );
-    }
 
     public function index() {
 
@@ -154,12 +125,13 @@ class CTCController extends Controller {
             return redirect()->route('ctc.index')->with('error', "Falha ao cadastrar Certidao.");
         }
 
-        $start_date = Carbon::parse($request->input('start_date'));
-        $end_date = Carbon::parse($request->input('end_date'));
 
-        $diff = $start_date->diffInDays($end_date);
+        $start_date = Carbon::createFromFormat('d/m/Y', $request->input('start_date'));
+        $end_date = Carbon::createFromFormat('d/m/Y', $request->input('end_date'));
+
         $days_by_year = [];
 
+        // Contando a diferença de dias por ano
         for ($i = $start_date->year; $i <= $end_date->year; $i++) {
             $year_start = Carbon::createFromDate($i, 1, 1);
             $year_end = Carbon::createFromDate($i, 12, 31);
@@ -167,23 +139,22 @@ class CTCController extends Controller {
             if ($i == $start_date->year && $i == $end_date->year) {
                 $days_by_year[$i] = $start_date->diffInDays($end_date);
             } elseif ($i == $start_date->year) {
-                $days_by_year[$i] = $start_date->diffInDays($year_end) + 1;
+                $days_by_year[$i] = $start_date->diffInDays($year_end);
             } elseif ($i == $end_date->year) {
-                $days_by_year[$i] = $year_start->diffInDays($end_date) + 1;
+                $days_by_year[$i] = $year_start->diffInDays($end_date);
             } else {
-                $days_by_year[$i] = $year_start->diffInDays($year_end) + 1;
+                $days_by_year[$i] = $year_start->diffInDays($year_end);
             }
-        }
 
 
-        foreach ($days_by_year as $year => $days) {
+
+            // Inserindo na tabela
             DB::table('ctc_certidao_deducao')->insert([
                 'ctc_certidao_id' => $ctc->id,
-                'ano' => $year,
-                'tempo_bruto' => $days,
+                'ano' => $i,
+                'tempo_bruto' => $days_by_year[$i]
             ]);
         }
-
 
 
 
