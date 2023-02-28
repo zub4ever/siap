@@ -17,7 +17,7 @@
     <table border="1" align="center">
         @foreach($almoxarifado as $busca)
         <tr>
-            <th style="text-align:center;">{!! QrCode::size(100)->merge(public_path('imagem/rbPrevlogo2.svg'), 0.5, true)->generate('http://sisa.rbprev.riobranco.ac.gov.br/consulta/'.$busca->id) !!}</th>
+            <th style="text-align:center;">{!! QrCode::size(100)->merge(public_path('imagem/rbPrevlogo2.svg'), 0.5, true)->generate('http://siap.rbprev.riobranco.ac.gov.br/consulta/'.$busca->id) !!}</th>
             <td><img src="/imagem/rbPrev.png"> </td>
         </tr>
         <tr>
