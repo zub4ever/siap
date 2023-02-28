@@ -112,6 +112,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::put('/ctc/{id}/update', 'DIPREV\CTCDeducaoController@update')->name('deductions.update');
 
+
     //Route::get('/getDetails/{id?}', 'DIPREV\CTCController@getDetails');
     // Route::post('get-details','DIPREV\CTCController@getDetails')->name('get-details');
 

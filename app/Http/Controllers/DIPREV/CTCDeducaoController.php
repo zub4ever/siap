@@ -22,15 +22,14 @@ class CTCDeducaoController extends Controller {
 
     public function update(Request $request, $id) {
         
-        $ctc_certidao_deducao = CTCDeducao::find($id);
+        $ctc_certidao_deducao = CTCDeducao::where('ctc_certidao_id', $id)->first();
 
-        //dd($ctc_certidao_deducao);
+
+
         if (!$ctc_certidao_deducao) {
             return response()->json(['message' => 'Dedução não encontrada.'], 404);
         }
-
-        $ctc_certidao_id = $ctc_certidao_deducao->ctc_certidao_id;
-
+        
         $validatedData = $request->validate([
             'ano' => 'required|integer',
             'faltas' => 'nullable|integer',
@@ -41,16 +40,25 @@ class CTCDeducaoController extends Controller {
             'outras' => 'nullable|integer'
         ]);
 
+        $ano = $validatedData['ano'];
+        $ctc_certidao_id = $ctc_certidao_deducao->ctc_certidao_id;
+
+        $deducoes = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)
+                                ->where('ano', $ano)
+                                ->get();
+
+        if ($deducoes->isEmpty()) {
+            return response()->json(['message' => 'Dedução não encontrada.'], 404);
+        }
+
+        $faltas = $deducoes->sum('faltas');
+        $licencas = $deducoes->sum('licencas');
+        $licencas_sem_vencimento = $deducoes->sum('licencas_sem_vencimento');
+        $suspensoes = $deducoes->sum('suspensoes');
+        $disponibilidade = $deducoes->sum('disponibilidade');
+        $outras = $deducoes->sum('outras');
+
         $ctc_certidao_deducao->update($validatedData);
-
-        $ano = $ctc_certidao_deducao->ano;
-
-        $faltas = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)->where('ano', $ano)->sum('faltas');
-        $licencas = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)->where('ano', $ano)->sum('licencas');
-        $licencas_sem_vencimento = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)->where('ano', $ano)->sum('licencas_sem_vencimento');
-        $suspensoes = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)->where('ano', $ano)->sum('suspensoes');
-        $disponibilidade = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)->where('ano', $ano)->sum('disponibilidade');
-        $outras = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)->where('ano', $ano)->sum('outras');
 
         $tempo_liquido = $ctc_certidao_deducao->tempo_bruto - ($faltas + $licencas + $licencas_sem_vencimento + $suspensoes + $disponibilidade + $outras);
 
@@ -59,5 +67,6 @@ class CTCDeducaoController extends Controller {
 
         return response()->json(['message' => 'Dedução atualizada com sucesso.'], 200);
     }
+
 
 }

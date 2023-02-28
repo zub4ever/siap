@@ -22,25 +22,25 @@ View CTC
 
 
 
-@if ($ctc_certidao )
+@if ($ctc_certidao)
     <!-- Formulário para editar as deduções correspondentes ao ano selecionado -->
-    <form action="{{ route('deductions.update', $ctc_certidao->id) }}" method="POST">
-        @csrf
-        @method('PUT')
-        <label for="ano">Ano:</label>
-        <select name="ano">
-            @foreach ($anos as $ano)
-                <option value="{{ $ano }}">{{ $ano }}</option>
-            @endforeach
-        </select>
-        <br>
-        <label for="faltas">Faltas:</label>
-        <input type="text" name="faltas">
-        <br>
+    {!! Form::model(null, [
+        'route' => ['deductions.update', $ctc_certidao->id],
+        'method' => 'PUT'
+    ]) !!}
+        <div class="form-group">
+            {!! Form::label('ano', 'Ano:') !!}
+            {!! Form::select('ano', $anos, null, ['class' => 'form-control']) !!}
+        </div>
+        <div class="form-group">
+            {!! Form::label('faltas', 'Faltas:') !!}
+            {!! Form::text('faltas', null, ['class' => 'form-control']) !!}
+        </div>
         <!-- Outros campos editáveis da tabela dedução -->
-        <button type="submit">Salvar</button>
-    </form>
+        {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+    {!! Form::close() !!}
 @endif
+
 
 
 
