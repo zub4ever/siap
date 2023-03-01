@@ -32,9 +32,9 @@ class CTCController extends Controller {
                 ->groupBy('ano');
 
     // Monta um array com os anos das deduções encontradas
-    $anos = $deducoes->keys();
+    $ano = $deducoes->keys();
 
-    return view("diprev.ctc.show", compact('ctc_certidao', 'anos', 'deducoes'));
+    return view("diprev.ctc.show", compact('ctc_certidao', 'ano', 'deducoes'));
 }
 
 

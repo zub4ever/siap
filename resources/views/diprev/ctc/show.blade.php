@@ -21,24 +21,48 @@ View CTC
 </ol>
 
 
-
 @if ($ctc_certidao)
-    <!-- Formulário para editar as deduções correspondentes ao ano selecionado -->
-    {!! Form::model(null, [
-        'route' => ['deductions.update', $ctc_certidao->id],
-        'method' => 'PUT'
-    ]) !!}
-        <div class="form-group">
-            {!! Form::label('ano', 'Ano:') !!}
-            {!! Form::select('ano', $anos, null, ['class' => 'form-control']) !!}
-        </div>
-        <div class="form-group">
-            {!! Form::label('faltas', 'Faltas:') !!}
-            {!! Form::text('faltas', null, ['class' => 'form-control']) !!}
-        </div>
-        <!-- Outros campos editáveis da tabela dedução -->
-        {!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-    {!! Form::close() !!}
+<!-- Formulário para editar as deduções correspondentes ao ano selecionado -->
+{!! Form::model(null, [
+'route' => ['deductions.update', [$ctc_certidao->id, $ano]],
+'method' => 'PUT'
+]) !!}
+<div class="form-group">
+    {!! Form::label('ano', 'Ano:') !!}
+    <select name="ano" id="ano" class="form-control">
+        @foreach($ano as $ano_option)
+        <option value="{{ $ano_option }}" {{ $ano->first() == $ano_option ? 'selected' : '' }}>{{ $ano_option }}</option>
+
+        @endforeach
+    </select>
+</div>
+
+<div class="form-group">
+    {!! Form::label('faltas', 'Faltas:') !!}
+    {!! Form::text('faltas', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('licencas', 'Licenças:') !!}
+    {!! Form::text('licencas', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('licencas_sem_vencimento', 'Licenças sem vencimento:') !!}
+    {!! Form::text('licencas_sem_vencimento', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('suspensoes', 'Suspensões:') !!}
+    {!! Form::text('suspensoes', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('disponibilidade', 'Disponibilidade:') !!}
+    {!! Form::text('disponibilidade', null, ['class' => 'form-control']) !!}
+</div>
+<div class="form-group">
+    {!! Form::label('outras', 'Outras:') !!}
+    {!! Form::text('outras', null, ['class' => 'form-control']) !!}
+</div>
+{!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
+{!! Form::close() !!}
 @endif
 
 

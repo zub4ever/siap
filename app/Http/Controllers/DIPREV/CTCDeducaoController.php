@@ -20,8 +20,8 @@ use App\Models\DIPREV\CTC\CTCDeducao;
 
 class CTCDeducaoController extends Controller {
 
-    public function update(Request $request, $id) {
-
+    public function update(Request $request, $id, $ano) {
+        
         $ctc_certidao = CTC::find($id);
 
         if (!$ctc_certidao) {
@@ -33,25 +33,19 @@ class CTCDeducaoController extends Controller {
         if (!$ctc_certidao_deducao) {
             return response()->json(['message' => 'Dedução não encontrada.'], 404);
         }
+        
+        
 
-
-        $validatedData = $request->validate([
-            'ano' => 'required|integer',
-            'faltas' => 'nullable|integer',
-            'licencas' => 'nullable|integer',
-            'licencas_sem_vencimento' => 'nullable|integer',
-            'suspensoes' => 'nullable|integer',
-            'disponibilidade' => 'nullable|integer',
-            'outras' => 'nullable|integer'
-        ]);
-
-        $ano = $validatedData['ano'];
+        
         $ctc_certidao_id = $ctc_certidao_deducao->ctc_certidao_id;
 
+        
         $deducoes = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)
                 ->where('ano', $ano)
                 ->get();
-
+        
+          //dd($deducoes);
+        
         if ($deducoes->isEmpty()) {
             return response()->json(['message' => 'Dedução não encontrada.'], 404);
         }

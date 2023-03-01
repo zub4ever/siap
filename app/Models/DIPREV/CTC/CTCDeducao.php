@@ -16,7 +16,7 @@ class CTCDeducao extends Model {
         'licencas',
         'licencas_sem_vencimento',
         'suspensoes',
-        'disponiblidade',
+        'disponibilidade',
         'outras',
         'tempo_liquido'
     ];
