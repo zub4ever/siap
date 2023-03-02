@@ -32,13 +32,14 @@ use Carbon\Carbon;
         <table class="table">
             @foreach (range(1, 12) as $monthNumber)
             <tr>
-                <th colspan="3">{{ strftime("%B", strtotime(\Carbon\Carbon::createFromDate(2023, $monthNumber))) }}
-                </th>
+                <th colspan="5">{{ strftime("%B", strtotime(\Carbon\Carbon::createFromDate(2023, $monthNumber))) }}</th>
             </tr>
             <tr>
                 <th>Nome do Assegurado</th>
                 <th>Matrícula</th>
                 <th>CPF</th>
+                <th>Tipo de Assegurado</th>
+                <th>Data</th>
             </tr>
             @foreach ($atendimentos as $atendimento)
             @if (\Carbon\Carbon::parse($atendimento->month)->month == $monthNumber)
@@ -46,12 +47,15 @@ use Carbon\Carbon;
                 <td>{{ $atendimento->nm_assegurado }}</td>
                 <td>{{ $atendimento->matricula }}</td>
                 <td>{{ $atendimento->cpf }}</td>
+                <td>{{ $atendimento->nm_tipo_servidor }}</td>
+                <td>{{ date('d/m/Y', strtotime($atendimento->created_at))}}</td>
             </tr>
             @endif
             @endforeach
-            <tr><td colspan="3"></td></tr> {{-- Linha vazia --}}
+            <tr><td colspan="5"></td></tr> {{-- Linha vazia --}}
             @endforeach
         </table>
+
         <style>
             .table {
                 width: 100%;

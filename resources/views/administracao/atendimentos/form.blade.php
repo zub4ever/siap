@@ -5,7 +5,7 @@
                 <span class="text-danger">*</span>
             </label>
             <select name="atendimento_status_id" class="form-control" id="titula1" >
-                
+
                 @foreach ($atendimento_status as $atendimento)
                 <option value="{{$atendimento->id}}" 
                         {{(empty(old('atendimento_status_id')) ? @$atendimentos->atendimento_status_id : old('atendimento_status_id')) == $atendimento->id ? 'selected' : ''}}>
@@ -18,10 +18,10 @@
             @endif
         </div>
     </div>
-       <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="matricula" class="form-control-label">Matrícula:
-               
+
             </label>
             <input type="text" class="form-control" name="matricula" value="{{ @$atendimentos->matricula}}">
             @if ($errors->has('matricula'))
@@ -40,7 +40,7 @@
             @endif
         </div>
     </div>
-       <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
@@ -53,7 +53,7 @@
     </div>
 </div>
 <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="city_id" class="form-control-label">Cidade:
                 <span class="text-danger">*</span>
@@ -62,7 +62,7 @@
                 <option value="">Selecione a cidade</option>
                 @foreach ($city as $ct)
                 <option value="{{$ct->id}}"
-                    {{(empty(old('city_id')) ? @$atendimentos->city_id : old('city_id')) == $ct->id ? 'selected' : ''}}>  
+                        {{(empty(old('city_id')) ? @$atendimentos->city_id : old('city_id')) == $ct->id ? 'selected' : ''}}>  
                     {{$ct->nm_cidade}}
                 </option>
                 @endforeach
@@ -81,7 +81,7 @@
                 <option value="">Selecione o estado</option>
                 @foreach ($state as $st)
                 <option value="{{$st->id}}"
-                    {{(empty(old('state_id')) ? @$atendimentos->state_id : old('state_id')) == $st->id ? 'selected' : ''}}>
+                        {{(empty(old('state_id')) ? @$atendimentos->state_id : old('state_id')) == $st->id ? 'selected' : ''}}>
                     {{$st->nm_estado}}
                 </option>
                 @endforeach
@@ -93,7 +93,7 @@
     </div>
 </div>
 <div class="row">
-        <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="atendimento_assunto_id" class="form-control-label">Tipo de atendimento:
                 <span class="text-danger">*</span>
@@ -102,7 +102,7 @@
                 <option value="">Selecione o atendimento</option>
                 @foreach ($atendimento_assunto as $assunto)
                 <option value="{{$assunto->id}}"
-                    {{(empty(old('atendimento_assunto_id')) ? @$atendimentos->atendimento_assunto_id : old('atendimento_assunto_id')) == $assunto->id ? 'selected' : ''}}>  
+                        {{(empty(old('atendimento_assunto_id')) ? @$atendimentos->atendimento_assunto_id : old('atendimento_assunto_id')) == $assunto->id ? 'selected' : ''}}>  
                     {{$assunto->nm_assunto}}
                 </option>
                 @endforeach
@@ -121,7 +121,7 @@
                 <option value="">Selecione o departamento</option>
                 @foreach ($almo_localizacao_dpto as $dpto)
                 <option value="{{$dpto->id}}"
-                    {{(empty(old('almoxarifado_localizacao_dpto_id')) ? @$atendimentos->almoxarifado_localizacao_dpto_id : old('almoxarifado_localizacao_dpto_id')) == $dpto->id ? 'selected' : ''}}>
+                        {{(empty(old('almoxarifado_localizacao_dpto_id')) ? @$atendimentos->almoxarifado_localizacao_dpto_id : old('almoxarifado_localizacao_dpto_id')) == $dpto->id ? 'selected' : ''}}>
                     {{$dpto->nm_departamento}}
                 </option>
                 @endforeach
@@ -144,7 +144,7 @@
             @endif
         </div>
     </div>
-   <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="email" class="form-control-label">E-mail informado:
                 <span class="text-danger">*</span>
@@ -155,6 +155,27 @@
             @endif
         </div>
     </div>
+<div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="wrap">
+        <label for="atendimento_tipo_servidor_id" class="form-control-label">
+            Tipo de Assegurado:
+            <span class="text-danger">*</span>
+        </label>
+        <select class="form-control" name="atendimento_tipo_servidor_id" id="atendimento_tipo_servidor_id">
+            <option value="">Selecione o tipo</option>
+            @foreach ($atendimento_tipo_servidor as $tpservidor)
+            <option value="{{$tpservidor->id}}"
+                    {{(old('atendimento_tipo_servidor_id', @$atendimentos->atendimento_tipo_servidor_id) == $tpservidor->id) ? 'selected' : ''}}>  
+                {{$tpservidor->nm_tipo_servidor}}
+            </option>
+            @endforeach
+        </select>
+        @if ($errors->has('atendimento_tipo_servidor_id'))
+        <h6 class="heading text-danger">{{$errors->first('atendimento_tipo_servidor_id')}}</h6>
+        @endif
+    </div>
+</div>
+
 </div>    
 <hr>
 <div class="row d-flex justify-content-center align-items-center">

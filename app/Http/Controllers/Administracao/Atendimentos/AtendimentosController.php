@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use App\Atendimento;
 use App\AtendimentoStatus;
+use App\AtendimentoTipoServidor;
 use PDF;
 use Carbon\Carbon;
 use Gate;
@@ -52,14 +53,15 @@ class AtendimentosController extends Controller {
     public function create(){
         
        
-
+        $atendimento_tipo_servidor = DB::table('atendimento_tipo_servidor')->get();
+        
         $atendimento_status = DB::table('atendimento_status')->get();
         $atendimento_assunto = DB::table('atendimento_assunto')->get();
         $city = DB::table('city')->get();
         $state = DB::table('state')->get();
         $almo_localizacao_dpto = DB::table('almoxarifado_localizacao_dpto')->get()->all();
 
-        return view('administracao.atendimentos.create', compact('atendimento_status','atendimento_assunto','almo_localizacao_dpto','city','state' ));
+        return view('administracao.atendimentos.create', compact('atendimento_tipo_servidor','atendimento_status','atendimento_assunto','almo_localizacao_dpto','city','state' ));
     }
 
     public function store(AtendimentoFormRequest $request) {
@@ -92,13 +94,14 @@ class AtendimentosController extends Controller {
         $atendimentos = Atendimento::findOrFail($id);
         
         $atendimento_status = AtendimentoStatus::all();
+        $atendimento_tipo_servidor = AtendimentoTipoServidor::all();
         $city = City::all();
         $state = State::all();
         $atendimento_assunto = AtendimentoAssunto::all();
         $almo_localizacao_dpto = AlmoLocalizacaoDPTO::all();
         
         
-        return view('administracao.atendimentos.edit', compact('atendimentos','atendimento_status','atendimento_assunto','city','state','almo_localizacao_dpto'));
+        return view('administracao.atendimentos.edit', compact('atendimento_tipo_servidor','atendimentos','atendimento_status','atendimento_assunto','city','state','almo_localizacao_dpto'));
     }
 
     public function update(AtendimentoFormRequest $request, $id) {

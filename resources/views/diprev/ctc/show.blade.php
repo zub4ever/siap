@@ -28,40 +28,37 @@ View CTC
         <div class="col-md-4">
             <h4>Deduções</h4>
             <ul>
-                @foreach ($deducoes as $ano => $deducoes_ano)
-                <li>Ano {{ $ano }}</li>
+                @foreach ($deducoes as $ano => $deducao)
+                    <li><a href="{{ route('ctc.show', [$ctc_certidao->id, $ano]) }}">Ano {{ $ano }}</a></li>
                 @endforeach
             </ul>
             <form action="{{ route('deductions.update', [$ctc_certidao->id, $anoSelecionado ?? '']) }}" method="POST">
                 @csrf
                 @method('PUT')
-                <div class="form-group">
-                    <label for="tempo_bruto">Tempo Bruto</label>
-                    <input type="number" name="tempo_bruto" id="tempo_bruto" class="form-control" value="{{ $deducaoSelecionada->tempo_bruto }}">
-                </div>
+                
                 <div class="form-group">
                     <label for="faltas">Faltas</label>
-                    <input type="number" name="faltas" id="faltas" class="form-control" value="{{ $deducaoSelecionada->faltas }}">
+                    <input type="number" name="faltas" id="faltas" class="form-control" value="{{ $deducaoSelecionada->faltas ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="licencas">Licenças</label>
-                    <input type="number" name="licencas" id="licencas" class="form-control" value="{{ $deducaoSelecionada->licencas }}">
+                    <input type="number" name="licencas" id="licencas" class="form-control" value="{{ $deducaoSelecionada->licencas ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="licencas_sem_vencimento">Licenças sem vencimento</label>
-                    <input type="number" name="licencas_sem_vencimento" id="licencas_sem_vencimento" class="form-control" value="{{ $deducaoSelecionada->licencas_sem_vencimento }}">
+                    <input type="number" name="licencas_sem_vencimento" id="licencas_sem_vencimento" class="form-control" value="{{ $deducaoSelecionada->licencas_sem_vencimento ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="suspensoes">Suspensões</label>
-                    <input type="number" name="suspensoes" id="suspensoes" class="form-control" value="{{ $deducaoSelecionada->suspensoes }}">
+                    <input type="number" name="suspensoes" id="suspensoes" class="form-control" value="{{ $deducaoSelecionada->suspensoes ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="disponibilidade">Disponibilidade</label>
-                    <input type="number" name="disponibilidade" id="disponibilidade" class="form-control" value="{{ $deducaoSelecionada->disponibilidade }}">
+                    <input type="number" name="disponibilidade" id="disponibilidade" class="form-control" value="{{ $deducaoSelecionada->disponibilidade ?? '' }}">
                 </div>
                 <div class="form-group">
                     <label for="outras">Outras</label>
-                    <input type="number" name="outras" id="outras" class="form-control" value="{{ $deducaoSelecionada->outras }}">
+                    <input type="number" name="outras" id="outras" class="form-control" value="{{ $deducaoSelecionada->outras ?? '' }}">
                 </div>
                 <button type="submit" class="btn btn-primary">Salvar</button>
             </form>
@@ -74,10 +71,10 @@ View CTC
 </div>
 
 @push('scripts')
-<script>
-    $(function () {
-        // Obtém o ano selecionado no select
-        $('#ano_select').on('change', function () {
+    <script>
+        $(function () {
+            // Obtém o ano selecionado no select
+            $('#ano_select').on('change', function () {
             var anoSelecionado = $(this).val();
             window.location.href = "{{ route('ctc.show', [$ctc_certidao->id, ':ano']) }}".replace(':ano', anoSelecionado);
         });

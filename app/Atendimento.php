@@ -20,7 +20,8 @@ class Atendimento extends Model
         'city_id',
         'state_id',
         'almoxarifado_localizacao_dpto_id',
-        'atendimento_status_id'
+        'atendimento_status_id',
+        'atendimento_tipo_servidor_id'
         
     ];
    
@@ -46,6 +47,10 @@ class Atendimento extends Model
      public function almoxarifado_localizacao_dpto()
     {
         return $this->belongsTo('App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO', 'almoxarifado_localizacao_dpto_id');
+    }
+    public function atendimento_tipo_servidor()
+    {
+        return $this->belongsTo(AtendimentoTipoServidor::class, 'atendimento_tipo_servidor_id');
     }
     
 }

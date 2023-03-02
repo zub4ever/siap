@@ -275,12 +275,16 @@ class DashAtendimentosController extends Controller {
 
 
         $atendimentos = DB::table('atendimento')
-                ->select('nm_assegurado', 'matricula', 'cpf', DB::raw('date_trunc(\'month\', created_at) as month'))
+                ->select('nm_assegurado', 'matricula', 'cpf', 'atendimento_tipo_servidor.nm_tipo_servidor', 
+                         DB::raw('date_trunc(\'month\', atendimento.created_at) as month'), 
+                         DB::raw('date(atendimento.created_at) as created_at'))
+                ->join('atendimento_tipo_servidor', 'atendimento_tipo_servidor.id', '=', 'atendimento.atendimento_tipo_servidor_id')
                 ->where('atendimento_assunto_id', 9)
-                ->whereYear('created_at', 2023)
-                ->groupBy('nm_assegurado', 'matricula', 'cpf', 'month')
+                ->whereYear('atendimento.created_at', 2023)
+                ->groupBy('nm_assegurado', 'matricula', 'cpf', 'atendimento_tipo_servidor.nm_tipo_servidor', 'month', 'atendimento.created_at')
                 ->orderBy('month')
                 ->get();
+
 
         $months = [];
         foreach ($atendimentos as $atendimento) {
@@ -290,21 +294,19 @@ class DashAtendimentosController extends Controller {
         }
         //dd($data);
         return \PDF::loadView('administracao.atendimentosDash.relatorioAnualRecadastramento',
-                                compact('months','atendimentos')
+                                compact('months', 'atendimentos')
                         )
                         ->setPaper('A4', 'landscape')
                         ->stream();
     }
 
     public function painel($id) {
-        
+
         $atendimento = DB::table('atendimento')
                 ->where('atendimento_status_id', 1)
                 ->get();
-    
-      return view('administracao.atendimentosDash.painel', compact('atendimento'));  
-    } 
-    
-    
-    
+
+        return view('administracao.atendimentosDash.painel', compact('atendimento'));
+    }
+
 }
