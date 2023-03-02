@@ -21,31 +21,30 @@ use App\Models\DIPREV\CTC\CTCDeducao;
 class CTCDeducaoController extends Controller {
 
     public function update(Request $request, $id, $ano) {
-        
-        $ctc_certidao = CTC::find($id);
+
+        $ctc_certidao = CTCDeducao::find($id);
 
         if (!$ctc_certidao) {
             return response()->json(['message' => 'Certidão não encontrada.'], 404);
         }
 
-        $ctc_certidao_deducao = CTCDeducao::where('ctc_certidao_id', $ctc_certidao->id)->first();
+        $deducao = CTCDeducao::where('ctc_certidao_id', $ctc_certidao)->where('ano', $ano)->first();
 
         if (!$ctc_certidao_deducao) {
             return response()->json(['message' => 'Dedução não encontrada.'], 404);
         }
-        
-        
 
-        
+
+
+
         $ctc_certidao_id = $ctc_certidao_deducao->ctc_certidao_id;
 
-        
         $deducoes = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)
                 ->where('ano', $ano)
                 ->get();
-        
-          //dd($deducoes);
-        
+
+        //dd($deducoes);
+
         if ($deducoes->isEmpty()) {
             return response()->json(['message' => 'Dedução não encontrada.'], 404);
         }
@@ -57,14 +56,18 @@ class CTCDeducaoController extends Controller {
         $disponibilidade = $deducoes->sum('disponibilidade');
         $outras = $deducoes->sum('outras');
 
-        $ctc_certidao_deducao->update($validatedData);
+        if ($deducao) {
+            $deducao->update($validatedData);
 
-        $tempo_liquido = $ctc_certidao_deducao->tempo_bruto - ($faltas + $licencas + $licencas_sem_vencimento + $suspensoes + $disponibilidade + $outras);
+            $tempo_liquido = $deducao->tempo_bruto - ($deducao->faltas + $deducao->licencas + $deducao->licencas_sem_vencimento + $deducao->suspensoes + $deducao->disponibilidade + $deducao->outras);
 
-        $ctc_certidao_deducao->tempo_liquido = $tempo_liquido;
-        $ctc_certidao_deducao->save();
+            $deducao->tempo_liquido = $tempo_liquido;
+            $deducao->save();
 
-        return response()->json(['message' => 'Dedução atualizada com sucesso.'], 200);
+            return response()->json(['message' => 'Dedução atualizada com sucesso.'], 200);
+        } else {
+            return response()->json(['message' => 'Dedução não encontrada.'], 404);
+        }
     }
 
 }

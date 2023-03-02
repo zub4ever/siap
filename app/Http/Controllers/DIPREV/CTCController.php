@@ -20,23 +20,28 @@ use PDF;
 
 class CTCController extends Controller {
 
-   public function show($id, Request $request) {
-    
-    // Busca o ctc_certidao correspondente ao id
-    $ctc_certidao = CTC::findOrFail($id);
+    public function show($id, Request $request) {
 
-    // Busca as deduções correspondentes ao ctc_certidao agrupadas por ano
-    $deducoes = CTCDeducao::where('ctc_certidao_id', $ctc_certidao->id)
-                ->orderBy('ano', 'desc')
-                ->get()
-                ->groupBy('ano');
+        // Busca o ctc_certidao correspondente ao id
+        $ctc_certidao = CTC::findOrFail($id);
 
-    // Monta um array com os anos das deduções encontradas
-    $ano = $deducoes->keys();
+// Busca os anos cadastrados que contêm o id do ctc_certidao
+        $anos = DB::table('ctc_certidao_deducao')
+                ->join('ctc_certidao', 'ctc_certidao_deducao.ctc_certidao_id', '=', 'ctc_certidao.id')
+                ->select('ctc_certidao_deducao.ano')
+                ->where('ctc_certidao.id', '=', $id)
+                ->groupBy('ctc_certidao_deducao.ano')
+                ->orderBy('ctc_certidao_deducao.ano', 'desc')
+                ->get();
 
-    return view("diprev.ctc.show", compact('ctc_certidao', 'ano', 'deducoes'));
-}
-
+        $deducoes = [];
+        foreach ($anos as $ano) {
+            $deducoes[$ano->ano] = CTCDeducao::where('ctc_certidao_id', $ctc_certidao->id)
+                    ->where('ano', $ano->ano)
+                    ->first();
+        }
+        return view("diprev.ctc.show", compact('ctc_certidao', 'anos','deducoes'));
+    }
 
     public function index() {
 

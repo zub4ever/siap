@@ -21,49 +21,69 @@ View CTC
 </ol>
 
 
-@if ($ctc_certidao)
-<!-- Formulário para editar as deduções correspondentes ao ano selecionado -->
-{!! Form::model(null, [
-'route' => ['deductions.update', [$ctc_certidao->id, $ano]],
-'method' => 'PUT'
-]) !!}
-<div class="form-group">
-    {!! Form::label('ano', 'Ano:') !!}
-    <select name="ano" id="ano" class="form-control">
-        @foreach($ano as $ano_option)
-        <option value="{{ $ano_option }}" {{ $ano->first() == $ano_option ? 'selected' : '' }}>{{ $ano_option }}</option>
+<div class="container">
+    <h1>CTC Certidão #{{ $ctc_certidao->id }}</h1>
 
-        @endforeach
-    </select>
+    <div class="row">
+        <div class="col-md-4">
+            <h4>Deduções</h4>
+            <ul>
+                @foreach ($deducoes as $ano => $deducoes_ano)
+                <li>Ano {{ $ano }}</li>
+                @endforeach
+            </ul>
+            <form action="{{ route('deductions.update', [$ctc_certidao->id, $anoSelecionado ?? '']) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <div class="form-group">
+                    <label for="tempo_bruto">Tempo Bruto</label>
+                    <input type="number" name="tempo_bruto" id="tempo_bruto" class="form-control" value="{{ $deducaoSelecionada->tempo_bruto }}">
+                </div>
+                <div class="form-group">
+                    <label for="faltas">Faltas</label>
+                    <input type="number" name="faltas" id="faltas" class="form-control" value="{{ $deducaoSelecionada->faltas }}">
+                </div>
+                <div class="form-group">
+                    <label for="licencas">Licenças</label>
+                    <input type="number" name="licencas" id="licencas" class="form-control" value="{{ $deducaoSelecionada->licencas }}">
+                </div>
+                <div class="form-group">
+                    <label for="licencas_sem_vencimento">Licenças sem vencimento</label>
+                    <input type="number" name="licencas_sem_vencimento" id="licencas_sem_vencimento" class="form-control" value="{{ $deducaoSelecionada->licencas_sem_vencimento }}">
+                </div>
+                <div class="form-group">
+                    <label for="suspensoes">Suspensões</label>
+                    <input type="number" name="suspensoes" id="suspensoes" class="form-control" value="{{ $deducaoSelecionada->suspensoes }}">
+                </div>
+                <div class="form-group">
+                    <label for="disponibilidade">Disponibilidade</label>
+                    <input type="number" name="disponibilidade" id="disponibilidade" class="form-control" value="{{ $deducaoSelecionada->disponibilidade }}">
+                </div>
+                <div class="form-group">
+                    <label for="outras">Outras</label>
+                    <input type="number" name="outras" id="outras" class="form-control" value="{{ $deducaoSelecionada->outras }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+            </form>
+        </div>
+    </div>
+
+    <hr>
+
+    <a href="{{ route('ctc.index') }}" class="btn btn-default">Voltar para a lista</a>
 </div>
 
-<div class="form-group">
-    {!! Form::label('faltas', 'Faltas:') !!}
-    {!! Form::text('faltas', null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('licencas', 'Licenças:') !!}
-    {!! Form::text('licencas', null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('licencas_sem_vencimento', 'Licenças sem vencimento:') !!}
-    {!! Form::text('licencas_sem_vencimento', null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('suspensoes', 'Suspensões:') !!}
-    {!! Form::text('suspensoes', null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('disponibilidade', 'Disponibilidade:') !!}
-    {!! Form::text('disponibilidade', null, ['class' => 'form-control']) !!}
-</div>
-<div class="form-group">
-    {!! Form::label('outras', 'Outras:') !!}
-    {!! Form::text('outras', null, ['class' => 'form-control']) !!}
-</div>
-{!! Form::submit('Salvar', ['class' => 'btn btn-primary']) !!}
-{!! Form::close() !!}
-@endif
+@push('scripts')
+<script>
+    $(function () {
+        // Obtém o ano selecionado no select
+        $('#ano_select').on('change', function () {
+            var anoSelecionado = $(this).val();
+            window.location.href = "{{ route('ctc.show', [$ctc_certidao->id, ':ano']) }}".replace(':ano', anoSelecionado);
+        });
+    });
+</script>
+@endpus
 
 
 
