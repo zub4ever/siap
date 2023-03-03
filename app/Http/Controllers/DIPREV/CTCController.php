@@ -10,7 +10,7 @@ use App\Origin;
 use App\Funcao;
 use App\Orgao;
 use App\Sexo;
-use App\Contract;
+use App\Address;
 use App\Models\DIPREV\CTC\CTC;
 use App\Models\DIPREV\CTC\TipoCertidao;
 use App\Http\Requests\DiprevFormRequest\CTC\CTCFormRequest;
@@ -25,22 +25,15 @@ class CTCController extends Controller {
         // Busca o ctc_certidao correspondente ao id
         $ctc_certidao = CTC::findOrFail($id);
 
-// Busca os anos cadastrados que contêm o id do ctc_certidao
-        $anos = DB::table('ctc_certidao_deducao')
+        // Busca os anos cadastrados que contêm o id do ctc_certidao
+        $registros = DB::table('ctc_certidao_deducao')
                 ->join('ctc_certidao', 'ctc_certidao_deducao.ctc_certidao_id', '=', 'ctc_certidao.id')
-                ->select('ctc_certidao_deducao.ano')
+                ->select('ctc_certidao_deducao.id', 'ctc_certidao_deducao.ano', 'ctc_certidao_deducao.tempo_bruto', 'ctc_certidao_deducao.faltas', 'ctc_certidao_deducao.licencas', 'ctc_certidao_deducao.licencas_sem_vencimento', 'ctc_certidao_deducao.suspensoes', 'ctc_certidao_deducao.disponibilidade', 'ctc_certidao_deducao.outras', 'ctc_certidao_deducao.tempo_liquido')
                 ->where('ctc_certidao.id', '=', $id)
-                ->groupBy('ctc_certidao_deducao.ano')
                 ->orderBy('ctc_certidao_deducao.ano', 'desc')
                 ->get();
 
-        $deducoes = [];
-        foreach ($anos as $ano) {
-            $deducoes[$ano->ano] = CTCDeducao::where('ctc_certidao_id', $ctc_certidao->id)
-                    ->where('ano', $ano->ano)
-                    ->first();
-        }
-        return view("diprev.ctc.show", compact('ctc_certidao', 'anos','deducoes'));
+        return view("diprev.ctc.show", compact('ctc_certidao', 'registros'));
     }
 
     public function index() {
@@ -56,27 +49,21 @@ class CTCController extends Controller {
 
         return view("diprev.ctc.index", compact('ctc', 'serve', 'funcao', 'orgao'));
     }
-
     public function create() {
-
-
         $origin = Origin::all();
         $servidor = Serve::all();
         $orgao = Orgao::all();
         $funcao = Funcao::all();
         $tipo_certidao = TipoCertidao::all();
-
+        $adress = Address::all();
         //$atendimento_status = DB::table('atendimento_status')->get();
         //  $atendimento_assunto = DB::table('atendimento_assunto')->get();
         // $city = DB::table('city')->get();
         // $state = DB::table('state')->get();
         // $almo_localizacao_dpto = DB::table('almoxarifado_localizacao_dpto')->get()->all();
-
-        return view('diprev.ctc.create', compact('servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao'));
+        return view('diprev.ctc.create', compact('servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao', 'adress'));
     }
-
     public function edit($id) {
-
         $ctc = CTC::findOrFail($id);
 
         $origin = Origin::all();
@@ -84,10 +71,10 @@ class CTCController extends Controller {
         $orgao = Orgao::all();
         $funcao = Funcao::all();
         $tipo_certidao = TipoCertidao::all();
+        $adress = Address::all();
 
-        return view('diprev.ctc.edit', compact('ctc', 'servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao'));
+        return view('diprev.ctc.edit', compact('ctc', 'servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao', 'adress'));
     }
-
     public function update(CTCFormRequest $request, $id) {
         $ctc = CTC::findOrFail($id);
 
@@ -106,7 +93,6 @@ class CTCController extends Controller {
                         "Certidao alterada com sucesso."
         );
     }
-
     public function store(CTCFormRequest $request) {
 
         DB::beginTransaction();
@@ -115,6 +101,9 @@ class CTCController extends Controller {
         $matricula = $request->input('serve_id');
 
         if (!empty($matricula)) {
+            // busca o endereço com base no serve_id
+            $address = Address::where('serve_id', $matricula)->first();
+
             $var1 = $matricula;
             $current_date = date('dmY');
             $random_number = rand(1000, 9999);
@@ -122,8 +111,12 @@ class CTCController extends Controller {
             $ctc_numero = $ctc_numero_bruto;
             $request->request->add(['ctc_numero' => $ctc_numero]);
             $ctc->ctc_numero = $ctc_numero;
+
+            $ctc->address_id = $address->id; // insere o id do endereço correspondente
+
             $ctc->save();
         }
+
 
         if (!$ctc) {
             DB::rollBack();
@@ -202,49 +195,28 @@ class CTCController extends Controller {
     }
 
     public function pdf($id) {
-        // Coletando as datas a partir do ID
-        $start_date = DB::table('ctc_certidao')->where('id', $id)->value('start_date');
-        $end_date = DB::table('ctc_certidao')->where('id', $id)->value('end_date');
 
-        // Convertendo as datas para o objeto Carbon
-        $start_date = Carbon::parse($start_date);
-        $end_date = Carbon::parse($end_date);
 
-        // Calculando a diferença entre as datas
-        $diff = $start_date->diffInDays($end_date);
-        $days_by_year = [];
-
-        // Contando a diferença de dias por ano
-        for ($i = $start_date->year; $i <= $end_date->year; $i++) {
-            $year_start = Carbon::createFromDate($i, 1, 1);
-            $year_end = Carbon::createFromDate($i, 12, 31);
-
-            if ($i == $start_date->year && $i == $end_date->year) {
-                $days_by_year[$i] = $start_date->diffInDays($end_date);
-            } elseif ($i == $start_date->year) {
-                $days_by_year[$i] = $start_date->diffInDays($year_end);
-            } elseif ($i == $end_date->year) {
-                $days_by_year[$i] = $year_start->diffInDays($end_date);
-            } else {
-                $days_by_year[$i] = $year_start->diffInDays($year_end);
-            }
-        }
 
         $ctc = CTC::findOrFail($id);
-
+        
+        $ctc_deducao = CTCDeducao::where('ctc_certidao_id', $id)->get();
+        
+        
         $servidor = Serve::all();
         $sexo = Sexo::all();
         $funcao = Funcao::all();
         $orgao = Orgao::all();
+        $address = Address::all();
 
         return \PDF::loadView('diprev.ctc.pdf.pdf', [
-                            'diff' => $diff,
-                            'days_by_year' => $days_by_year,
                             'ctc' => $ctc,
                             'servidor' => $servidor,
                             'sexo' => $sexo,
                             'funcao' => $funcao,
-                            'orgao' => $orgao
+                            'orgao' => $orgao,
+                            'ctc_deducao' => $ctc_deducao,
+                            'address' => $address
                         ])
                         ->setPaper('A4', 'portrait')
                         ->stream();

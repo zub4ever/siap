@@ -21,79 +21,81 @@ View CTC
 </ol>
 
 
-<div class="container">
-    <h1>CTC Certidão #{{ $ctc_certidao->id }}</h1>
+
+    <h4>CTC Certidão #{{ $ctc_certidao->ctc_numero }}</h4>
 
     <div class="row">
-        <div class="col-md-4">
-            <h4>Deduções</h4>
-            <ul>
-                @foreach ($deducoes as $ano => $deducao)
-                    <li><a href="{{ route('ctc.show', [$ctc_certidao->id, $ano]) }}">Ano {{ $ano }}</a></li>
-                @endforeach
-            </ul>
-            <form action="{{ route('deductions.update', [$ctc_certidao->id, $anoSelecionado ?? '']) }}" method="POST">
-                @csrf
-                @method('PUT')
-                
-                <div class="form-group">
-                    <label for="faltas">Faltas</label>
-                    <input type="number" name="faltas" id="faltas" class="form-control" value="{{ $deducaoSelecionada->faltas ?? '' }}">
-                </div>
-                <div class="form-group">
-                    <label for="licencas">Licenças</label>
-                    <input type="number" name="licencas" id="licencas" class="form-control" value="{{ $deducaoSelecionada->licencas ?? '' }}">
-                </div>
-                <div class="form-group">
-                    <label for="licencas_sem_vencimento">Licenças sem vencimento</label>
-                    <input type="number" name="licencas_sem_vencimento" id="licencas_sem_vencimento" class="form-control" value="{{ $deducaoSelecionada->licencas_sem_vencimento ?? '' }}">
-                </div>
-                <div class="form-group">
-                    <label for="suspensoes">Suspensões</label>
-                    <input type="number" name="suspensoes" id="suspensoes" class="form-control" value="{{ $deducaoSelecionada->suspensoes ?? '' }}">
-                </div>
-                <div class="form-group">
-                    <label for="disponibilidade">Disponibilidade</label>
-                    <input type="number" name="disponibilidade" id="disponibilidade" class="form-control" value="{{ $deducaoSelecionada->disponibilidade ?? '' }}">
-                </div>
-                <div class="form-group">
-                    <label for="outras">Outras</label>
-                    <input type="number" name="outras" id="outras" class="form-control" value="{{ $deducaoSelecionada->outras ?? '' }}">
-                </div>
-                <button type="submit" class="btn btn-primary">Salvar</button>
-            </form>
+        <div class="col-md-12">
+            <table>
+                <thead>
+                    <tr>
+                        <th style="width:5%;border: 1px solid black;">ID</th>
+                        <th style="border: 1px solid black;">ANO</th>
+                        <th style="border: 1px solid black;">TEMPO BRUTO</th>
+                        <th style="border: 1px solid black;">FALTAS</th>
+                        <th style="border: 1px solid black;">LICENÇA</th>
+                        <th style="border: 1px solid black;">LICENÇA<br>SEM VENCIMENTO</th>
+                        <th style="border: 1px solid black;">SUSPENSÕES</th>
+                        <th style="border: 1px solid black;">DISPONIBILIDADE</th>
+                        <th style="border: 1px solid black;">OUTRAS</th>
+                        <th style="border: 1px solid black;">TOTAL LÍQUIDO</th>
+                        <th style="width:5%; border: 1px solid black;">AÇÕES</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($registros as $registro)
+                    <tr>
+                        <td>{{ $registro->id }}</td>
+                        <td>{{ $registro->ano }}</td>
+                        <td>{{ $registro->tempo_bruto }}</td>
+                        <td>{{ $registro->faltas}}</td>
+                        <td>{{ $registro->licencas}}</td>
+                        <td>{{ $registro->licencas_sem_vencimento}}</td>
+                        <td>{{ $registro->suspensoes}}</td>
+                        <td>{{ $registro->disponibilidade}}</td>
+                        <td>{{ $registro->outras}}</td>
+                        <td>{{ $registro->tempo_liquido}}</td>
+                        <td>
+                            <a href="{{route('deducao.edit',$registro->id)}}">
+                                <i class="ti-pencil mr-1 btn btn-success"></i>
+                            </a>
+                        </td>
+
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table> 
+
+
+
         </div>
     </div>
 
     <hr>
 
     <a href="{{ route('ctc.index') }}" class="btn btn-default">Voltar para a lista</a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="col-sm-12 mt-5">
+    <div class="wrap mt-1" style="text-align: center;">
+        <a href="{{route('events.pdf',$ctc_certidao->id)}}">
+           <button type="submit" class="btn btn-danger">
+        <i class="ti-printer mr-1"></i> Imprimir
+    </button>
+        </a>
+    </div>
 </div>
-
-@push('scripts')
-    <script>
-        $(function () {
-            // Obtém o ano selecionado no select
-            $('#ano_select').on('change', function () {
-            var anoSelecionado = $(this).val();
-            window.location.href = "{{ route('ctc.show', [$ctc_certidao->id, ':ano']) }}".replace(':ano', anoSelecionado);
-        });
-    });
-</script>
-@endpus
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 @endsection
 @section('js')

@@ -33,6 +33,10 @@ class CTC extends Model {
     public function serve(){
         return $this->belongsToMany(\App\Serve::class, 'serve_id');
     }  
+     public function address(){
+        return $this->belongsToMany(\App\Address::class, 'address_id');
+    }  
+    
     public function contract(){
         return $this->belongsToMany(\App\Contract::class, 'contract_id');
     } 

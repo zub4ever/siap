@@ -87,6 +87,19 @@ use Carbon\Carbon;
                 </td>
             </tr>
         </table>
+         <table style="width:100%; border: 1px solid black;font-size: 10px;">
+            <tr>
+                <td style="width:100%; border: 1px solid black;"><strong>Endereço:</strong><br>
+                    @foreach ($address as $endereco)
+                    @if($ctc->address_id == $endereco->id)
+                    {{$endereco->nm_rua}},{{$endereco->nr_casa}},@if($endereco->state_id == 1)Acre    @endif
+                    @endif
+                    @endforeach
+                </td>
+
+            </tr>
+        </table>
+        
         <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>CARGO EFETIVO:</strong><br>
@@ -96,7 +109,7 @@ use Carbon\Carbon;
                     @endif
                     @endforeach
                 </td>
-                
+
             </tr>
         </table>
         <table style="width:100%; border: 1px solid black;font-size: 10px;">
@@ -161,31 +174,40 @@ use Carbon\Carbon;
                 </tr>
             </thead>
             <tbody>
-                @foreach($days_by_year as $year => $days)
+                @php
+                $total_bruto = 0;
+                $total_liquido = 0;
+                @endphp
+
+                @foreach($ctc_deducao as $deducao)
                 <tr>
-                    <td style="border: 1px solid black;">{{ $year }}</td>
-                    <td style="border: 1px solid black;">{{ $days }} dias</td>
-                    <td style="border: 1px solid black;">0</td>
-                    <td style="border: 1px solid black;">0</td>
-                    <td style="border: 1px solid black;">0</td>
-                    <td style="border: 1px solid black;">0</td>
-                    <td style="border: 1px solid black;">0</td>
-                    <td style="border: 1px solid black;">0</td>
-                    <td style="border: 1px solid black;">{{ $days }} dias</td>
+                    <td style="border: 1px solid black;">{{$deducao->ano}}</td>
+                    <td style="border: 1px solid black;">{{$deducao->tempo_bruto}}</td>
+                    <td style="border: 1px solid black;">{{$deducao->faltas}}</td>
+                    <td style="border: 1px solid black;">{{$deducao->licencas}}</td>
+                    <td style="border: 1px solid black;">{{$deducao->licencas_sem_vencimento}}</td>
+                    <td style="border: 1px solid black;">{{$deducao->suspensoes}}</td>
+                    <td style="border: 1px solid black;">{{$deducao->disponibilidade}}</td>
+                    <td style="border: 1px solid black;">{{$deducao->outras}}</td>
+                    <td style="border: 1px solid black;">{{$deducao->tempo_liquido}}</td>
                 </tr>
+                @php
+                $total_bruto += $deducao->tempo_bruto;
+                $total_liquido += $deducao->tempo_liquido;
+                @endphp
                 @endforeach
             </tbody>
             <tfoot>
                 <tr>
                     <td>Total</td>
+                    <td style="border: 1px solid black;">{{$total_bruto}} dias</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
-                    <td style="border: 1px solid black;"></td>
-                    <td style="border: 1px solid black;">{{ $diff }} dias</td>
+                    <td style="border: 1px solid black;">{{$total_liquido}} dias</td>
 
                 </tr>
             </tfoot>
@@ -194,9 +216,10 @@ use Carbon\Carbon;
 
 
         <?php
-        $years = floor($diff / 365);
-        $months = floor(($diff % 365) / 30);
-        $days = ($diff % 365) % 30;
+        $tempoCarbon = Carbon::now()->addDays($total_liquido);
+        $anos = $tempoCarbon->diffInYears();
+        $meses = $tempoCarbon->diffInMonths() % 12;
+        $dias = $tempoCarbon->diffInDays() % 30;
         ?>
 
 
@@ -205,7 +228,7 @@ use Carbon\Carbon;
         <table style="width:100%; border: 1px solid black;">
             <tr>
                 <td style="width:100%; border: 1px solid black;">
-                    <p class="justificado">CERTIFICO, em face do apurado, que o interessado conta, de efetivo exercício prestado neste Órgão, o tempo de contribuição de {{ $diff }} dias, correspondente a {{ $years }} anos, {{ $months }} meses e {{ $days }} dias</p>
+                    <p class="justificado">CERTIFICO, em face do apurado, que o interessado conta, de efetivo exercício prestado neste Órgão, o tempo de contribuição de {{$total_liquido }} dias, correspondente a {{ $anos }} anos, {{ $meses }} meses e {{ $dias }} dias</p>
                     <p class="justificado">CERTIFICO que a Lei nº 1. 793, de 23 de dezembro de 2009, assegura aos servidores públicos titulares de cargo efetivo do município de 
                         Rio Branco/AC os benefícios das aposentadorias voluntárias, por invalidez e compulsória, e pensão por morte, com aproveitamento de 
                         tempo de contribuição para o Regime Geral de Previdência Social ou para outro Regime Próprio de Previdência Social, na forma da 

@@ -110,7 +110,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('events/{id}', 'DIPREV\CTCController@pdf')->name('events.pdf');
 
     
-    Route::put('/ctc/{id}/{ano}/update', 'DIPREV\CTCDeducaoController@update')->name('deductions.update');
+    Route::get('/deducao/{id}/edit', 'DIPREV\CTCDeducaoController@edit')->name('deducao.edit');
+    
+    Route::put('/ctc/{id}/update', 'DIPREV\CTCDeducaoController@update')->name('deductions.update');
 
 
     //Route::get('/getDetails/{id?}', 'DIPREV\CTCController@getDetails');

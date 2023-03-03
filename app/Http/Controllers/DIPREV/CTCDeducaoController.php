@@ -17,54 +17,52 @@ use App\Http\Requests\DiprevFormRequest\CTC\CTCFormRequest;
 use Illuminate\Support\Facades\DB;
 use PDF;
 use App\Models\DIPREV\CTC\CTCDeducao;
+use Illuminate\Support\Facades\Validator;
 
 class CTCDeducaoController extends Controller {
 
-    public function update(Request $request, $id, $ano) {
-
-        $ctc_certidao = CTCDeducao::find($id);
-
-        if (!$ctc_certidao) {
-            return response()->json(['message' => 'Certidão não encontrada.'], 404);
-        }
-
-        $deducao = CTCDeducao::where('ctc_certidao_id', $ctc_certidao)->where('ano', $ano)->first();
-
-        if (!$ctc_certidao_deducao) {
-            return response()->json(['message' => 'Dedução não encontrada.'], 404);
-        }
+    public function edit($id) {
 
 
+        $registros = CTCDeducao::findOrFail($id);
+
+        return view('diprev.ctc.deducao.edit', compact('registros'));
+    }
+
+    public function update(Request $request, $id) {
+
+        $registros = CTCDeducao::find($id);
+
+        $validatedData = $request->validate([
+            'faltas' => 'required|integer',
+            'licencas' => 'required|integer',
+            'licencas_sem_vencimento' => 'required|integer',
+            'suspensoes' => 'required|integer',
+            'disponibilidade' => 'required|integer',
+            'outras' => 'required|integer',
+        ]);
+
+        $faltas = $validatedData['faltas'];
+        $licencas = $validatedData['licencas'];
+        $licencas_sem_vencimento = $validatedData['licencas_sem_vencimento'];
+        $suspensoes = $validatedData['suspensoes'];
+        $disponibilidade = $validatedData['disponibilidade'];
+        $outras = $validatedData['outras'];
+
+        if ($registros) {
+            $registros->update($validatedData);
+
+            $tempo_liquido = $registros->tempo_bruto - ($faltas + $licencas + $licencas_sem_vencimento + $suspensoes + $disponibilidade + $outras);
+
+            $registros->tempo_liquido = $tempo_liquido;
+            $registros->save();
+
+            return redirect()->route('ctc.show', ['id' => $registros->ctc_certidao_id])->with(
+                        'success',
+                        "Dedução realizada com sucesso."
+        );
 
 
-        $ctc_certidao_id = $ctc_certidao_deducao->ctc_certidao_id;
-
-        $deducoes = CTCDeducao::where('ctc_certidao_id', $ctc_certidao_id)
-                ->where('ano', $ano)
-                ->get();
-
-        //dd($deducoes);
-
-        if ($deducoes->isEmpty()) {
-            return response()->json(['message' => 'Dedução não encontrada.'], 404);
-        }
-
-        $faltas = $deducoes->sum('faltas');
-        $licencas = $deducoes->sum('licencas');
-        $licencas_sem_vencimento = $deducoes->sum('licencas_sem_vencimento');
-        $suspensoes = $deducoes->sum('suspensoes');
-        $disponibilidade = $deducoes->sum('disponibilidade');
-        $outras = $deducoes->sum('outras');
-
-        if ($deducao) {
-            $deducao->update($validatedData);
-
-            $tempo_liquido = $deducao->tempo_bruto - ($deducao->faltas + $deducao->licencas + $deducao->licencas_sem_vencimento + $deducao->suspensoes + $deducao->disponibilidade + $deducao->outras);
-
-            $deducao->tempo_liquido = $tempo_liquido;
-            $deducao->save();
-
-            return response()->json(['message' => 'Dedução atualizada com sucesso.'], 200);
         } else {
             return response()->json(['message' => 'Dedução não encontrada.'], 404);
         }

@@ -32,5 +32,8 @@ class Address extends Model {
     public function city() {
         return $this->hasMany(City::class, 'city_id');
     }
+    public function ctc() {
+        return $this->hasMany(\App\Models\DIPREV\CTC::class, 'address_id');
+    }
 
 }
