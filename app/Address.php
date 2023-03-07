@@ -12,6 +12,7 @@ class Address extends Model {
         'nm_rua',
         'nr_casa',
         'complemento',
+        'bairro',
         'state_id',
         'city_id',
         'serve_id',

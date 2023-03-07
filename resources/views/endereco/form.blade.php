@@ -1,23 +1,23 @@
 <div class="row">
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
-            <label for="server_id" class="form-control-label">Servidor:
+            <label for="serve_id" class="form-control-label">Servidor:
                 <span class="text-danger">*</span>
             </label>
-            <select class="form-control servidor-select2" name="serve_id" id="serve_id">
+            <select class="form-control select2" name="serve_id" id="serve_id">
                 <option value="">Selecione o servidor</option>
-                @foreach ($servidor as $sv)              
-                <option value="{{$sv->id}}"
-                        {{(empty(old('server_id')) ? @$contrato->server_id : old('server_id')) == $sv->id ? 'selected' : ''}}>   
-                    {{$sv->matricula}}-{{$sv->nm_servidor}}
+                @foreach ($servidor as $sv)
+                <option value="{{$sv->id}}" {{(empty(old('serve_id')) ? @$address->serve_id : old('serve_id')) == $sv->id ? 'selected' : ''}}>
+                    {{$sv->matricula}} - {{$sv->nm_servidor}}
                 </option>
                 @endforeach
             </select>
-            @if ($errors->has('server_id'))
-            <h6 class="heading text-danger">{{$errors->first('server_id')}}</h6>
+            @if ($errors->has('serve_id'))
+            <h6 class="heading text-danger">{{$errors->first('serve_id')}}</h6>
             @endif
         </div>
     </div>
+
 
     <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
@@ -44,8 +44,7 @@
     </div>
 </div>
 <div class="row">
-
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="complemento" class="form-control-label">Complemento:
                 <span class="text-danger">*</span>
@@ -53,6 +52,17 @@
             <input type="text" class="form-control focus" name="complemento" value="{{@$address->complemento}}">
             @if ($errors->has('complemento'))
             <h6 class="heading text-danger">{{$errors->first('complemento')}}</h6>
+            @endif
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+        <div class="wrap">
+            <label for="bairro" class="form-control-label">Bairro:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control focus" name="bairro" value="{{@$address->bairro}}">
+            @if ($errors->has('bairro'))
+            <h6 class="heading text-danger">{{$errors->first('bairro')}}</h6>
             @endif
         </div>
     </div>
@@ -65,7 +75,7 @@
                 <option value="">Selecione a cidade</option>
                 @foreach ($city as $ct)
                 <option value="{{$ct->id}}"
-                    {{(empty(old('city_id')) ? @$address->city_id : old('city_id')) == $ct->id ? 'selected' : ''}}>  
+                        {{(empty(old('city_id')) ? @$address->city_id : old('city_id')) == $ct->id ? 'selected' : ''}}>  
                     {{$ct->nm_cidade}}
                 </option>
                 @endforeach
@@ -75,7 +85,7 @@
             @endif
         </div>
     </div>
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="state_id" class="form-control-label">Estado:
                 <span class="text-danger">*</span>
@@ -84,7 +94,7 @@
                 <option value="">Selecione o estado</option>
                 @foreach ($state as $st)
                 <option value="{{$st->id}}"
-                    {{(empty(old('state_id')) ? @$address->state_id : old('state_id')) == $st->id ? 'selected' : ''}}>
+                        {{(empty(old('state_id')) ? @$address->state_id : old('state_id')) == $st->id ? 'selected' : ''}}>
                     {{$st->nm_estado}}
                 </option>
                 @endforeach

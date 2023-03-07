@@ -87,19 +87,18 @@ use Carbon\Carbon;
                 </td>
             </tr>
         </table>
-         <table style="width:100%; border: 1px solid black;font-size: 10px;">
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>Endereço:</strong><br>
                     @foreach ($address as $endereco)
                     @if($ctc->address_id == $endereco->id)
-                    {{$endereco->nm_rua}},{{$endereco->nr_casa}},@if($endereco->state_id == 1)Acre    @endif
+                    {{$endereco->nm_rua}},{{$endereco->nr_casa}},{{$endereco->bairro}}, @if($endereco->city_id == 16)Rio Branco    @endif @if($endereco->state_id == 1), Acre    @endif
                     @endif
                     @endforeach
                 </td>
-
             </tr>
         </table>
-        
+
         <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>CARGO EFETIVO:</strong><br>
@@ -309,36 +308,50 @@ use Carbon\Carbon;
                 </tr>
             </thead>
             <tbody>
+                @foreach($ctc_verso as $registro)
                 <tr>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_3) && !empty($registro->tempo_magisterio_fim_3))
+                        {{ Carbon::parse($registro->tempo_magisterio_incio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_3)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_bruto_dias_1 }}</td>
+                    <td style="border: 1px solid black;">{{ $registro->id_ocorrencia_1 }}</td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_bruto_inicio_2) && !empty($registro->tempo_bruto_fim_2))
+                        {{ Carbon::parse($registro->tempo_bruto_inicio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_2)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_bruto_dias_2 }}</td>
+                    <td style="border: 1px solid black;">{{ $registro->id_ocorrencia_2 }}</td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
-                    <td style="border: 1px solid black;"></td>
-                </tr><!-- comment -->
-                <tr>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_bruto_inicio_3) && !empty($registro->tempo_bruto_fim_3))
+                        {{ Carbon::parse($registro->tempo_bruto_inicio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_3)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_bruto_dias_3 }}</td>
+                    <td style="border: 1px solid black;">{{ $registro->id_ocorrencia_3 }}</td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_bruto_inicio_4) && !empty($registro->tempo_bruto_fim_4))
+                        {{ Carbon::parse($registro->tempo_bruto_inicio_4)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_4)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_bruto_dias_4 }}</td>
+                    <td style="border: 1px solid black;">{{ $registro->id_ocorrencia_4 }}</td>
                 </tr>
                 <tr>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_bruto_inicio_5) && !empty($registro->tempo_bruto_fim_5))
+                        {{ Carbon::parse($registro->tempo_bruto_inicio_5)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_5)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_bruto_dias_5 }}</td>
+                    <td style="border: 1px solid black;">{{ $registro->id_ocorrencia_5 }}</td>
                 </tr>
+                <tr>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_bruto_inicio_6) && !empty($registro->tempo_bruto_fim_6))
+                        {{ Carbon::parse($registro->tempo_bruto_inicio_6)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_6)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_bruto_dias_6 }}</td>
+                    <td style="border: 1px solid black;">{{ $registro->id_ocorrencia_6 }}</td>
+                </tr>
+                @endforeach
             </tbody>
         </table><br>
         <table  style="width:100%; border: 1px solid black;">
@@ -353,30 +366,39 @@ use Carbon\Carbon;
                 </tr>
             </thead>
             <tbody>
+                @foreach($ctc_verso as $registro)
                 <tr>
 
                     <td colspan="3">I - Na condição de segurado com deficiência:</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid black;">a) grave</td>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_especial_inicio_1) && !empty($registro->tempo_especial_fim_1))
+                        {{ Carbon::parse($registro->tempo_especial_inicio_1)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_especial_fim_1)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_especial_dias_1 }}</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid black;">b) moderada</td>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_especial_inicio_2) && !empty($registro->tempo_especial_fim_2))
+                        {{ Carbon::parse($registro->tempo_especial_inicio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_especial_fim_2)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_especial_dias_2 }}</td>
                 </tr>
 
                 <tr>
                     <td style="border: 1px solid black;">c) leve</td>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_especial_inicio_3) && !empty($registro->tempo_especial_fim_3))
+                        {{ Carbon::parse($registro->tempo_especial_inicio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_especial_fim_3)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_especial_dias_3 }}</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid black;">II - No cargo de policial, agente penitenciário ou de agente socioeducativo.</td>
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_especial_inicio_4) && !empty($registro->tempo_bruto_fim_4))
+                        {{ Carbon::parse($registro->tempo_especial_inicio_4)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_especial_fim_4)->format('d/m/Y') }}
+                        @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_especial_dias_4 }}</td>
                 </tr>
                 <tr>
 
@@ -402,6 +424,7 @@ use Carbon\Carbon;
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                 </tr>
+                @endforeach
             </tbody>
         </table> 
         <!-- Ultima parte -->
@@ -419,29 +442,37 @@ use Carbon\Carbon;
                 </tr>
             </thead>
             <tbody>
-
+                @foreach ($ctc_verso as $registro)
                 <tr>
 
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_1) && !empty($registro->tempo_magisterio_fim_1))
+                {{ Carbon::parse($registro->tempo_magisterio_incio_1)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_1)->format('d/m/Y') }}
+                @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_magisterio_dias_1 }}</td>
                 </tr>
                 <tr>
 
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_2) && !empty($registro->tempo_magisterio_fim_2))
+                {{ Carbon::parse($registro->tempo_magisterio_incio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_2)->format('d/m/Y') }}
+                @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_magisterio_dias_2 }}</td>
                 </tr>
 
                 <tr>
 
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_3) && !empty($registro->tempo_magisterio_fim_3))
+                {{ Carbon::parse($registro->tempo_magisterio_incio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_3)->format('d/m/Y') }}
+                @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_magisterio_dias_3 }}</td>
                 </tr>
                 <tr>
 
-                    <td style="border: 1px solid black;">DE ___/___/_____ A	___/___/_____</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_4) && !empty($registro->tempo_magisterio_fim_4))
+                {{ Carbon::parse($registro->tempo_magisterio_incio_4)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_4)->format('d/m/Y') }}
+                @endif</td>
+                    <td style="border: 1px solid black;">{{ $registro->tempo_magisterio_dias_4 }}</td>
                 </tr>
-
+                @endforeach
             </tbody>
         </table>      
         <br>

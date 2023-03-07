@@ -22,58 +22,58 @@ View CTC
 
 
 
-    <h4>CTC Certidão #{{ $ctc_certidao->ctc_numero }}</h4>
+<h4>CTC Certidão #{{ $ctc_certidao->ctc_numero }}</h4>
 
-    <div class="row">
-        <div class="col-md-12">
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width:5%;border: 1px solid black;">ID</th>
-                        <th style="border: 1px solid black;">ANO</th>
-                        <th style="border: 1px solid black;">TEMPO BRUTO</th>
-                        <th style="border: 1px solid black;">FALTAS</th>
-                        <th style="border: 1px solid black;">LICENÇA</th>
-                        <th style="border: 1px solid black;">LICENÇA<br>SEM VENCIMENTO</th>
-                        <th style="border: 1px solid black;">SUSPENSÕES</th>
-                        <th style="border: 1px solid black;">DISPONIBILIDADE</th>
-                        <th style="border: 1px solid black;">OUTRAS</th>
-                        <th style="border: 1px solid black;">TOTAL LÍQUIDO</th>
-                        <th style="width:5%; border: 1px solid black;">AÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($registros as $registro)
-                    <tr>
-                        <td>{{ $registro->id }}</td>
-                        <td>{{ $registro->ano }}</td>
-                        <td>{{ $registro->tempo_bruto }}</td>
-                        <td>{{ $registro->faltas}}</td>
-                        <td>{{ $registro->licencas}}</td>
-                        <td>{{ $registro->licencas_sem_vencimento}}</td>
-                        <td>{{ $registro->suspensoes}}</td>
-                        <td>{{ $registro->disponibilidade}}</td>
-                        <td>{{ $registro->outras}}</td>
-                        <td>{{ $registro->tempo_liquido}}</td>
-                        <td>
-                            <a href="{{route('deducao.edit',$registro->id)}}">
-                                <i class="ti-pencil mr-1 btn btn-success"></i>
-                            </a>
-                        </td>
+<div class="row">
+    <div class="col-md-12">
+        <table>
+            <thead>
+                <tr>
+                    <th style="width:5%;border: 1px solid black;">ID</th>
+                    <th style="border: 1px solid black;">ANO</th>
+                    <th style="border: 1px solid black;">TEMPO BRUTO</th>
+                    <th style="border: 1px solid black;">FALTAS</th>
+                    <th style="border: 1px solid black;">LICENÇA</th>
+                    <th style="border: 1px solid black;">LICENÇA<br>SEM VENCIMENTO</th>
+                    <th style="border: 1px solid black;">SUSPENSÕES</th>
+                    <th style="border: 1px solid black;">DISPONIBILIDADE</th>
+                    <th style="border: 1px solid black;">OUTRAS</th>
+                    <th style="border: 1px solid black;">TOTAL LÍQUIDO</th>
+                    <th style="width:5%; border: 1px solid black;">AÇÕES</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($registros as $registro)
+                <tr>
+                    <td>{{ $registro->id }}</td>
+                    <td>{{ $registro->ano }}</td>
+                    <td>{{ $registro->tempo_bruto }}</td>
+                    <td>{{ $registro->faltas}}</td>
+                    <td>{{ $registro->licencas}}</td>
+                    <td>{{ $registro->licencas_sem_vencimento}}</td>
+                    <td>{{ $registro->suspensoes}}</td>
+                    <td>{{ $registro->disponibilidade}}</td>
+                    <td>{{ $registro->outras}}</td>
+                    <td>{{ $registro->tempo_liquido}}</td>
+                    <td>
+                        <a href="{{route('deducao.edit',$registro->id)}}">
+                            <i class="ti-pencil mr-1 btn btn-success"></i>
+                        </a>
+                    </td>
 
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table> 
+                </tr>
+                @endforeach
+            </tbody>
+        </table> 
 
 
 
-        </div>
     </div>
+</div>
 
-    <hr>
+<hr>
 
-    <a href="{{ route('ctc.index') }}" class="btn btn-default">Voltar para a lista</a>
+<a href="{{ route('ctc.index') }}" class="btn btn-default">Voltar para a lista</a>
 
 
 
@@ -90,9 +90,14 @@ View CTC
 <div class="col-sm-12 mt-5">
     <div class="wrap mt-1" style="text-align: center;">
         <a href="{{route('events.pdf',$ctc_certidao->id)}}">
-           <button type="submit" class="btn btn-danger">
-        <i class="ti-printer mr-1"></i> Imprimir
-    </button>
+            <button type="submit" class="btn btn-danger">
+                <i class="ti-printer mr-1"></i> Imprimir
+            </button>
+        </a>
+        <a href="{{route('verso.show',$ctc_certidao->id)}}">
+            <button type="submit" class="btn btn-success">
+                <i class="ti-printer mr-1"></i>Verso da CTC
+            </button>
         </a>
     </div>
 </div>

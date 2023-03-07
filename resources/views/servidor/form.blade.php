@@ -76,8 +76,7 @@
                 <span class="text-danger">*</span>
             </label>
             <input type="text" class="form-control" name='data_nascimento' placeholder="11/11/1111" data-mask="00/00/0000" autocomplete="off"
-            value="{{date('d-m-Y', strtotime(@$serve->data_nascimento))}}">
-           
+                   value="{{@$serve->data_nascimento ? date('d-m-Y', strtotime(@$serve->data_nascimento)) : ''}}">
         </div>
     </div>
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
@@ -218,7 +217,7 @@
                 <option value="">Selecione uma opção</option>
                 @foreach ($obito as $ob)
                 <option value="{{$ob->id}}"
-                     {{(empty(old('obito_id')) ? @$serve->obito_id : old('obito_id')) == $ob->id ? 'selected' : ''}}>
+                        {{(empty(old('obito_id')) ? @$serve->obito_id : old('obito_id')) == $ob->id ? 'selected' : ''}}>
                     {{$ob->nm_obito}}
                 </option>
                 @endforeach
@@ -240,7 +239,7 @@
                 <option value="">Selecione uma opção</option>
                 @foreach ($type_serve as $tp)
                 <option value="{{$tp->id}}"
-                    {{(empty(old('type_serve_id')) ? @$serve->type_serve_id : old('type_serve_id')) == $tp->id ? 'selected' : ''}}>
+                        {{(empty(old('type_serve_id')) ? @$serve->type_serve_id : old('type_serve_id')) == $tp->id ? 'selected' : ''}}>
                     {{$tp->status_servidor}}
                 </option>
                 @endforeach

@@ -49,6 +49,7 @@ class CTCController extends Controller {
 
         return view("diprev.ctc.index", compact('ctc', 'serve', 'funcao', 'orgao'));
     }
+
     public function create() {
         $origin = Origin::all();
         $servidor = Serve::all();
@@ -63,6 +64,7 @@ class CTCController extends Controller {
         // $almo_localizacao_dpto = DB::table('almoxarifado_localizacao_dpto')->get()->all();
         return view('diprev.ctc.create', compact('servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao', 'adress'));
     }
+
     public function edit($id) {
         $ctc = CTC::findOrFail($id);
 
@@ -75,6 +77,7 @@ class CTCController extends Controller {
 
         return view('diprev.ctc.edit', compact('ctc', 'servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao', 'adress'));
     }
+
     public function update(CTCFormRequest $request, $id) {
         $ctc = CTC::findOrFail($id);
 
@@ -93,6 +96,7 @@ class CTCController extends Controller {
                         "Certidao alterada com sucesso."
         );
     }
+
     public function store(CTCFormRequest $request) {
 
         DB::beginTransaction();
@@ -113,6 +117,10 @@ class CTCController extends Controller {
             $ctc->ctc_numero = $ctc_numero;
 
             $ctc->address_id = $address->id; // insere o id do endereço correspondente
+
+            DB::table('ctc_verso')->insert([
+                'ctc_certidao_id' => $ctc->id
+            ]);
 
             $ctc->save();
         }
@@ -146,11 +154,18 @@ class CTCController extends Controller {
 
 
 
-            // Inserindo na tabela
+            //Inserindo na tabela
             DB::table('ctc_certidao_deducao')->insert([
                 'ctc_certidao_id' => $ctc->id,
                 'ano' => $i,
-                'tempo_bruto' => $days_by_year[$i]
+                'tempo_bruto' => $days_by_year[$i],
+                'faltas' => 0,
+                'licencas' => 0,
+                'licencas_sem_vencimento' => 0,
+                'suspensoes' => 0,
+                'disponibilidade' => 0,
+                'outras' => 0,
+                'tempo_liquido' => $days_by_year[$i]
             ]);
         }
 
@@ -199,10 +214,10 @@ class CTCController extends Controller {
 
 
         $ctc = CTC::findOrFail($id);
-        
+
         $ctc_deducao = CTCDeducao::where('ctc_certidao_id', $id)->get();
-        
-        
+        $ctc_verso = \App\Models\DIPREV\CTC\CTCVerso::where('ctc_certidao_id', $id)->get();
+
         $servidor = Serve::all();
         $sexo = Sexo::all();
         $funcao = Funcao::all();
@@ -216,10 +231,12 @@ class CTCController extends Controller {
                             'funcao' => $funcao,
                             'orgao' => $orgao,
                             'ctc_deducao' => $ctc_deducao,
-                            'address' => $address
+                            'address' => $address,
+                            'ctc_verso' => $ctc_verso
                         ])
                         ->setPaper('A4', 'portrait')
-                        ->stream();
+                        ->stream('ctc_certidao.pdf');
+                        
     }
 
     public function destroy($id) {

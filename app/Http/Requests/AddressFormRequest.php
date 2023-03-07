@@ -23,6 +23,8 @@ class AddressFormRequest extends FormRequest {
     public function rules() {
         return [
             'nm_rua' => ['required', 'max:150'],
+            'complemento' => ['required', 'max:150'],  
+            'bairro' => ['required', 'max:300'],   
             'nr_casa' => ['required', 'max:15'],         
             'serve_id' => ['required'],
             'city_id' => ['required'],

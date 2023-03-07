@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title') Editar órgão expedidor @endsection
+@section('page-title') Editar endereço @endsection
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/select2/select2.min.css")}}">

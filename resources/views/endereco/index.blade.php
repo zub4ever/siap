@@ -42,6 +42,7 @@ Endereços
                             <tr>
                                 <th class="text-center">Matrícula</th>
                                 <th class="text-center">Nome servidor</th>
+                                <th class="text-center">Bairro</th>
                                 <th class="text-center">Cidade</th>
 
                                 <th class="text-center">Ações</th>
@@ -54,8 +55,10 @@ Endereços
                                 @if($svd->serve_id == $vd->id)
                                 <td class="text-center">{{$vd->matricula}}</td>
                                 <td class="text-center">{{$vd->nm_servidor}}</td>
+                                
                                 @endif
                                 @endforeach
+                                <td class="text-center">{{$svd->bairro}}</td>
                                 @foreach($city as $mnc)
                                 @if($svd->city_id == $mnc->id)
                                 <td class="text-center">{{$mnc->nm_cidade}}</td>

@@ -54,17 +54,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/dirf/download/{cpf}', 'Dirf\DirfCedulaCController@download')->name('dirf.download');
 
     Route::get('/dirf/upload', function () {
-    return view('dirf.dirf-upload');
-})->name('dirf.up');
+        return view('dirf.dirf-upload');
+    })->name('dirf.up');
     Route::post('/dirf/upload', 'Dirf\DirfCedulaCController@upload')->name('dirf.upload');
     Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store')->name('dirf.store');
-    
-    
-
-
-
-    
-    
 
     //Administração ATENDIMENTO
     Route::resource('administracao/atendimentos', 'Administracao\Atendimentos\AtendimentosController');
@@ -103,17 +96,19 @@ Route::group(['middleware' => ['auth']], function () {
     //FimRequerimentosAposentadoria
     //INicio de CTC
     Route::resource('/ctc', 'DIPREV\CTCController');
-    
+
     Route::get('/ctc/{id}/show', 'DIPREV\CTCController@show')->name('ctc.show');
     Route::get('/ctc/create', 'DIPREV\CTCController@create')->name('ctc.create');
     Route::post('/ctc/create', 'DIPREV\CTCController@store');
     Route::get('events/{id}', 'DIPREV\CTCController@pdf')->name('events.pdf');
-
-    
     Route::get('/deducao/{id}/edit', 'DIPREV\CTCDeducaoController@edit')->name('deducao.edit');
-    
     Route::put('/ctc/{id}/update', 'DIPREV\CTCDeducaoController@update')->name('deductions.update');
-
+    
+    Route::get('/verso/{id}/ctc', 'DIPREV\CTCVersoController@verso')->name('verso.show');
+    
+    
+    Route::get('/verso/{id}/edit', 'DIPREV\CTCVersoController@edit')->name('verso.edit');
+    Route::put('/verso/{id}/update', 'DIPREV\CTCVersoController@update')->name('verso.update');
 
     //Route::get('/getDetails/{id?}', 'DIPREV\CTCController@getDetails');
     // Route::post('get-details','DIPREV\CTCController@getDetails')->name('get-details');
@@ -209,9 +204,8 @@ Route::post('/consultaPublica/resultado', 'DAF\AlmoxarifadoController@busca')->n
 //Consulta do QrCode
 Route::get('/consulta/{id?}', 'DAF\AlmoxarifadoController@buscaQrCode');
 
-
 //Rotas para Cécula 
-    Route::get('/cpf/search', 'Dirf\DirfCedulaCController@search')->name('dirf.search');
-    Route::post('/cpf/result', 'Dirf\DirfCedulaCController@result')->name('dirf.result');
-    Route::get('/dirf/not-found', 'Dirf\DirfCedulaCController@cpfNotFound')->name('dirf.not-found');
-    Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store_c')->name('dirf.store_c');
+Route::get('/cpf/search', 'Dirf\DirfCedulaCController@search')->name('dirf.search');
+Route::post('/cpf/result', 'Dirf\DirfCedulaCController@result')->name('dirf.result');
+Route::get('/dirf/not-found', 'Dirf\DirfCedulaCController@cpfNotFound')->name('dirf.not-found');
+Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store_c')->name('dirf.store_c');

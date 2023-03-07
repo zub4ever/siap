@@ -4,10 +4,7 @@
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/select2/select2.min.css")}}">
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 
 @endsection
@@ -35,12 +32,17 @@
 @endsection
 
 @section('js')
+<script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
+<script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
+<script src="{{asset('assets/vendors/select2/plugin/select2.js')}}"></script>
 
+<script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
+<script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
 <script src="{{asset('assets/vendors/smartwizard/dist/js/jquery.smartWizard.min.js')}}"></script>
 <script src="{{asset('assets/vendors/select2/select2.full.min.js')}}"></script>
 <script src="{{asset('assets/vendors/jquery-mask-plugin/dist/jquery.mask.min.js')}}"></script>
 <script src="{{asset('assets/js/jquery-ui/jquery-ui.min.js')}}"></script>
-<script src="{{asset('assets/js/servidor/endereco/create.js')}}"></script>
+<script src="{{asset('/js/endereco/create.js')}}"></script>
 
 
 @endsection

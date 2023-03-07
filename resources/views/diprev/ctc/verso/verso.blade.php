@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 {{-- Page Title --}}
 @section('page-title')
 View CTC
@@ -19,66 +18,177 @@ View CTC
     <li class="breadcrumb-item"><a href="">Início</a></li>
     <li class="breadcrumb-item active"><a>CTC</a></li>
 </ol>
+<h4>CTC Certidão #{{ $ctc_certidao->ctc_numero }}</h4>
+@php
+use Carbon\Carbon;
+@endphp
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td colspan="3">FREQUÊNCIA - DISCRIMINAÇÃO DAS DEDUÇÕES DO TEMPO BRUTO</td>
+        </tr>
+        <tr>
+            <th scope="col">Períodos</th>
+            <th scope="col">Tempo em dias</th>
+            <th scope="col">Identificação da Ocorrência</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($registros as $registro)
+        <tr class="table-light">
+            <td>De:  @if(!empty($registro->tempo_bruto_inicio_1) && !empty($registro->tempo_bruto_fim_1))
+                {{ Carbon::parse($registro->tempo_bruto_inicio_1)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_1)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_bruto_dias_1 }}</td>
+            <td>{{ $registro->id_ocorrencia_1 }}</td>
+        </tr>
+        <tr class="table-light">
+            <td>De:  @if(!empty($registro->tempo_bruto_inicio_2) && !empty($registro->tempo_bruto_fim_2))
+                {{ Carbon::parse($registro->tempo_bruto_inicio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_2)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_bruto_dias_2 }}</td>
+            <td>{{ $registro->id_ocorrencia_2 }}</td>
+        </tr>
+        <tr class="table-light">
+            <td>De:  @if(!empty($registro->tempo_bruto_inicio_3) && !empty($registro->tempo_bruto_fim_3))
+                {{ Carbon::parse($registro->tempo_bruto_inicio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_3)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_bruto_dias_3 }}</td>
+            <td>{{ $registro->id_ocorrencia_3 }}</td>
+        </tr>
+        <tr class="table-light">
+            <td>De:  @if(!empty($registro->tempo_bruto_inicio_4) && !empty($registro->tempo_bruto_fim_4))
+                {{ Carbon::parse($registro->tempo_bruto_inicio_4)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_4)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_bruto_dias_4 }}</td>
+            <td>{{ $registro->id_ocorrencia_4 }}</td>
+        </tr>
+        <tr class="table-light">
+            <td>De:  @if(!empty($registro->tempo_bruto_inicio_5) && !empty($registro->tempo_bruto_fim_5))
+                {{ Carbon::parse($registro->tempo_bruto_inicio_5)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_5)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_bruto_dias_5 }}</td>
+            <td>{{ $registro->id_ocorrencia_5 }}</td>
+        </tr>
+        <tr class="table-light">
+            <td>De:  @if(!empty($registro->tempo_bruto_inicio_6) && !empty($registro->tempo_bruto_fim_6))
+                {{ Carbon::parse($registro->tempo_bruto_inicio_6)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_6)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_bruto_dias_3 }}</td>
+            <td>{{ $registro->id_ocorrencia_3 }}</td>
+        </tr>
+        @endforeach
+
+    </tbody>
+</table>
 
 
-
-    <h4>CTC Certidão #{{ $ctc_certidao->ctc_numero }}</h4>
-
-    <div class="row">
-        <div class="col-md-12">
-            <table>
-                <thead>
-                    <tr>
-                        <th style="width:5%;border: 1px solid black;">ID</th>
-                        <th style="border: 1px solid black;">ANO</th>
-                        <th style="border: 1px solid black;">TEMPO BRUTO</th>
-                        <th style="border: 1px solid black;">FALTAS</th>
-                        <th style="border: 1px solid black;">LICENÇA</th>
-                        <th style="border: 1px solid black;">LICENÇA<br>SEM VENCIMENTO</th>
-                        <th style="border: 1px solid black;">SUSPENSÕES</th>
-                        <th style="border: 1px solid black;">DISPONIBILIDADE</th>
-                        <th style="border: 1px solid black;">OUTRAS</th>
-                        <th style="border: 1px solid black;">TOTAL LÍQUIDO</th>
-                        <th style="width:5%; border: 1px solid black;">AÇÕES</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($registros as $registro)
-                    <tr>
-                        <td>{{ $registro->id }}</td>
-                        <td>{{ $registro->ano }}</td>
-                        <td>{{ $registro->tempo_bruto }}</td>
-                        <td>{{ $registro->faltas}}</td>
-                        <td>{{ $registro->licencas}}</td>
-                        <td>{{ $registro->licencas_sem_vencimento}}</td>
-                        <td>{{ $registro->suspensoes}}</td>
-                        <td>{{ $registro->disponibilidade}}</td>
-                        <td>{{ $registro->outras}}</td>
-                        <td>{{ $registro->tempo_liquido}}</td>
-                        <td>
-                            <a href="{{route('deducao.edit',$registro->id)}}">
-                                <i class="ti-pencil mr-1 btn btn-success"></i>
-                            </a>
-                        </td>
-
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table> 
-
-
-
-        </div>
-    </div>
-
-    <hr>
-
-    <a href="{{ route('ctc.index') }}" class="btn btn-default">Voltar para a lista</a>
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td colspan="3">TEMPO ESPECIAL INCLUÍDO, SEM CONVERSÃO, NO PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO</td>
+        </tr>
+        <tr>
+            <th scope="col">Especificação do exercício do tempo especial</th>
+            <th scope="col">Período</th>
+            <th scope="col">Tempo em dias</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($registros as $registro)
+        <tr class="table-light">
+            <td>a) grave</td>
+            <td>De:  @if(!empty($registro->tempo_especial_inicio_1) && !empty($registro->tempo_especial_fim_1))
+                {{ Carbon::parse($registro->tempo_especial_inicio_1)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_especial_fim_1)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_especial_dias_1 }}</td>
+        </tr>
+        <tr class="table-light">
+            <td>b) moderada</td>
+            <td>De:  @if(!empty($registro->tempo_especial_inicio_2) && !empty($registro->tempo_especial_fim_2))
+                {{ Carbon::parse($registro->tempo_especial_inicio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_especial_fim_2)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_especial_dias_2 }}</td>
+        </tr>
+        <tr class="table-light">
+            <td>c) leve</td>
+            <td>De:  @if(!empty($registro->tempo_especial_inicio_3) && !empty($registro->tempo_especial_fim_3))
+                {{ Carbon::parse($registro->tempo_especial_inicio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_especial_fim_3)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_especial_dias_3 }}</td>
+        </tr>
+        <tr class="table-light">
+            <td>II - No cargo de policial, agente penitenciário ou de agente socioeducativo</td>
+            <td>De:  @if(!empty($registro->tempo_especial_inicio_4) && !empty($registro->tempo_bruto_fim_4))
+                {{ Carbon::parse($registro->tempo_especial_inicio_4)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_especial_fim_4)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_especial_dias_4 }}</td>         
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
 
-
-
-
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td colspan="3">TEMPO DE EFETIVO EXERCÍCIO DAS FUNÇÕES DE MAGISTÉRIO NA EDUCAÇÃO INFANTIL E NO ENSINO FUNDAMENTAL
+E MÉDIO NO PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO</td>
+        </tr>
+        <tr>
+            
+            <th scope="col">Período</th>
+            <th scope="col">Tempo em dias</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach ($registros as $registro)
+        <tr class="table-light">
+           
+            <td>De:  @if(!empty($registro->tempo_magisterio_incio_1) && !empty($registro->tempo_magisterio_fim_1))
+                {{ Carbon::parse($registro->tempo_magisterio_incio_1)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_1)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_magisterio_dias_1 }}</td>
+        </tr>
+        <tr class="table-light">
+          
+            <td>De:  @if(!empty($registro->tempo_magisterio_incio_2) && !empty($registro->tempo_magisterio_fim_2))
+                {{ Carbon::parse($registro->tempo_magisterio_incio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_2)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_magisterio_dias_2 }}</td>
+        </tr>
+        <tr class="table-light">
+           
+            <td>De:  @if(!empty($registro->tempo_magisterio_incio_3) && !empty($registro->tempo_magisterio_fim_3))
+                {{ Carbon::parse($registro->tempo_magisterio_incio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_3)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_magisterio_dias_3 }}</td>
+        </tr>
+        <tr class="table-light">
+           
+            <td>De:  @if(!empty($registro->tempo_magisterio_incio_4) && !empty($registro->tempo_magisterio_fim_4))
+                {{ Carbon::parse($registro->tempo_magisterio_incio_4)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_4)->format('d/m/Y') }}
+                @endif
+            </td>
+            <td>{{ $registro->tempo_magisterio_dias_4 }}</td>         
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
 
 
@@ -89,10 +199,11 @@ View CTC
 
 <div class="col-sm-12 mt-5">
     <div class="wrap mt-1" style="text-align: center;">
-        <a href="{{route('events.pdf',$ctc_certidao->id)}}">
-           <button type="submit" class="btn btn-danger">
-        <i class="ti-printer mr-1"></i> Imprimir
-    </button>
+
+        <a href="{{route('verso.edit',$ctc_certidao->id)}}">
+            <button type="submit" class="btn btn-success">
+                <i class="ti-printer mr-1"></i>Editar Verso da CTC
+            </button>
         </a>
     </div>
 </div>

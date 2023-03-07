@@ -57,6 +57,10 @@ class CTC extends Model {
 
         return $this->belongsToMany(\App\Models\DIPREV\CTC\CTCDeducao::class, 'ctc_certidao_id');
     }
+    public function ctc_verso() {
+
+        return $this->belongsToMany(\App\Models\DIPREV\CTC\CTCVerso::class, 'ctc_certidao_id');
+    }
 
     
 }
