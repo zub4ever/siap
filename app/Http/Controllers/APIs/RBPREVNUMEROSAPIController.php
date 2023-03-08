@@ -12,27 +12,37 @@ use App\Models\RBPREVNUMEROS\RBPREVNUMEROSANO;
 use App\Models\RBPREVNUMEROS\RBPREVNUMEROSMES;
 use Illuminate\Support\Facades\Storage;
 
-
 //use App\Funcao;
 
 class RBPREVNUMEROSAPIController extends Controller {
 
     public function index() {
-        $rbprevNumeros = DB::table('rbprev_numeros')
-                ->join('rbprev_numeros_ano', 'rbprev_numeros.rbprev_numeros_ano_id', '=', 'rbprev_numeros_ano.id')
+        $rbprevNumeros = RBPREVNUMEROS::join('rbprev_numeros_ano', 'rbprev_numeros.rbprev_numeros_ano_id', '=', 'rbprev_numeros_ano.id')
                 ->join('rbprev_numeros_mes', 'rbprev_numeros.rbprev_numeros_mes_id', '=', 'rbprev_numeros_mes.id')
                 ->select('rbprev_numeros.id', 'rbprev_numeros_ano.nm_ano', 'rbprev_numeros_mes.nm_mes', 'rbprev_numeros.path_pdf')
                 ->get();
 
-        // Adicione a URL base do seu sistema antes do caminho do arquivo
-        $baseURL = config('app.url'). '/';
-        
-        foreach ($rbprevNumeros as $rbprevNumero) {
-            $rbprevNumero->path_pdf = Storage::url($rbprevNumero->path_pdf);
-
+        foreach ($rbprevNumeros as $item) {
+            $item->path_pdf = Storage::url($item->path_pdf);
         }
 
         return response()->json($rbprevNumeros);
+    }
+
+    public function show($id) {
+        $rbprevNumero = DB::table('rbprev_numeros')
+                ->join('rbprev_numeros_ano', 'rbprev_numeros.rbprev_numeros_ano_id', '=', 'rbprev_numeros_ano.id')
+                ->join('rbprev_numeros_mes', 'rbprev_numeros.rbprev_numeros_mes_id', '=', 'rbprev_numeros_mes.id')
+                ->select('rbprev_numeros.id', 'rbprev_numeros_ano.nm_ano', 'rbprev_numeros_mes.nm_mes', 'rbprev_numeros.path_pdf')
+                ->where('rbprev_numeros.id', '=', $id)
+                ->first();
+
+        if ($rbprevNumero) {
+            $rbprevNumero->path_pdf = Storage::url($rbprevNumero->path_pdf);
+            return response()->json($rbprevNumero);
+        } else {
+            return response()->json(['message' => 'Arquivo não encontrado'], 404);
+        }
     }
 
 }
