@@ -260,6 +260,14 @@
                         </a>                                          
                     </li>
                     <!--Fim de DAF-->
+                    <!--Inicio  de Atualizações de rbprev numero -->
+                    <li {!! (request()->is('rbprevAtualizacoes*') ? 'class="active"' : "")!!}>
+                        <a href="{{route('rbprevAtualizacoes.index')}}" aria-expanded="true">
+                            <i class="ti-reload"></i>
+                            <span>Atualizações</span>
+                        </a>                                          
+                    </li>
+                    <!--Fim de Atualizações de rbprev numero-->
 
                 </ul>
             </nav>

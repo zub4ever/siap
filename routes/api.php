@@ -29,5 +29,8 @@ Route::get('servidor', 'APIs\ServeAPIController@index');
 Route::get('servidor/{id}', [ServeAPIController::class, 'show']);
 
 
-//
+//Folha de pagamento
 Route::get('folhaPagamentoMensal', 'APIs\FolhaPgtoAPIController@index');
+
+//RBPREVNUMEROS
+Route::get('rbprevnumeros', 'APIs\RBPREVNUMEROSAPIController@index');

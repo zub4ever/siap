@@ -36,10 +36,19 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('cadastrosAuxiliares/funcao/create', 'CadastrosAuxiliares\Funcao\FuncaoController@store');
 
     Route::resource('pedido', 'Pedido\PedidoController');
+    //RbPREvNumeros
+    Route::resource('rbprevAtualizacoes', 'RBPREVNUMEROS\RBPREVInicioController');
+    Route::get('rbprevNumeros', 'RBPREVNUMEROS\RBPREVNumerosController@index')->name('rbprevNumeros.index');
+    
+    
+    Route::get('rbprevNumeros/create', 'RBPREVNUMEROS\RBPREVNumerosController@create')->name('rbprevNumeros.create');
+    Route::post('rbprevNumeros/create', 'RBPREVNUMEROS\RBPREVNumerosController@store')->name('rbprevNumeros.store');
+    
+    Route::delete('/rbprevNumeros/{id}', 'RBPREVNUMEROS\RBPREVNumerosController@destroy')->name('rbprevNumeros.destroy');
 
     //SEFPAG
     Route::resource('folhaPagamento', 'FolhaPagamento\FolhaInicioController');
-
+    
     Route::resource('folhamensal', 'FolhaPagamento\FolhaPagamentoController');
     Route::get('folhaensal/create', 'FolhaPagamento\FolhaPagamentoController@create')->name('inicio.create');
     Route::post('folhamensal/create', 'FolhaPagamento\FolhaPagamentoController@store');
