@@ -24,47 +24,55 @@ CTC
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-5">
         <div class="wrap">
-                              
 
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <th class="text-center">Ano</th>
-                                <th class="text-center">Tempo bruto</th>
-                                <th class="text-center">Faltas</th>
-                                <th class="text-center">Licenças</th><th class="text-center">Tempo  liquido</th>
-                                
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @php
-                            $totalDays = 0;
-                            @endphp
-                            @foreach ($sortedDays as $year => $days)
-                            <tr>
-                                <td>{{ $year }}</td>
-                                 <td>{{ $count = count($days) }} dias</td>
-                                <td></td>
-                                <td></td>
-                                <td>{{ $count = count($days) }} dias</td>
-                            </tr>
-                            @php
-                            $totalDays += $count;
-                            @endphp
-                            @endforeach
-                        </tbody>
-                    </table>
-                    <p>Total de dias: {{ $totalDays }}</p>
-                </div>
-                
-               
-          
 
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center">Ano</th>
+                            <th class="text-center">Tempo bruto</th>
+                            <th class="text-center">Faltas</th>
+                            <th class="text-center">Licenças</th><th class="text-center">Tempo  liquido</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @php
+                        $totalDays = 0;
+                        @endphp
+                        @foreach ($sortedDays as $year => $days)
+                        <tr>
+                            <td>{{ $year }}</td>
+                            <td>{{ $count = count($days) }} dias</td>
+                            <td></td>
+                            <td></td>
+                            <td>{{ $count = count($days) }} dias</td>
+                        </tr>
+                        @php
+                        $totalDays += $count;
+                        @endphp
+                        @endforeach
+                    </tbody>
+                </table>
+                <p>Total de dias: {{ $totalDays }}</p>
+            </div>
         </div>
     </div>        
 </div> 
-
+<table>
+    <thead>
+        <tr>
+            <th>Nome do Arquivo</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(range(1, 998) as $numero)
+        <tr>
+            <td>DIRF2022_Parte7_Parte{{ $numero }}.pdf</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 
 
 
