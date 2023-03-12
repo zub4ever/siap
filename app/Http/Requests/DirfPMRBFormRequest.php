@@ -19,7 +19,7 @@ class DirfPMRBFormRequest extends FormRequest
     public function rules()
     {
         return [
-            'pdfs.*' => 'required|mimes:pdf|max:2048',
+            'pdfs_pmrb.*' => 'required|mimes:pdf|max:2048',
         ];
     }
 }

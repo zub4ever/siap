@@ -20,21 +20,50 @@ Dirf
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>DIRF Cedula</a></li>
+    <li class="breadcrumb-item active"><a>DIRF PMRB</a></li>
 </ol>
 
 
-<form action="{{ route('dirf.upload') }}" method="post" enctype="multipart/form-data">
-    @csrf
-    <label for="pdfs">PDFs:</label>
-    <input type="file" name="pdfs[]" multiple>
-    <br>
-    <button type="submit" class="btn btn-success">Enviar</button>
-</form>
+<div class="container">
+    <div class="form-container">
+        <form action="{{ route('dirf_pmrb.upload') }}" method="post" enctype="multipart/form-data">
+            @csrf
+            <label for="pdfs_pmrb">Dirfs PDFs:</label>
+            <input type="file" name="pdfs_pmrb[]" multiple>
+            <button type="submit" class="btn btn-success">Enviar</button>
+        </form>
+    </div>
+</div>
 
 
 
 
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 30vh;
+        background-color: white;
+        border: 1px solid black;
+    }
+
+    .form-container {
+        padding: 20px;
+    }
+    form {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+
+    label {
+        margin-right: 10px;
+    }
+
+
+</style>
 @endsection
 @section('js')
 <!-- Data Table js -->

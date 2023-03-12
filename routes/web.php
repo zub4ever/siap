@@ -67,7 +67,23 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('dirf.up');
     Route::post('/dirf/upload', 'Dirf\DirfCedulaCController@upload')->name('dirf.upload');
     Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store')->name('dirf.store');
+    
+    
+    //Cedula C da Prefeitura
+    
+    Route::get('dirfpmrb', 'Dirf\DirfCedulaPMRBCController@index')->name('dirf_pmrb.index');
+    Route::get('/dirfpmrb/upload', function () {
+        return view('dirf_pmrb.dirf-upload');
+    })->name('dirf_pmrb.up');
+    Route::post('/dirfpmrb/upload', 'Dirf\DirfCedulaPMRBCController@upload')->name('dirf_pmrb.upload');
+    Route::get('/dirfpmrb/store/{cpf}', 'Dirf\DirfCedulaPMRBCController@store')->name('dirf_pmrb.store');
 
+    
+    
+    
+    
+    
+    //Fim
     //Administração ATENDIMENTO
     Route::resource('administracao/atendimentos', 'Administracao\Atendimentos\AtendimentosController');
     Route::get('administracao/atendimentos/create', 'Administracao\Atendimentos\AtendimentosController@create')->name('atendimentos.create');
@@ -218,3 +234,14 @@ Route::get('/cpf/search', 'Dirf\DirfCedulaCController@search')->name('dirf.searc
 Route::post('/cpf/result', 'Dirf\DirfCedulaCController@result')->name('dirf.result');
 Route::get('/dirf/not-found', 'Dirf\DirfCedulaCController@cpfNotFound')->name('dirf.not-found');
 Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store_c')->name('dirf.store_c');
+
+
+
+
+
+Route::get('/dirfpmrb/store/{cpf}', 'Dirf\DirfCedulaPMRBCController@store_pmrb')->name('dirf_pmrb.store_c');
+
+Route::get('/dirfpmrb/buscar', 'Dirf\DirfCedulaPMRBCController@search_pmrb')->name('dirf_pmrb.search');
+Route::post('/dirfpmrb/resultado', 'Dirf\DirfCedulaPMRBCController@resultado_pmrb')->name('dirf_pmrb.result');
+
+Route::get('/dirfpmrb/not-found', 'Dirf\DirfCedulaPMRBCController@cpfNotFound')->name('dirf_pmrb.not-found');
