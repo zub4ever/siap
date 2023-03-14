@@ -63,6 +63,7 @@ class Almo extends Model {
     }
 
     public static function QrCodeGera($id) {
+        
         return static::where('id', '=', $id)->get();
     }
 

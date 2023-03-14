@@ -3,6 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\APIs\ServeAPIController;
+use App\Http\Controllers\APIs\RBPREVNUMEROSAPIController;
+
 
 /*
   |--------------------------------------------------------------------------
@@ -30,6 +32,10 @@ Route::get('folhaPagamentoMensal', 'APIs\FolhaPgtoAPIController@index');
 
 //RBPREVNUMEROS
 Route::get('rbprevnumeros', 'APIs\RBPREVNUMEROSAPIController@index');
+Route::get('rbprevnumeros/show/{id}', 'APIs\RBPREVNUMEROSAPIController@show');
+//FImrbprevnumeros
+
+//CTCCertidao
+Route::get('ctc_emitidas', 'APIs\CTCAPIController@index');
 
 
-Route::get('rbprevnumeros/{id}', 'APIs\RBPREVNUMEROSAPIController@show');
