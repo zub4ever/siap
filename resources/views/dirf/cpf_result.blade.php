@@ -26,8 +26,8 @@
             <p>A busca correspondente ao CPF {{ $cpf }} foi encontrado:</p>
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">{{ $pdfPath }}</h5>
-                    <a href="{{ route('dirf.store_c', $cpf) }}" target="_blank" class="btn btn-primary">Download do PDF</a>
+                    
+                    <a href="{{ route('dirf.store_c', $cpf) }}" target="_blank" class="btn btn-primary">Baixar Cédula</a>
                 </div>
             </div>
             @else

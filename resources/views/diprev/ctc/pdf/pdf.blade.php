@@ -224,17 +224,18 @@ use Carbon\Carbon;
 
 
 
-        <table style="width:100%; border: 1px solid black;">
-            <tr>
-                <td style="width:100%; border: 1px solid black;">
+        <table style="width:100%; border: 1px solid black;line-height: 1;">
+          
+                <td style="width:100%; border: 1px solid black; line-height: 1;">
                     <p class="justificado">CERTIFICO, em face do apurado, que o interessado conta, de efetivo exercício prestado neste Órgão, o tempo de contribuição de {{$total_liquido }} dias, correspondente a {{ $anos }} anos, {{ $meses }} meses e {{ $dias }} dias</p>
                     <p class="justificado">CERTIFICO que a Lei nº 1. 793, de 23 de dezembro de 2009, assegura aos servidores públicos titulares de cargo efetivo do município de 
                         Rio Branco/AC os benefícios das aposentadorias voluntárias, por invalidez e compulsória, e pensão por morte, com aproveitamento de 
                         tempo de contribuição para o Regime Geral de Previdência Social ou para outro Regime Próprio de Previdência Social, na forma da 
                         contagem recíproca, conforme Lei Federal nº 6.226, de 14/07/75, com alteração dada pela Lei Federal nº 6.864, de 01/12/80.  </p> 
                 </td>
-            </tr>
+           
         </table>
+
 
 
 
@@ -252,7 +253,8 @@ use Carbon\Carbon;
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Lavrei a Certidão que não contém emendas nem rasuras</strong></p>
                         <br><br><br><!-- comment -->
-                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->created_at)) }}</p>
+                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y') }}</p>
+
                     </div>
                     <div style="border: 1px solid black;font-size: 10px; width: 100%">
                         <p style="text-align: center">Assinatura e carimbo </p>   
@@ -262,7 +264,8 @@ use Carbon\Carbon;
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Visto do Dirigente do Órgão</strong></p>
                         <br><br><br><!-- comment -->
-                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->created_at)) }}</p>
+                       <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y') }}</p>
+
                     </div>
                     <div style="border: 1px solid black;font-size: 10px; width: 100%">
                         <p style="text-align: center">Assinatura </p>   
@@ -280,7 +283,7 @@ use Carbon\Carbon;
                     <p class="justificado"><strong>HOMOLOGO</strong> a presente Certidão de Tempo de Contribuição e declaro que as informações nela constantes
                         correspondem com a verdade.</p>
 
-                    <p style="text-align:left;">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->created_at)) }}</p> 
+                    <p style="text-align:left;">Rio Branco - AC, {{ date('d/m/Y') }}</p> 
                 </td>
             </tr>
         </table>
@@ -446,30 +449,30 @@ use Carbon\Carbon;
                 <tr>
 
                     <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_1) && !empty($registro->tempo_magisterio_fim_1))
-                {{ Carbon::parse($registro->tempo_magisterio_incio_1)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_1)->format('d/m/Y') }}
-                @endif</td>
+                        {{ Carbon::parse($registro->tempo_magisterio_incio_1)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_1)->format('d/m/Y') }}
+                        @endif</td>
                     <td style="border: 1px solid black;">{{ $registro->tempo_magisterio_dias_1 }}</td>
                 </tr>
                 <tr>
 
                     <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_2) && !empty($registro->tempo_magisterio_fim_2))
-                {{ Carbon::parse($registro->tempo_magisterio_incio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_2)->format('d/m/Y') }}
-                @endif</td>
+                        {{ Carbon::parse($registro->tempo_magisterio_incio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_2)->format('d/m/Y') }}
+                        @endif</td>
                     <td style="border: 1px solid black;">{{ $registro->tempo_magisterio_dias_2 }}</td>
                 </tr>
 
                 <tr>
 
                     <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_3) && !empty($registro->tempo_magisterio_fim_3))
-                {{ Carbon::parse($registro->tempo_magisterio_incio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_3)->format('d/m/Y') }}
-                @endif</td>
+                        {{ Carbon::parse($registro->tempo_magisterio_incio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_3)->format('d/m/Y') }}
+                        @endif</td>
                     <td style="border: 1px solid black;">{{ $registro->tempo_magisterio_dias_3 }}</td>
                 </tr>
                 <tr>
 
                     <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_4) && !empty($registro->tempo_magisterio_fim_4))
-                {{ Carbon::parse($registro->tempo_magisterio_incio_4)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_4)->format('d/m/Y') }}
-                @endif</td>
+                        {{ Carbon::parse($registro->tempo_magisterio_incio_4)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_4)->format('d/m/Y') }}
+                        @endif</td>
                     <td style="border: 1px solid black;">{{ $registro->tempo_magisterio_dias_4 }}</td>
                 </tr>
                 @endforeach
@@ -491,14 +494,14 @@ use Carbon\Carbon;
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Servidor que lavrou a Certidão</strong></p>
                         <br><br><br><!-- comment -->
-                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->data_pedido)) }}</p>
+                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y') }}</p>
                     </div>                    
                 </td>
                 <td style="width: 50%">
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Assinatura do Dirigente do Órgão</strong></p>
                         <br><br><br><!-- comment -->
-                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y', strtotime($ctc->data_pedido)) }}</p>
+                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y') }}</p>
                     </div>                  
                 </td>
             </tr>

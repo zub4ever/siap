@@ -181,6 +181,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::delete('/almoxarifado/{id}/destroy', 'DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
     //geradorQrCode
     Route::get('/qrcode{id?}', 'DAF\AlmoxarifadoController@qrCodeGerador')->name('qrcode');
+    
+    
+     Route::get('qrcode-with-image/{id}', 'DAF\AlmoxarifadoController@generateQrCodeWithImage')->name('almoxarifado.qrcode-with-image');
+  
+
+
 
     //Consulta Filtro
     Route::post('/almoxarifado/filtro', 'DAF\FiltroAlmoxarifadoController@index')->name('almo.buscar');

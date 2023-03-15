@@ -1,6 +1,6 @@
 <div class="row">
 
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
             <label for="serve_id" class="form-control-label">Servidor:
                 <span class="text-danger">*</span>
@@ -18,7 +18,7 @@
             @endif
         </div>
     </div>
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
         <div class="wrap">
             <label for="origin_id" class="form-control-label">Origem Servidor:
                 <span class="text-danger">*</span>
@@ -37,6 +37,34 @@
             @endif
         </div>
     </div>
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+        <div class="wrap">
+                          <div class="container"><p>Para:</p>
+                    <div class="row justify-content-center align-items-center">
+                        
+                       
+                            <div class="form-group">
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="identificacao_servidor"  value="1" checked>
+                                    <label class="form-check-label" for="option1">Aposentadoria</label>
+                                </div>
+                                <div class="form-check form-check-inline">
+                                    <input class="form-check-input" type="radio" name="identificacao_servidor"  value="2">
+                                    <label class="form-check-label" for="option2"> Ex servidor</label>
+                                </div>
+                            </div>
+
+                      
+                    </div>
+                </div>
+            
+            
+        </div>
+    </div>
+    
+    
+    
+    
 </div>
 <br>
 <div class="center">

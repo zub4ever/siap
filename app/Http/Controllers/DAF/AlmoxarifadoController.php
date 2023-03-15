@@ -17,10 +17,62 @@ use App\Models\DAF\Almoxarifado\AlmoResponsavel;
 use App\Models\DAF\Almoxarifado\AlmoTipo;
 use Illuminate\Support\Facades\DB;
 use PDF;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
-use SimpleSoftwareIO\QrCode\Generator;
+use BaconQrCode\Encoder\QrCode;
+use BaconQrCode\Renderer\Image\Png;
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Common\ErrorCorrectionLevel;
+
 
 class AlmoxarifadoController extends Controller {
+
+    public function generateQrCodeWithImage($id) {
+        $url = 'http://siap.rbprev.riobranco.ac.gov.br/consulta/' . $id;
+
+        // Define o nível de correção de erro como H (High)
+        $level = ErrorCorrectionLevel::fromString('H');
+
+        // Cria o objeto QR Code
+        $qrCode = new QrCode($url, $level);
+
+        // Define a largura e altura da imagem
+        $width = 300;
+        $height = 300;
+
+        // Cria o renderizador da imagem
+        $renderer = new ImageRenderer(
+                new RendererStyle($width, $height),
+                new Png(),
+                new ErrorCorrectionLevel(ErrorCorrectionLevel::HIGH)
+        );
+
+        // Renderiza o QR Code como imagem
+        $image = $renderer->render($qrCode);
+
+        // Carrega a imagem de logo
+        $logoPath = public_path('/public/imagem/logo2.png');
+        $logo = imagecreatefrompng($logoPath);
+
+        // Obtém as dimensões da imagem de logo
+        $logoWidth = imagesx($logo);
+        $logoHeight = imagesy($logo);
+
+        // Define a posição e o tamanho da imagem de logo na imagem do QR Code
+        $logoPosX = ($width - $logoWidth) / 2;
+        $logoPosY = ($height - $logoHeight) / 2;
+        $logoSize = 75;
+
+        // Adiciona a imagem de logo na imagem do QR Code
+        imagecopyresampled($image, $logo, $logoPosX, $logoPosY, 0, 0, $logoSize, $logoSize, $logoWidth, $logoHeight);
+
+        // Exibe a imagem na view
+        ob_start();
+        imagepng($image);
+        $imageData = ob_get_contents();
+        ob_end_clean();
+
+        return response($imageData)->header('Content-type', 'image/png');
+    }
 
     public function show($id) {
 
@@ -185,18 +237,20 @@ class AlmoxarifadoController extends Controller {
         ]);
     }
 
-    public function qrCodeGerador(Request $request, $id) {
+    public function qrCodeGerador($id) {
 
-        $almoxarifado = Almo::QrCodeGera($request->id);
-        //dd($almoxarifado);
-        return view(
-                'daf.almoxarifado.qrcode',
-                [
-                    'almoxarifado' => $almoxarifado,
-                    'id' => $request->id
-                ],
-                compact('almoxarifado')
+        $url = 'http://siap.rbprev.riobranco.ac.gov.br/consulta/' . $id;
+
+        $renderer = new ImageRenderer(
+                new ImagickImageBackEnd(),
+                new \BaconQrCode\Renderer\RendererStyle\RendererStyle(400),
+                new \BaconQrCode\Common\ErrorCorrectionLevel(\BaconQrCode\Common\ErrorCorrectionLevel::HIGH)
         );
+        $writer = new Writer($renderer);
+
+        $qrcode = $writer->writeString($url);
+
+        return view('daf.almoxarifado.qrcode', compact('qrcode', 'id'));
     }
 
     public function buscaQrCode(Request $request, $id) {
@@ -212,55 +266,6 @@ class AlmoxarifadoController extends Controller {
                 ],
                 compact('almoxarifado', 'almo_tipo', 'almo_localizacao_dpto')
         );
-    }
-
-    public function indexRelatorio(Request $request) {
-        $almo_tipo = $request->query('almo_tipo');
-        $almo_condicao = $request->query('almo_condicao');
-        $almo_localizacao_dpto = $request->query('almo_localizacao_dpto');
-
-        $i = 0;
-        $users = DB::table('users')->get()->all();
-        $almoxarifado = Almo::get();
-        $almo_condicao = AlmoCondicao::get();
-        $almo_tipo = AlmoTipo::get();
-        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
-        $almo_localizacao_dpto = Atendimento::get();
-
-        return view('daf.almoxarifado.indexRelatorio', ['i' => $i,
-            'almoxarifado' => $almoxarifado,
-            'almo_condicao' => $almo_condicao,
-            'almo_tipo' => $almo_tipo,
-            'almo_localizacao_dpto' => $almo_localizacao_dpto,
-            'users' => $users
-                ]
-        );
-    }
-
-    public function GeraRelatorioPDF($almo_tipo, $almo_condicao, $almo_localizacao_dpto) {
-
-
-        $i = 0;
-        $users = DB::table('users')->get()->all();
-        $i = 0;
-        $users = DB::table('users')->get()->all();
-        $almoxarifado = Almo::get();
-        $almo_condicao = AlmoCondicao::get();
-        $almo_tipo = AlmoTipo::get();
-        $almo_localizacao_dpto = AlmoLocalizacaoDPTO::get();
-
-        return PDF::loadView('daf.almoxarifado.pdf.relatoriopdf', ['i' => $i,
-                            'almoxarifado' => $almoxarifado,
-                            'almo_condicao' => $almo_condicao,
-                            'almo_tipo' => $almo_tipo,
-                            'almo_localizacao_dpto' => $almo_localizacao_dpto,
-                            'users' => $users
-                                ]
-                        )
-                        ->setPaper('A4', "landscape")
-                        // Altera o papel para modo paisagem.  "landscape"
-                        //Altera o papel para modo Retrato.    'portrait'
-                        ->stream('relatorio_daf.pdf');
     }
 
 }

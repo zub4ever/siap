@@ -10,7 +10,7 @@ class CTC extends Model {
     protected $fillable = [
                 'ctc_numero',
 		'serve_id',
-		'contract_id' ,
+		'address_id' ,
 		'origin_id' ,
 		'orgao_id' ,
 		'funcao_id' ,
@@ -25,6 +25,7 @@ class CTC extends Model {
 	   	'local_destino' ,
 	   	'destinacao' ,	   	
 	   	'tempo_total' ,
+        'identificacao_servidor'
         
     ];
       protected $guarded = [];
