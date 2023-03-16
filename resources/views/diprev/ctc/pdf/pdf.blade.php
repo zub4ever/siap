@@ -222,11 +222,9 @@ use Carbon\Carbon;
         ?>
 
 
-
-
-        <table style="width:100%; border: 1px solid black;line-height: 1;">
+        <table style="width:100%; border: 1px solid black;line-height: 1;font-size: 10px;">
           
-                <td style="width:100%; border: 1px solid black; line-height: 1;">
+                <td style="width:100%; border: 1px solid black;">
                     <p class="justificado">CERTIFICO, em face do apurado, que o interessado conta, de efetivo exercício prestado neste Órgão, o tempo de contribuição de {{$total_liquido }} dias, correspondente a {{ $anos }} anos, {{ $meses }} meses e {{ $dias }} dias</p>
                     <p class="justificado">CERTIFICO que a Lei nº 1. 793, de 23 de dezembro de 2009, assegura aos servidores públicos titulares de cargo efetivo do município de 
                         Rio Branco/AC os benefícios das aposentadorias voluntárias, por invalidez e compulsória, e pensão por morte, com aproveitamento de 
@@ -244,9 +242,13 @@ use Carbon\Carbon;
         <!-- Essa tag quebra a pagina -->
         <div class="break-page"></div>
         <!-- Essa tag quebra a pagina -->
+        
+        
 
         <p style="text-align:right;">CTC Nº {{$ctc->ctc_numero}}</p>
         <br>
+        
+        
         <table style="width: 100%">
             <tr>
                 <td style="width: 50%">
