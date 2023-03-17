@@ -38,9 +38,12 @@
                     <label for="cpf">CPF:</label>
                     <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF" required="" maxlength="14">
                 </div>
-                <div class="d-flex justify-content-center">
-                    <button type="submit" class="btn btn-primary" style="background-color: #003C82 ;">Pesquisar</button>
+                
+                 <div class="d-flex justify-content-center">
+                    <div class="g-recaptcha" data-sitekey="6LcADgklAAAAAMrNwc-M7RylHjH3bAmc86426hE9"></div> <!--botão reCAPTCHA-->
+                    <button type="submit" class="btn btn-primary" style="background-color: #003C82 ;" onclick="return valida ()">Pesquisar</button>
                 </div>
+                
             </form>
             <div class="right-container">
                 <button type="submit" class="btn btn-primary" style="background-color: #003C82; float: right;  ">
@@ -65,7 +68,7 @@
             <p class="text-white py-2">Copyright © 2023 Instituto de Previdência do Município de Rio Branco</p>
         </div>
     </footer>
-
+    <script src='https://www.google.com/recaptcha/api.js?hl=pt'></script> <!--api do google reCAPTCH--> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
@@ -82,6 +85,17 @@ $(document).ready(function () {
     });
 });
     </script>
+    <script type="text/javascript">
+        //função de validação do reCAPTCHA
+        function valida() {
+            if (grecaptcha.getResponse()=="") {
+                alert("Marque a caixa 'Não sou um robô'")
+                return false;
+            }
+        }
+    </script>
+    
+    
 
 
 </body></html>
