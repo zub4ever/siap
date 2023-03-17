@@ -59,25 +59,26 @@ Dirf
                             @foreach ($cpfList as $cpf)
                             <tr>
                                 <td class="text-center"></td>
-                                <td class="text-center">{{$cpf->cpf}}</td>
-                                <td class="text-center">{{$cpf->nome}}</td>
+                                <td class="text-center">{{ $cpf->cpf }}</td>
+                                <td class="text-center">{{ $cpf->nome }}</td>
                                 <td>
                                     @hasanyrole('Admin|Tecnico')
                                     @php
-
-                                    $document = DB::table('documentos_cedula_c_pmrb')->where('cpf', $cpf->cpf)->first();
-                                    $pdfPath = $document ? route('dirf_pmrb.store_c', $cpf->cpf) : null;
-
+                                    $document = DB::table('documentos_cedula_c_pmrb')
+                                    ->where('cpf', $cpf->cpf)
+                                    ->where('matricula', $matricula) // incluir filtro por matricula
+                                    ->first();
+                                    $pdfPath = $document ? route('dirf_pmrb.store_c', [$cpf->cpf, $matricula]) : null;
                                     @endphp
-
                                     @if ($pdfPath)
                                     <a href="{{ $pdfPath }}" target="_blank">Ver Arquivo</a>
                                     @endif
-
                                     @endhasanyrole
                                 </td>
                             </tr>
                             @endforeach
+
+
 
                         </tbody>
                     </table>

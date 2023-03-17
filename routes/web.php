@@ -54,11 +54,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('folhamensal/create', 'FolhaPagamento\FolhaPagamentoController@store');
     //Route::get('folhaensal/{id}/edit', 'FolhaPagamento\FolhaPagamentoController@edit')->name('folhamensal.edit');
     //FIM
+    
+    //Rotas para processamento do HTML para extração de dados 
     Route::get('/upload-pdf', 'Dirf\DirfController@showUploadForm')->name('pdf.showUploadForm');
     Route::post('/upload-pdf', 'Dirf\DirfController@upload')->name('pdf.upload');
     Route::post('/pdfs', 'Dirf\DirfController@store')->name('pdf.store');
     Route::get('/upload-result', 'Dirf\DirfController@showUploadResult');
-
+    //
+    
+    
+    //Rotas para processamento do HTML para extração de dados 
+    
     Route::get('dirf', 'Dirf\DirfCedulaCController@index')->name('dirf.index');
     Route::get('/dirf/download/{cpf}', 'Dirf\DirfCedulaCController@download')->name('dirf.download');
 
@@ -72,9 +78,13 @@ Route::group(['middleware' => ['auth']], function () {
     //Cedula C da Prefeitura
     
     Route::get('dirfpmrb', 'Dirf\DirfCedulaPMRBCController@index')->name('dirf_pmrb.index');
+    //
     Route::get('/dirfpmrb/upload', function () {
         return view('dirf_pmrb.dirf-upload');
     })->name('dirf_pmrb.up');
+    //
+   
+    //
     Route::post('/dirfpmrb/upload', 'Dirf\DirfCedulaPMRBCController@upload')->name('dirf_pmrb.upload');
     Route::get('/dirfpmrb/store/{cpf}', 'Dirf\DirfCedulaPMRBCController@store')->name('dirf_pmrb.store');
 
@@ -245,7 +255,8 @@ Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store_c')->name('dir
 
 
 
-Route::get('/dirfpmrb/store/{cpf}', 'Dirf\DirfCedulaPMRBCController@store_pmrb')->name('dirf_pmrb.store_c');
+Route::get('/dirfpmrb/store/{cpf}/{matricula}', 'Dirf\DirfCedulaPMRBCController@store_pmrb')->name('dirf_pmrb.store_c');
+
 
 Route::get('/dirfpmrb/buscar', 'Dirf\DirfCedulaPMRBCController@search_pmrb')->name('dirf_pmrb.search');
 Route::post('/dirfpmrb/resultado', 'Dirf\DirfCedulaPMRBCController@resultado_pmrb')->name('dirf_pmrb.result');

@@ -29,11 +29,13 @@
         <div class="container mt-5">
             <h4 class="mb-3">Resultado da pesquisa</h4>
             @if ($pdfPath)
-            <p>A busca correspondente ao CPF {{ $cpf }} - {{$nome}} foi encontrado:</p>
+            <p>A busca correspondente ao CPF <strong>{{ $cpf }} - Matricula {{ $matricula }} - {{$nome}} </strong>foi encontrado(a):</p>
             <div class="card">
                 <div class="card-body">
                     
-                    <a href="{{ route('dirf_pmrb.store_c', $cpf) }}" target="_blank" class="btn btn-primary">Download do PDF</a>
+                    
+                    <a href="{{ route('dirf_pmrb.store_c', ['cpf' => $cpf, 'matricula' => $matricula]) }}" target="_blank" class="btn btn-primary">Baixar Arquivo</a>
+
                 </div>
             </div>
             <script>
@@ -89,7 +91,7 @@
             <div class="container d-flex flex-column align-items-center">
                 <!--<img src="images/azul.png" alt="Imagem" width="50px" height="50px">-->
                 <!--<strong class="text-white py-3">Prefeitura Municipal de Rio Branco</strong>-->
-                <p class="text-white py-2">Copyright © 2023 Instituto de Previdência do município de Rio Branco</p>
+                <p class="text-white py-2">Copyright © 2023 Instituto de Previdência do Município de Rio Branco</p>
             </div>
         </footer>
 

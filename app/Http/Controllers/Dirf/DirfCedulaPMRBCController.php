@@ -15,13 +15,16 @@ use \setasign\Fpdi\Fpdi;
 use \setasign\Fpdi\PdfParser\StreamReader;
 use Smalot\PdfParser\Parser;
 use DB;
-
+use League\Csv\Reader;
 
 class DirfCedulaPMRBCController extends Controller {
 
     public function index() {
 
-        $cpfList = DB::table('documentos_cedula_c_pmrb')->select('cpf', 'nome', 'pdf_path')->get();
+        $cpfList = DB::table('documentos_cedula_c_pmrb')
+                ->select('cpf', 'nome', 'matricula', 'pdf_path')
+                ->orderBy('cpf')
+                ->get();
 
         return view('dirf_pmrb.index', [
             'cpfList' => $cpfList
@@ -88,9 +91,6 @@ class DirfCedulaPMRBCController extends Controller {
         );
     }
 
-    
-    
-    
     public function store($cpf) {
 
         $document = DB::table('documentos_cedula_c_pmrb')->where('cpf', $cpf)->first();
@@ -110,30 +110,30 @@ class DirfCedulaPMRBCController extends Controller {
         }
     }
 
-    
-    
-    
-    
     public function search_pmrb() {
-        
-        
+
+
         return view('dirf_pmrb.dirfpmrb_search');
     }
 
     public function resultado_pmrb(Request $request) {
-
-
         $cpf = $request->input('cpf');
+        $matricula = $request->input('matricula');
 
-        //dd($cpf);
+        // Verifica se o CPF e a matrícula foram fornecidos
+        if (!$cpf || !$matricula) {
+            return redirect()->route('dirf_pmrb.not-found')->with('error', 'Por favor, informe o CPF e a matrícula.');
+        }
 
         $document = DB::table('documentos_cedula_c_pmrb')
-                ->select('cpf', 'pdf_path', 'nome')
+                ->select('cpf', 'pdf_path', 'nome', 'matricula')
                 ->where('cpf', $cpf)
+                ->where('matricula', $matricula)
                 ->first();
 
+        // Verifica se o registro foi encontrado
         if (!$document) {
-            return redirect()->route('dirf_pmrb.not-found')->with('error', 'O CPF digitado não foi encontrado.');
+            return redirect()->route('dirf_pmrb.not-found')->with('error', 'O CPF e/ou a matrícula informados não foram encontrados.');
         }
 
         $pdfPath = $document->pdf_path;
@@ -141,19 +141,21 @@ class DirfCedulaPMRBCController extends Controller {
         return view('dirf_pmrb.dirfpmrb_resultado', [
             'pdfPath' => $pdfPath,
             'cpf' => $cpf,
-            'nome' => $document->nome
+            'nome' => $document->nome,
+            'matricula' => $document->matricula
         ]);
     }
 
     public function cpfNotFound(Request $request) {
         $cpf = $request->input('cpf');
+        $matricula = $request->input('matricula');
         $errorMessage = $request->session()->get('error');
-        return view('dirf_pmrb.cpf_not_found', ['cpf' => $cpf, 'errorMessage' => $errorMessage]);
+        return view('dirf_pmrb.cpf_not_found', ['cpf' => $cpf, 'matricula' => $matricula, 'errorMessage' => $errorMessage]);
     }
 
-     public function store_pmrb($cpf) {
+    public function store_pmrb($cpf, $matricula) {
 
-       $document = DB::table('documentos_cedula_c_pmrb')->where('cpf', $cpf)->first();
+        $document = DB::table('documentos_cedula_c_pmrb')->where('cpf', $cpf)->where('matricula', $matricula)->first();
         $pdfPath = $document ? storage_path('app/public/' . $document->pdf_path) : null;
 
         if ($pdfPath && file_exists($pdfPath)) {
@@ -166,9 +168,13 @@ class DirfCedulaPMRBCController extends Controller {
                             ->header('Content-Transfer-Encoding', 'binary')
                             ->header('Content-Length', filesize($pdfPath));
         } else {
-           return response()->json(['error' => 'Arquivo não encontrado para este CPF.'], 404);
-
+            return response()->json(['error' => 'Arquivo não encontrado para este CPF e Matrícula.'], 404);
         }
     }
 
+    //Fim da controller    
 }
+
+//
+
+

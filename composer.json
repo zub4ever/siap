@@ -19,6 +19,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.3.2",
         "laravelcollective/html": "^6.4",
+        "league/csv": "^9.9",
         "mikehaertl/php-pdftk": "^0.13.0",
         "milon/barcode": "^9.0",
         "setasign/fpdf": "1.8.*",

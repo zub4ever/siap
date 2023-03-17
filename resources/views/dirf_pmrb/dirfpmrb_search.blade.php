@@ -26,8 +26,14 @@
         <div class="container ">
             <hr>
             <h5 class="mb-5" style="margin-top: 0">Pesquisa por Cédula C</h5> 
+
             <form action="{{ route('dirf_pmrb.result') }}" method="post" id="cpf-form">
-                @csrf                              
+                @csrf 
+                <div class="form-group">
+                    <label for="matricula">Matrícula:</label>
+                    <input type="text" class="form-control" id="matricula" name="matricula" placeholder="Digite a Matrícula" required="" maxlength="10">
+                </div>
+
                 <div class="form-group">
                     <label for="cpf">CPF:</label>
                     <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF" required="" maxlength="14">
@@ -56,19 +62,25 @@
         <div class="container d-flex flex-column align-items-center">
             <!--<img src="images/azul.png" alt="Imagem" width="50px" height="50px">-->
             <!--<strong class="text-white py-3">Prefeitura Municipal de Rio Branco</strong>-->
-            <p class="text-white py-2">Copyright © 2023 Instituto de Previdência do município de Rio Branco</p>
+            <p class="text-white py-2">Copyright © 2023 Instituto de Previdência do Município de Rio Branco</p>
         </div>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
     <script>
-        $(document).ready(function () {
-            $('#cpf').mask('000.000.000-00');
-            $('#cpf-form').submit(function () {
+$(document).ready(function () {
+    $('#cpf').mask('000.000.000-00');
+    $('#cpf-form').submit(function () {
 
-            });
-        });
+    });
+
+    $('#matricula').mask('00000000');
+    $('#matricula-form').submit(function () {
+        var matricula = $('#matricula').val();
+        $('#matricula').val(matricula.replace(/\D/g, ''));
+    });
+});
     </script>
 
 
