@@ -41,6 +41,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('rbprevNumeros', 'RBPREVNUMEROS\RBPREVNumerosController@index')->name('rbprevNumeros.index');
     
     
+    //
+    Route::get('conselhos', 'Conselhos\ConselhosController@index')->name('conselhos.index');
+    
+    Route::get('/conselhos/upload','Conselhos\ConselhosController@create')->name('conselhos.up');
+    Route::post('conselhos/upload', 'Conselhos\ConselhosController@upload')->name('conselho.upload');
+    
+    
     Route::get('rbprevNumeros/create', 'RBPREVNUMEROS\RBPREVNumerosController@create')->name('rbprevNumeros.create');
     Route::post('rbprevNumeros/create', 'RBPREVNUMEROS\RBPREVNumerosController@store')->name('rbprevNumeros.store');
     
@@ -50,6 +57,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('folhaPagamento', 'FolhaPagamento\FolhaInicioController');
     
     Route::resource('folhamensal', 'FolhaPagamento\FolhaPagamentoController');
+    
     Route::get('folhaensal/create', 'FolhaPagamento\FolhaPagamentoController@create')->name('inicio.create');
     Route::post('folhamensal/create', 'FolhaPagamento\FolhaPagamentoController@store');
     //Route::get('folhaensal/{id}/edit', 'FolhaPagamento\FolhaPagamentoController@edit')->name('folhamensal.edit');
