@@ -44,9 +44,12 @@ Route::group(['middleware' => ['auth']], function () {
     //
     Route::get('conselhos', 'Conselhos\ConselhosController@index')->name('conselhos.index');
     
-    Route::get('/conselhos/upload','Conselhos\ConselhosController@create')->name('conselhos.up');
+    Route::get('/conselhos/upload','Conselhos\ConselhosController@create')->name('conselhos.create');
     Route::post('conselhos/upload', 'Conselhos\ConselhosController@upload')->name('conselho.upload');
-    
+    //Route::get('/conselhos/store/{id}', 'Conselhos\ConselhosController@store_c')->name('conselho.store_c');
+    Route::get('conselhos/{id}/pdf', 'Conselhos\ConselhosController@showPdf')->name('showPdf');
+    Route::delete('/conselhos/{id}', 'Conselhos\ConselhosController@destroy')->name('conselhos.destroy');
+
     
     Route::get('rbprevNumeros/create', 'RBPREVNUMEROS\RBPREVNumerosController@create')->name('rbprevNumeros.create');
     Route::post('rbprevNumeros/create', 'RBPREVNUMEROS\RBPREVNumerosController@store')->name('rbprevNumeros.store');

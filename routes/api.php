@@ -38,4 +38,10 @@ Route::get('rbprevnumeros/show/{id}', 'APIs\RBPREVNUMEROSAPIController@show');
 //CTCCertidao
 Route::get('ctc_emitidas', 'APIs\CTCAPIController@index');
 
-
+//COnselhos
+Route::get('conselhosapi','APIs\ConselhosAPIController@index'); //APIGERAL
+Route::get('conselhosapicaps','APIs\ConselhosAPIController@index_caps');
+Route::get('conselhosapicoin','APIs\ConselhosAPIController@index_coin');
+Route::get('conselhosapicofin','APIs\ConselhosAPIController@index_cofin');
+Route::get('conselhosapi/show/{id}','APIs\ConselhosAPIController@showPdf');
+//FimConselho

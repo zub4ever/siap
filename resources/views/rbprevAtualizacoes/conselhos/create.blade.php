@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('page-title') Cadastrar Atendimento @endsection
+@section('page-title') Upload conselho @endsection
 
 @section('css')
 <link rel="stylesheet" type="text/css" href="{{asset("assets/vendors/select2/select2.min.css")}}">
@@ -9,8 +9,8 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("atendimentos.index")}}">Atendimentos</a></li>
-    <li class="breadcrumb-item active"><a>Cadastrar Atendimento</a></li>
+    <li class="breadcrumb-item"><a href="{{route("conselhos.index")}}">Conselhos</a></li>
+    <li class="breadcrumb-item active"><a>CAPS|COIN|COFIN Upload</a></li>
 </ol>
 
 <div class="row">

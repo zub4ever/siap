@@ -18,14 +18,14 @@ Atualizações
                 <div class="ag-courses-item_bg"></div>
 
                 <div class="ag-courses-item_title">
-                    RBPREV Numeros
+                    RBPREV Números
                 </div>
 
             </a>
         </div>
 
         <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
+            <a href="{{route('conselhos.index')}}" class="ag-courses-item_link">
                 <div class="ag-courses-item_bg"></div>
 
                 <div class="ag-courses-item_title">

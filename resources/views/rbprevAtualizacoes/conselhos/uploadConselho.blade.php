@@ -1,66 +1,92 @@
-@extends('layouts.app')
 
 
-{{-- Page Title --}}
-@section('page-title')
-Atualizações
-@endsection
-
-@section('main-content')
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>CAPS|COIN|COFIN</a></li>
-    <li class="breadcrumb-item active"><a>Upload</a></li>
-</ol>
-
-
-
-<form method="POST" action="{{ route('conselho.upload') }}" enctype="multipart/form-data">
-    @csrf
-    <div>
-        <label for="conselho_tipo_id">Tipo de Conselho:</label>
-        <select name="conselho_tipo_id" id="conselho_tipo_id">
-            @foreach($tiposConselho as $tipoConselho)
-            <option value="{{ $tipoConselho->id }}">{{ $tipoConselho->nm_tipo_conselho }}</option>
-            @endforeach
-        </select>
+<div class="row">
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+        <div class="wrap">
+            <label for="conselho_tipo_id" class="form-control-label">Conselho:
+                <span class="text-danger">*</span>
+            </label>
+            <select class="form-control" name="conselho_tipo_id" id="conselho_tipo_id">
+                <option value="">Selecione o conselho</option>
+                @foreach($tiposConselho as $tipoConselho)
+                <option value="{{$tipoConselho->id}}" {{(empty(old('serve_id')) ? @$address->conselho_tipo_id : old('conselho_tipo_id')) == $tipoConselho->id ? 'selected' : ''}}>
+                    {{ $tipoConselho->id }} - {{ $tipoConselho->nm_tipo_conselho }}
+                </option>
+                @endforeach
+            </select>
+            @if ($errors->has('conselho_tipo_id'))
+            <h6 class="heading text-danger">{{$errors->first('conselho_tipo_id')}}</h6>
+            @endif
+        </div>
     </div>
-    <div>
-        <label for="conselho_ano_id">Ano do Conselho:</label>
-        <select name="conselho_ano_id" id="conselho_ano_id">
-            @foreach($anosConselho as $anoConselho)
-            <option value="{{ $anoConselho->id }}">{{ $anoConselho->nm_ano }}</option>
-            @endforeach
-        </select>
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+        <div class="wrap">
+            <label for="conselho_ano_id" class="form-control-label">Ano:
+                <span class="text-danger">*</span>
+            </label>
+            <select class="form-control" name="conselho_ano_id" id="conselho_ano_id">
+                <option value="">Selecione o ano</option>
+                @foreach($anosConselho as $anoConselho)
+                <option value="{{$anoConselho->id}}" {{(empty(old('conselho_ano_id')) ? @$address->conselho_ano_id : old('conselho_ano_id')) == $tipoConselho->id ? 'selected' : ''}}>
+                    {{ $anoConselho->id }} - {{ $anoConselho->nm_ano }}
+                </option>
+                @endforeach
+            </select>
+            @if ($errors->has('conselho_ano_id'))
+            <h6 class="heading text-danger">{{$errors->first('conselho_ano_id')}}</h6>
+            @endif
+        </div>
     </div>
-    <div>
-        <label for="conselho_categoria_id">Categoria do Conselho:</label>
-        <select name="conselho_categoria_id" id="conselho_categoria_id">
-            @foreach($categoriasConselho as $categoriaConselho)
-            <option value="{{ $categoriaConselho->id }}">{{ $categoriaConselho->nm_categoria }}</option>
-            @endforeach
-        </select>
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
+        <div class="wrap">
+            <label for="conselho_categoria_id" class="form-control-label">Categoria:
+                <span class="text-danger">*</span>
+            </label>
+            <select class="form-control" name="conselho_categoria_id" id="conselho_categoria_id">
+                <option value="">Selecione a categoria</option>
+                @foreach($categoriasConselho as $categoriaConselho)
+                <option value="{{$categoriaConselho->id}}" {{(empty(old('conselho_categoria_id')) ? @$address->conselho_categoria_id : old('conselho_categoria_id')) == $tipoConselho->id ? 'selected' : ''}}>
+                    {{ $categoriaConselho->id }} - {{ $categoriaConselho->nm_categoria }}
+                </option>
+                @endforeach
+            </select>
+            @if ($errors->has('conselho_categoria_id'))
+            <h6 class="heading text-danger">{{$errors->first('conselho_categoria_id')}}</h6>
+            @endif
+        </div>
     </div>
-    <div>
-        <label for="arquivo">Arquivo:</label>
-        <input type="file" name="arquivo" id="arquivo">
+</div>
+<div class="row">
+
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+        <div class="wrap">
+            <label for="descricao" class="form-control-label">Descrição:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="descricao" value="{{@$address->descricao}}">
+            @if ($errors->has('descricao'))
+            <h6 class="heading text-danger">{{$errors->first('descricao')}}</h6>
+            @endif
+        </div>
     </div>
-    <div>
-        <button type="submit">Enviar</button>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
+        <div class="wrap">
+            <label for="pdf_path">Arquivo:</label><br>
+            <input type="file" name="pdf_path" id="pdf_path">
+        </div>
     </div>
-</form>
+</div>  
+<div class="col-sm-12 mt-5">
+    <div class="wrap mt-1" style="text-align: center;">
+        <button type="submit" class="btn btn-success">
+            Salvar
+        </button>
+    </div>
+</div>
 
 
 
 
 
-
-
-
-
-@endsection
-@section('js')
-<!-- Sweet Alert Js -->
-<script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
-@endsection
 
