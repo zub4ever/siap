@@ -37,29 +37,29 @@ Atualizações
         </div>
 
         <div class="ag-courses_item">
-            <a href="#" class="ag-courses-item_link">
+            <a href="{{route('folhaPagamento.index')}}" class="ag-courses-item_link">
                 <div class="ag-courses-item_bg"></div>
 
                 <div class="ag-courses-item_title">
-                    RBPREV Next Update
+                    RBPREV Resumo folha pagamento
                 </div>
 
 
             </a>
         </div>
 
-        <!--
+        
       <div class="ag-courses_item">
         <a href="#" class="ag-courses-item_link">
           <div class="ag-courses-item_bg"></div>
   
           <div class="ag-courses-item_title">
-            Graphic Design
+            RBPREV Processos Homologados TCE
           </div>
   
           
         </a>
-      </div> -->
+      </div> 
 
 
         <!--

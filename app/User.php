@@ -34,5 +34,9 @@ class User extends Authenticatable {
 
         return $this->belongsToMany(\App\Models\Conselhos\ConselhoDocumentos::class, 'user_id');
     }
+    public function processos_tce() {
+
+        return $this->belongsToMany(\App\Models\ProcessosHomologadosTCE\ProcessosTCE::class, 'user_id');
+    }
 
 }

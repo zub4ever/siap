@@ -33,7 +33,7 @@ Folha
                 </a>
                
                 <div class="pull-right">
-                    <a class="btn btn-inverse-warning btn-md" href="{{route('folhaPagamento.index')}}">Voltar</a>
+                    <a class="btn btn-inverse-warning btn-md" href="{{route('rbprevAtualizacoes.index')}}">Voltar</a>
                 </div>
 
             </div>

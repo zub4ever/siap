@@ -1,5 +1,7 @@
 
-
+<div class="row justify-content-center align-center">
+    <strong><font color="Red">Arquivos de até 2Mb</font></strong>
+</div>
 <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">

@@ -18,15 +18,11 @@
             <nav>
                 <ul class="metismenu" id="menu">
                     <li>
-                        <a href="javascript:void(0)" aria-expanded="true">
+                        <a href="{{route('home')}}" aria-expanded="true">
                             <i class="feather ft-home"></i>
-                            <span>dashboard</span>
+                            <span>Inicio</span>
                         </a>
-                        <ul class="collapse">
-                            <li {!! (request()->is('folhaPagamento*') ? 'class="active"' : "")!!}>
-                                <a href="{{route('home')}}">Inicio</a></li>
-
-                        </ul>
+                        
                     </li>
                     <!-- Inicio de Servidor -->
                     <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
@@ -244,14 +240,14 @@
                         </ul>
                     </li>
                     <!--Fim de DAF-->
-                     <!--Inicio  de Folha -->
+                     <!--Inicio  de Folha
                     <li {!! (request()->is('folhaPagamento*') ? 'class="active"' : "")!!}>
                         <a href="{{route('folhaPagamento.index')}}" aria-expanded="true">
                             <i class="ti-dashboard"></i>
                             <span>Folha</span>
                         </a>                                          
                     </li>
-                    <!--Fim de DAF-->
+                    Fim de DAF-->
                      <!--Inicio  de Cédula -->
                     <li {!! (request()->is('dirf*') ? 'class="active"' : "")!!}>
                         <a href="{{route('dirf.index')}}" aria-expanded="true">
@@ -264,7 +260,7 @@
                     <li {!! (request()->is('rbprevAtualizacoes*') ? 'class="active"' : "")!!}>
                         <a href="{{route('rbprevAtualizacoes.index')}}" aria-expanded="true">
                             <i class="ti-reload"></i>
-                            <span>Atualizações</span>
+                            <span>Atualizações site principal</span>
                         </a>                                          
                     </li>
                     <!--Fim de Atualizações de rbprev numero-->
