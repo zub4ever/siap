@@ -17,16 +17,20 @@ use DB;
 class ProcessosHomologadosTCEController extends Controller {
 
     public function index() {
-        /*
-          $conselhos = DB::table('conselho_documentos')
-          ->join('conselho_tipo', 'conselho_documentos.conselho_tipo_id', '=', 'conselho_tipo.id')
-          ->join('conselho_ano', 'conselho_documentos.conselho_ano_id', '=', 'conselho_ano.id')
-          ->join('conselho_categoria', 'conselho_documentos.conselho_categoria_id', '=', 'conselho_categoria.id')
-          ->join('users', 'conselho_documentos.users_id', '=', 'users.id')
-          ->select('conselho_documentos.id', 'conselho_tipo.nm_tipo_conselho', 'conselho_ano.nm_ano', 'conselho_categoria.nm_categoria', 'users.name', 'conselho_documentos.descricao', 'conselho_documentos.pdf_path', 'conselho_documentos.created_at')
-          ->get(); */
 
-        return view("rbprevAtualizacoes.processosTCE.index");
+        $processos = DB::table('tce_processos_homologados')
+            ->join('funcao', 'tce_processos_homologados.funcao_id', '=', 'funcao.id')
+            ->leftJoin('tce_tipo_aposentadoria', 'tce_processos_homologados.tipo_aposentadoria_id', '=', 'tce_tipo_aposentadoria.id')
+            ->leftJoin('tce_tipo_pensao', 'tce_processos_homologados.tipo_pensao_id', '=', 'tce_tipo_pensao.id')
+            ->join('tce_ano', 'tce_processos_homologados.tce_ano_id', '=', 'tce_ano.id')
+            ->join('tce_mes', 'tce_processos_homologados.tce_mes_id', '=', 'tce_mes.id')
+            ->join('users', 'tce_processos_homologados.users_id', '=', 'users.id')
+            ->select('tce_processos_homologados.id','tce_processos_homologados.nr_acordao' ,'tce_processos_homologados.nm_assegurado', 'tce_processos_homologados.data_notificacao', 'tce_processos_homologados.data_diario_eletronico', 'funcao.nm_funcao', DB::raw('COALESCE(tce_tipo_aposentadoria.nm_aposentadoria, \'\') as nm_aposentadoria'), DB::raw('COALESCE(tce_tipo_pensao.nm_pensao, \'\') as nm_pensao'), 'tce_ano.nm_ano', 'tce_mes.nm_mes', 'users.name')
+            ->get();
+
+
+        //dd($processos);
+        return view("rbprevAtualizacoes.processosTCE.index", compact('processos'));
     }
 
     /* public function showPdf($id) {
@@ -82,18 +86,26 @@ class ProcessosHomologadosTCEController extends Controller {
         );
     }
 
+    public function edit($id) {
+
+        $processo = ProcessosTCE::findOrFail($id);
+
+        $processo_ano = ProcessosTCEAno::all();
+        $processo_mes = ProcessosTCEMes::all();
+        $tipo_pensao = TipoPensao::all();
+        $tipo_aposentadoria = TipoAposentadoria::all();
+        $funcao = Funcao::all();
+
+        return view('rbprevAtualizacoes.processosTCE.edit', compact('funcao', 'tipo_aposentadoria', 'tipo_pensao', 'processo_mes', 'processo_ano'));
+    }
+
     public function destroy($id) {
 
-        $conselho = ConselhoDocumentos::findOrFail($id);
-        $pdf_path = $conselho->pdf_path;
-
-        // Exclui o arquivo do storage
-        Storage::delete($pdf_path);
-
+        $processo = ProcessosTCE::findOrFail($id);
         // Exclui o registro do banco de dados
-        $conselho->delete();
+        $processo->delete();
 
-        return redirect()->route('conselhos.index')->with('success', 'Arquivo excluído com sucesso!');
+        return redirect()->route('processosTCE.index')->with('success', 'Processo excluído com sucesso!');
     }
 
 }

@@ -61,10 +61,39 @@ Processos Homolagados
                             </tr>
                         </thead>
                         <tbody>
-                            
-                            
-                            
-                            
+                            @foreach ($processos as $processo)
+                            <tr>
+                                <td>{{$processo->id}}</td>
+                                <td>{{$processo->nm_assegurado}}</td>
+                                <td>{{$processo->nm_mes}}</td>
+                                <td>{{$processo->nm_aposentadoria}}</td>
+                                <td>{{$processo->nm_pensao}}</td>
+                                <td>{{$processo->nm_funcao}}</td>
+                                
+                                <td>{{date('d/m/Y', strtotime($processo->data_notificacao))}}</td>
+                                <td>{{$processo->nr_acordao}}</td>
+                                <td>{{date('d/m/Y', strtotime($processo->data_diario_eletronico))}}</td>
+                                <td>
+                                    @hasanyrole('Admin|Tecnico')
+                                    <a href="{{route('processosTCE.edit', $processo->id)}}">
+                                        <i class="ti-pencil mr-1 btn btn-success"></i>
+                                    </a>
+                                    &nbsp;
+                                    <form action="{{route('processosTCE.destroy', $processo->id)}}" method="POST"
+                                          id="formLaravel{{$processo->id}}" style="display:inline-block;">
+                                        @method('DELETE')
+                                        @csrf
+                                        <span class="submit" idform="{{$processo->id}}">
+                                            <i class="ti-trash btn btn-danger"></i>
+                                        </span>
+                                    </form>
+                                    @endhasanyrole
+                                </td>
+                            </tr>
+                            @endforeach
+
+
+
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end">

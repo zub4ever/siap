@@ -45,6 +45,7 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::get('processosTCE/create', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@create')->name('processosTCE.create');
     Route::post('processosTCE/create', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@store')->name('processosTCE.store');
+    Route::post('processosTCE/{id}', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@destroy')->name('processosTCE.destroy');
     //Fim de Processos Homolados Pelo TCE
     //
     Route::get('conselhos', 'Conselhos\ConselhosController@index')->name('conselhos.index');

@@ -26,5 +26,9 @@ class Funcao extends Model {
         
         return $this->belongsTo('App\Models\ApRequerimentos\RequerimentoAposentadoriaVoluntaria', 'funcao_id');
     }
+    public function tce_processos() {
+
+        return $this->belongsToMany(\App\Models\ProcessosHomologadosTCE\ProcessosTCE::class, 'funcao_id');
+    }
 
 }

@@ -18,6 +18,7 @@ class ProcessosTCE extends Model {
         'data_notificacao',
         'nr_acordao',
         'nm_assegurado',
+        'funcao_id'
     ];
     protected $guarded = [];
 
@@ -49,6 +50,10 @@ class ProcessosTCE extends Model {
     public function users() {
 
         return $this->belongsToMany(\App\Models\User::class, 'users_id');
+    }
+    public function funcao() {
+
+        return $this->belongsToMany(\App\Models\Funcao::class, 'funcao_id');
     }
 
 }
