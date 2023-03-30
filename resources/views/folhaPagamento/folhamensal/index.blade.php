@@ -27,11 +27,12 @@ Folha
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
+                @hasanyrole('Admin|Tecnico')
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right"
                    title="Cadastrar novo item" href="{{route('folhamensal.create')}}" role="button">
                     Novo
                 </a>
-               
+                @endhasanyrole
                 <div class="pull-right">
                     <a class="btn btn-inverse-warning btn-md" href="{{route('rbprevAtualizacoes.index')}}">Voltar</a>
                 </div>

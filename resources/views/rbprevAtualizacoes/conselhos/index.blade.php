@@ -24,9 +24,11 @@ CAPS
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
+                @hasanyrole('Admin|Tecnico')
                 <a class="btn btn-info btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Orgão Expedidor" href="{{route('conselhos.create')}}" role="button">
                     Subir novo documento
                 </a>
+                @endhasanyrole
                 <div class="pull-right">
                     <a class="btn btn-inverse-warning btn-md" href="{{route('rbprevAtualizacoes.index')}}">Voltar</a>
                 </div>          

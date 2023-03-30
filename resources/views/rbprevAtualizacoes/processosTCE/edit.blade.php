@@ -30,7 +30,7 @@
                 <form action="{{route('processosTCE.update', $processos->id)}}" method="POST">
                     @csrf
                     @method('PUT')
-                    @include('rbprevAtualizacoes.processosTCE.edit')
+                    @include('rbprevAtualizacoes.processosTCE.form')
                 </form>
             </div>
         </div>

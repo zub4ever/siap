@@ -24,9 +24,11 @@ CTC
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
+                @hasanyrole('Admin|Tecnico')
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('ctc.create')}}" role="button">
                     Nova CTC
                 </a>
+                @endhasanyrole
             </div>
         </div>
     </div>

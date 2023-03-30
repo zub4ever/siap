@@ -41,11 +41,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('rbprevNumeros', 'RBPREVNUMEROS\RBPREVNumerosController@index')->name('rbprevNumeros.index');
     //
     //Inicio de processos Homolados pelo TCE
-    Route::resource('processosTCE', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController');
-    
+    Route::resource('processosTCE', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController');   
     Route::get('processosTCE/create', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@create')->name('processosTCE.create');
     Route::post('processosTCE/create', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@store')->name('processosTCE.store');
     Route::post('processosTCE/{id}', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@destroy')->name('processosTCE.destroy');
+    Route::get('processos/showpdf','ProcessosHomologadosTCE\ProcessosHomologadosTCEController@showPdf')->name('processosTCE.showPdf');
     //Fim de Processos Homolados Pelo TCE
     //
     Route::get('conselhos', 'Conselhos\ConselhosController@index')->name('conselhos.index');

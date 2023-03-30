@@ -45,3 +45,5 @@ Route::get('conselhosapicoin','APIs\ConselhosAPIController@index_coin');
 Route::get('conselhosapicofin','APIs\ConselhosAPIController@index_cofin');
 Route::get('conselhosapi/show/{id}','APIs\ConselhosAPIController@showPdf');
 //FimConselho
+//ProcessosHomologadosPeloTCE
+Route::get('processosTCE','APIs\ProcessosTCEAPIController@index'); //APIGERAL
