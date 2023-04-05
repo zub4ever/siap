@@ -15,7 +15,7 @@ class UserController extends Controller
    
     public function index(Request $request)
     {
-        $data = User::orderBy('id','DESC')->paginate(5);
+        $data = User::orderBy('id','DESC')->paginate(10);
         
         return view('administracao.users.index',compact('data'));
     }
@@ -44,7 +44,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
     
         return redirect()->route('users.index')
-                        ->with('success','User created successfully');
+                        ->with('success','Usuário criado com sucesso');
     }
     
     public function show($id)
@@ -85,13 +85,13 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
     
         return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+                        ->with('success','Usuário atualizado com sucesso');
     }
     
     public function destroy($id)
     {
         User::find($id)->delete();
         return redirect()->route('administracao.users.index')
-                        ->with('success','User deleted successfully');
+                        ->with('success','Usuário deletado com Sucesso');
     }
 }

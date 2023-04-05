@@ -46,10 +46,10 @@ Usuários
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <tr>
-                            <th class="text-center">Id</th>
+                            <th class="text-center">#</th>
                             <th class="text-center">Nome</th>
                             <th class="text-center">Email</th>
-                            <th class="text-center">Tipo de user</th>
+                            <th class="text-center">Tipo de usuário</th>
                             <th width="280px">Ação</th>
                         </tr>
                         @foreach ($data as $key => $user)
