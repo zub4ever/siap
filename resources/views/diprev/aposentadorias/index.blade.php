@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{-- Page Title --}}
 @section('page-title')
-Requerimentos
+Aposentadorias
 @endsection
 @section('css')
 <!-- Start datatable css -->
@@ -15,18 +15,18 @@ Requerimentos
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Ap Volunária</a></li>
+    <li class="breadcrumb-item active"><a>Aposentadorias</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="{{route('reqVoluntaria.create')}}" role="button">
-                    Novo requerimento
+                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="" role="button">
+                    Novo Aposentadoria
                 </a>
                 <div class="pull-right">
-                    <a class="btn btn-primary btn-md" href="/diprev">Voltar</a>
+                    <a class="btn btn-primary btn-md" href="/aposentadorias">Voltar</a>
                 </div>
             </div>
         </div>
@@ -36,54 +36,24 @@ Requerimentos
     <div class="col-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Requerimentos Ap Voluntárias</h4>
+                <h4 class="card_title">Aposentadorias</h4>
                 <div class="table-responsive">
                     <table id="dataTable" class="table text-center">
                         <thead class="bg-light text-capitalize">
                             <tr>
-                                <th class="text-center">Id</th>
-                                <th class="text-center">Nome requerente</th>
-                                <th class="text-center">Tipo de requerimento</th>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Tipo de Aposentadoria</th>
                                 <th class="text-center">CPF</th>
-                                <th class="text-center">Data</th>
+                                <th class="text-center">Data aposentadoria</th>
                                 <th class="text-center">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($reqApVoluntaria as $fcn)
-                            <tr>
-                                <td class="text-center">{{$fcn->id}}</td>
-                                <td class="text-center">{{$fcn->nm_requerente}}</td>
-                                <td class="text-center">Aposentadoria Voluntaria</td>
-                                <td class="text-center">{{$fcn->cpf}}</td>
-
-                                <td>{{ date( 'd/m/Y' , strtotime($fcn->data_solicitacao))}}</td>
-                                <td>
-                                    <a href="{{route('reqVoluntaria.show', $fcn->id)}}" target="_blank">
-                                        <i class="ti-clipboard mr-1 btn btn-info" data-toggle="tooltip" title="Visualizar informações"></i>
-                                    </a>
-
-                                    <a href="{{route('reqVoluntaria.edit', $fcn->id)}}">
-                                        <i class="ti-pencil mr-1 btn btn-success"></i>
-                                    </a>
-                                    <a href="{{route('reqVoluntaria.pdf', $fcn->id)}}" target="_blank
-                                       ">
-                                        <i class="ti-printer mr-1 btn btn-warning"></i>
-                                    </a>
-                                    @can('excluir')
-                                    &nbsp;
-                                    <form action="{{route('reqVoluntaria.destroy', $fcn->id)}}" method="POST" id="formLaravel{{$fcn->id}}" style="display:inline-block;">
-                                        @method('DELETE')
-                                        @csrf
-                                        <span class="submit" idform="{{$fcn->id}}">
-                                            <i class="ti-trash btn btn-danger"></i>
-                                        </span>
-                                    </form>
-                                    @endcan
-
-                                </td>
-                            </tr>
-                            @endforeach
+                            
+                            
+                            
+                            
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end">

@@ -48,37 +48,26 @@ Atualizações
             </a>
         </div>
 
-        
-      <div class="ag-courses_item">
-        <a href="{{route('processosTCE.index')}}" class="ag-courses-item_link">
-          <div class="ag-courses-item_bg"></div>
-  
-          <div class="ag-courses-item_title">
-            RBPREV Processos Homologados TCE
-          </div>
-  
-          
-        </a>
-      </div> 
+
+        <div class="ag-courses_item">
+            <a href="{{route('processosTCE.index')}}" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+
+                <div class="ag-courses-item_title">
+                    RBPREV Processos Homologados TCE
+                </div>
 
 
-        <!--
-      <div class="ag-courses_item">
-        <a href="#" class="ag-courses-item_link">
-          <div class="ag-courses-item_bg"></div>
-  
-          <div class="ag-courses-item_title">
-            Motion Design
-          </div>
-  
-          <div class="ag-courses-item_date-box">
-            Start:
-            <span class="ag-courses-item_date">
-              30.11.2022
-            </span>
-          </div>
-        </a>
-      </div> -->
+            </a>
+        </div> 
+        <div class="ag-courses_item">
+            <a href="{{route('aposentadorias.index')}}" class="ag-courses-item_link">
+                <div class="ag-courses-item_bg"></div>
+                <div class="ag-courses-item_title">
+                    RBPREV Aposentadorias
+                </div>
+            </a>
+        </div> 
 
 
         <!--

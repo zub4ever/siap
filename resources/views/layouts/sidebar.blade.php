@@ -221,6 +221,14 @@
                                 </a>
                             </li>
                         </ul>
+                        <ul class="collapse">
+                            <li {!! (request()->is('/*') ? 'class="active"' : "")!!}>
+                                <a href="{{route('aposentadorias.index')}}">
+                                    <i class="ti-envelope"></i>
+                                    <span>Aposentadorias</span>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
                     <!--Fim de Diprev-->
                     <!--Inicio  de DAF -->

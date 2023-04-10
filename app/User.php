@@ -38,5 +38,9 @@ class User extends Authenticatable {
 
         return $this->belongsToMany(\App\Models\ProcessosHomologadosTCE\ProcessosTCE::class, 'user_id');
     }
+    public function aposentadorias() {
+
+        return $this->belongsToMany(\App\Models\DIPREV\Aposentadorias\Aposentadorias::class, 'user_id');
+    }
 
 }

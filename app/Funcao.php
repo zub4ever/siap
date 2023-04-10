@@ -30,5 +30,9 @@ class Funcao extends Model {
 
         return $this->belongsToMany(\App\Models\ProcessosHomologadosTCE\ProcessosTCE::class, 'funcao_id');
     }
+    public function aposentadorias() {
+
+        return $this->belongsToMany(\App\Models\DIPREV\Aposentadorias\Aposentadorias::class, 'funcao_id');
+    }
 
 }

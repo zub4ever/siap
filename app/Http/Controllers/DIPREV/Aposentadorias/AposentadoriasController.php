@@ -1,71 +1,41 @@
 <?php
 
-namespace App\Http\Controllers\DIPREV;
+namespace App\Http\Controllers\DIPREV\Aposentadorias;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use App\Serve;
-use App\Origin;
 use App\Funcao;
-use App\Orgao;
-use App\Sexo;
-use App\Address;
-use App\Models\DIPREV\CTC\CTC;
-use App\Models\DIPREV\CTC\TipoCertidao;
-use App\Http\Requests\DiprevFormRequest\CTC\CTCFormRequest;
+use App\User;
+use App\Models\DIPREV\Aposentadorias\Aposentadorias;
+use App\Models\DIPREV\Aposentadorias\RegrasdeAposentadoria;
+use App\Models\DIPREV\Aposentadorias\TipodeAposentadorias;
 use Illuminate\Support\Facades\DB;
-use App\Models\DIPREV\CTC\CTCDeducao;
 use PDF;
 
-class CTCController extends Controller {
+class AposentadoriasController extends Controller {
 
-    public function show($id, Request $request) {
-
-        // Busca o ctc_certidao correspondente ao id
-        $ctc_certidao = CTC::findOrFail($id);
-
-        // Busca os anos cadastrados que contêm o id do ctc_certidao
-        $registros = DB::table('ctc_certidao_deducao')
-                ->join('ctc_certidao', 'ctc_certidao_deducao.ctc_certidao_id', '=', 'ctc_certidao.id')
-                ->select('ctc_certidao_deducao.id', 'ctc_certidao_deducao.ano', 'ctc_certidao_deducao.tempo_bruto', 'ctc_certidao_deducao.faltas', 'ctc_certidao_deducao.licencas', 'ctc_certidao_deducao.licencas_sem_vencimento', 'ctc_certidao_deducao.suspensoes', 'ctc_certidao_deducao.disponibilidade', 'ctc_certidao_deducao.outras', 'ctc_certidao_deducao.tempo_liquido')
-                ->where('ctc_certidao.id', '=', $id)
-                ->orderBy('ctc_certidao_deducao.ano', 'desc')
-                ->get();
-
-        return view("diprev.ctc.show", compact('ctc_certidao', 'registros'));
-    }
+  
 
     public function index() {
 
-        $ctc = CTC::where('status', 1)
-                ->orderBY('id', 'asc')
-                ->get();
+        
 
-        $serve = DB::table('serve')->get()->all();
-
-        $orgao = Orgao::all();
-        $funcao = Funcao::all();
-
-        return view("diprev.ctc.index", compact('ctc', 'serve', 'funcao', 'orgao'));
+        return view("diprev.aposentadorias.index");
     }
 
     public function create() {
-        $origin = Origin::all();
-        $servidor = Serve::all();
-        $orgao = Orgao::all();
+        
+        $servidor = Serve::all();        
         $funcao = Funcao::all();
-        $tipo_certidao = TipoCertidao::all();
-        $adress = Address::all();
-        //$atendimento_status = DB::table('atendimento_status')->get();
-        //  $atendimento_assunto = DB::table('atendimento_assunto')->get();
-        // $city = DB::table('city')->get();
-        // $state = DB::table('state')->get();
-        // $almo_localizacao_dpto = DB::table('almoxarifado_localizacao_dpto')->get()->all();
-        return view('diprev.ctc.create', compact('servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao', 'adress'));
+        $regra = RegrasdeAposentadoria::all();
+        $tipo_aposentadoria = TipodeAposentadorias::all();
+        
+        return view('diprev.aposentadorias.create', compact('servidor', 'funcao', 'regra', 'tipo_aposentadoria'));
     }
 
-    public function edit($id) {
+    /*public function edit($id) {
         $ctc = CTC::findOrFail($id);
 
         $origin = Origin::all();
@@ -76,9 +46,9 @@ class CTCController extends Controller {
         $adress = Address::all();
 
         return view('diprev.ctc.edit', compact('ctc', 'servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao', 'adress'));
-    }
+    }*/
 
-    public function update(CTCFormRequest $request, $id) {
+    /*public function update(CTCFormRequest $request, $id) {
         $ctc = CTC::findOrFail($id);
 
         DB::beginTransaction();
@@ -95,9 +65,9 @@ class CTCController extends Controller {
                         'success',
                         "Certidao alterada com sucesso."
         );
-    }
+    } */
 
-    public function store(CTCFormRequest $request) {
+    public function store(Request $request) {
 
         DB::beginTransaction();
         $ctc = CTC::create($request->all());

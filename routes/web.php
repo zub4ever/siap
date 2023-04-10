@@ -146,6 +146,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/reqVoluntaria/pdf/{id?}', 'Administracao\reqAposentadorias\ApVoluntaria\reqApVoluntariaController@pdf')->name('reqVoluntaria.pdf');
 
     //FimRequerimentosAposentadoria
+    //Inicio Aposentadoria
+    
+    Route::resource('aposentadorias', 'DIPREV\Aposentadorias\AposentadoriasController');
+    Route::get('aposentadorias/create', 'DIPREV\Aposentadorias\AposentadoriasController@create')->name('aposentadorias.create');
+    Route::post('aposentadorias/novo', 'DIPREV\Aposentadorias\AposentadoriasController@stote')->name('aposentadorias.store');
+    
+    
+    
+    
+    //Fim Aposentadorias
     //INicio de CTC
     Route::resource('/ctc', 'DIPREV\CTCController');
 

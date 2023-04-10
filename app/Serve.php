@@ -68,4 +68,9 @@ class Serve extends Model {
 
         return $this->belongsTo(App\Models\DIPREV\CTC\CTC::class, 'serve_id');
     }
+    
+    public function aposentadorias() {
+
+        return $this->belongsToMany(\App\Models\DIPREV\Aposentadorias\Aposentadorias::class, 'serve_id');
+    }
 }
