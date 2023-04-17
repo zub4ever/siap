@@ -41,8 +41,6 @@ Folha
         </div>
     </div>
 </div>
-
-
 <div class="row">
     <div class="col-12 mb-4">
         <div class="card">
@@ -88,14 +86,11 @@ Folha
                                 @elseif($fcn->mes == 13)
                                 <td class="text-center">Décimo Terceiro</td>
                                 @endif
-                               
+                                @hasanyrole('Admin|Tecnico')
                                 <td> 
-                                    @can('excluir')
                                     <a href="{{Route('folhamensal.edit',$fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
-                                     
-                                    
                                     &nbsp;
                                     <form action="" method="POST" id="formLaravel" style="display:inline-block;">
                                         @method('DELETE')
@@ -104,14 +99,13 @@ Folha
                                             <i class="ti-trash btn btn-danger"></i>
                                         </span>
                                     </form>
-                                    @endcan
-
                                 </td>
+                                @endhasanyrole
                             </tr>
                             @endforeach
                         </tbody>
-                        
-                        
+
+
                     </table>
                     <div class="d-flex justify-content-end">
 

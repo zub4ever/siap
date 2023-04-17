@@ -150,7 +150,8 @@ Route::group(['middleware' => ['auth']], function () {
     
     Route::resource('aposentadorias', 'DIPREV\Aposentadorias\AposentadoriasController');
     Route::get('aposentadorias/create', 'DIPREV\Aposentadorias\AposentadoriasController@create')->name('aposentadorias.create');
-    Route::post('aposentadorias/novo', 'DIPREV\Aposentadorias\AposentadoriasController@stote')->name('aposentadorias.store');
+    Route::post('aposentadorias/create', 'DIPREV\Aposentadorias\AposentadoriasController@store')->name('aposentadorias.store');
+    Route::delete('/aposentadorias/destroy/{id?}', 'DIPREV\Aposentadorias\AposentadoriasController@destroy')->name('aposentadorias.destroy');
     
     
     
@@ -217,10 +218,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/almoxarifado/{id?}/pdf', 'DAF\AlmoxarifadoController@Verpdf')->name('almoxarifado.Verpdf');
     Route::delete('/almoxarifado/{id}/destroy', 'DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
     //geradorQrCode
-    Route::get('/qrcode{id?}', 'DAF\AlmoxarifadoController@qrCodeGerador')->name('qrcode');
+    Route::get('/qrcode/{id?}', 'DAF\AlmoxarifadoController@qrCodeGerador')->name('qrcode');
     
     
-     Route::get('qrcode-with-image/{id}', 'DAF\AlmoxarifadoController@generateQrCodeWithImage')->name('almoxarifado.qrcode-with-image');
+ 
+    
+    
+     
   
 
 

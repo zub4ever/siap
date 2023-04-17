@@ -47,3 +47,6 @@ Route::get('conselhosapi/show/{id}','APIs\ConselhosAPIController@showPdf');
 //FimConselho
 //ProcessosHomologadosPeloTCE
 Route::get('processosTCE','APIs\ProcessosTCEAPIController@index'); //APIGERAL
+
+//Aposentadorias
+Route::get('aposentadoriasconcedidas','APIs\AposentadoriasAPIController@index');

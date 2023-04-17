@@ -166,6 +166,25 @@
         </div>
     </div>
 </div>
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+        <div class="wrap">
+            <label for="imagem" class="form-control-label">Imagem do Item:
+                <span class="text-danger">*</span>
+            </label>           
+            <br>
+          
+            <!-- Alterar 'localhost/storage' para o caminho em produção  -->
+           <img src="{{ str_replace('localhost/storage', '/storage', $almoxarifado->imagem) }}" alt="Imagem do Item" style="display: block; margin: 0 auto; max-width: 400px; max-height: 400px;">
+            <br>
+            @if ($errors->has('imagem'))
+            <h6 class="heading text-danger">{{$errors->first('imagem')}}</h6>
+            @endif
+        </div>
+    </div>
+</div>
+
+
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
         <div class="wrap">

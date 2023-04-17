@@ -21,7 +21,8 @@ class Almo extends Model {
         'almoxarifado_marca_id',
         'almoxarifado_cedido_id',
         'status',
-        'cedido_localizacao'
+        'cedido_localizacao',
+        'imagem'
     ];
     protected $guarded = [];
 

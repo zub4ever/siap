@@ -22,9 +22,11 @@ Aposentadorias
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="" role="button">
-                    Novo Aposentadoria
+                @hasanyrole('Admin|Tecnico')
+                <a class="btn btn-info btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo" href="{{route('aposentadorias.create')}}" role="button">
+                    Nova Aposentadoria
                 </a>
+                @endhasanyrole
                 <div class="pull-right">
                     <a class="btn btn-primary btn-md" href="/aposentadorias">Voltar</a>
                 </div>
@@ -44,16 +46,46 @@ Aposentadorias
                                 <th class="text-center">#</th>
                                 <th class="text-center">Nome</th>
                                 <th class="text-center">Tipo de Aposentadoria</th>
-                                <th class="text-center">CPF</th>
+                                <th class="text-center">Regra de Aposentadoria</th>
+                                <th class="text-center">Nº Processo</th>
                                 <th class="text-center">Data aposentadoria</th>
+                                
                                 <th class="text-center">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
-                            
-                            
-                            
+                            @foreach ($aposentadorias as $aposentadoria)
+                            <tr>
+                                <td>{{$aposentadoria->id}}</td>
+                                <td>{{$aposentadoria->matricula}}-{{$aposentadoria->nm_servidor}}</td>
+                                <td>{{$aposentadoria->nm_aposentadoria}}</td>
+                                <td>{{$aposentadoria->nm_regra}}</td>
+                                <td>{{$aposentadoria->nr_processo}}</td>
+                                <td>{{date('d/m/Y', strtotime($aposentadoria->data_aposentadoria))}}</td>                                                               
+                                
+
+                                <td>
+                                    @hasanyrole('Admin|Tecnico')
+                                    <a href="{{route('aposentadorias.edit', $aposentadoria->id)}}">
+                                        <i class="ti-pencil mr-1 btn btn-success"></i>
+                                    </a>
+                                    &nbsp;
+                                    <form action="{{route('aposentadorias.destroy', $aposentadoria->id)}}" method="POST"
+                                          id="formLaravel{{$aposentadoria->id}}" style="display:inline-block;">
+                                        @method('DELETE')
+                                        @csrf
+                                        <span class="submit" idform="{{$aposentadoria->id}}">
+                                            <i class="ti-trash btn btn-danger"></i>
+                                        </span>
+                                    </form>
+                                    @endhasanyrole
+                                </td>
+                            </tr>
+                            @endforeach
+
+
+
+
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end">

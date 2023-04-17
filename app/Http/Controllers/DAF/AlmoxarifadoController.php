@@ -17,62 +17,11 @@ use App\Models\DAF\Almoxarifado\AlmoResponsavel;
 use App\Models\DAF\Almoxarifado\AlmoTipo;
 use Illuminate\Support\Facades\DB;
 use PDF;
-use BaconQrCode\Encoder\QrCode;
-use BaconQrCode\Renderer\Image\Png;
-use BaconQrCode\Renderer\ImageRenderer;
-use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-use BaconQrCode\Common\ErrorCorrectionLevel;
-
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use SimpleSoftwareIO\QrCode\Generator;
+use Illuminate\Support\Facades\Storage;
 
 class AlmoxarifadoController extends Controller {
-
-    public function generateQrCodeWithImage($id) {
-        $url = 'http://siap.rbprev.riobranco.ac.gov.br/consulta/' . $id;
-
-        // Define o nível de correção de erro como H (High)
-        $level = ErrorCorrectionLevel::fromString('H');
-
-        // Cria o objeto QR Code
-        $qrCode = new QrCode($url, $level);
-
-        // Define a largura e altura da imagem
-        $width = 300;
-        $height = 300;
-
-        // Cria o renderizador da imagem
-        $renderer = new ImageRenderer(
-                new RendererStyle($width, $height),
-                new Png(),
-                new ErrorCorrectionLevel(ErrorCorrectionLevel::HIGH)
-        );
-
-        // Renderiza o QR Code como imagem
-        $image = $renderer->render($qrCode);
-
-        // Carrega a imagem de logo
-        $logoPath = public_path('/public/imagem/logo2.png');
-        $logo = imagecreatefrompng($logoPath);
-
-        // Obtém as dimensões da imagem de logo
-        $logoWidth = imagesx($logo);
-        $logoHeight = imagesy($logo);
-
-        // Define a posição e o tamanho da imagem de logo na imagem do QR Code
-        $logoPosX = ($width - $logoWidth) / 2;
-        $logoPosY = ($height - $logoHeight) / 2;
-        $logoSize = 75;
-
-        // Adiciona a imagem de logo na imagem do QR Code
-        imagecopyresampled($image, $logo, $logoPosX, $logoPosY, 0, 0, $logoSize, $logoSize, $logoWidth, $logoHeight);
-
-        // Exibe a imagem na view
-        ob_start();
-        imagepng($image);
-        $imageData = ob_get_contents();
-        ob_end_clean();
-
-        return response($imageData)->header('Content-type', 'image/png');
-    }
 
     public function show($id) {
 
@@ -127,15 +76,31 @@ class AlmoxarifadoController extends Controller {
 
     public function store(AlmoFormRequest $request) {
 
+       
+
         DB::beginTransaction();
 
+        // Criação do novo registro
         $almoxarifado = Almo::create($request->all());
 
         if (!$almoxarifado) {
             DB::rollBack();
             return redirect()->route('almoxarifado.index')->with('error', "Falha ao cadastrar o Item.");
         }
-        $almoxarifado->save();
+        
+         // Validação do arquivo de imagem
+        $request->validate([
+            'imagem' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        // Upload da imagem (se houver)
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem');
+            $path = Storage::putFile('/imagensAlmoxarifado', $imagem);
+            $almoxarifado->imagem = Storage::url($path);
+            $almoxarifado->save();
+        }
+
         DB::commit();
 
         return redirect()->route('almoxarifado.index')->with(
@@ -168,6 +133,18 @@ class AlmoxarifadoController extends Controller {
 
             DB::rollBack();
             return redirect()->route('almoxarifado.index')->with('error', "Falha na alteração do item.");
+        }
+         // Validação do arquivo de imagem
+        $request->validate([
+            'imagem' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
+        ]);
+
+        // Upload da imagem (se houver)
+        if ($request->hasFile('imagem')) {
+            $imagem = $request->file('imagem');
+            $path = Storage::putFile('/imagensAlmoxarifado', $imagem);
+            $almoxarifado->imagem = Storage::url($path);
+            $almoxarifado->save();
         }
 
         DB::commit();
@@ -239,18 +216,12 @@ class AlmoxarifadoController extends Controller {
 
     public function qrCodeGerador($id) {
 
-        $url = 'http://siap.rbprev.riobranco.ac.gov.br/consulta/' . $id;
+        //$qrCode = Almo::findOrfail($id);
+        $qrCodeString = "http://siap.rbprev.riobranco.ac.gov.br/consulta/{$id}";
 
-        $renderer = new ImageRenderer(
-                new ImagickImageBackEnd(),
-                new \BaconQrCode\Renderer\RendererStyle\RendererStyle(400),
-                new \BaconQrCode\Common\ErrorCorrectionLevel(\BaconQrCode\Common\ErrorCorrectionLevel::HIGH)
-        );
-        $writer = new Writer($renderer);
+        $qrCodeImage = QrCode::format('png')->size(100)->generate($qrCodeString);
 
-        $qrcode = $writer->writeString($url);
-
-        return view('daf.almoxarifado.qrcode', compact('qrcode', 'id'));
+        return view('daf.almoxarifado.qrcode', compact('qrCodeImage'));
     }
 
     public function buscaQrCode(Request $request, $id) {

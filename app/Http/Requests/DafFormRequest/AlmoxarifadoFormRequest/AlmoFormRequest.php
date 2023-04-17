@@ -35,7 +35,8 @@ class AlmoFormRequest extends FormRequest
             'almoxarifado_contrato_id' => ['required'],
             'almoxarifado_marca_id' => ['required'],
             'almoxarifado_cedido_id' => ['required'],
-            'cedido_localizacao' => ['max:300']
+            'cedido_localizacao' => ['max:300'],
+            'imagem' => 'nullable|image|mimes:jpeg,png,jpg|max:2048',
         ];
     }
 

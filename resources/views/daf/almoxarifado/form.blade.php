@@ -166,6 +166,35 @@
         </div>
     </div>
 </div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
+        <div class="wrap">
+            <label for="imagem" class="form-control-label">Imagem do Item:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="file" class="form-control" name="imagem" onchange="previewImagem(this)">
+            <br>
+            <img id="preview" src="" alt="" style="max-width: 400px; max-height: 400px;">
+            <br>
+            @if ($errors->has('imagem'))
+            <h6 class="heading text-danger">{{$errors->first('imagem')}}</h6>
+            @endif
+        </div>
+    </div>
+</div>
+<script>
+    function previewImagem(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#preview').attr('src', e.target.result);
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+</script>
+
 <div class="row">
     <div class="col-sm-12 col-md-12 col-lg-12 mt-4">
         <div class="wrap">

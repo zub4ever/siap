@@ -22,7 +22,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card_title">Cadastrar item de almoxarifado</h4>
-                <form action="{{route('almoxarifado.store')}}" method="POST">
+                <form action="{{route('almoxarifado.store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @include('daf.almoxarifado.form')
                 </form>

@@ -20,8 +20,8 @@ use App\Funcao;
 
 class ServeController extends Controller {
 
-    public function show($id){
-        
+    public function show($id) {
+
         $serve = Serve::findOrFail($id);
         $origin = Origin::all();
         $sexo = Sexo::all();
@@ -30,7 +30,7 @@ class ServeController extends Controller {
         $type_serve = Type_Serve::all();
         $marital_status = Marital_Status::all();
         $tpservidor = TipoServidor::all();
-        return view('servidor.show', compact('serve','origin', 'marital_status', 'sexo', 'orgao_expedidor', 'obito', 'type_serve', 'tpservidor'));       
+        return view('servidor.show', compact('serve', 'origin', 'marital_status', 'sexo', 'orgao_expedidor', 'obito', 'type_serve', 'tpservidor'));
     }
 
     public function index() {

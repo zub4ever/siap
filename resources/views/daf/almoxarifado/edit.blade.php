@@ -22,7 +22,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card_title">Editar item de almoxarifado</h4>
-                <form action="{{route('almoxarifado.update', $almoxarifado->id)}}" method="POST">
+                <form action="{{route('almoxarifado.update', $almoxarifado->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     @method('PUT')
                     @include('daf.almoxarifado.form')
