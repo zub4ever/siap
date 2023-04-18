@@ -218,11 +218,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/almoxarifado/{id?}/pdf', 'DAF\AlmoxarifadoController@Verpdf')->name('almoxarifado.Verpdf');
     Route::delete('/almoxarifado/{id}/destroy', 'DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
     //geradorQrCode
+    
     Route::get('/qrcode/{id?}', 'DAF\AlmoxarifadoController@qrCodeGerador')->name('qrcode');
     
     
  
-    
+ 
     
      
   

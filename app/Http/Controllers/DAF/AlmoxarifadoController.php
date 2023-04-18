@@ -17,11 +17,21 @@ use App\Models\DAF\Almoxarifado\AlmoResponsavel;
 use App\Models\DAF\Almoxarifado\AlmoTipo;
 use Illuminate\Support\Facades\DB;
 use PDF;
-use SimpleSoftwareIO\QrCode\Facades\QrCode;
-use SimpleSoftwareIO\QrCode\Generator;
+//use LaravelQRCode\Facades\QRCode;
+//use //QR_Code\Generator\QRCode;
+//use QR_Code\Generator\QRCodeGenerator;
 use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AlmoxarifadoController extends Controller {
+
+    public function qrCodeGerador($id) {
+        $almo = Almo::findOrFail($id);
+        $qrCodeImage = QrCode::size(100)
+                ->color(0, 60, 130)
+                ->generate('172.26.94.98/consulta/' . $id);
+        return view('daf.almoxarifado.qrcode', compact('qrCodeImage', 'almo'));
+    }
 
     public function show($id) {
 
@@ -76,7 +86,7 @@ class AlmoxarifadoController extends Controller {
 
     public function store(AlmoFormRequest $request) {
 
-       
+
 
         DB::beginTransaction();
 
@@ -87,8 +97,8 @@ class AlmoxarifadoController extends Controller {
             DB::rollBack();
             return redirect()->route('almoxarifado.index')->with('error', "Falha ao cadastrar o Item.");
         }
-        
-         // Validação do arquivo de imagem
+
+        // Validação do arquivo de imagem
         $request->validate([
             'imagem' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
@@ -134,7 +144,7 @@ class AlmoxarifadoController extends Controller {
             DB::rollBack();
             return redirect()->route('almoxarifado.index')->with('error', "Falha na alteração do item.");
         }
-         // Validação do arquivo de imagem
+        // Validação do arquivo de imagem
         $request->validate([
             'imagem' => 'nullable|image|mimes:jpg,png,jpeg|max:2048',
         ]);
@@ -212,16 +222,6 @@ class AlmoxarifadoController extends Controller {
             'nm_patrimonio' => $request->nm_patrimonio,
             'almo_tipo' => $almo_tipo
         ]);
-    }
-
-    public function qrCodeGerador($id) {
-
-        //$qrCode = Almo::findOrfail($id);
-        $qrCodeString = "http://siap.rbprev.riobranco.ac.gov.br/consulta/{$id}";
-
-        $qrCodeImage = QrCode::format('png')->size(100)->generate($qrCodeString);
-
-        return view('daf.almoxarifado.qrcode', compact('qrCodeImage'));
     }
 
     public function buscaQrCode(Request $request, $id) {
