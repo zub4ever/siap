@@ -41,7 +41,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('rbprevNumeros', 'RBPREVNUMEROS\RBPREVNumerosController@index')->name('rbprevNumeros.index');
     //
     //Inicio de processos Homolados pelo TCE
-    Route::resource('processosTCE', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController');   
+    Route::resource('processosTCE', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController');
     Route::get('processosTCE/create', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@create')->name('processosTCE.create');
     Route::post('processosTCE/create', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@store')->name('processosTCE.store');
     Route::post('processosTCE/{id}', 'ProcessosHomologadosTCE\ProcessosHomologadosTCEController@destroy')->name('processosTCE.destroy');
@@ -49,39 +49,39 @@ Route::group(['middleware' => ['auth']], function () {
     //Fim de Processos Homolados Pelo TCE
     //
     Route::get('conselhos', 'Conselhos\ConselhosController@index')->name('conselhos.index');
-    
+
     Route::get('/conselhos/upload','Conselhos\ConselhosController@create')->name('conselhos.create');
     Route::post('conselhos/upload', 'Conselhos\ConselhosController@upload')->name('conselho.upload');
     //Route::get('/conselhos/store/{id}', 'Conselhos\ConselhosController@store_c')->name('conselho.store_c');
     Route::get('conselhos/{id}/pdf', 'Conselhos\ConselhosController@showPdf')->name('showPdf');
     Route::delete('/conselhos/{id}', 'Conselhos\ConselhosController@destroy')->name('conselhos.destroy');
 
-    
+
     Route::get('rbprevNumeros/create', 'RBPREVNUMEROS\RBPREVNumerosController@create')->name('rbprevNumeros.create');
     Route::post('rbprevNumeros/create', 'RBPREVNUMEROS\RBPREVNumerosController@store')->name('rbprevNumeros.store');
-    
+
     Route::delete('/rbprevNumeros/{id}', 'RBPREVNUMEROS\RBPREVNumerosController@destroy')->name('rbprevNumeros.destroy');
 
     //SEFPAG
     Route::resource('folhaPagamento', 'FolhaPagamento\FolhaInicioController');
-    
+
     Route::resource('folhamensal', 'FolhaPagamento\FolhaPagamentoController');
-    
+
     Route::get('folhaensal/create', 'FolhaPagamento\FolhaPagamentoController@create')->name('inicio.create');
     Route::post('folhamensal/create', 'FolhaPagamento\FolhaPagamentoController@store');
     //Route::get('folhaensal/{id}/edit', 'FolhaPagamento\FolhaPagamentoController@edit')->name('folhamensal.edit');
     //FIM
-    
-    //Rotas para processamento do HTML para extração de dados 
+
+    //Rotas para processamento do HTML para extração de dados
     Route::get('/upload-pdf', 'Dirf\DirfController@showUploadForm')->name('pdf.showUploadForm');
     Route::post('/upload-pdf', 'Dirf\DirfController@upload')->name('pdf.upload');
     Route::post('/pdfs', 'Dirf\DirfController@store')->name('pdf.store');
     Route::get('/upload-result', 'Dirf\DirfController@showUploadResult');
     //
-    
-    
-    //Rotas para processamento do HTML para extração de dados 
-    
+
+
+    //Rotas para processamento do HTML para extração de dados
+
     Route::get('dirf', 'Dirf\DirfCedulaCController@index')->name('dirf.index');
     Route::get('/dirf/download/{cpf}', 'Dirf\DirfCedulaCController@download')->name('dirf.download');
 
@@ -90,26 +90,26 @@ Route::group(['middleware' => ['auth']], function () {
     })->name('dirf.up');
     Route::post('/dirf/upload', 'Dirf\DirfCedulaCController@upload')->name('dirf.upload');
     Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store')->name('dirf.store');
-    
-    
+
+
     //Cedula C da Prefeitura
-    
+
     Route::get('dirfpmrb', 'Dirf\DirfCedulaPMRBCController@index')->name('dirf_pmrb.index');
     //
     Route::get('/dirfpmrb/upload', function () {
         return view('dirf_pmrb.dirf-upload');
     })->name('dirf_pmrb.up');
     //
-   
+
     //
     Route::post('/dirfpmrb/upload', 'Dirf\DirfCedulaPMRBCController@upload')->name('dirf_pmrb.upload');
     Route::get('/dirfpmrb/store/{cpf}', 'Dirf\DirfCedulaPMRBCController@store')->name('dirf_pmrb.store');
 
-    
-    
-    
-    
-    
+
+
+
+
+
     //Fim
     //Administração ATENDIMENTO
     Route::resource('administracao/atendimentos', 'Administracao\Atendimentos\AtendimentosController');
@@ -147,15 +147,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     //FimRequerimentosAposentadoria
     //Inicio Aposentadoria
-    
+
     Route::resource('aposentadorias', 'DIPREV\Aposentadorias\AposentadoriasController');
     Route::get('aposentadorias/create', 'DIPREV\Aposentadorias\AposentadoriasController@create')->name('aposentadorias.create');
     Route::post('aposentadorias/create', 'DIPREV\Aposentadorias\AposentadoriasController@store')->name('aposentadorias.store');
     Route::delete('/aposentadorias/destroy/{id?}', 'DIPREV\Aposentadorias\AposentadoriasController@destroy')->name('aposentadorias.destroy');
-    
-    
-    
-    
+
+
+
+
     //Fim Aposentadorias
     //INicio de CTC
     Route::resource('/ctc', 'DIPREV\CTCController');
@@ -166,10 +166,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('events/{id}', 'DIPREV\CTCController@pdf')->name('events.pdf');
     Route::get('/deducao/{id}/edit', 'DIPREV\CTCDeducaoController@edit')->name('deducao.edit');
     Route::put('/ctc/{id}/update', 'DIPREV\CTCDeducaoController@update')->name('deductions.update');
-    
+
     Route::get('/verso/{id}/ctc', 'DIPREV\CTCVersoController@verso')->name('verso.show');
-    
-    
+
+
     Route::get('/verso/{id}/edit', 'DIPREV\CTCVersoController@edit')->name('verso.edit');
     Route::put('/verso/{id}/update', 'DIPREV\CTCVersoController@update')->name('verso.update');
 
@@ -218,15 +218,16 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/almoxarifado/{id?}/pdf', 'DAF\AlmoxarifadoController@Verpdf')->name('almoxarifado.Verpdf');
     Route::delete('/almoxarifado/{id}/destroy', 'DAF\AlmoxarifadoController@destroy')->name('almoxarifado.destroy');
     //geradorQrCode
-    
+
     Route::get('/qrcode/{id?}', 'DAF\AlmoxarifadoController@qrCodeGerador')->name('qrcode');
-    
-    
- 
- 
-    
-     
-  
+
+    Route::get('/almoxarifado/{id}/imagem', 'DAF\AlmoxarifadoController@showImagem')->name('almoxarifado.imagem');
+
+
+
+
+
+
 
 
 
@@ -277,7 +278,7 @@ Route::post('/consultaPublica/resultado', 'DAF\AlmoxarifadoController@busca')->n
 //Consulta do QrCode
 Route::get('/consulta/{id?}', 'DAF\AlmoxarifadoController@buscaQrCode');
 
-//Rotas para Cécula 
+//Rotas para Cécula
 Route::get('/cpf/search', 'Dirf\DirfCedulaCController@search')->name('dirf.search');
 Route::post('/cpf/result', 'Dirf\DirfCedulaCController@result')->name('dirf.result');
 Route::get('/dirf/not-found', 'Dirf\DirfCedulaCController@cpfNotFound')->name('dirf.not-found');
@@ -294,3 +295,4 @@ Route::get('/dirfpmrb/buscar', 'Dirf\DirfCedulaPMRBCController@search_pmrb')->na
 Route::post('/dirfpmrb/resultado', 'Dirf\DirfCedulaPMRBCController@resultado_pmrb')->name('dirf_pmrb.result');
 
 Route::get('/dirfpmrb/not-found', 'Dirf\DirfCedulaPMRBCController@cpfNotFound')->name('dirf_pmrb.not-found');
+Route::get('/almoxarifado/{id}/imagemAlmo', 'DAF\AlmoxarifadoController@showImagem_public')->name('almoxarifado.imagemAlmo');

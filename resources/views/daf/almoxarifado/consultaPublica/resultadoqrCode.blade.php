@@ -18,7 +18,7 @@
             <br><br>
             <div class="container d-flex flex-column align-items-center justify-content-center">
                 <img src="/imagem/logo2.png" alt="Imagem" width="114,24,2px" height="133,98px">
-                <br> 
+                <br>
             </div>
             <div style="text-align: center;">
                 <h4 style="color: #ffffff; text-align: center;">Consulta de Patrimônio</h4>
@@ -26,7 +26,7 @@
             </div>
             <br>
         </div>
-        <br> 
+        <br>
         <div class="table-responsive">
             <table class="table table-striped">
                 <thead>
@@ -53,9 +53,9 @@
                         <td style="text-align:center;">{{$loca->nm_departamento}}</td>
                         @endif
                         @endforeach
-                        <td style="text-align:center;"> 
+                        <td style="text-align:center;">
                             <!-- Alterar 'localhost/storage' para o caminho em produção  -->
-                            <img src="{{ str_replace('localhost/storage', '/storage', $busca->imagem) }}" alt="Imagem do Item" style="display: block; margin: 0 auto; max-width: 400px; max-height: 400px;"> </td>
+                            <img src="{{ route('almoxarifado.imagemAlmo', ['id' => $busca->id]) }}" alt="Imagem do Item" style="max-width: 400px; max-height: 400px; display: block; margin: 0 auto; border: 2px solid blue;">
 
                     </tr>
                     @endforeach
@@ -63,13 +63,13 @@
             </table>
         </div>
     </div>
-    <footer class="text-dark py-1" style="bottom: 0%; position: fixed; width: 100%; background-color: #003C82;">
+    <footer class="text-dark py-1" style="bottom: 0%; position: absolute; width: 100%; background-color: #003C82;">
         <div class="container d-flex justify-content-center align-items-center">
             <img src="/imagem/branca.png" alt="Imagem" width="60px" height="60px" style="margin-right: 10px;">
-            <p class="text-white mb-0">Prefeitura Municipal de Rio Branco</p>
+
         </div>
-        <div class="container d-flex justify-content-center align-items-center">
-            <p class="text-white mb-0">Copyright © 2023 Instituto de Previdência do Município de Rio Branco</p>
+        <div class="container justify-content-center align-items-center">
+            <p class="text-white mb-0">Instituto de Previdência do Município de Rio Branco</p>
         </div>
     </footer>
 

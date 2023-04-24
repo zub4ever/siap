@@ -171,11 +171,14 @@
         <div class="wrap">
             <label for="imagem" class="form-control-label">Imagem do Item:
                 <span class="text-danger">*</span>
-            </label>           
+            </label>
             <br>
-          
+
             <!-- Alterar 'localhost/storage' para o caminho em produção  -->
-           <img src="{{ str_replace('localhost/storage', '/storage', $almoxarifado->imagem) }}" alt="Imagem do Item" style="display: block; margin: 0 auto; max-width: 400px; max-height: 400px;">
+
+            <img src="{{ route('almoxarifado.imagem', ['id' => $almoxarifado->id]) }}" alt="Imagem do Item" style="max-width: 400px; max-height: 400px; display: block; margin: 0 auto; border: 2px solid blue;">
+
+
             <br>
             @if ($errors->has('imagem'))
             <h6 class="heading text-danger">{{$errors->first('imagem')}}</h6>
