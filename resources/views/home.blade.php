@@ -17,6 +17,9 @@ Página inicial
       href="{{ asset('assets/vendors/data-table/css/responsive.bootstrap.min.css') }}">
 <link rel="stylesheet" type="text/css"
       href="{{ asset('assets/vendors/data-table/css/responsive.jqueryui.min.css') }}">
+<link rel="stylesheet" href="{{ asset('assets/vendors/highcharts/css/highcharts.css') }}" type="text/css"
+media="all"/>
+<script src="https://code.highcharts.com/highcharts.js"></script>
 @endsection
 @section('main-content')
 
@@ -29,7 +32,7 @@ Página inicial
     <div class="col-sm-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <div class="row">                       
+                <div class="row">
                     <div class="col-sm-4">
                         <figure class="highcharts-figure">
                             <div id="containerATER">
@@ -41,15 +44,35 @@ Página inicial
                             <div id="containerServidores">
                             </div>
                         </figure>
-                    </div> 
+                    </div>
                     <div class="col-sm-4">
+
                         <script src="https://code.highcharts.com/highcharts.js"></script>
-                        <script src="https://code.highcharts.com/modules/variable-pie.js"></script>
+                        <script src="https://code.highcharts.com/highcharts-3d.js"></script>
                         <script src="https://code.highcharts.com/modules/exporting.js"></script>
                         <script src="https://code.highcharts.com/modules/export-data.js"></script>
                         <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
                         <figure class="highcharts-figure">
                             <div id="containerAlmo">
+                                
+                            </div>
+
+                            <div id="sliders">
+                                <table>
+                                    <tbody><tr>
+                                        <td><label for="alpha">Alpha Angle</label></td>
+                                        <td><input id="alpha" type="range" min="0" max="45" value="15"> <span id="alpha-value" class="value"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="beta">Beta Angle</label></td>
+                                        <td><input id="beta" type="range" min="-45" max="45" value="15"> <span id="beta-value" class="value"></span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><label for="depth">Depth</label></td>
+                                        <td><input id="depth" type="range" min="20" max="100" value="50"> <span id="depth-value" class="value"></span></td>
+                                    </tr>
+                                    </tbody></table>
                             </div>
                         </figure>
                     </div>
@@ -71,9 +94,9 @@ Página inicial
         <figure class="highcharts-figure">
             <div id="containerAposentadorias"></div>
             <p class="highcharts-description">
-                
+
             </p>
-        </figure>  
+        </figure>
 
 
     </div>
@@ -194,43 +217,68 @@ Highcharts.chart('containerAposentadorias', {
     });
 </script>
 <script>
-    Highcharts.chart('containerAlmo', {
+    // Set up the chart
+    var itensTotal = <?php echo json_encode($itensTotal) ?>;
+    var itensEquipamento = <?php echo json_encode($itensEquipamento) ?>;
+    var itensMobiliario = <?php echo json_encode($itensMobiliario) ?>;
+    var itensInformatica = <?php echo json_encode($itensInformatica) ?>;
+    const chart = new Highcharts.Chart({
         chart: {
-            type: 'variablepie'
+            renderTo: 'containerAlmo',
+            type: 'column',
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 15,
+                depth: 50,
+                viewDistance: 25
+            }
         },
-        title: {
-            text: 'Itens de Almoxarifado.'
+        xAxis: {
+            categories: ['Total', 'Equipamento', 'Mobiliário','Informática']
+        },
+        yAxis: {
+            title: {
+                enabled: false
+            }
         },
         tooltip: {
-            headerFormat: '',
-            pointFormat: '<span style="color:{point.color}">\u25CF</span> <b> {point.name}</b><br/>' +
-                    'Itens Totais: <b>{point.y}</b><br/>' +
-                    'Item descrito: <b>{point.z}</b><br/>'
+            headerFormat: '<b>{point.key}</b><br>',
+            pointFormat: 'Quantidade: {point.y}'
+        },
+        title: {
+            text: 'Patrimônio RBPREV',
+            align: 'left'
+        }
+        ,
+        legend: {
+            enabled: false
+        },
+        plotOptions: {
+            column: {
+                depth: 25
+            }
         },
         series: [{
-                minPointSize: 10,
-                innerSize: '20%',
-                zMin: 0,
-                name: 'countries',
-                data: [{
-                        name: 'Informática',
-                        y: 505370,
-                        z: 92.9
-                    }, {
-                        name: 'Mobiliário',
-                        y: 78867,
-                        z: 137.5
-                    }, {
-                        name: 'Material',
-                        y: 41277,
-                        z: 214.5
-                    }, {
-                        name: 'Itens totais',
-                        y: 357022,
-                        z: 235.6
-                    }]
-            }]
+            data: [itensTotal, itensEquipamento, itensMobiliario,itensInformatica],
+            colorByPoint: true
+        }]
     });
+
+    function showValues() {
+        document.getElementById('alpha-value').innerHTML = chart.options.chart.options3d.alpha;
+        document.getElementById('beta-value').innerHTML = chart.options.chart.options3d.beta;
+        document.getElementById('depth-value').innerHTML = chart.options.chart.options3d.depth;
+    }
+
+    // Activate the sliders
+    document.querySelectorAll('#sliders input').forEach(input => input.addEventListener('input', e => {
+        chart.options.chart.options3d[e.target.id] = parseFloat(e.target.value);
+        showValues();
+        chart.redraw(false);
+    }));
+
+    showValues();
 </script>
 
 

@@ -62,13 +62,13 @@
                 </tbody>
             </table>
         </div>
-    </div>
+
     <footer class="text-dark py-1" style="bottom: 0%; position: absolute; width: 100%; background-color: #003C82;">
         <div class="container d-flex justify-content-center align-items-center">
             <img src="/imagem/branca.png" alt="Imagem" width="60px" height="60px" style="margin-right: 10px;">
 
         </div>
-        <div class="container justify-content-center align-items-center">
+        <div class="container justify-content-center align-items-center text-center" style="font-size: 9px;">
             <p class="text-white mb-0">Instituto de Previdência do Município de Rio Branco</p>
         </div>
     </footer>

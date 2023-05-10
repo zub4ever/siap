@@ -22,7 +22,7 @@
                             <i class="feather ft-home"></i>
                             <span>Inicio</span>
                         </a>
-                        
+
                     </li>
                     <!-- Inicio de Servidor -->
                     <li {!! (request()->is('servidor*') ? 'class="active"' : "")!!}>
@@ -242,7 +242,7 @@
                             <li {!! (request()->is('daf/*') ? 'class="active"' : "")!!}>
                                 <a href="{{route('almoxarifado.index')}}">
                                     <i class="ti-layers-alt"></i>
-                                    <span>Almoxarifado</span>
+                                    <span>Patrimônio</span>
                                 </a>
                             </li>
                         </ul>
@@ -253,7 +253,7 @@
                         <a href="{{route('folhaPagamento.index')}}" aria-expanded="true">
                             <i class="ti-dashboard"></i>
                             <span>Folha</span>
-                        </a>                                          
+                        </a>
                     </li>
                     Fim de DAF-->
                      <!--Inicio  de Cédula -->
@@ -261,7 +261,7 @@
                         <a href="{{route('dirf.index')}}" aria-expanded="true">
                             <i class="ti-money"></i>
                             <span>Cédula C</span>
-                        </a>                                          
+                        </a>
                     </li>
                     <!--Fim de DAF-->
                     <!--Inicio  de Atualizações de rbprev numero -->
@@ -269,7 +269,7 @@
                         <a href="{{route('rbprevAtualizacoes.index')}}" aria-expanded="true">
                             <i class="ti-reload"></i>
                             <span>Atualizações site principal</span>
-                        </a>                                          
+                        </a>
                     </li>
                     <!--Fim de Atualizações de rbprev numero-->
 
