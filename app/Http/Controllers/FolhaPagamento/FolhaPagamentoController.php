@@ -10,7 +10,7 @@ use DB;
 
 class FolhaPagamentoController extends Controller {
 
-  
+
 
     public function index() {
 
@@ -33,7 +33,9 @@ class FolhaPagamentoController extends Controller {
 
         $request->validate([
             'valorAposFprev' => 'required|numeric|max:100000000',
+            'valorPenFprev' => 'required|numeric|max:100000000',
             'valorAposFfin' => 'required|numeric|max:100000000',
+            'valorPenFfin' => 'required|numeric|max:100000000',
         ]);
 
         if (!$folhapgto) {
@@ -41,18 +43,47 @@ class FolhaPagamentoController extends Controller {
             return redirect()->route('folhaPagamento.index')->with('error', "Falha ao cadastrar o folha mensal.");
         }
 
+        // Somando valores de aposentados e pensionistas para qtdTotalFprev
+        $qtdAposentadoFprev = $request->input('qtdAposentadoFprev');
+        $qtdPensionistaFprev = $request->input('qtdPensionistaFprev');
+        $qtdTotalFprev = $qtdAposentadoFprev + $qtdPensionistaFprev;
+        $folhapgto->qtdTotalFprev = $qtdTotalFprev;
+        //
+        $qtdAposentadoFffin = $request->input('qtdAposentadoFffin');
+        $qtdPensionistaFfin = $request->input('qtdPensionistaFfin');
+        $qtdTotalFfin = $qtdAposentadoFffin + $qtdPensionistaFfin;
+        $folhapgto->qtdTotalFfin = $qtdTotalFfin;
+
+
+
+        // Somando valores de aposentados e pensionistas para valorTotalFprev
+        $valorAposFprev = $request->input('valorAposFprev');
+        $valorPenFprev = $request->input('valorPenFprev');
+        $valorTotalFprev = $valorAposFprev + $valorPenFprev;
+        $folhapgto->valorTotalFprev = $valorTotalFprev;
+
+        // Somando valores de aposentados e pensionistas para valorTotalFfin
+        $valorAposFfin = $request->input('valorAposFfin');
+        $valorPenFfin = $request->input('valorPenFfin');
+        $valorTotalFfin = $valorAposFfin + $valorPenFfin;
+        $folhapgto->valorTotalFfin = $valorTotalFfin;
+
+        $folhapgto->save();
+
         DB::commit();
 
         return redirect()->route('folhamensal.index')->with(
-                        'success',
-                        "Folha mensal cadastrada com sucesso."
+            'success',
+            "Folha mensal cadastrada com sucesso."
         );
     }
-    public function edit($id) {        
+
+
+    public function edit($id) {
         $folhapgto = FolhaPagamento::findOrFail($id);
         return view('folhaPagamento.folhamensal.edit', compact('folhapgto'));
     }
-    
+
     public function update(FolhaPagamentoFormRequest $request, $id) {
         $folhapgto = FolhaPagamento::findOrFail($id);
 

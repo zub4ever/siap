@@ -14,7 +14,7 @@
             </label>
             <input type="text" class="form-control" name='mes' placeholder="Ex: 1"  value="{{(@$folhapgto->mes)}}">
         </div>
-    </div> 
+    </div>
 </div>
 
 <hr>
@@ -36,7 +36,7 @@
             </label>
             <input type="text" class="form-control" name='qtdAposentadoFffin' placeholder="Ex: 000"  value="{{(@$folhapgto->qtdAposentadoFffin)}}">
         </div>
-    </div> 
+    </div>
 </div>
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
@@ -54,8 +54,9 @@
             </label>
             <input type="text" class="form-control" name='qtdPensionistaFfin' placeholder="Ex: 0000"  value="{{(@$folhapgto->qtdPensionistaFfin)}}">
         </div>
-    </div> 
+    </div>
 </div>
+<!--
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
@@ -72,8 +73,8 @@
             </label>
             <input type="text" class="form-control" name='qtdTotalFfin' placeholder="Ex: 0000"  value="{{(@$folhapgto->qtdTotalFfin)}}">
         </div>
-    </div> 
-</div>
+    </div>
+</div> -->
 
 <hr>
 <h5>Valores</h5>
@@ -95,7 +96,7 @@
             </label>
             <input type="text" class="form-control" id="valorAposFfin" name='valorAposFfin' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorAposFfin)}}">
         </div>
-    </div> 
+    </div>
 </div>
 
 <div class="row">
@@ -115,9 +116,9 @@
             </label>
             <input type="text" class="form-control" id="valorPenFfin" name='valorPenFfin' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorPenFfin)}}">
         </div>
-    </div> 
+    </div>
 </div>
-
+<!--
 <div class="row">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
@@ -135,9 +136,9 @@
             </label>
             <input type="text" class="form-control" id="valorTotalFfin" name='valorTotalFfin' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorTotalFfin)}}">
         </div>
-    </div> 
+    </div>
 </div>
-
+-->
 
 
 

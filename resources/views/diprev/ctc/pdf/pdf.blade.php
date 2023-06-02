@@ -51,9 +51,9 @@ use Carbon\Carbon;
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>SEXO:</strong><br>
                     @if($servidor->sexo_id == 1)
-                    Masculino
+                    MASCULINO
                     @else
-                    Feminino
+                    FEMININO
                     @endif
                 </td>
             </tr>
@@ -92,7 +92,7 @@ use Carbon\Carbon;
                 <td style="width:100%; border: 1px solid black;"><strong>Endereço:</strong><br>
                     @foreach ($address as $endereco)
                     @if($ctc->address_id == $endereco->id)
-                    {{$endereco->nm_rua}},{{$endereco->nr_casa}},{{$endereco->bairro}}, @if($endereco->city_id == 16)Rio Branco    @endif @if($endereco->state_id == 1), Acre    @endif
+                    {{$endereco->nm_rua}},{{$endereco->nr_casa}},{{$endereco->bairro}}, @if($endereco->city_id == 16)RIO BRANCO    @endif @if($endereco->state_id == 1), ACRE    @endif
                     @endif
                     @endforeach
                 </td>

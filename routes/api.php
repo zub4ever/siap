@@ -50,3 +50,7 @@ Route::get('processosTCE','APIs\ProcessosTCEAPIController@index'); //APIGERAL
 
 //Aposentadorias
 Route::get('aposentadoriasconcedidas','APIs\AposentadoriasAPIController@index');
+
+
+//Autenticação da API
+Route::post('/login','APIs\AuthAPIController@login');

@@ -28,14 +28,12 @@ class FolhaPagamentoFormRequest extends FormRequest {
             'qtdAposentadoFprev' ,
             'qtdPensionistaFfin',
             'qtdPensionistaFprev',
-            'qtdTotalFfin',
-            'qtdTotalFprev',
+
             'valorAposFprev' => 'required|numeric|max:100000000',
             'valorAposFfin' => 'required|numeric|max:100000000',
             'valorPenFfin' => 'required|numeric|max:100000000',
             'valorPenFprev' => 'required|numeric|max:100000000',
-            'valorTotalFfin' => 'required|numeric|max:100000000',
-            'valorTotalFprev'=> 'required|numeric|max:100000000',
+
         ];
     }
 

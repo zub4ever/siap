@@ -18,29 +18,32 @@ use Illuminate\Support\Facades\DB;
 use App\Models\DIPREV\CTC\CTCDeducao;
 use PDF;
 
-class CTCController extends Controller {
+class CTCController extends Controller
+{
 
-    public function show($id, Request $request) {
+    public function show($id, Request $request)
+    {
 
         // Busca o ctc_certidao correspondente ao id
         $ctc_certidao = CTC::findOrFail($id);
 
         // Busca os anos cadastrados que contêm o id do ctc_certidao
         $registros = DB::table('ctc_certidao_deducao')
-                ->join('ctc_certidao', 'ctc_certidao_deducao.ctc_certidao_id', '=', 'ctc_certidao.id')
-                ->select('ctc_certidao_deducao.id', 'ctc_certidao_deducao.ano', 'ctc_certidao_deducao.tempo_bruto', 'ctc_certidao_deducao.faltas', 'ctc_certidao_deducao.licencas', 'ctc_certidao_deducao.licencas_sem_vencimento', 'ctc_certidao_deducao.suspensoes', 'ctc_certidao_deducao.disponibilidade', 'ctc_certidao_deducao.outras', 'ctc_certidao_deducao.tempo_liquido')
-                ->where('ctc_certidao.id', '=', $id)
-                ->orderBy('ctc_certidao_deducao.ano', 'desc')
-                ->get();
+            ->join('ctc_certidao', 'ctc_certidao_deducao.ctc_certidao_id', '=', 'ctc_certidao.id')
+            ->select('ctc_certidao_deducao.id', 'ctc_certidao_deducao.ano', 'ctc_certidao_deducao.tempo_bruto', 'ctc_certidao_deducao.faltas', 'ctc_certidao_deducao.licencas', 'ctc_certidao_deducao.licencas_sem_vencimento', 'ctc_certidao_deducao.suspensoes', 'ctc_certidao_deducao.disponibilidade', 'ctc_certidao_deducao.outras', 'ctc_certidao_deducao.tempo_liquido')
+            ->where('ctc_certidao.id', '=', $id)
+            ->orderBy('ctc_certidao_deducao.ano', 'desc')
+            ->get();
 
         return view("diprev.ctc.show", compact('ctc_certidao', 'registros'));
     }
 
-    public function index() {
+    public function index()
+    {
 
         $ctc = CTC::where('status', 1)
-                ->orderBY('id', 'asc')
-                ->get();
+            ->orderBY('id', 'asc')
+            ->get();
 
         $serve = DB::table('serve')->get()->all();
 
@@ -50,7 +53,8 @@ class CTCController extends Controller {
         return view("diprev.ctc.index", compact('ctc', 'serve', 'funcao', 'orgao'));
     }
 
-    public function create() {
+    public function create()
+    {
         $origin = Origin::all();
         $servidor = Serve::all();
         $orgao = Orgao::all();
@@ -65,7 +69,8 @@ class CTCController extends Controller {
         return view('diprev.ctc.create', compact('servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao', 'adress'));
     }
 
-    public function edit($id) {
+    public function edit($id)
+    {
         $ctc = CTC::findOrFail($id);
 
         $origin = Origin::all();
@@ -78,7 +83,8 @@ class CTCController extends Controller {
         return view('diprev.ctc.edit', compact('ctc', 'servidor', 'orgao', 'funcao', 'origin', 'tipo_certidao', 'adress'));
     }
 
-    public function update(CTCFormRequest $request, $id) {
+    public function update(CTCFormRequest $request, $id)
+    {
         $ctc = CTC::findOrFail($id);
 
         DB::beginTransaction();
@@ -92,12 +98,13 @@ class CTCController extends Controller {
         DB::commit();
 
         return redirect()->route('ctc.index')->with(
-                        'success',
-                        "Certidao alterada com sucesso."
+            'success',
+            "Certidao alterada com sucesso."
         );
     }
 
-    public function store(CTCFormRequest $request) {
+    public function store(CTCFormRequest $request)
+    {
 
         DB::beginTransaction();
         $ctc = CTC::create($request->all());
@@ -143,16 +150,27 @@ class CTCController extends Controller {
             $year_end = Carbon::createFromDate($i, 12, 31);
 
             if ($i == $start_date->year && $i == $end_date->year) {
-                $days_by_year[$i] = $start_date->diffInDays($end_date);
+                $days_by_year[$i] = $start_date->diffInDaysFiltered(function ($date) {
+                    return $date->format('m-d') !== '02-29';
+                }, $end_date);
             } elseif ($i == $start_date->year) {
-                $days_by_year[$i] = $start_date->diffInDays($year_end);
+                $days_by_year[$i] = $start_date->diffInDaysFiltered(function ($date) {
+                    return $date->format('m-d') !== '02-29';
+                }, $year_end);
             } elseif ($i == $end_date->year) {
-                $days_by_year[$i] = $year_start->diffInDays($end_date);
+                $days_by_year[$i] = $year_start->diffInDaysFiltered(function ($date) {
+                    return $date->format('m-d') !== '02-29';
+                }, $end_date);
             } else {
-                $days_by_year[$i] = $year_start->diffInDays($year_end);
+                $days_by_year[$i] = $year_start->diffInDaysFiltered(function ($date) {
+                    return $date->format('m-d') !== '02-29';
+                }, $year_end);
             }
 
-
+            // Adicionando um dia extra nos anos bissextos
+            if ($year_start->isLeapYear()) {
+                $days_by_year[$i]++;
+            }
 
             //Inserindo na tabela
             DB::table('ctc_certidao_deducao')->insert([
@@ -174,20 +192,24 @@ class CTCController extends Controller {
 
 
 
+
+
+
         DB::commit();
         $insertedId = $ctc->id;
         return redirect()->route('ctc.index')->with(
-                        'success',
-                        "Certidao de n " . $insertedId . " cadastrado com sucesso."
+            'success',
+            "Certidao de n " . $insertedId . " cadastrado com sucesso."
         );
     }
 
     //Controller
     //Controller
-    public function getDetails(Request $request) {
+    public function getDetails(Request $request)
+    {
         //Validate the request 
         $validator = Validator::make($request->all(), [
-                    'id' => 'required|integer|exists:serve,id',
+            'id' => 'required|integer|exists:serve,id',
         ]);
 
         if ($validator->fails()) {
@@ -204,12 +226,13 @@ class CTCController extends Controller {
 
         //Return the response in json format
         return response()->json([
-                    'data_nascimento' => $user->data_nascimento,
-                    'cpf' => $user->cpf
+            'data_nascimento' => $user->data_nascimento,
+            'cpf' => $user->cpf
         ]);
     }
 
-    public function pdf($id) {
+    public function pdf($id)
+    {
 
 
 
@@ -225,21 +248,22 @@ class CTCController extends Controller {
         $address = Address::all();
 
         return \PDF::loadView('diprev.ctc.pdf.pdf', [
-                            'ctc' => $ctc,
-                            'servidor' => $servidor,
-                            'sexo' => $sexo,
-                            'funcao' => $funcao,
-                            'orgao' => $orgao,
-                            'ctc_deducao' => $ctc_deducao,
-                            'address' => $address,
-                            'ctc_verso' => $ctc_verso
-                        ])
-                        ->setPaper('A4', 'portrait')
-                        ->stream('ctc_certidao.pdf');
-                        
+            'ctc' => $ctc,
+            'servidor' => $servidor,
+            'sexo' => $sexo,
+            'funcao' => $funcao,
+            'orgao' => $orgao,
+            'ctc_deducao' => $ctc_deducao,
+            'address' => $address,
+            'ctc_verso' => $ctc_verso
+        ])
+            ->setPaper('A4', 'portrait')
+            ->stream('ctc_certidao.pdf');
+
     }
 
-    public function destroy($id) {
+    public function destroy($id)
+    {
 
         $ctc = CTC::findOrFail($id);
 
@@ -253,8 +277,8 @@ class CTCController extends Controller {
         DB::commit();
 
         return redirect()->route('ctc.index')->with(
-                        'success',
-                        "CTC deletado com sucesso."
+            'success',
+            "CTC deletado com sucesso."
         );
     }
 
