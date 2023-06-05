@@ -54,3 +54,5 @@ Route::get('aposentadoriasconcedidas','APIs\AposentadoriasAPIController@index');
 
 //Autenticação da API
 Route::post('/login','APIs\AuthAPIController@login');
+//
+Route::get('/serve/cpf', 'APIs\AppAPIController@getServeByCPF');
