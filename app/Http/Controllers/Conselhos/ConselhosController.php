@@ -78,18 +78,15 @@ class ConselhosController extends Controller {
 
         return redirect()->route('conselhos.index')->with('success', 'Arquivo enviado com sucesso.');
     }
-    
+
         public function destroy($id) {
-        
+
         $conselho = ConselhoDocumentos::findOrFail($id);
         $pdf_path = $conselho->pdf_path;
-
         // Exclui o arquivo do storage
         Storage::delete($pdf_path);
-
         // Exclui o registro do banco de dados
         $conselho->delete();
-
         return redirect()->route('conselhos.index')->with('success', 'Arquivo excluído com sucesso!');
     }
 

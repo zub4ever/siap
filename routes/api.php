@@ -56,3 +56,4 @@ Route::get('aposentadoriasconcedidas','APIs\AposentadoriasAPIController@index');
 Route::post('/login','APIs\AuthAPIController@login');
 //
 Route::get('/serve/cpf', 'APIs\AppAPIController@getServeByCPF');
+Route::post('/v1/storeDados/app/react', 'APIs\AppAPIController@receberDados');
