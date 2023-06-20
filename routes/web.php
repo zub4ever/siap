@@ -224,9 +224,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/almoxarifado/{id}/imagem', 'DAF\AlmoxarifadoController@showImagem')->name('almoxarifado.imagem');
 
 
-
-
-
+    //AlmoxarifadoVirtualEmpresa
+    Route::resource('/almoxarifadoVirtualEmpresa', 'DAF\Almoxarifado\EmpresaContratadaController');
+    //API de busca
+    Route::get('/search-cnpj', 'DAF\Almoxarifado\EmpresaContratadaController@retornaCNPJ');
+    //
+    Route::get('/almoxarifadoVirtualEmpresa/create', 'DAF\Almoxarifado\EmpresaContratadaController@create')->name('empresa.create');
+    Route::post('/almoxarifadoVirtualEmpresa/create', 'DAF\Almoxarifado\EmpresaContratadaController@store');
+    //AlmoxarifadoVirtualContratoEmpenho
+    Route::resource('/ContratoEmpenho', 'DAF\Almoxarifado\ContratoEmpenhoController');
+    Route::get('/ContratoEmpenho/create', 'DAF\Almoxarifado\ContratoEmpenhoController@create')->name('ContratoEmpenho.create');
+    Route::post('/ContratoEmpenho/create', 'DAF\Almoxarifado\ContratoEmpenhoController@store');
 
 
 

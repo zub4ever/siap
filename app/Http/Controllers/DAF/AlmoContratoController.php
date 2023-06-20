@@ -5,8 +5,8 @@ namespace App\Http\Controllers\DAF;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
 use App\Http\Controllers\Controller;
-//use App\Http\Requests\ServeFormRequest;
 use Illuminate\Support\Facades\DB;
+//use App\Http\Requests\ServeFormRequest;
 use App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO;
 use App\Http\Requests\DafFormRequest\AlmoxarifadoFormRequest\ContratoFormRequest;
 use App\Models\DAF\Almoxarifado\AlmoContrato;
@@ -16,7 +16,7 @@ class AlmoContratoController extends Controller
 
     public function index(){
 
-        $contrato = AlmoContrato::where('status',1 ) 
+        $contrato = AlmoContrato::where('status',1 )
         ->orderBY('id', 'asc')
         ->get();
         return view('daf.contrato.index',compact('contrato'));
@@ -52,7 +52,7 @@ class AlmoContratoController extends Controller
 
         $contrato = AlmoContrato::findOrFail($id);
 
-        
+
 
 
         return view('daf.contrato.edit',compact('contrato'));

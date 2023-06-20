@@ -43,4 +43,9 @@ class User extends Authenticatable {
         return $this->belongsToMany(\App\Models\DIPREV\Aposentadorias\Aposentadorias::class, 'user_id');
     }
 
+    public function almo_virtual_contrato() {
+
+        return $this->belongsToMany('\App\Models\DAF\AlmoxarifadoVirtual\AlmoVirtualContratoEmpenho', 'user_id');
+    }
+
 }
