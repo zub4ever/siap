@@ -40,6 +40,6 @@ class EmpresaContratada extends Model
      */
     public function contrato_empenho()
     {
-        return $this->belongsTo('App\Models\DAF\AlmoxarifadoVirtual\EmpresaContratada', 'almoxarifado_virtual_empresa_contratada_id');
+        return $this->belongsTo('App\Models\DAF\AlmoxarifadoVirtual\AlmoVirtualContratoEmpenho', 'almoxarifado_virtual_empresa_contratada_id');
     }
 }

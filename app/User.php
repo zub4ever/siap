@@ -45,7 +45,7 @@ class User extends Authenticatable {
 
     public function almo_virtual_contrato() {
 
-        return $this->belongsToMany('\App\Models\DAF\AlmoxarifadoVirtual\AlmoVirtualContratoEmpenho', 'user_id');
+        return $this->belongsToMany('\App\Models\DAF\AlmoxarifadoVirtual\AlmoVirtualContratoEmpenho', 'users_id');
     }
 
 }
