@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('page-title')
-    almoxarifadoVirtualEmpresa
+    Almo Virtual Empresa
 @endsection
 @section('css')
 <!-- Start datatable css -->

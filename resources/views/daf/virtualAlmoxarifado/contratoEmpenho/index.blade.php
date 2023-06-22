@@ -3,7 +3,7 @@
 
 {{-- Page Title --}}
 @section('page-title')
-    almoxarifadoVirtualContrato
+    Almo Virtual Contrato
 @endsection
 @section('css')
     <!-- Start datatable css -->
@@ -16,7 +16,7 @@
           href="{{asset("assets/vendors/data-table/css/responsive.jqueryui.min.css")}}">
     <!-- Sweet Alert Css -->
     <link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
-@endsection
+@endsectionw
 @section('main-content')
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="">Início</a></li>
@@ -29,7 +29,7 @@
                 <div class="card-body">
                     <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right"
                        title="Cadastrar novo Departamento" href="{{route('ContratoEmpenho.create')}}" role="button">
-                        Cadastrar contrato/empenho
+                        Novo Contrato
                     </a>
                 </div>
             </div>
@@ -63,8 +63,8 @@
                                     <td class="text-center">{{$contrato->cnpj}} - {{$contrato->razao_social}}</td>
 
                                     <td>
-                                        <a href="">
-                                            <i class="ti-pencil mr-1 btn btn-success"></i>
+                                        <a href="{{route('itemAlmo.create',$contrato->id)}}">
+                                            <i class="ti-list mr-1 btn btn-info"></i>
                                         </a>
                                         @can('excluir')
                                             &nbsp;
