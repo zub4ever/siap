@@ -8,6 +8,8 @@ use App\Models\DAF\AlmoxarifadoVirtual\ElementoDespesa;
 use App\Models\DAF\AlmoxarifadoVirtual\EmpresaContratada;
 use App\Models\DAF\AlmoxarifadoVirtual\FonteDespesa;
 use App\Models\DAF\AlmoxarifadoVirtual\ProgramaTrabalho;
+use App\Models\DIPREV\CTC\CTC;
+use App\Models\DIPREV\CTC\CTCVerso;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\View;
@@ -18,6 +20,18 @@ use GuzzleHttp\Client;
 class ContratoEmpenhoController extends Controller
 {
 
+    public function itens_contrato($id){
+
+        $ctc_certidao = CTC::findOrFail($id);
+
+        $registros = CTCVerso::select('ctc_verso.*')
+            ->join('ctc_certidao', 'ctc_verso.ctc_certidao_id', '=', 'ctc_certidao.id')
+            ->where('ctc_certidao.id', '=', $id)
+            ->get();
+
+
+        return view('daf.virtualAlmoxarifado.item.itens_contrato');
+    }
     public function index()
     {
         $contratoEpenho = DB:: table('almoxarifado_virtual_contrato_empenho as almo_virtual')

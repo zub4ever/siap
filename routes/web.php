@@ -235,6 +235,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/ContratoEmpenho', 'DAF\Almoxarifado\ContratoEmpenhoController');
     Route::get('/ContratoEmpenho/create', 'DAF\Almoxarifado\ContratoEmpenhoController@create')->name('ContratoEmpenho.create');
     Route::post('/ContratoEmpenho/create', 'DAF\Almoxarifado\ContratoEmpenhoController@store');
+    Route::get('/contratoEmpenho/itens/{id}', 'DAF\Almoxarifado\ContratoEmpenhoController@itens_contrato')->name('itens.contrato');
+
     //Itens de Almoxarifado Vitural
     Route::resource('/itemAlmo', 'DAF\Almoxarifado\ItemAlmoxarifadoController');
     Route::get('/itemAlmo/create/{id}', 'DAF\Almoxarifado\ItemAlmoxarifadoController@create')->name('itemAlmo.create');
