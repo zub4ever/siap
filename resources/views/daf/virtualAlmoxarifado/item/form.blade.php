@@ -17,12 +17,24 @@
         </div>
 
         <div class="form-group col-md-3">
-            <input type="text" name="categoria[]" class="form-control" placeholder="Categoria">
+{{--            <input type="text" name="almoxarifado_virtual_categoria_id[]" class="form-control" placeholder="Categoria">--}}
+
+            <select name="almoxarifado_virtual_categoria_id[]" class="form-control almo_virtual_empresa-select2"
+                    id="almoxarifado_virtual_categoria_id">
+                <option value="">Selecione uma categoria</option>
+                @foreach ($almo_virtual_categoria as $categoria)
+                    <option value="{{ $categoria->id }}" {{ (in_array($categoria->id, old('almoxarifado_virtual_categoria_id', [])) || @$categoria->almoxarifado_virtual_categoria_id == $categoria->id) ? 'selected' : '' }}>
+                        {{ $categoria->id }} - {{ $categoria->nm_categoria }}
+                    </option>
+                @endforeach
+            </select>
+
         </div>
 
         <div class="form-group col-md-2">
-            <input type="text" name="valor_uni[]" class="form-control valorUni" placeholder="Valor Unitário">
+            <input type="text" name="valor_uni[]" class="form-control valor" placeholder="Valor Unitário">
         </div>
+
 
         <div class="form-group col-md-1">
             <button type="button" class="btn btn-danger btn-remover-item">Remover</button>

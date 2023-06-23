@@ -4,6 +4,7 @@ namespace App\Http\Controllers\DAF\Almoxarifado;
 
 use App\Models\DAF\AlmoxarifadoVirtual\AlmoVirtualContratoEmpenho;
 
+use App\Models\DAF\AlmoxarifadoVirtual\Categoria;
 use App\Models\DAF\AlmoxarifadoVirtual\ElementoDespesa;
 use App\Models\DAF\AlmoxarifadoVirtual\EmpresaContratada;
 use App\Models\DAF\AlmoxarifadoVirtual\FonteDespesa;
@@ -34,12 +35,12 @@ class ItemAlmoxarifadoController extends Controller
 
          $item = AlmoVirtualContratoEmpenho::findOrFail($id);
 
-//        $empresa_contratada = EmpresaContratada::all();
+         $almo_virtual_categoria = Categoria::all();
 //        $elemento_despesa = ElementoDespesa::all();
 //        $fonte_recurso = FonteDespesa::all();
 //        $programa_trabalho = ProgramaTrabalho::all();
 
-       return view('daf.virtualAlmoxarifado.item.create',compact('item','id'));
+       return view('daf.virtualAlmoxarifado.item.create',compact('item','id','almo_virtual_categoria'));
     }
 
     public function store(Request $request)
@@ -51,8 +52,8 @@ class ItemAlmoxarifadoController extends Controller
                 'almoxarifado_virtual_contrato_empenho_id' => $request->input('almoxarifado_virtual_contrato_empenho_id')[$index],
                 'cod_item' => $codItem,
                 'descricao' => $request->input('descricao')[$index],
-                'categoria' => $request->input('categoria')[$index],
-                'valor_uni' => $request->input('valor_uni')[$index]
+                'almoxarifado_virtual_categoria_id' => $request->input('almoxarifado_virtual_categoria_id')[$index],
+                'valor_uni' => str_replace(',', '.', str_replace('.', '', $request->input('valor_uni')[$index]))
             ];
 
             $itens[] = $item;
@@ -66,9 +67,8 @@ class ItemAlmoxarifadoController extends Controller
                 $novoItem->almoxarifado_virtual_contrato_empenho_id = $item['almoxarifado_virtual_contrato_empenho_id'];
                 $novoItem->cod_item = $item['cod_item'];
                 $novoItem->descricao = $item['descricao'];
-                $novoItem->categoria = $item['categoria'];
-                $novoItem->valor_uni = $item['valor_uni'];
-                //dd($novoItem);
+                $novoItem->almoxarifado_virtual_categoria_id = $item['almoxarifado_virtual_categoria_id'];
+                $novoItem->valor_uni = (float) $item['valor_uni'];
                 $novoItem->save();
             }
 
@@ -80,15 +80,6 @@ class ItemAlmoxarifadoController extends Controller
             return redirect()->route('itemAlmo.index')->with('error', 'Falha ao cadastrar os Itens.');
         }
     }
-
-
-
-
-
-
-
-
-
 
 
 

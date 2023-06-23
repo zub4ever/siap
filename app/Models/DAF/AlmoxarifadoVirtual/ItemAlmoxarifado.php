@@ -16,7 +16,7 @@ class ItemAlmoxarifado extends Model
         'marca',
         'descricao',
         'valor_uni',
-        'categoria',
+        'almoxarifado_virtual_categoria_id',
         'almoxarifado_virtual_contrato_empenho_id'
 
 
@@ -28,6 +28,11 @@ class ItemAlmoxarifado extends Model
      * @return BelongsTo
      */
     public function contrato_empenho()
+    {
+        return $this->belongsTo('App\Models\DAF\AlmoxarifadoVirtual\AlmoVirtualContratoEmpenho', 'almoxarifado_virtual_item_id');
+    }
+
+    public function almo_virtual()
     {
         return $this->belongsTo('App\Models\DAF\AlmoxarifadoVirtual\AlmoVirtualContratoEmpenho', 'almoxarifado_virtual_item_id');
     }
