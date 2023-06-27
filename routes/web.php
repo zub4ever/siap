@@ -245,6 +245,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/pedidoAlmo', 'DAF\Almoxarifado\PedidoController');
     Route::get('/pedidoAlmo/create/{id}', 'DAF\Almoxarifado\PedidoController@create')->name('pedidoalmo.create');
     Route::post('/pedidoAlmo/create', 'DAF\Almoxarifado\PedidoController@store');
+    Route::get('/get-valor-uni', 'DAF\Almoxarifado\PedidoController@getValorUni')->name('get-valor-uni');
 
 
 

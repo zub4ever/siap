@@ -12,7 +12,7 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item"><a href="{{route("pedido.index")}}">Pedido</a></li>
+    <li class="breadcrumb-item"><a href="{{route("pedidoAlmo.index")}}">Pedido</a></li>
     <li class="breadcrumb-item active"><a>Reralizar novo pedido</a></li>
 </ol>
 <div class="row">
@@ -20,7 +20,7 @@
         <div class="card">
             <div class="card-body">
                 <h4 class="card_title">Realizar novo pedido</h4>
-                <form action="{{route('pedido.store')}}" method="POST">
+                <form action="{{route('pedidoAlmo.store')}}" method="POST">
                     @csrf
                     @include('daf.virtualAlmoxarifado.pedido.form')
                 </form>

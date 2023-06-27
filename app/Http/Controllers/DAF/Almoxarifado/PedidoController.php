@@ -5,6 +5,8 @@ namespace App\Http\Controllers\DAF\Almoxarifado;
 use App\Models\DAF\AlmoxarifadoVirtual\AlmoVirtualContratoEmpenho;
 use App\Models\DAF\AlmoxarifadoVirtual\CaixaUnidade;
 use App\Models\DAF\AlmoxarifadoVirtual\ItemAlmoxarifado;
+use App\Models\DAF\AlmoxarifadoVirtual\Pedido;
+use App\Models\DAF\AlmoxarifadoVirtual\RegistroPreco;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\DB;
@@ -42,6 +44,114 @@ class PedidoController extends Controller
 
         return view('daf.virtualAlmoxarifado.pedido.create', compact('idContrato', 'id','item','cxuni'));
     }
+
+
+
+    public function store(Request $request)
+    {
+        $itens = [];
+
+        $nr_pedido = $request->input('nr_pedido');
+        $quantidade_pedido = $request->input('quantidade_pedido');
+        $valor_uni = $request->input('valor_uni');
+        $valor_pedido = $request->input('valor_pedido');
+        $almoxarifado_virtual_cx_uni_id = $request->input('almoxarifado_virtual_cx_uni_id');
+        $almoxarifado_virtual_item_id = $request->input('almoxarifado_virtual_item_id');
+        $almoxarifado_virtual_contrato_empenho_id = $request->input('almoxarifado_virtual_contrato_empenho_id');
+
+        // Verificar se todos os arrays possuem a mesma quantidade de elementos
+        if (count($quantidade_pedido) === count($valor_uni) && count($valor_uni) === count($valor_pedido) &&
+            count($valor_pedido) === count($almoxarifado_virtual_cx_uni_id) &&
+            count($almoxarifado_virtual_cx_uni_id) === count($almoxarifado_virtual_item_id) &&
+            count($almoxarifado_virtual_item_id) === count($almoxarifado_virtual_contrato_empenho_id)) {
+
+            $valor_total_pedido = array_sum($valor_pedido); // Somatório dos valores dos pedidos
+
+            foreach ($quantidade_pedido as $index => $quantidade) {
+                $item = [
+                    'nr_pedido' => $nr_pedido[$index],
+                    'quantidade_pedido' => $quantidade,
+                    'valor_uni' => $valor_uni[$index],
+                    'valor_pedido' => $valor_pedido[$index],
+                    'almoxarifado_virtual_cx_uni_id' => $almoxarifado_virtual_cx_uni_id[$index],
+                    'almoxarifado_virtual_item_id' => $almoxarifado_virtual_item_id[$index],
+                    'almoxarifado_virtual_contrato_empenho_id' => $almoxarifado_virtual_contrato_empenho_id[$index]
+                ];
+
+                $itens[] = $item;
+            }
+
+            DB::beginTransaction();
+
+            try {
+                foreach ($itens as $item) {
+                    $novoItem = new Pedido();
+                    $novoItem->nr_pedido = $item['nr_pedido'];
+                    $novoItem->quantidade_pedido = $item['quantidade_pedido'];
+                    $novoItem->valor_uni = $item['valor_uni'];
+                    $novoItem->valor_pedido = $item['valor_pedido'];
+                    $novoItem->almoxarifado_virtual_cx_uni_id = $item['almoxarifado_virtual_cx_uni_id'];
+                    $novoItem->almoxarifado_virtual_item_id = $item['almoxarifado_virtual_item_id'];
+                    $novoItem->almoxarifado_virtual_contrato_empenho_id = $item['almoxarifado_virtual_contrato_empenho_id'];
+                    $novoItem->save();
+                }
+
+                // Inserir informações na tabela almoxarifado_virtual_registro_preco
+                $registroPreco = new RegistroPreco();
+                $registroPreco->nr_pedido = $nr_pedido[0]; // Assumindo que o número do pedido é o mesmo para todos os itens
+                $registroPreco->valor_total_pedido = $valor_total_pedido;
+                $registroPreco->almoxarifado_virtual_contrato_empenho_id = $almoxarifado_virtual_contrato_empenho_id[0]; // Assumindo que o contrato/empenho é o mesmo para todos os itens
+
+                $registroPreco->save();
+
+                DB::commit();
+
+                return redirect()->route('pedidoAlmo.index')->with('success', 'Itens cadastrados com sucesso.');
+            } catch (\Exception $e) {
+                DB::rollBack();
+                return redirect()->route('pedidoAlmo.index')->with('error', 'Falha ao cadastrar os Itens.');
+            }
+        } else {
+            return redirect()->route('pedidoAlmo.index')->with('error', 'Os arrays possuem tamanhos diferentes.');
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public function getValorUni(Request $request)
+    {
+        $selectedId = $request->input('id');
+
+        // Consultar o banco de dados para obter o valor unitário do item
+        $item = ItemAlmoxarifado::where('id', $selectedId)->first();
+
+        if ($item) {
+            $valorUni = floatval($item->valor_uni);
+        } else {
+            $valorUni = 0.00;
+        }
+
+        return response()->json(['valorUni' => $valorUni]);
+    }
+
+
+
 
 
 }

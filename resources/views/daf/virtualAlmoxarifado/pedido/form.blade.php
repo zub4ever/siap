@@ -1,3 +1,25 @@
+<style>
+    .row-container {
+        margin-bottom: 10px;
+    }
+
+    .row-container:not(:first-child) {
+        margin-top: 10px;
+    }
+
+    .remove-btn {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        cursor: pointer;
+        background-color: red;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+        font-size: 16px;
+    }
+</style>
+
 <div class="row">
     <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
         <p><strong># {{ $idContrato->id }}</strong></p>
@@ -9,195 +31,195 @@
     </div>
 </div>
 <hr>
+<div class="row-container" id="row-container">
+    <div class="row">
+        <div class="col-lg-1 col-md-1 col-sm-12">
+            <input type="text" name="almoxarifado_virtual_contrato_empenho_id[]" value="{{$id}}" readonly>
 
-<form id="itemForm">
-    <div id="formItems" class="item-row">
-        <div class="item-row row">
-            <div class="form-group col-md-1">
-                <div class="wrap">
-                    <label for="almoxarifado_virtual_contrato_empenho_id" class="form-control-label"># Contrato</label>
-                    <input type="text" name="almoxarifado_virtual_contrato_empenho_id[]" value="{{$id}}" readonly>
-                </div>
-            </div>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-12">
+            <input type="text" id="nr-pedido" name="nr_pedido[]" class="form-control nr-pedido" readonly>
+        </div>
 
-            <div class="form-group col-md-2">
-                <div class="wrap">
-                    <label for="almoxarifado_virtual_item_id" class="form-control-label">Item
-                        <span class="text-danger">*</span>
-                    </label>
-                    <select name="almoxarifado_virtual_item_id[]" class="form-control itemPedido"
-                            id="almoxarifado_virtual_item_id">
-                        <option value="">Selecione um item</option>
-                        @foreach ($item as $itens)
-                            <option
-                                value="{{ $itens->id }}"
-                                data-valor="{{ $itens->valor_uni }}" {{ (in_array($itens->id, old('almoxarifado_virtual_item_id', [])) || @$itens->almoxarifado_virtual_item_id == $itens->id) ? 'selected' : '' }}>
-                                {{ $itens->id }} - {{ $itens->descricao}}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="form-group col-md-2">
-                <div class="wrap">
-                    <label for="almoxarifado_virtual_cx_uni_id" class="form-control-label">CX|UN
-                        <span class="text-danger">*</span>
-                    </label>
-                    <select name="almoxarifado_virtual_cx_uni_id[]" class="form-control"
-                            id="almoxarifado_virtual_cx_uni_id">
-                        <option value="">Selecione um item</option>
-                        @foreach ($cxuni as $cx)
-                            <option
-                                value="{{ $cx->id }}" {{ (in_array($cx->id, old('almoxarifado_virtual_cx_uni_id', [])) || @$cx->almoxarifado_virtual_cx_uni_id == $cx->id) ? 'selected' : '' }}>
-                                {{ $cx->nm_caixa_unidade}}
-                            </option>
-                        @endforeach
-                    </select>
-                </div>
-            </div>
-            <div class="form-group col-md-1">
-                <div class="wrap">
-                    <label for="quantidade_pedido" class="form-control-label">Qtd:
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" name="quantidade_pedido[]" class="form-control quantidade" placeholder="Qtd">
-                </div>
-            </div>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <select class="select2 w-100 item-select" name="almoxarifado_virtual_item_id[]">
+                <option value="">Selecione</option>
+                @foreach ($item as $items)
+                    <option value="{{ $items->id }}">{{ $items->descricao }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <select class="select2 w-100 cx-uni-select" name="almoxarifado_virtual_cx_uni_id[]">
+                <option value="">Selecione</option>
+                @foreach ($cxuni as $cx)
+                    <option value="{{ $cx->id }}">{{ $cx->nm_caixa_unidade }}</option>
+                @endforeach
+            </select>
+        </div>
+        <div class="col-lg-1 col-md-1 col-sm-12">
+            <input type="number" class="form-control quantidade-pedido" name="quantidade_pedido[]"
+                   placeholder="Quantidade">
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <input type="text" class="form-control valor-uni" name="valor_uni[]" placeholder="Valor unitário" readonly>
+        </div>
+        <div class="col-lg-2 col-md-2 col-sm-12">
+            <input type="number" class="form-control valor-pedido" name="valor_pedido[]" placeholder="Total pedido"
+                   readonly>
+        </div>
 
-            <div class="form-group col-md-2">
-                <div class="wrap">
-                    <label for="valor_uni" class="form-control-label">Valor (R$):
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" name="valor_uni[]" class="form-control valor" placeholder="Valor" readonly>
-                </div>
-            </div>
-            <div class="form-group col-md-2">
-                <div class="wrap">
-                    <label for="valor_pedido" class="form-control-label">Valor total (R$):
-                        <span class="text-danger">*</span>
-                    </label>
-                    <input type="text" name="valor_pedido[]" class="form-control valor_pedido" placeholder="Valor"
-                           readonly>
-                </div>
-            </div>
-
-            <div class="form-group col-md-2 text-center align-self-center">
-                <div class="wrap">
-                    <label for="" class="form-control-label">Ação:</label>
-                </div>
-                <button type="button" class="btn btn-danger btn-remover-item">X</button>
-            </div>
+        <div class="col-lg-1 col-md-1 col-sm-12">
+            <div class="remove-btn" onclick="removeRow(this)">X</div>
         </div>
     </div>
-    <div class="form-group">
-        <button type="button" id="btn-adicionar-item" class="btn btn-primary">Adicionar item</button>
+</div>
+
+<br>
+<div class="form-group">
+    <button type="button" id="add-row" class="btn btn-outline-info">Adicionar item</button>
+</div>
+
+<div class="col-sm-12 mt-5">
+    <div class="wrap mt-1" style="text-align: right;">
+        <button type="submit" class="btn btn-info">Salvar</button>
     </div>
-    <div id="itens-container">
-        <h4>Itens adicionados:</h4>
-        <table id="itens-table">
-            <tr>
-                <th># Contrato</th>
-                <th>Item</th>
-                <th>CX|UN</th>
-                <th>Qtd</th>
-                <th>Valor (R$)</th>
-                <th>Valor total (R$)</th>
-                <th>Ação</th>
-            </tr>
-        </table>
-    </div>
+</div>
 
-
-</form>
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 <script>
     $(document).ready(function () {
-        // Inicializar o Select2
-        $('.itemPedido').select2();
+        // Função para gerar o número do pedido
+        function generateNumber() {
+            var currentDate = new Date();
+            var day = currentDate.getDate().toString().padStart(2, '0');
+            var month = (currentDate.getMonth() + 1).toString().padStart(2, '0');
+            var year = currentDate.getFullYear().toString().slice(-2);
+            var hours = currentDate.getHours().toString().padStart(2, '0');
+            var minutes = currentDate.getMinutes().toString().padStart(2, '0');
 
-        // Evento de alteração do item selecionado
-        $(document).on('change', '.itemPedido', function () {
-            var row = $(this).closest('.item-row');
-            calcularValorTotal(row);
-        });
-
-        // Evento de alteração da quantidade
-        $(document).on('keyup', '.quantidade', function () {
-            var row = $(this).closest('.item-row');
-            calcularValorTotal(row);
-        });
-
-        // Função para calcular o valor total
-        function calcularValorTotal(row) {
-            var quantidade = row.find('.quantidade').val();
-            var valorUnidade = row.find('.itemPedido :selected').data('valor');
-            var valorTotal = parseFloat(quantidade) * parseFloat(valorUnidade);
-
-            row.find('.valor').val(valorUnidade.toFixed(2));
-            row.find('.valor_pedido').val(valorTotal.toFixed(2));
+            var number = day + month + year + hours + minutes;
+            return number;
         }
 
-        // Variável para armazenar a lista de itens selecionados
-        var itemList = [];
+        // Gerar o número do pedido ao carregar a página
+        var nr_pedido = generateNumber();
+        $('#nr-pedido').val(nr_pedido);
 
-        // Adicionar item
-        // Adicionar item
-        // Adicionar item
-        $('#btn-adicionar-item').click(function() {
-            var newItem = {};
 
-            // Obter os valores dos campos do item atual
-            var itemRow = $(this).closest('.item-row');
-            newItem.almoxarifado_virtual_contrato_empenho_id = itemRow.find('[name="almoxarifado_virtual_contrato_empenho_id[]"]').val();
-            newItem.almoxarifado_virtual_item_id = itemRow.find('[name="almoxarifado_virtual_item_id[]"]').val();
-            newItem.almoxarifado_virtual_cx_uni_id = itemRow.find('[name="almoxarifado_virtual_cx_uni_id[]"]').val();
-            newItem.quantidade_pedido = itemRow.find('[name="quantidade_pedido[]"]').val();
-            newItem.valor_uni = itemRow.find('.valor').val();
-            newItem.valor_pedido = itemRow.find('.valor_pedido').val();
+        $('.select2').select2();
+        $('.valor-uni').mask("#.##0,00", {reverse: true});
 
-            console.log('Novo Item:', newItem); // Exibir os valores capturados do item
+        $('#add-row').on('click', function () {
 
-            // Adicionar o item à lista
-            itemList.push(newItem);
 
-            console.log('Lista de Itens:', itemList); // Exibir a lista de itens atualizada
+            var newRow = '<div class="row-container">' +
+                '<div class="row">' +
+                '<div class="col-lg-1 col-md-1 col-sm-12">' +
+                '<input type="text" name="almoxarifado_virtual_contrato_empenho_id[]" value="{{$id}}" readonly>' +
+                '</div>' +
+                '<div class="col-lg-1 col-md-1 col-sm-12">' +
+                '<input type="text" id="nr-pedido" name="nr_pedido[]" class="form-control nr-pedido" readonly>' +
+                '</div>' +
+                '<div class="col-lg-2 col-md-2 col-sm-12">' +
+                '<select class="select2 w-100 item-select" name="almoxarifado_virtual_item_id[]">' +
+                '<option value="">Selecione</option>' +
+                '@foreach ($item as $items)' +
+                '<option value="{{ $items->id }}">{{ $items->descricao }}</option>' +
+                '@endforeach' +
+                '</select>' +
+                '</div>' +
+                '<div class="col-lg-2 col-md-2 col-sm-12">' +
+                '<select class="select2 w-100 cx-uni-select" name="almoxarifado_virtual_cx_uni_id[]">' +
+                '<option value="">Selecione</option>' +
+                '@foreach ($cxuni as $cx)' +
+                '<option value="{{ $cx->id }}">{{ $cx->nm_caixa_unidade }}</option>' +
+                '@endforeach' +
+                '</select>' +
+                '</div>' +
+                '<div class="col-lg-1 col-md-1 col-sm-12">' +
+                '<input type="number" class="form-control quantidade-pedido" name="quantidade_pedido[]" placeholder="Quantidade">' +
+                '</div>' +
+                '<div class="col-lg-2 col-md-2 col-sm-12">' +
+                '<input type="text" class="form-control valor-uni" name="valor_uni[]" placeholder="Valor Unitário" readonly>' +
+                '</div>' +
+                '<div class="col-lg-2 col-md-2 col-sm-12">' +
+                '<input type="number" class="form-control valor-pedido" name="valor_pedido[]" placeholder="Total pedido" readonly>' +
+                '</div>' +
+                '<div class="col-lg-1 col-md-1 col-sm-12">' +
+                '<div class="remove-btn" onclick="removeRow(this)">X</div>' +
+                '</div>' +
+                '</div>' +
+                '</div>';
 
-            // Limpar os campos do item atual
-            itemRow.find('input[type="text"]').val('');
+            $('#row-container').append(newRow);
+            $('.select2').select2();
+            $('.valor-uni').mask("#.##0,00", {reverse: true});
 
-            // Limpar a tabela de itens
-            $('#itens-table').empty();
+            // Clonar o valor do nr-pedido da primeira linha para as novas linhas adicionadas
+            var nrPedidoPrimeiraLinha = $('#nr-pedido').val();
+            $('.nr-pedido:last').val(nrPedidoPrimeiraLinha);
 
-            // Cabeçalho da tabela
-            var tableHeader = '<tr><th># Contrato</th><th>Item</th><th>CX|UN</th><th>Qtd</th><th>Valor (R$)</th><th>Valor total (R$)</th><th>Ação</th></tr>';
-            $('#itens-table').append(tableHeader);
 
-            // Iterar sobre os itens da lista e criar as linhas da tabela
-            $.each(itemList, function(index, item) {
-                var tableRow = '<tr>' +
-                    '<td>' + (item.almoxarifado_virtual_contrato_empenho_id || '') + '</td>' +
-                    '<td>' + (item.almoxarifado_virtual_item_id || '') + '</td>' +
-                    '<td>' + (item.almoxarifado_virtual_cx_uni_id || '') + '</td>' +
-                    '<td>' + (item.quantidade_pedido || '') + '</td>' +
-                    '<td>' + (item.valor_uni || '') + '</td>' +
-                    '<td>' + (item.valor_pedido || '') + '</td>' +
-                    '<td><button type="button" class="btn btn-danger btn-remover-item">X</button></td>' +
-                    '</tr>';
-                $('#itens-table').append(tableRow);
-            });
         });
 
+        $(document).on('change', '.item-select', function () {
+            var selectedId = $(this).val();
+            var row = $(this).closest('.row');
+            var valorUniInput = row.find('.valor-uni');
+            var valorPedidoInput = row.find('.valor-pedido');
 
-        // Remover item
-        $(document).on('click', '.btn-remover-item', function () {
-            var rowIndex = $(this).closest('tr').index();
-            itemList.splice(rowIndex, 1);
+            if (selectedId !== '') {
+                getValorUniFromDatabase(selectedId)
+                    .then(valorUni => {
+                        valorUniInput.val(valorUni.toFixed(2));
+                        recalculatePedidoValue(row);
+                    })
+                    .catch(error => {
+                        console.error('Erro ao obter o valor unitário:', error);
+                        valorUniInput.val('0.00');
+                    });
+            } else {
+                valorUniInput.val('0.00');
+            }
 
-            $(this).closest('tr').remove();
+            recalculatePedidoValue(row);
         });
+
+        $(document).on('input', '.quantidade-pedido', function () {
+            var row = $(this).closest('.row');
+            recalculatePedidoValue(row);
+        });
+
+        function recalculatePedidoValue(row) {
+            var quantidadePedidoInput = row.find('.quantidade-pedido');
+            var valorUniInput = row.find('.valor-uni');
+            var valorPedidoInput = row.find('.valor-pedido');
+
+            var quantidadePedido = parseFloat(quantidadePedidoInput.val()) || 0;
+            var valorUni = parseFloat(valorUniInput.val()) || 0;
+            var valorPedido = valorUni * quantidadePedido;
+
+            valorPedidoInput.val(valorPedido.toFixed(2));
+        }
+
+
+        function removeRow(btn) {
+            $(btn).closest('.row-container').remove();
+        }
+
+        function getValorUniFromDatabase(itemId) {
+            return fetch('/get-valor-uni?id=' + itemId)
+                .then(response => response.json())
+                .then(data => {
+                    return data.valorUni;
+                })
+                .catch(error => {
+                    console.error('Erro ao obter o valor unitário do banco de dados:', error);
+                    return 0;
+                });
+        }
     });
-
 </script>
-
 
