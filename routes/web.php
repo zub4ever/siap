@@ -241,6 +241,13 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('/itemAlmo', 'DAF\Almoxarifado\ItemAlmoxarifadoController');
     Route::get('/itemAlmo/create/{id}', 'DAF\Almoxarifado\ItemAlmoxarifadoController@create')->name('itemAlmo.create');
     Route::get('/itemAlmo/create', 'DAF\Almoxarifado\ItemAlmoxarifadoController@store');
+    //Pedido AlmoxaridadoVirtual
+    Route::resource('/pedidoAlmo', 'DAF\Almoxarifado\PedidoController');
+    Route::get('/pedidoAlmo/create/{id}', 'DAF\Almoxarifado\PedidoController@create')->name('pedidoalmo.create');
+    Route::post('/pedidoAlmo/create', 'DAF\Almoxarifado\PedidoController@store');
+
+
+
 
 
     //Consulta Filtro

@@ -59,4 +59,10 @@ class HomeController extends Controller
         'itensTotal','itensEquipamento','itensMobiliario', 'itensInformatica'
         ));
     }
+
+    public function index_almoxarifado(){
+
+
+        return view('daf.virtualAlmoxarifado.index_almoxarifado');
+    }
 }
