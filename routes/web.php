@@ -164,8 +164,10 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/ctc/create', 'DIPREV\CTCController@create')->name('ctc.create');
     Route::post('/ctc/create', 'DIPREV\CTCController@store');
     Route::get('events/{id}', 'DIPREV\CTCController@pdf')->name('events.pdf');
+    Route::delete('/ctc/{id}/destroy', 'DIPREV\CTCController@destroy')->name('ctc.destroy');
     Route::get('/deducao/{id}/edit', 'DIPREV\CTCDeducaoController@edit')->name('deducao.edit');
     Route::put('/ctc/{id}/update', 'DIPREV\CTCDeducaoController@update')->name('deductions.update');
+
 
     Route::get('/verso/{id}/ctc', 'DIPREV\CTCVersoController@verso')->name('verso.show');
 

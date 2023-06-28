@@ -27,7 +27,7 @@
         <p>Número do Contrato: {{ $idContrato->nr_contrato }}</p>
         <p>Número processo no SEI: {{ $idContrato->nr_sei }}</p>
         <p>Nome da Empresa Contratada: {{ $idContrato->razao_social }}</p>
-        <p>Valor total contrato R$: <span id="valor">{{ $idContrato->saldo_total }}</span></p>
+        <p>Valor total contrato: <span id="valor">{{ $idContrato->saldo_total }}</span></p>
     </div>
 </div>
 <hr>
@@ -75,6 +75,7 @@
     </div>
 </div>
 
+
 <br>
 <div class="form-group">
     <button type="button" id="add-row" class="btn btn-outline-info">Adicionar item</button>
@@ -115,6 +116,7 @@
 
 
             var newRow = '<div class="row-container">' +
+                '<hr>'+
                 '<div class="row">' +
                 '<div class="col-lg-1 col-md-1 col-sm-12">' +
                 '<input type="text" name="almoxarifado_virtual_contrato_empenho_id[]" value="{{$id}}" readonly>' +
@@ -151,6 +153,7 @@
                 '<div class="remove-btn" onclick="removeRow(this)">X</div>' +
                 '</div>' +
                 '</div>' +
+                '<hr>'+
                 '</div>';
 
             $('#row-container').append(newRow);

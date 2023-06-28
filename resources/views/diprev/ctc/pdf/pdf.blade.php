@@ -31,15 +31,15 @@ use Carbon\Carbon;
         </div><br><br>
 
 
-        <table style="width:100%; border: 1px solid black; font-size: 10px;">      
+        <table style="width:100%; border: 1px solid black; font-size: 10px;">
             <td style="width:60%; border: 1px solid black;"><strong>ORGÃO EXPEDIDOR: </strong><br>
                 INSTITUTO DE PREVIDÊNCIA DO MUNICÍPIO DE RIO BRANCO
             </td>
             <td style="width:40%; border: 1px solid black;"><strong>CNPJ</strong><br>
                 17.733.605/0001-94
-            </td>        
+            </td>
         </table>
-        <table style="width:100%; border: 1px solid black;font-size: 10px;">          
+        <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:50%; border: 1px solid black;"><strong>NOME DO SERVIDOR: </strong><br>
                     @foreach ($servidor as $servidor)
@@ -63,9 +63,11 @@ use Carbon\Carbon;
                 <td style="width:50%; border: 1px solid black;"><strong>RG/ÓRGÃO EXPEDIDOR: </strong><br>
                     @if($servidor->orgao_expedidor_id == 1)
                     {{$servidor->rg}} SSP/AC
-                    @else
+                    @elseif($servidor->orgao_expedidor_id == 2)
                     {{$servidor->rg}} SEPC/AC
-                    @endif                                   
+                     @elseif($servidor->orgao_expedidor_id == 3)
+                    {{$servidor->rg}} SSP/GO
+                    @endif
                 </td>
                 <td style="width:25%; border: 1px solid black;"><strong>CPF:</strong><br>
                     {{$servidor->cpf}}
@@ -124,18 +126,18 @@ use Carbon\Carbon;
         </table>
         <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
-                <td style="width:50%; border: 1px solid black;"><strong>DATA DE ADMISSÃO:</strong><br>                   
-                    {{ date('d/m/Y', strtotime($ctc->data_admissao)) }}                    
+                <td style="width:50%; border: 1px solid black;"><strong>DATA DE ADMISSÃO:</strong><br>
+                    {{ date('d/m/Y', strtotime($ctc->data_admissao)) }}
                 </td>
-                <td style="width:50%; border: 1px solid black;"><strong>DATA DE EXONERAÇÃO/DEMISSÃO:</strong><br>                   
-                    {{ $ctc->data_exoneracao ? date('d/m/Y', strtotime($ctc->data_exoneracao)) : '' }}                  
-                </td>                           
+                <td style="width:50%; border: 1px solid black;"><strong>DATA DE EXONERAÇÃO/DEMISSÃO:</strong><br>
+                    {{ $ctc->data_exoneracao ? date('d/m/Y', strtotime($ctc->data_exoneracao)) : '' }}
+                </td>
             </tr>
         </table>
         <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO:</strong><br>
-                    De {{ date('d/m/Y', strtotime($ctc->start_date)) }} A {{ date('d/m/Y', strtotime($ctc->end_date)) }} 
+                    De {{ date('d/m/Y', strtotime($ctc->start_date)) }} A {{ date('d/m/Y', strtotime($ctc->end_date)) }}
                 </td>
             </tr>
         </table>
@@ -149,7 +151,7 @@ use Carbon\Carbon;
         <table style="width:100%; border: 1px solid black;font-size: 10px;">
             <tr>
                 <td style="width:100%; border: 1px solid black;"><strong>DESTINAÇÃO DO TEMPO DE CONTRIBUIÇÃO:</strong><br>
-                    PERÍODO DE {{ date('d/m/Y', strtotime($ctc->start_date)) }} A {{ date('d/m/Y', strtotime($ctc->end_date)) }} {{$ctc->destinacao}} 
+                    PERÍODO DE {{ date('d/m/Y', strtotime($ctc->start_date)) }} A {{ date('d/m/Y', strtotime($ctc->end_date)) }} {{$ctc->destinacao}}
                 </td>
             </tr>
         </table>
@@ -173,12 +175,13 @@ use Carbon\Carbon;
                 </tr>
             </thead>
             <tbody>
-                @php
+            @php
                 $total_bruto = 0;
                 $total_liquido = 0;
-                @endphp
+                $total_faltas = 0;
+            @endphp
 
-                @foreach($ctc_deducao as $deducao)
+            @foreach($ctc_deducao->sortBy('ano') as $deducao)
                 <tr>
                     <td style="border: 1px solid black;">{{$deducao->ano}}</td>
                     <td style="border: 1px solid black;">{{$deducao->tempo_bruto}}</td>
@@ -191,16 +194,18 @@ use Carbon\Carbon;
                     <td style="border: 1px solid black;">{{$deducao->tempo_liquido}}</td>
                 </tr>
                 @php
-                $total_bruto += $deducao->tempo_bruto;
-                $total_liquido += $deducao->tempo_liquido;
+                    $total_bruto += $deducao->tempo_bruto;
+                    $total_liquido += $deducao->tempo_liquido;
+                    $total_faltas += $deducao->faltas;
                 @endphp
-                @endforeach
+            @endforeach
             </tbody>
+
             <tfoot>
                 <tr>
                     <td>Total</td>
                     <td style="border: 1px solid black;">{{$total_bruto}} dias</td>
-                    <td style="border: 1px solid black;"></td>
+                    <td style="border: 1px solid black;">{{$total_faltas}} dias</td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
                     <td style="border: 1px solid black;"></td>
@@ -223,15 +228,15 @@ use Carbon\Carbon;
 
 
         <table style="width:100%; border: 1px solid black;line-height: 1;font-size: 10px;">
-          
+
                 <td style="width:100%; border: 1px solid black;">
                     <p class="justificado">CERTIFICO, em face do apurado, que o interessado conta, de efetivo exercício prestado neste Órgão, o tempo de contribuição de {{$total_liquido }} dias, correspondente a {{ $anos }} anos, {{ $meses }} meses e {{ $dias }} dias</p>
-                    <p class="justificado">CERTIFICO que a Lei nº 1. 793, de 23 de dezembro de 2009, assegura aos servidores públicos titulares de cargo efetivo do município de 
-                        Rio Branco/AC os benefícios das aposentadorias voluntárias, por invalidez e compulsória, e pensão por morte, com aproveitamento de 
-                        tempo de contribuição para o Regime Geral de Previdência Social ou para outro Regime Próprio de Previdência Social, na forma da 
-                        contagem recíproca, conforme Lei Federal nº 6.226, de 14/07/75, com alteração dada pela Lei Federal nº 6.864, de 01/12/80.  </p> 
+                    <p class="justificado">CERTIFICO que a Lei nº 1. 793, de 23 de dezembro de 2009, assegura aos servidores públicos titulares de cargo efetivo do município de
+                        Rio Branco/AC os benefícios das aposentadorias voluntárias, por invalidez e compulsória, e pensão por morte, com aproveitamento de
+                        tempo de contribuição para o Regime Geral de Previdência Social ou para outro Regime Próprio de Previdência Social, na forma da
+                        contagem recíproca, conforme Lei Federal nº 6.226, de 14/07/75, com alteração dada pela Lei Federal nº 6.864, de 01/12/80.  </p>
                 </td>
-           
+
         </table>
 
 
@@ -242,13 +247,13 @@ use Carbon\Carbon;
         <!-- Essa tag quebra a pagina -->
         <div class="break-page"></div>
         <!-- Essa tag quebra a pagina -->
-        
-        
+
+
 
         <p style="text-align:right;">CTC Nº {{$ctc->ctc_numero}}</p>
         <br>
-        
-        
+
+
         <table style="width: 100%">
             <tr>
                 <td style="width: 50%">
@@ -259,7 +264,7 @@ use Carbon\Carbon;
 
                     </div>
                     <div style="border: 1px solid black;font-size: 10px; width: 100%">
-                        <p style="text-align: center">Assinatura e carimbo </p>   
+                        <p style="text-align: center">Assinatura e carimbo </p>
                     </div>
                 </td>
                 <td style="width: 50%">
@@ -270,7 +275,7 @@ use Carbon\Carbon;
 
                     </div>
                     <div style="border: 1px solid black;font-size: 10px; width: 100%">
-                        <p style="text-align: center">Assinatura </p>   
+                        <p style="text-align: center">Assinatura </p>
                     </div>
                 </td>
             </tr>
@@ -285,7 +290,7 @@ use Carbon\Carbon;
                     <p class="justificado"><strong>HOMOLOGO</strong> a presente Certidão de Tempo de Contribuição e declaro que as informações nela constantes
                         correspondem com a verdade.</p>
 
-                    <p style="text-align:left;">Rio Branco - AC, {{ date('d/m/Y') }}</p> 
+                    <p style="text-align:left;">Rio Branco - AC, {{ date('d/m/Y') }}</p>
                 </td>
             </tr>
         </table>
@@ -296,14 +301,14 @@ use Carbon\Carbon;
             <img src="../public/imagem/azul_claro.png" align="center" alt="Imagem de cabeçalho">
         </div>
         <div class="texto-centralizado-12px">
-            PREFEITURA MUNICIPAL DE RIO BRANCO<br>            
+            PREFEITURA MUNICIPAL DE RIO BRANCO<br>
             <strong>INSTITUTO DE PREVIDÊNCIA DE RIO BRANCO - RBPREV</strong>
-        </div><br> 
+        </div><br>
         <p style="text-align:right;"><strong>Certidão de Tempo de Contribuição Nº {{$ctc->ctc_numero}}</strong></p>
 
         <table  style="width:100%; border: 1px solid black;" >
-            <td align="center">FREQUÊNCIA - DISCRIMINAÇÃO DAS DEDUÇÕES DO TEMPO BRUTO</td>      
-        </table>   
+            <td align="center">FREQUÊNCIA - DISCRIMINAÇÃO DAS DEDUÇÕES DO TEMPO BRUTO</td>
+        </table>
         <table  style="width:100%; border: 1px solid black;" >
             <thead>
                 <tr>
@@ -360,8 +365,8 @@ use Carbon\Carbon;
             </tbody>
         </table><br>
         <table  style="width:100%; border: 1px solid black;">
-            <td align="center">TEMPO ESPECIAL INCLUÍDO, SEM CONVERSÃO, NO PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO</td>      
-        </table>   
+            <td align="center">TEMPO ESPECIAL INCLUÍDO, SEM CONVERSÃO, NO PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO</td>
+        </table>
         <table  style="width:100%; border: 1px solid black;" >
             <thead>
                 <tr>
@@ -431,13 +436,13 @@ use Carbon\Carbon;
                 </tr>
                 @endforeach
             </tbody>
-        </table> 
+        </table>
         <!-- Ultima parte -->
         <br>
 
         <table  style="width:100%; border: 1px solid black;">
-            <td align="center">TEMPO DE EFETIVO EXERCÍCIO DAS FUNÇÕES DE MAGISTÉRIO NA EDUCAÇÃO INFANTIL E NO ENSINO FUNDAMENTAL E MÉDIO NO PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO</td>      
-        </table>   
+            <td align="center">TEMPO DE EFETIVO EXERCÍCIO DAS FUNÇÕES DE MAGISTÉRIO NA EDUCAÇÃO INFANTIL E NO ENSINO FUNDAMENTAL E MÉDIO NO PERÍODO DE CONTRIBUIÇÃO COMPREENDIDO NESTA CERTIDÃO</td>
+        </table>
         <table  style="width:100%; border: 1px solid black;" >
             <thead>
                 <tr>
@@ -479,7 +484,7 @@ use Carbon\Carbon;
                 </tr>
                 @endforeach
             </tbody>
-        </table>      
+        </table>
         <br>
         <table style="width:100%; border: 1px solid black;">
             <tr>
@@ -497,14 +502,14 @@ use Carbon\Carbon;
                         <p><strong>Servidor que lavrou a Certidão</strong></p>
                         <br><br><br><!-- comment -->
                         <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y') }}</p>
-                    </div>                    
+                    </div>
                 </td>
                 <td style="width: 50%">
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Assinatura do Dirigente do Órgão</strong></p>
                         <br><br><br><!-- comment -->
                         <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y') }}</p>
-                    </div>                  
+                    </div>
                 </td>
             </tr>
         </table>

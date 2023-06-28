@@ -207,7 +207,7 @@ class CTCController extends Controller
     //Controller
     public function getDetails(Request $request)
     {
-        //Validate the request 
+        //Validate the request
         $validator = Validator::make($request->all(), [
             'id' => 'required|integer|exists:serve,id',
         ]);
@@ -264,22 +264,22 @@ class CTCController extends Controller
 
     public function destroy($id)
     {
-
         $ctc = CTC::findOrFail($id);
 
         DB::beginTransaction();
 
-        if (!$ctc->update(['status' => 0])) {
-            DB::rollBack();
-            return redirect()->route('ctc.index')->with('error', "Falha ao deletar CTC.");
+        try {
+            $ctc->status = false;
+            $ctc->save();
+
+            DB::commit();
+
+            return redirect()->route('ctc.index')->with('success', 'CTC deletado com sucesso.');
+        } catch (\Exception $e) {
+            DB::rollback();
+            return redirect()->route('ctc.index')->with('error', 'Falha ao deletar CTC.');
         }
-
-        DB::commit();
-
-        return redirect()->route('ctc.index')->with(
-            'success',
-            "CTC deletado com sucesso."
-        );
     }
+
 
 }

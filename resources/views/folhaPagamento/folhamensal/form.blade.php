@@ -56,25 +56,7 @@
         </div>
     </div>
 </div>
-<!--
-<div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
-        <div class="wrap">
-            <label for="qtdTotalFprev" class="form-control-label">Total FPREV:
-                <span class="text-danger">*</span>
-            </label>
-            <input type="text" class="form-control" name='qtdTotalFprev' placeholder="Ex: 0000"  value="{{(@$folhapgto->qtdTotalFprev)}}">
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
-        <div class="wrap">
-            <label for="qtdTotalFfin" class="form-control-label">Total FFIN:
-                <span class="text-danger">*</span>
-            </label>
-            <input type="text" class="form-control" name='qtdTotalFfin' placeholder="Ex: 0000"  value="{{(@$folhapgto->qtdTotalFfin)}}">
-        </div>
-    </div>
-</div> -->
+
 
 <hr>
 <h5>Valores</h5>
@@ -85,16 +67,16 @@
             <label for="valorAposFprev" class="form-control-label">Aposentadorias FPREV R$:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" id="valorAposFprev" name='valorAposFprev' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorAposFprev)}}">
+            <input type="text" class="form-control valor" id="valorAposFprev" name='valorAposFprev' placeholder=""  value="{{(@$folhapgto->valorAposFprev)}}">
 
         </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
-            <label for="valorAposFfin" class="form-control-label">Aposentadorias FFIN R$:
+            <label for="valorAposFfin" class="form-control-label ">Aposentadorias FFIN R$:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" id="valorAposFfin" name='valorAposFfin' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorAposFfin)}}">
+            <input type="text" class="form-control valorapffin" id="valorAposFfin" name='valorAposFfin' placeholder=""  value="{{(@$folhapgto->valorAposFfin)}}">
         </div>
     </div>
 </div>
@@ -105,7 +87,7 @@
             <label for="valorPenFprev" class="form-control-label">Pensões FPREV R$:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" id="valorPenFprev" name='valorPenFprev' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorPenFprev)}}">
+            <input type="text" class="form-control valorfprev" id="valorPenFprev" name='valorPenFprev' placeholder=""  value="{{(@$folhapgto->valorPenFprev)}}">
 
         </div>
     </div>
@@ -114,31 +96,10 @@
             <label for="valorPenFfin" class="form-control-label">Pensões FFIN R$:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control" id="valorPenFfin" name='valorPenFfin' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorPenFfin)}}">
+            <input type="text" class="form-control valorpffin" id="valorPenFfin" name='valorPenFfin' placeholder = ""  value="{{(@$folhapgto->valorPenFfin)}}">
         </div>
     </div>
 </div>
-<!--
-<div class="row">
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
-        <div class="wrap">
-            <label for="valorTotalFprev" class="form-control-label">Total FPREV R$:
-                <span class="text-danger">*</span>
-            </label>
-            <input type="text" class="form-control" id="valorTotalFprev" name='valorTotalFprev' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorTotalFprev)}}">
-
-        </div>
-    </div>
-    <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
-        <div class="wrap">
-            <label for="valorTotalFfin" class="form-control-label">Total FFIN R$:
-                <span class="text-danger">*</span>
-            </label>
-            <input type="text" class="form-control" id="valorTotalFfin" name='valorTotalFfin' placeholder="Ex: 00000000.00"  value="{{(@$folhapgto->valorTotalFfin)}}">
-        </div>
-    </div>
-</div>
--->
 
 
 
