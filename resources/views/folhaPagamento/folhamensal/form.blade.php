@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row" id="myForm">
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
         <div class="wrap">
             <label for="ano" class="form-control-label">Ano:
@@ -67,8 +67,7 @@
             <label for="valorAposFprev" class="form-control-label">Aposentadorias FPREV R$:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control valor" id="valorAposFprev" name='valorAposFprev' placeholder=""  value="{{(@$folhapgto->valorAposFprev)}}">
-
+            <input type="text" class="form-control valor text-danger" id="valorAposFprev" name='valorAposFprev' placeholder="" value="{{(@$folhapgto->valorAposFprev)}}">
         </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
@@ -76,7 +75,7 @@
             <label for="valorAposFfin" class="form-control-label ">Aposentadorias FFIN R$:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control valorapffin" id="valorAposFfin" name='valorAposFfin' placeholder=""  value="{{(@$folhapgto->valorAposFfin)}}">
+            <input type="text" class="form-control valorapffin text-danger" id="valorAposFfin" name='valorAposFfin' placeholder="" value="{{(@$folhapgto->valorAposFfin)}}">
         </div>
     </div>
 </div>
@@ -87,8 +86,7 @@
             <label for="valorPenFprev" class="form-control-label">Pensões FPREV R$:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control valorfprev" id="valorPenFprev" name='valorPenFprev' placeholder=""  value="{{(@$folhapgto->valorPenFprev)}}">
-
+            <input type="text" class="form-control valorfprev text-danger" id="valorPenFprev" name='valorPenFprev' placeholder="" value="{{(@$folhapgto->valorPenFprev)}}">
         </div>
     </div>
     <div class="col-sm-12 col-md-6 col-lg-6 mt-4">
@@ -96,10 +94,11 @@
             <label for="valorPenFfin" class="form-control-label">Pensões FFIN R$:
                 <span class="text-danger">*</span>
             </label>
-            <input type="text" class="form-control valorpffin" id="valorPenFfin" name='valorPenFfin' placeholder = ""  value="{{(@$folhapgto->valorPenFfin)}}">
+            <input type="text" class="form-control valorpffin text-danger" id="valorPenFfin" name='valorPenFfin' placeholder="" value="{{(@$folhapgto->valorPenFfin)}}">
         </div>
     </div>
 </div>
+
 
 
 

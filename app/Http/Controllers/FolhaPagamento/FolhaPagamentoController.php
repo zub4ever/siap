@@ -42,24 +42,23 @@ class FolhaPagamentoController extends Controller
         $qtdTotalFfin = $qtdAposentadoFffin + $qtdPensionistaFfin;
         $folhapgto->qtdTotalFfin = $qtdTotalFfin;
 
-        $valorAposFprev = str_replace('.', '', $request->input('valorAposFprev'));
-        $valorAposFprev = str_replace(',', '.', $valorAposFprev);
-        $valorPenFprev = str_replace('.', '', $request->input('valorPenFprev'));
-        $valorPenFprev = str_replace(',', '.', $valorPenFprev);
-        $valorTotalFprev = floatval($valorAposFprev) + floatval($valorPenFprev);
+        // Somando valores de aposentados e pensionistas para valorTotalFprev
+        $valorAposFprev = $request->input('valorAposFprev');
+        $valorPenFprev = $request->input('valorPenFprev');
+        $valorTotalFprev = $valorAposFprev + $valorPenFprev;
         $folhapgto->valorTotalFprev = $valorTotalFprev;
 
-        $valorAposFfin = str_replace('.', '', $request->input('valorAposFfin'));
-        $valorAposFfin = str_replace(',', '.', $valorAposFfin);
-        $valorPenFfin = str_replace('.', '', $request->input('valorPenFfin'));
-        $valorPenFfin = str_replace(',', '.', $valorPenFfin);
-        $valorTotalFfin = floatval($valorAposFfin) + floatval($valorPenFfin);
+        // Somando valores de aposentados e pensionistas para valorTotalFfin
+        $valorAposFfin = $request->input('valorAposFfin');
+        $valorPenFfin = $request->input('valorPenFfin');
+        $valorTotalFfin = $valorAposFfin + $valorPenFfin;
         $folhapgto->valorTotalFfin = $valorTotalFfin;
 
-        //DB::beginTransaction();
-        dd($folhapgto); // Adição do dd() para verificar o conteúdo antes de salvar
+
+        DB::beginTransaction();
+        //dd($folhapgto); // Adição do dd() para verificar o conteúdo antes de salvar
         $folhapgto->save();
-       // DB::commit();
+       DB::commit();
 
         return redirect()->route('folhamensal.index')->with(
             'success',
