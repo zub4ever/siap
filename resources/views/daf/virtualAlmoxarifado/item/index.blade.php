@@ -17,15 +17,15 @@
 @section('main-content')
 <ol class="breadcrumb">
     <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Contratos</a></li>
+    <li class="breadcrumb-item active"><a>Itens do contrato</a></li>
 </ol>
 
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Departamento" href="{{route('ContratoEmpenho.create')}}" role="button">
-                    Cadastrar  contrato/empenho
+                <a class="btn btn-outline-info btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar novo Departamento" href="{{route('itemAlmo.create')}}" role="button">
+                    Cadastrar  item no contrato
                 </a>
             </div>
         </div>

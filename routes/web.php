@@ -227,6 +227,7 @@ Route::group(['middleware' => ['auth']], function () {
 
 
     //AlmoxarifadoVirtualEmpresa
+    Route::get('almoxarifadovirtual','HomeController@index_almoxarifado')->name('idex_almoxaridado');
     Route::resource('/almoxarifadoVirtualEmpresa', 'DAF\Almoxarifado\EmpresaContratadaController');
     //API de busca
     Route::get('/search-cnpj', 'DAF\Almoxarifado\EmpresaContratadaController@retornaCNPJ');
