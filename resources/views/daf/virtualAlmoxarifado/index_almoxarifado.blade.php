@@ -44,7 +44,7 @@
             padding-right: 70px;
             padding-bottom: 30px;
             padding-left: -70px;
-            background-color: #070116;
+            background-color: #e5ee35;
             overflow: hidden;
         }
 
@@ -237,7 +237,7 @@
                 <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.4s"
                      style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInUp;">
 
-                    <div class="advisor_thumb"><img src="/imagem/3.png" alt>
+                    <div class="advisor_thumb"><img src="/imagem/4.png" alt>
 
                         <div class="social-info"><a style='font-size:20px'> <strong>Pedidos</a> </strong> </div>
                     </div>
@@ -250,10 +250,10 @@
             </div>
 
             <div class="col-12 col-sm-6 col-lg-3">
-                <div class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s"
+                <div  id="clicavel" onclick="executaAcaoEmpresa()" class="single_advisor_profile wow fadeInUp" data-wow-delay="0.5s"
                      style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
 
-                    <div class="advisor_thumb"><img src="/imagem/4.png" alt>
+                    <div class="advisor_thumb"><img src="/imagem/3.png" alt>
 
                         <div class="social-info"><a style='font-size:20px'> <strong> Empresas </a> </strong> </div>
                     </div>
@@ -274,6 +274,11 @@
         }
         function executaAcaoItens() {
             window.location = "/itemAlmo";
+        }
+        function executaAcaoItens() {
+            window.location = "/itemAlmo";
+        } function executaAcaoEmpresa() {
+            window.location = "/almoxarifadoVirtualEmpresa";
         }
     </script>
 

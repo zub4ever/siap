@@ -27,7 +27,7 @@
         <div class="col-lg-12 mb-4">
             <div class="card">
                 <div class="card-body">
-                    <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right"
+                    <a class="btn btn-info btn-md" data-toggle="tooltip" data-placement="right"
                        title="Cadastrar novo Departamento" href="{{route('ContratoEmpenho.create')}}" role="button">
                         Novo Contrato
                     </a>
@@ -63,19 +63,19 @@
                                     <td class="text-center">{{$contrato->cnpj}} - {{$contrato->razao_social}}</td>
 
                                     <td>
-                                        <a href="{{route('itemAlmo.create',$contrato->id)}}">
-                                            <i class="ti-list mr-1 btn btn-info"></i>
+                                        <a href="{{ route('itemAlmo.create', $contrato->id) }}">
+                                            <i class="ti-list mr-1 btn btn btn-primary active">
+                                                <span>Adicionar item</span>
+                                            </i>
                                         </a>
-                                        @can('excluir')
+
+                                    @can('excluir')
                                             &nbsp;
-                                            <form action="" method="POST"
-                                                  id="formLaravel" style="display:inline-block;">
-                                                @method('DELETE')
-                                                @csrf
-                                                <span class="submit" idform="">
-                                            <i class="ti-trash btn btn-danger"></i>
-                                        </span>
-                                            </form>
+                                            <a href="{{ route('pedidoalmo.create', $contrato->id) }}">
+                                                <i class="ti-menu-alt mr-1 btn btn-warning">
+                                                    <span>Novo pedido</span>
+                                                </i>
+                                            </a>
                                         @endcan
                                     </td>
                                 </tr>

@@ -15,9 +15,9 @@ class EmpresaContratadaController extends Controller
 
     public function index()
     {
+       $empresas = EmpresaContratada::all();
 
-
-        return view('daf.virtualAlmoxarifado.empresa.index');
+        return view('daf.virtualAlmoxarifado.empresa.index',compact('empresas'));
     }
 
     public function create()

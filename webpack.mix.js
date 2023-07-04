@@ -40,8 +40,16 @@ mix.combine([
 
 
 mix.js('resources/js/app.js', 'public/js')
-.sass('resources/sass/app.scss', 'public/css');
+    .sass('resources/sass/app.scss', 'public/css');
 
 //wizard
 mix.copy('vendor/techlab/smartwizard', 'public/assets/vendors/smartwizard')
+
 // fim wizard
+mix.copy('node_modules/datatables.net-buttons/js/dataTables.buttons.min.js', 'public/assets/vendors/data-table/js/dataTables.buttons.min.js');
+mix.copy('node_modules/datatables.net-buttons/js/buttons.flash.min.js', 'public/assets/vendors/data-table/js/buttons.flash.min.js');
+mix.copy('node_modules/jszip/dist/jszip.min.js', 'public/assets/vendors/data-table/js/jszip.min.js');
+mix.copy('node_modules/pdfmake/build/pdfmake.min.js', 'public/assets/vendors/data-table/js/pdfmake.min.js');
+mix.copy('node_modules/pdfmake/build/vfs_fonts.js', 'public/assets/vendors/data-table/js/vfs_fonts.js');
+mix.copy('node_modules/datatables.net-buttons/js/buttons.html5.min.js', 'public/assets/vendors/data-table/js/buttons.html5.min.js');
+mix.copy('node_modules/datatables.net-buttons/js/buttons.print.min.js', 'public/assets/vendors/data-table/js/buttons.print.min.js');

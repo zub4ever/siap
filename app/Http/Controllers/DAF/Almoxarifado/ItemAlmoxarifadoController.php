@@ -22,25 +22,26 @@ class ItemAlmoxarifadoController extends Controller
 
     public function index()
     {
-//        $contratoEpenho = DB:: table('almoxarifado_virtual_contrato_empenho as almo_virtual')
-//            ->join('almoxarifado_virtual_empresa_contratada as empresa', 'almo_virtual.almoxarifado_virtual_empresa_contratada_id', '=', 'empresa.id')
-//            ->select('almo_virtual.id', 'almo_virtual.cod_grp', 'almo_virtual.nr_sei', 'almo_virtual.nr_contrato', 'empresa.razao_social','empresa.cnpj')
-//            ->get();
-//        //dd($contratoEpenho);
-        return view('daf.virtualAlmoxarifado.item.index');
+        $itemContratoEpenho = DB:: table('almoxarifado_virtual_item as ai')
+            ->join('almoxarifado_virtual_contrato_empenho as ace', 'ai.almoxarifado_virtual_contrato_empenho_id', '=', 'ace.id')
+            ->join('almoxarifado_virtual_categoria as avc', 'ai.almoxarifado_virtual_categoria_id', '=', 'avc.id')
+            ->select('ai.id','ai.cod_item', 'ai.descricao', 'ace.cod_grp', 'ace.nr_sei', 'ace.nr_contrato', 'avc.nm_categoria')
+            ->get();
+        //dd($contratoEpenho);
+        return view('daf.virtualAlmoxarifado.item.index',compact('itemContratoEpenho'));
     }
 
     public function create($id)
     {
 
-         $item = AlmoVirtualContratoEmpenho::findOrFail($id);
+        $item = AlmoVirtualContratoEmpenho::findOrFail($id);
 
-         $almo_virtual_categoria = Categoria::all();
+        $almo_virtual_categoria = Categoria::all();
 //        $elemento_despesa = ElementoDespesa::all();
 //        $fonte_recurso = FonteDespesa::all();
 //        $programa_trabalho = ProgramaTrabalho::all();
 
-       return view('daf.virtualAlmoxarifado.item.create',compact('item','id','almo_virtual_categoria'));
+        return view('daf.virtualAlmoxarifado.item.create', compact('item', 'id', 'almo_virtual_categoria'));
     }
 
     public function store(Request $request)
@@ -68,7 +69,7 @@ class ItemAlmoxarifadoController extends Controller
                 $novoItem->cod_item = $item['cod_item'];
                 $novoItem->descricao = $item['descricao'];
                 $novoItem->almoxarifado_virtual_categoria_id = $item['almoxarifado_virtual_categoria_id'];
-                $novoItem->valor_uni = (float) $item['valor_uni'];
+                $novoItem->valor_uni = (float)$item['valor_uni'];
                 $novoItem->save();
             }
 
@@ -80,7 +81,6 @@ class ItemAlmoxarifadoController extends Controller
             return redirect()->route('itemAlmo.index')->with('error', 'Falha ao cadastrar os Itens.');
         }
     }
-
 
 
 }
