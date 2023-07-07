@@ -40,11 +40,8 @@ class PedidoController extends Controller
         $cxuni = CaixaUnidade::all();
 
 
-
-
-        return view('daf.virtualAlmoxarifado.pedido.create', compact('idContrato', 'id','item','cxuni'));
+        return view('daf.virtualAlmoxarifado.pedido.create', compact('idContrato', 'id', 'item', 'cxuni'));
     }
-
 
 
     public function store(Request $request)
@@ -98,15 +95,19 @@ class PedidoController extends Controller
 
                 // Inserir informações na tabela almoxarifado_virtual_registro_preco
                 $registroPreco = new RegistroPreco();
-                $registroPreco->nr_pedido = $nr_pedido[0]; // Assumindo que o número do pedido é o mesmo para todos os itens
+                $registroPreco->nr_pedido = $nr_pedido[0]; //  o número do pedido é o mesmo para todos os itens
                 $registroPreco->valor_total_pedido = $valor_total_pedido;
-                $registroPreco->almoxarifado_virtual_contrato_empenho_id = $almoxarifado_virtual_contrato_empenho_id[0]; // Assumindo que o contrato/empenho é o mesmo para todos os itens
+                $registroPreco->almoxarifado_virtual_contrato_empenho_id = $almoxarifado_virtual_contrato_empenho_id[0]; //  o contrato/empenho é o mesmo para todos os itens
 
                 $registroPreco->save();
 
                 DB::commit();
 
-                return redirect()->route('pedidoAlmo.index')->with('success', 'Itens cadastrados com sucesso.');
+                //return redirect()->route('pedidoAlmo.index')->with('success', 'Itens cadastrados com sucesso.');
+                return redirect()->route('detalhes_pedido', ['nr_pedido' => $nr_pedido[0]])->with('success', 'Itens cadastrados com sucesso.');
+
+                //return response()->json(['nr_pedido' => $nr_pedido[0]]);
+
             } catch (\Exception $e) {
                 DB::rollBack();
                 return redirect()->route('pedidoAlmo.index')->with('error', 'Falha ao cadastrar os Itens.');
@@ -116,9 +117,21 @@ class PedidoController extends Controller
         }
     }
 
+    public function show($nr_pedido)
+    {
+        $pedido = Pedido::where('nr_pedido', $nr_pedido)->get();
+
+        return view('daf.virtualAlmoxarifado.pedido.show', compact('pedido'));
+    }
 
 
 
+    public function pdf_pedido(){
+
+
+
+        return view('daf.virtualAlmoxarifado.pedido.pdf.pdf_pedido');
+    }
 
 
 
@@ -149,9 +162,6 @@ class PedidoController extends Controller
 
         return response()->json(['valorUni' => $valorUni]);
     }
-
-
-
 
 
 }

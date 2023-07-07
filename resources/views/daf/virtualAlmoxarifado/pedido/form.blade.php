@@ -20,16 +20,32 @@
     }
 </style>
 
-<div class="row">
-    <div class="col-sm-12 col-md-4 col-lg-4 mt-2">
-        <p><strong># {{ $idContrato->id }}</strong></p>
-        <p>Código do GRP: {{ $idContrato->cod_grp }}</p>
-        <p>Número do Contrato: {{ $idContrato->nr_contrato }}</p>
-        <p>Número processo no SEI: {{ $idContrato->nr_sei }}</p>
-        <p>Nome da Empresa Contratada: {{ $idContrato->razao_social }}</p>
-        <p>Valor total contrato: <span id="valor">{{ $idContrato->saldo_total }}</span></p>
+<div class="container border border-solid">
+    <div class="row">
+        <div class="col-sm-12 col-md-1 col-lg-1 mt-2">
+            <p><strong># {{ $idContrato->id }}</strong></p>
+        </div>
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-2">
+            <p>Código do GRP: <strong>{{$idContrato->cod_grp }}</strong></p>
+        </div>
+        <div class="col-sm-12 col-md-2 col-lg-2 mt-2">
+            <p>Número do Contrato: <strong>{{ $idContrato->nr_contrato }}</strong></p>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3 mt-2">
+            <p>Número processo no SEI:<br> <strong>{{ $idContrato->nr_sei }}</strong></p>
+        </div>
+        <div class="col-sm-12 col-md-3 col-lg-3 mt-2">
+            <p>Empresa Contratada: <br><strong>{{ $idContrato->razao_social }}</strong></p>
+        </div>
+    </div>
+    <div class="row justify-content-lg-center">
+        <div class="col-12">
+            <p>Valor total contrato: <span id="valor" class="badge badge-success">{{ $idContrato->saldo_total }}</span></p>
+        </div>
     </div>
 </div>
+
+
 <hr>
 <div class="row-container" id="row-container">
     <div class="row">
@@ -37,7 +53,7 @@
             <input type="text" name="almoxarifado_virtual_contrato_empenho_id[]" value="{{$id}}" readonly>
 
         </div>
-        <div class="col-lg-1 col-md-1 col-sm-12">
+        <div class="col-lg-2 col-md-2 col-sm-12">
             <input type="text" id="nr-pedido" name="nr_pedido[]" class="form-control nr-pedido" readonly>
         </div>
 
@@ -61,8 +77,8 @@
             <input type="number" class="form-control quantidade-pedido" name="quantidade_pedido[]"
                    placeholder="Quantidade">
         </div>
-        <div class="col-lg-2 col-md-2 col-sm-12">
-            <input type="text" class="form-control valor-uni" name="valor_uni[]" placeholder="Valor unitário" readonly>
+        <div class="col-lg-1 col-md-1 col-sm-12">
+            <input type="text" class="form-control valor-uni" name="valor_uni[]" placeholder="Valor Uni" readonly>
         </div>
         <div class="col-lg-2 col-md-2 col-sm-12">
             <input type="number" class="form-control valor-pedido" name="valor_pedido[]" placeholder="Total pedido"
@@ -86,6 +102,8 @@
         <button type="submit" class="btn btn-info">Salvar</button>
     </div>
 </div>
+
+
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
@@ -116,12 +134,12 @@
 
 
             var newRow = '<div class="row-container">' +
-                '<hr>'+
+                '<hr>' +
                 '<div class="row">' +
                 '<div class="col-lg-1 col-md-1 col-sm-12">' +
                 '<input type="text" name="almoxarifado_virtual_contrato_empenho_id[]" value="{{$id}}" readonly>' +
                 '</div>' +
-                '<div class="col-lg-1 col-md-1 col-sm-12">' +
+                '<div class="col-lg-2 col-md-2 col-sm-12">' +
                 '<input type="text" id="nr-pedido" name="nr_pedido[]" class="form-control nr-pedido" readonly>' +
                 '</div>' +
                 '<div class="col-lg-2 col-md-2 col-sm-12">' +
@@ -143,8 +161,8 @@
                 '<div class="col-lg-1 col-md-1 col-sm-12">' +
                 '<input type="number" class="form-control quantidade-pedido" name="quantidade_pedido[]" placeholder="Quantidade">' +
                 '</div>' +
-                '<div class="col-lg-2 col-md-2 col-sm-12">' +
-                '<input type="text" class="form-control valor-uni" name="valor_uni[]" placeholder="Valor Unitário" readonly>' +
+                '<div class="col-lg-1 col-md-1 col-sm-12">' +
+                '<input type="text" class="form-control valor-uni" name="valor_uni[]" placeholder="Valor Uni" readonly>' +
                 '</div>' +
                 '<div class="col-lg-2 col-md-2 col-sm-12">' +
                 '<input type="number" class="form-control valor-pedido" name="valor_pedido[]" placeholder="Total pedido" readonly>' +
@@ -153,7 +171,7 @@
                 '<div class="remove-btn" onclick="removeRow(this)">X</div>' +
                 '</div>' +
                 '</div>' +
-                '<hr>'+
+                '<hr>' +
                 '</div>';
 
             $('#row-container').append(newRow);

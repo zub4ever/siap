@@ -1,7 +1,7 @@
 @extends('layouts.app')
 {{-- Page Title --}}
 @section('page-title')
-    Página inicial
+    Detalhes do pedido
 @endsection
 @section('css')
     <!-- Start datatable css -->
@@ -12,8 +12,14 @@
     <!-- Sweet Alert Css -->
     <link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
 @endsection
-
 @section('main-content')
+
+    @foreach($pedido as $item)
+        <p>Número do Pedido: {{ $item->nr_pedido }}</p>
+        <p>Quantidade Pedido: {{ $item->quantidade_pedido }}</p>
+        <p>Valor Unitário: {{ $item->valor_uni }}</p>
+        <!-- Outras informações do pedido -->
+    @endforeach
 
 
 
