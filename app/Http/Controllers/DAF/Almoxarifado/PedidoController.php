@@ -104,7 +104,7 @@ class PedidoController extends Controller
                 DB::commit();
 
                 //return redirect()->route('pedidoAlmo.index')->with('success', 'Itens cadastrados com sucesso.');
-                return redirect()->route('detalhes_pedido', ['nr_pedido' => $nr_pedido[0]])->with('success', 'Itens cadastrados com sucesso.');
+                return redirect()->route('detalhes_pedido', ['nr_pedido' => $nr_pedido[0]])->with('success', 'Pedido realizado com sucesso.');
 
                 //return response()->json(['nr_pedido' => $nr_pedido[0]]);
 
@@ -119,32 +119,39 @@ class PedidoController extends Controller
 
     public function show($nr_pedido)
     {
-        $pedido = Pedido::where('nr_pedido', $nr_pedido)->get();
+        //$pedido = Pedido::where('nr_pedido', $nr_pedido)->get();
 
-        return view('daf.virtualAlmoxarifado.pedido.show', compact('pedido'));
+        $pedido = DB::table('almoxarifado_virtual_pedido as item')
+            ->join('almoxarifado_virtual_cx_uni as cxUni', 'item.almoxarifado_virtual_cx_uni_id', '=', 'cxUni.id')
+            ->join('almoxarifado_virtual_item as itemDescrito', 'item.almoxarifado_virtual_item_id', '=', 'itemDescrito.id')
+            ->where('nr_pedido', $nr_pedido)
+            ->select('item.*', 'cxUni.*', 'itemDescrito.*')
+            ->get();
+
+
+        $empenho = DB::table('almoxarifado_virtual_pedido as pedidoInfo')
+            ->join('almoxarifado_virtual_contrato_empenho as empenho', 'pedidoInfo.almoxarifado_virtual_contrato_empenho_id', '=', 'empenho.id')
+            ->where('pedidoInfo.nr_pedido', $nr_pedido)
+            ->select('empenho.*')
+            ->distinct()
+            ->get();
+
+        $registroPreco = DB::table('almoxarifado_virtual_registro_preco as preco')
+        ->join('almoxarifado_virtual_contrato_empenho as empenho', 'preco.almoxarifado_virtual_contrato_empenho_id', '=', 'empenho.id')
+        ->where('nr_pedido', $nr_pedido)
+        ->select('preco.*', 'empenho.*')
+        ->get();
+
+        return view('daf.virtualAlmoxarifado.pedido.show', compact('pedido','empenho','registroPreco'));
     }
 
 
+    public function pdf_pedido()
+    {
 
-    public function pdf_pedido(){
 
-
-
-        return view('daf.virtualAlmoxarifado.pedido.pdf.pdf_pedido');
+        return view('daf . virtualAlmoxarifado . pedido . pdf . pdf_pedido');
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
     public function getValorUni(Request $request)
