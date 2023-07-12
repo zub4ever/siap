@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Atendimento extends Model
 {
-   
+
      protected $table = 'atendimento';
     public $timestamps = true;
     protected $fillable = [
@@ -21,16 +21,17 @@ class Atendimento extends Model
         'state_id',
         'almoxarifado_localizacao_dpto_id',
         'atendimento_status_id',
-        'atendimento_tipo_servidor_id'
-        
+        'atendimento_tipo_servidor_id',
+        'data_nascimento'
+
     ];
-   
-    
+
+
     public function atendimento_status(){
 
           return $this->hasMany(AtendimentoStatus::class,'atendimento_status_id');
     }
-    
+
     public function atendimento_assunto(){
 
           return $this->hasMany(AtendimentoStatus::class,'atendimento_assunto_id');
@@ -39,7 +40,7 @@ class Atendimento extends Model
 
           return $this->hasMany(AtendimentoStatus::class,'city_id');
     }
-    
+
     public function state(){
 
           return $this->hasMany(AtendimentoStatus::class,'state_id');
@@ -52,5 +53,5 @@ class Atendimento extends Model
     {
         return $this->belongsTo(AtendimentoTipoServidor::class, 'atendimento_tipo_servidor_id');
     }
-    
+
 }

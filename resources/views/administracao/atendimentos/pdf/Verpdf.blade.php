@@ -30,11 +30,13 @@
 </table>
 <table class="tgB" style="table-layout: fixed; width: 700px">
     <tr>
-        <th class="tgB-s9fk"><strong>Matrícula: </strong>{{$atendimentos->matricula}}<br></th>
-        <th class="tgB-s9fk"><strong>Nome do requerente: </strong>{{$atendimentos->nm_assegurado}}<br></th>
-        <th class="tgB-lnuh"><strong>CPF: </strong> <a>{{$atendimentos->cpf}}</a></th>
+        <th class="tgB-s9fk"><strong>Matrícula: <br></strong>{{$atendimentos->matricula}}<br></th>
+        <th class="tgB-s9fk"><strong>Nome do requerente: <br></strong>{{$atendimentos->nm_assegurado}}<br></th>
+        <th class="tgB-lnuh"><strong>CPF:<br> </strong> <a>{{$atendimentos->cpf}}</a></th>
+        <th class="tgB-lnuh"><strong>Data nascimento:<br> </strong> <a>{{ date( 'd/m/Y' , strtotime($atendimentos->data_nascimento))}}</a></th>
     </tr>
 </table>
+
 <table class="tgB" style="table-layout: fixed; width: 700px">   
     <tr>            
         @foreach ($city as $sexo)

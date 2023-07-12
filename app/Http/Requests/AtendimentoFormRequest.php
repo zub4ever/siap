@@ -26,21 +26,22 @@ class AtendimentoFormRequest extends FormRequest {
             'matricula' => ['max:15'],
             'numero_telefone' => ['max:15'],
             'email'  => ['max:150'],
-            'cpf' => ['max:15'],         
+            'cpf' => ['max:15'],
             'descricao' => ['max:400'],
             'atendimento_assunto_id' => ['required'],
             'city_id' => ['required'],
            'state_id' => ['required'],
             'almoxarifado_localizacao_dpto_id' => ['required'],
-            'atendimento_status_id' => ['required']
+            'atendimento_status_id' => ['required'],
+            'data_nascimento' => ['required', 'date_format:"d/m/Y"'],
         ];
     }
-    
+
     public function messages() {
         return [
             'nm_assegurado.required' => 'O nome do assegurado é obrigatório.',
             'numero_telefone.required' => 'Numero de contato é obrigatório.'
-            
+
         ];
     }
 
