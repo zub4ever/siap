@@ -22,39 +22,41 @@ use App\Models\DAF\Almoxarifado\AlmoLocalizacaoDPTO;
 
 class AtendimentosController extends Controller {
     public function show($id) {
-        
+
       $atendimentos = Atendimento::findOrFail($id);
-        
+
         $atendimento_status = AtendimentoStatus::all();
         $city = City::all();
         $state = State::all();
         $atendimento_assunto = AtendimentoAssunto::all();
         $almo_localizacao_dpto = AlmoLocalizacaoDPTO::all();
-        
-        return view('administracao.atendimentos.show', 
+        $atendimento_tipo_servidor = DB::table('atendimento_tipo_servidor')->get();
+
+        return view('administracao.atendimentos.show',
                 compact('atendimentos','atendimento_status',
                         'atendimento_assunto','city','state',
-                        'almo_localizacao_dpto'));
+                        'almo_localizacao_dpto',
+                'atendimento_tipo_servidor'));
     }
     public function index() {
-        
-        $atendimentos = Atendimento::where('status',1 ) 
+
+        $atendimentos = Atendimento::where('status',1 )
                 ->where('atendimento_status_id',1)
                 ->orderBY('id', 'asc')
                 ->get();
         $atendimento_assunto = DB::table('atendimento_assunto')->get();
-        
+
         $atendimento_status = DB::table('atendimento_status')->get();
-        
-        
+
+
         return view("administracao.atendimentos.index", compact('atendimentos','atendimento_assunto','atendimento_status'));
     }
 
     public function create(){
-        
-       
+
+
         $atendimento_tipo_servidor = DB::table('atendimento_tipo_servidor')->get();
-        
+
         $atendimento_status = DB::table('atendimento_status')->get();
         $atendimento_assunto = DB::table('atendimento_assunto')->get();
         $city = DB::table('city')->get();
@@ -66,16 +68,16 @@ class AtendimentosController extends Controller {
 
     public function store(AtendimentoFormRequest $request) {
 
-        
+
 
          DB::beginTransaction();
          //$denuncias->status_id ='1';
         // $request->request->add(['id_status_liberacao_projeto' => 1]);
 
- 
+
        $request->request->add(['atendimento_status_id' => 1]);
         $atendimentos = Atendimento::create($request->all());
-        
+
         if (!$atendimentos) {
             DB::rollBack();
             return redirect()->route('atendimentos.index')->with('error', "Falha ao cadastrar um atendimento.");
@@ -92,15 +94,15 @@ class AtendimentosController extends Controller {
     public function edit($id) {
 
         $atendimentos = Atendimento::findOrFail($id);
-        
+
         $atendimento_status = AtendimentoStatus::all();
         $atendimento_tipo_servidor = AtendimentoTipoServidor::all();
         $city = City::all();
         $state = State::all();
         $atendimento_assunto = AtendimentoAssunto::all();
         $almo_localizacao_dpto = AlmoLocalizacaoDPTO::all();
-        
-        
+
+
         return view('administracao.atendimentos.edit', compact('atendimento_tipo_servidor','atendimentos','atendimento_status','atendimento_assunto','city','state','almo_localizacao_dpto'));
     }
 
@@ -129,8 +131,8 @@ class AtendimentosController extends Controller {
         $state = State::all();
         $atendimento_assunto = AtendimentoAssunto::all();
         $almo_localizacao_dpto = AlmoLocalizacaoDPTO::all();
-        
-        
+
+
         return \PDF::loadView('administracao.atendimentos.pdf.Verpdf',
                                 compact('atendimentos','city','state','atendimento_assunto','almo_localizacao_dpto')
                         )
@@ -139,7 +141,7 @@ class AtendimentosController extends Controller {
     }
 
     public function destroy($id){
-        
+
         $atendimentos = Atendimento::findOrFail($id);
 
 
@@ -157,12 +159,12 @@ class AtendimentosController extends Controller {
             "Atendimento deletado com sucesso."
         );
     }
-    
-    
+
+
     //Historico de atendimentos
-  
-    
-    
-    
+
+
+
+
 
 }

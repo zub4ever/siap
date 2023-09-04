@@ -30,9 +30,9 @@ Atendimentos
                 <div class="pull-right">
                     <a class="btn btn-inverse-dark btn-md" href="{{route('atendimentos.dash')}}">Dashboard de atendimentos</a>
                     <a class="btn btn-inverse-primary btn-md" href="/atendimentos/historico">Histórico de atendimentos</a>
-                </div>               
-            </div>           
-        </div>       
+                </div>
+            </div>
+        </div>
     </div>
 
 
@@ -48,6 +48,7 @@ Atendimentos
                             <tr>
                                 <th class="text-center">Id</th>
                                 <th class="text-center">Nome assegurado</th>
+                                <th class="text-center">Data Nascimento</th>
                                 <th class="text-center">Tipo de atendimento</th>
 
                                 <th class="text-center">CPF</th>
@@ -62,6 +63,7 @@ Atendimentos
                             <tr>
                                 <td class="text-center">{{$fcn->id}}</td>
                                 <td class="text-center">{{$fcn->matricula}}-{{$fcn->nm_assegurado}}</td>
+                                <td>{{ date( 'd/m/Y' , strtotime($fcn->data_nascimento))}}</td>
 
                                 @foreach($atendimento_assunto as $mnc)
                                 @if($fcn->atendimento_assunto_id == $mnc->id)

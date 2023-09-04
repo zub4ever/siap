@@ -221,67 +221,16 @@ class DashAtendimentosController extends Controller {
 
     public function relatorioAnual() {
 
-        /*
-          $meses = [
-          'Janeiro',
-          'Fevereiro',
-          'Março',
-          'Abril',
-          'Maio',
-          'Junho',
-          'Julho',
-          'Agosto',
-          'Setembro',
-          'Outubro',
-          'Novembro',
-          'Dezembro'
-          ];
-
-          $atendimentos = Atendimento::where('atendimento_assunto_id', 9)
-          ->whereYear('created_at', 2023)
-          ->get();
-
-          $dados = [];
-          foreach ($meses as $index => $mes) {
-          $data = $atendimentos->whereBetween('created_at', [
-          Carbon::create(2023, $index + 1, 1, 0, 0, 0),
-          Carbon::create(2023, $index + 1, 31, 23, 59, 59)
-          ]);
-
-          if ($data->count()) {
-          $dados[$mes] = $data->map(function ($atendimento) {
-          return [
-          'nm_assegurado' => $atendimento->nm_assegurado,
-          'matricula' => $atendimento->matricula,
-          'cpf' => $atendimento->cpf
-          ];
-          });
-          }
-          } */
-        /* $meses = [
-          "01" => "Janeiro",
-          "02" => "Fevereiro",
-          "03" => "Março",
-          "03" => "Abril",
-          "05" => "Maio",
-          "06" => "Junho",
-          "07" => "Julho",
-          "08" => "Agosto",
-          "09" => "Setembro",
-          "10" => "Outubro",
-          "11" => "Novembro",
-          "12" => "Dezembro",
-          ]; */
 
 
         $atendimentos = DB::table('atendimento')
-                ->select('nm_assegurado', 'matricula', 'cpf', 'atendimento_tipo_servidor.nm_tipo_servidor', 
-                         DB::raw('date_trunc(\'month\', atendimento.created_at) as month'), 
+                ->select('nm_assegurado', 'matricula', 'cpf', 'atendimento_tipo_servidor.nm_tipo_servidor','data_nascimento',
+                         DB::raw('date_trunc(\'month\', atendimento.created_at) as month'),
                          DB::raw('date(atendimento.created_at) as created_at'))
                 ->join('atendimento_tipo_servidor', 'atendimento_tipo_servidor.id', '=', 'atendimento.atendimento_tipo_servidor_id')
                 ->where('atendimento_assunto_id', 9)
                 ->whereYear('atendimento.created_at', 2023)
-                ->groupBy('nm_assegurado', 'matricula', 'cpf', 'atendimento_tipo_servidor.nm_tipo_servidor', 'month', 'atendimento.created_at')
+                ->groupBy('nm_assegurado', 'matricula', 'cpf', 'atendimento_tipo_servidor.nm_tipo_servidor', 'month', 'data_nascimento','atendimento.created_at')
                 ->orderBy('month')
                 ->get();
 

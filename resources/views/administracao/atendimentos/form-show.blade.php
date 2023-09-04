@@ -56,7 +56,7 @@ Atendimentos
             @endif
         </div>
     </div>
-    <div class="col-sm-12 col-md-5 col-lg-5 mt-4">
+    <div class="col-sm-12 col-md-4 col-lg-4 mt-4">
         <div class="wrap">
             <label for="nm_assegurado" class="form-control-label">Nome do Requerente:
                 <span class="text-danger">*</span>
@@ -67,7 +67,7 @@ Atendimentos
             @endif
         </div>
     </div>
-    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
         <div class="wrap">
             <label for="cpf" class="form-control-label">CPF:
                 <span class="text-danger">*</span>
@@ -76,6 +76,15 @@ Atendimentos
             @if ($errors->has('cpf'))
             <h6 class="heading text-danger">{{$errors->first('cpf')}}</h6>
             @endif
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-2 col-lg-2 mt-4">
+        <div class="wrap">
+            <label for="data_nascimento" class="form-control-label">Data de nascimento:
+                <span class="text-danger">*</span>
+            </label>
+            <input type="text" class="form-control" name="data_nascimento" placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
+                   value="{{ !empty($atendimentos->data_nascimento) ? date('d-m-Y', strtotime($atendimentos->data_nascimento)) : '' }}" disabled>
         </div>
     </div>
 </div>
@@ -89,7 +98,7 @@ Atendimentos
                 <option value="">Selecione a cidade</option>
                 @foreach ($city as $ct)
                 <option value="{{$ct->id}}"
-                        {{(empty(old('city_id')) ? @$atendimentos->city_id : old('city_id')) == $ct->id ? 'selected' : ''}}>  
+                        {{(empty(old('city_id')) ? @$atendimentos->city_id : old('city_id')) == $ct->id ? 'selected' : ''}}>
                     {{$ct->nm_cidade}}
                 </option>
                 @endforeach
@@ -129,7 +138,7 @@ Atendimentos
                 <option value="">Selecione o atendimento</option>
                 @foreach ($atendimento_assunto as $assunto)
                 <option value="{{$assunto->id}}"
-                        {{(empty(old('atendimento_assunto_id')) ? @$atendimentos->atendimento_assunto_id : old('atendimento_assunto_id')) == $assunto->id ? 'selected' : ''}}>  
+                        {{(empty(old('atendimento_assunto_id')) ? @$atendimentos->atendimento_assunto_id : old('atendimento_assunto_id')) == $assunto->id ? 'selected' : ''}}>
                     {{$assunto->nm_assunto}}
                 </option>
                 @endforeach
@@ -159,7 +168,7 @@ Atendimentos
         </div>
     </div>
 </div>
-<div class="row">  
+<div class="row">
     <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
         <div class="wrap">
             <label for="numero_telefone" class="form-control-label">Numero de telefone:
@@ -183,7 +192,27 @@ Atendimentos
             @endif
         </div>
     </div>
-</div>    
+    <div class="col-sm-12 col-md-3 col-lg-3 mt-4">
+        <div class="wrap">
+            <label for="atendimento_tipo_servidor_id" class="form-control-label">
+                Tipo de Assegurado:
+                <span class="text-danger">*</span>
+            </label>
+            <select class="form-control" name="atendimento_tipo_servidor_id" id="atendimento_tipo_servidor_id" disabled>
+                <option value="">Selecione o tipo</option>
+                @foreach ($atendimento_tipo_servidor as $tpservidor)
+                    <option value="{{$tpservidor->id}}"
+                        {{(old('atendimento_tipo_servidor_id', @$atendimentos->atendimento_tipo_servidor_id) == $tpservidor->id) ? 'selected' : ''}}>
+                        {{$tpservidor->nm_tipo_servidor}}
+                    </option>
+                @endforeach
+            </select>
+            @if ($errors->has('atendimento_tipo_servidor_id'))
+                <h6 class="heading text-danger">{{$errors->first('atendimento_tipo_servidor_id')}}</h6>
+            @endif
+        </div>
+    </div>
+</div>
 <hr>
 <div class="row d-flex justify-content-center align-items-center">
     <p>Administração</p>
