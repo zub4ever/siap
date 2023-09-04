@@ -45,257 +45,66 @@ class CTCVersoController extends Controller {
     }
 
     public function update(Request $request, $id) {
-
         $ctc_verso = CTCVerso::findOrFail($id);
 
-        $tempo_bruto_inicio_1 = $request->input('tempo_bruto_inicio_1');
-        $tempo_bruto_fim_1 = $request->input('tempo_bruto_fim_1');
-        $tempo_bruto_inicio_2 = $request->input('tempo_bruto_inicio_2');
-        $tempo_bruto_fim_2 = $request->input('tempo_bruto_fim_2');
+        // Operação 1
+        $inicio1 = $request->input('tempo_bruto_inicio_1');
+        $fim1 = $request->input('tempo_bruto_fim_1');
+        $ocorrencia1 = $request->input('id_ocorrencia_1');
 
-        $tempo_bruto_inicio_1 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_inicio_1);
-        $tempo_bruto_fim_1 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_fim_1);
-        $tempo_bruto_dias_1 = $tempo_bruto_inicio_1->diffInDays($tempo_bruto_fim_1);
-        //2
-        $tempo_bruto_inicio_2 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_inicio_2);
-        $tempo_bruto_fim_2 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_fim_2);
-        $tempo_bruto_dias_2 = $tempo_bruto_inicio_2->diffInDays($tempo_bruto_fim_2);
+        // Verifique se algum dos campos está vazio
+        if (!empty($inicio1) && !empty($fim1) && !empty($ocorrencia1)) {
+            $inicio1 = \DateTime::createFromFormat('d/m/Y', $inicio1);
+            $fim1 = \DateTime::createFromFormat('d/m/Y', $fim1);
 
-        $tempo_bruto_inicio_3 = $request->input('tempo_bruto_inicio_3');
-        $tempo_bruto_fim_3 = $request->input('tempo_bruto_fim_3');
+            if ($inicio1 !== false && $fim1 !== false) {
+                $intervalo1 = $inicio1->diff($fim1);
+                $dias1 = $intervalo1->days;
 
-        if ($tempo_bruto_inicio_3 && $tempo_bruto_fim_3) {
-            $tempo_bruto_inicio_3 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_inicio_3);
-            $tempo_bruto_fim_3 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_fim_3);
-            $tempo_bruto_dias_3 = $tempo_bruto_inicio_3->diffInDays($tempo_bruto_fim_3);
+                // Atualiza o BD 
+                $ctc_verso->tempo_bruto_inicio_1 = $inicio1->format('Y-m-d');
+                $ctc_verso->tempo_bruto_fim_1 = $fim1->format('Y-m-d');
+                $ctc_verso->tempo_bruto_dias_1 = $dias1 + 1;
+                $ctc_verso->id_ocorrencia_1 = $ocorrencia1;
+            } else {
+                // Trate o erro na criação dos objetos DateTime para a Operação 1
+            }
         } else {
-            $tempo_bruto_inicio_3 = null;
-            $tempo_bruto_fim_3 = null;
-            $tempo_bruto_dias_3 = null;
+            // Passe para a próxima operação ou trate o erro nos valores dos inputs para a Operação 1
         }
 
-        $ctc_verso->tempo_bruto_inicio_3 = $tempo_bruto_inicio_3;
-        $ctc_verso->tempo_bruto_fim_3 = $tempo_bruto_fim_3;
-        $ctc_verso->tempo_bruto_dias_3 = $tempo_bruto_dias_3;
-        $ctc_verso->id_ocorrencia_3 = $request->input('id_ocorrencia_3');
+        // Operação 2
+        $inicio2 = $request->input('tempo_bruto_inicio_2');
+        $fim2 = $request->input('tempo_bruto_fim_2');
+        $ocorrencia2 = $request->input('id_ocorrencia_2');
 
-        $tempo_bruto_inicio_4 = $request->input('tempo_bruto_inicio_4');
-        $tempo_bruto_fim_4 = $request->input('tempo_bruto_fim_4');
+        // Verifique se algum dos campos está vazio
+        if (!empty($inicio2) && !empty($fim2) && !empty($ocorrencia2)) {
+            $inicio2 = \DateTime::createFromFormat('d/m/Y', $inicio2);
+            $fim2 = \DateTime::createFromFormat('d/m/Y', $fim2);
 
-        if ($tempo_bruto_inicio_4 && $tempo_bruto_fim_4) {
-            $tempo_bruto_inicio_4 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_inicio_4);
-            $tempo_bruto_fim_4 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_fim_4);
-            $tempo_bruto_dias_4 = $tempo_bruto_inicio_4->diffInDays($tempo_bruto_fim_4);
+            if ($inicio2 !== false && $fim2 !== false) {
+                $intervalo2 = $inicio2->diff($fim2);
+                $dias2 = $intervalo2->days;
+
+                // Atualize o modelo CTCVerso com os valores calculados
+                $ctc_verso->tempo_bruto_inicio_2 = $inicio2->format('Y-m-d');
+                $ctc_verso->tempo_bruto_fim_2 = $fim2->format('Y-m-d');
+                $ctc_verso->tempo_bruto_dias_2 = $dias2 + 1;
+                $ctc_verso->id_ocorrencia_2 = $ocorrencia2;
+            } else {
+                // Trate o erro na criação dos objetos DateTime para a Operação 2
+            }
         } else {
-            $tempo_bruto_inicio_4 = null;
-            $tempo_bruto_fim_4 = null;
-            $tempo_bruto_dias_4 = null;
+            // Passe para a próxima operação ou trate o erro nos valores dos inputs para a Operação 2
         }
 
-        $ctc_verso->tempo_bruto_inicio_4 = $tempo_bruto_inicio_4;
-        $ctc_verso->tempo_bruto_fim_4 = $tempo_bruto_fim_4;
-        $ctc_verso->tempo_bruto_dias_4 = $tempo_bruto_dias_4;
-        $ctc_verso->id_ocorrencia_4 = $request->input('id_ocorrencia_4');
-
-        $tempo_bruto_inicio_5 = $request->input('tempo_bruto_inicio_5');
-        $tempo_bruto_fim_5 = $request->input('tempo_bruto_fim_5');
-
-        if ($tempo_bruto_inicio_5 && $tempo_bruto_fim_5) {
-            $tempo_bruto_inicio_5 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_inicio_5);
-            $tempo_bruto_fim_5 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_fim_5);
-            $tempo_bruto_dias_5 = $tempo_bruto_inicio_5->diffInDays($tempo_bruto_fim_5);
-        } else {
-            $tempo_bruto_inicio_5 = null;
-            $tempo_bruto_fim_5 = null;
-            $tempo_bruto_dias_5 = null;
-        }
-
-        $ctc_verso->tempo_bruto_inicio_5 = $tempo_bruto_inicio_5;
-        $ctc_verso->tempo_bruto_fim_5 = $tempo_bruto_fim_5;
-        $ctc_verso->tempo_bruto_dias_5 = $tempo_bruto_dias_5;
-        $ctc_verso->id_ocorrencia_5 = $request->input('id_ocorrencia_5');
-
-        $tempo_bruto_inicio_6 = $request->input('tempo_bruto_inicio_6');
-        $tempo_bruto_fim_6 = $request->input('tempo_bruto_fim_6');
-
-        if ($tempo_bruto_inicio_6 && $tempo_bruto_fim_6) {
-            $tempo_bruto_inicio_6 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_inicio_6);
-            $tempo_bruto_fim_6 = Carbon::createFromFormat('d/m/Y', $tempo_bruto_fim_6);
-            $tempo_bruto_dias_6 = $tempo_bruto_inicio_6->diffInDays($tempo_bruto_fim_6);
-        } else {
-            $tempo_bruto_inicio_6 = null;
-            $tempo_bruto_fim_6 = null;
-            $tempo_bruto_dias_6 = null;
-        }
-        $ctc_verso->tempo_bruto_inicio_6 = $tempo_bruto_inicio_6;
-        $ctc_verso->tempo_bruto_fim_6 = $tempo_bruto_fim_6;
-        $ctc_verso->tempo_bruto_dias_6 = $tempo_bruto_dias_6;
-        $ctc_verso->id_ocorrencia_6 = $request->input('id_ocorrencia_6');
-        //TempoBruto 
-        $ctc_verso->tempo_bruto_inicio_1 = $tempo_bruto_inicio_1;
-        $ctc_verso->tempo_bruto_fim_1 = $tempo_bruto_fim_1;
-        $ctc_verso->tempo_bruto_dias_1 = $tempo_bruto_dias_1;
-        $ctc_verso->id_ocorrencia_1 = $request->input('id_ocorrencia_1');
-        //2Bruto
-        $ctc_verso->tempo_bruto_inicio_2 = $tempo_bruto_inicio_2;
-        $ctc_verso->tempo_bruto_fim_2 = $tempo_bruto_fim_2;
-        $ctc_verso->tempo_bruto_dias_2 = $tempo_bruto_dias_2;
-        $ctc_verso->id_ocorrencia_2 = $request->input('id_ocorrencia_2');
-
-        //Tabela B - Tempo Especial
-
-        $tempo_especial_inicio_1 = $request->input('tempo_especial_inicio_1');
-        $tempo_especial_fim_1 = $request->input('tempo_especial_fim_1');
-
-        if ($tempo_especial_inicio_1 && $tempo_especial_fim_1) {
-            $tempo_especial_inicio_1 = Carbon::createFromFormat('d/m/Y', $tempo_especial_inicio_1);
-            $tempo_especial_fim_1 = Carbon::createFromFormat('d/m/Y', $tempo_especial_fim_1);
-            $tempo_especial_dias_1 = $tempo_especial_inicio_1->diffInDays($tempo_especial_fim_1);
-        } else {
-            $tempo_especial_inicio_1 = null;
-            $tempo_especial_fim_1 = null;
-            $tempo_especial_dias_1 = null;
-        }
-
-        $ctc_verso->tempo_especial_inicio_1 = $tempo_especial_inicio_1;
-        $ctc_verso->tempo_especial_fim_1 = $tempo_especial_fim_1;
-        $ctc_verso->tempo_especial_dias_1 = $tempo_especial_dias_1;
-
-        //2
-        $tempo_especial_inicio_2 = $request->input('tempo_especial_inicio_2');
-        $tempo_especial_fim_2 = $request->input('tempo_especial_fim_2');
-
-        if ($tempo_especial_inicio_2 && $tempo_especial_fim_2) {
-            $tempo_especial_inicio_2 = Carbon::createFromFormat('d/m/Y', $tempo_especial_inicio_2);
-            $tempo_especial_fim_2 = Carbon::createFromFormat('d/m/Y', $tempo_especial_fim_2);
-            $tempo_especial_dias_2 = $tempo_especial_inicio_2->diffInDays($tempo_especial_fim_2);
-        } else {
-            $tempo_especial_inicio_2 = null;
-            $tempo_especial_fim_2 = null;
-            $tempo_especial_dias_2 = null;
-        }
-
-        $ctc_verso->tempo_especial_inicio_2 = $tempo_especial_inicio_2;
-        $ctc_verso->tempo_especial_fim_2 = $tempo_especial_fim_2;
-        $ctc_verso->tempo_especial_dias_2 = $tempo_especial_dias_2;
-
-//3
-        $tempo_especial_inicio_3 = $request->input('tempo_especial_inicio_3');
-        $tempo_especial_fim_3 = $request->input('tempo_especial_fim_3');
-
-        if ($tempo_especial_inicio_3 && $tempo_especial_fim_3) {
-            $tempo_especial_inicio_3 = Carbon::createFromFormat('d/m/Y', $tempo_especial_inicio_3);
-            $tempo_especial_fim_3 = Carbon::createFromFormat('d/m/Y', $tempo_especial_fim_3);
-            $tempo_especial_dias_3 = $tempo_especial_inicio_3->diffInDays($tempo_especial_fim_3);
-        } else {
-            $tempo_especial_inicio_3 = null;
-            $tempo_especial_fim_3 = null;
-            $tempo_especial_dias_3 = null;
-        }
-
-        $ctc_verso->tempo_especial_inicio_3 = $tempo_especial_inicio_3;
-        $ctc_verso->tempo_especial_fim_3 = $tempo_especial_fim_3;
-        $ctc_verso->tempo_especial_dias_3 = $tempo_especial_dias_3;
-
-//4
-        $tempo_especial_inicio_4 = $request->input('tempo_especial_inicio_4');
-        $tempo_especial_fim_4 = $request->input('tempo_especial_fim_4');
-
-        if ($tempo_especial_inicio_4 && $tempo_especial_fim_4) {
-            $tempo_especial_inicio_4 = Carbon::createFromFormat('d/m/Y', $tempo_especial_inicio_4);
-            $tempo_especial_fim_4 = Carbon::createFromFormat('d/m/Y', $tempo_especial_fim_4);
-            $tempo_especial_dias_4 = $tempo_especial_inicio_4->diffInDays($tempo_especial_fim_4);
-        } else {
-            $tempo_especial_inicio_4 = null;
-            $tempo_especial_fim_4 = null;
-            $tempo_especial_dias_4 = null;
-        }
-
-        $ctc_verso->tempo_especial_inicio_4 = $tempo_especial_inicio_4;
-        $ctc_verso->tempo_especial_fim_4 = $tempo_especial_fim_4;
-        $ctc_verso->tempo_especial_dias_4 = $tempo_especial_dias_4;
-        //Tabela C - Magisterio
-
-
-        $tempo_magisterio_incio_1 = $request->input('tempo_magisterio_incio_1');
-        $tempo_magisterio_fim_1 = $request->input('tempo_magisterio_fim_1');
-
-        if ($tempo_magisterio_incio_1 && $tempo_magisterio_fim_1) {
-            $tempo_magisterio_incio_1 = Carbon::createFromFormat('d/m/Y', $tempo_magisterio_incio_1);
-            $tempo_magisterio_fim_1 = Carbon::createFromFormat('d/m/Y', $tempo_magisterio_fim_1);
-            $tempo_magisterio_dias_1 = $tempo_magisterio_incio_1->diffInDays($tempo_magisterio_fim_1);
-        } else {
-            $tempo_magisterio_incio_1 = null;
-            $tempo_magisterio_fim_1 = null;
-            $tempo_magisterio_dias_1 = null;
-        }
-
-        $ctc_verso->tempo_magisterio_incio_1 = $tempo_magisterio_incio_1;
-        $ctc_verso->tempo_magisterio_fim_1 = $tempo_magisterio_fim_1;
-        $ctc_verso->tempo_magisterio_dias_1 = $tempo_magisterio_dias_1;
-
-        //2
-        $tempo_magisterio_incio_2 = $request->input('tempo_magisterio_incio_2');
-        $tempo_magisterio_fim_2 = $request->input('tempo_magisterio_fim_2');
-
-        if ($tempo_magisterio_incio_2 && $tempo_magisterio_fim_2) {
-            $tempo_magisterio_incio_2 = Carbon::createFromFormat('d/m/Y', $tempo_magisterio_incio_2);
-            $tempo_magisterio_fim_2 = Carbon::createFromFormat('d/m/Y', $tempo_magisterio_fim_2);
-            $tempo_magisterio_dias_2 = $tempo_magisterio_incio_2->diffInDays($tempo_magisterio_fim_2);
-        } else {
-            $tempo_magisterio_incio_2 = null;
-            $tempo_magisterio_fim_2 = null;
-            $tempo_magisterio_dias_2 = null;
-        }
-
-        $ctc_verso->tempo_magisterio_incio_2 = $tempo_magisterio_incio_2;
-        $ctc_verso->tempo_magisterio_fim_2 = $tempo_magisterio_fim_2;
-        $ctc_verso->tempo_magisterio_dias_2 = $tempo_magisterio_dias_2;
-
-//3
-        $tempo_magisterio_incio_3 = $request->input('tempo_magisterio_incio_3');
-        $tempo_magisterio_fim_3 = $request->input('tempo_magisterio_fim_3');
-
-        if ($tempo_magisterio_incio_3 && $tempo_magisterio_fim_3) {
-            $tempo_magisterio_incio_3 = Carbon::createFromFormat('d/m/Y', $tempo_magisterio_incio_3);
-            $tempo_magisterio_fim_3 = Carbon::createFromFormat('d/m/Y', $tempo_magisterio_fim_3);
-            $tempo_magisterio_dias_3 = $tempo_magisterio_incio_3->diffInDays($tempo_magisterio_fim_3);
-        } else {
-            $tempo_magisterio_incio_3 = null;
-            $tempo_magisterio_fim_3 = null;
-            $tempo_magisterio_dias_3 = null;
-        }
-
-        $ctc_verso->tempo_magisterio_incio_3 = $tempo_magisterio_incio_3;
-        $ctc_verso->tempo_magisterio_fim_3 = $tempo_magisterio_fim_3;
-        $ctc_verso->tempo_magisterio_dias_3 = $tempo_magisterio_dias_3;
-
-        //4
-        $tempo_magisterio_incio_4 = $request->input('tempo_magisterio_incio_4');
-        $tempo_magisterio_fim_4 = $request->input('tempo_magisterio_fim_4');
-
-        if ($tempo_magisterio_incio_4 && $tempo_magisterio_fim_4) {
-            $tempo_magisterio_incio_4 = Carbon::createFromFormat('d/m/Y', $tempo_magisterio_incio_4);
-            $tempo_magisterio_fim_4 = Carbon::createFromFormat('d/m/Y', $tempo_magisterio_fim_4);
-            $tempo_magisterio_dias_4 = $tempo_magisterio_incio_4->diffInDays($tempo_magisterio_fim_4);
-        } else {
-            $tempo_magisterio_incio_4 = null;
-            $tempo_magisterio_fim_4 = null;
-            $tempo_magisterio_dias_4 = null;
-        }
-
-        $ctc_verso->tempo_magisterio_incio_4 = $tempo_magisterio_incio_4;
-        $ctc_verso->tempo_magisterio_fim_4 = $tempo_magisterio_fim_4;
-        $ctc_verso->tempo_magisterio_dias_4 = $tempo_magisterio_dias_4;
-        
-        
-        
         
         $ctc_verso->save();
+
         return redirect()->route('verso.show', ['id' => $ctc_verso->ctc_certidao_id])->with(
                         'success',
                         "Tabela atualizada com sucesso."
         );
     }
-
 }

@@ -65,7 +65,7 @@ use Carbon\Carbon;
                     {{$servidor->rg}} SSP/AC
                     @elseif($servidor->orgao_expedidor_id == 2)
                     {{$servidor->rg}} SEPC/AC
-                     @elseif($servidor->orgao_expedidor_id == 3)
+                    @elseif($servidor->orgao_expedidor_id == 3)
                     {{$servidor->rg}} SSP/GO
                     @endif
                 </td>
@@ -175,13 +175,13 @@ use Carbon\Carbon;
                 </tr>
             </thead>
             <tbody>
-            @php
+                @php
                 $total_bruto = 0;
                 $total_liquido = 0;
                 $total_faltas = 0;
-            @endphp
+                @endphp
 
-            @foreach($ctc_deducao->sortBy('ano') as $deducao)
+                @foreach($ctc_deducao->sortBy('ano') as $deducao)
                 <tr>
                     <td style="border: 1px solid black;">{{$deducao->ano}}</td>
                     <td style="border: 1px solid black;">{{$deducao->tempo_bruto}}</td>
@@ -194,11 +194,11 @@ use Carbon\Carbon;
                     <td style="border: 1px solid black;">{{$deducao->tempo_liquido}}</td>
                 </tr>
                 @php
-                    $total_bruto += $deducao->tempo_bruto;
-                    $total_liquido += $deducao->tempo_liquido;
-                    $total_faltas += $deducao->faltas;
+                $total_bruto += $deducao->tempo_bruto;
+                $total_liquido += $deducao->tempo_liquido;
+                $total_faltas += $deducao->faltas;
                 @endphp
-            @endforeach
+                @endforeach
             </tbody>
 
             <tfoot>
@@ -229,13 +229,13 @@ use Carbon\Carbon;
 
         <table style="width:100%; border: 1px solid black;line-height: 1;font-size: 10px;">
 
-                <td style="width:100%; border: 1px solid black;">
-                    <p class="justificado">CERTIFICO, em face do apurado, que o interessado conta, de efetivo exercício prestado neste Órgão, o tempo de contribuição de {{$total_liquido }} dias, correspondente a {{ $anos }} anos, {{ $meses }} meses e {{ $dias }} dias</p>
-                    <p class="justificado">CERTIFICO que a Lei nº 1. 793, de 23 de dezembro de 2009, assegura aos servidores públicos titulares de cargo efetivo do município de
-                        Rio Branco/AC os benefícios das aposentadorias voluntárias, por invalidez e compulsória, e pensão por morte, com aproveitamento de
-                        tempo de contribuição para o Regime Geral de Previdência Social ou para outro Regime Próprio de Previdência Social, na forma da
-                        contagem recíproca, conforme Lei Federal nº 6.226, de 14/07/75, com alteração dada pela Lei Federal nº 6.864, de 01/12/80.  </p>
-                </td>
+            <td style="width:100%; border: 1px solid black;">
+                <p class="justificado">CERTIFICO, em face do apurado, que o interessado conta, de efetivo exercício prestado neste Órgão, o tempo de contribuição de {{$total_liquido }} dias, correspondente a {{ $anos }} anos, {{ $meses }} meses e {{ $dias }} dias</p>
+                <p class="justificado">CERTIFICO que a Lei nº 1. 793, de 23 de dezembro de 2009, assegura aos servidores públicos titulares de cargo efetivo do município de
+                    Rio Branco/AC os benefícios das aposentadorias voluntárias, por invalidez e compulsória, e pensão por morte, com aproveitamento de
+                    tempo de contribuição para o Regime Geral de Previdência Social ou para outro Regime Próprio de Previdência Social, na forma da
+                    contagem recíproca, conforme Lei Federal nº 6.226, de 14/07/75, com alteração dada pela Lei Federal nº 6.864, de 01/12/80.  </p>
+            </td>
 
         </table>
 
@@ -271,7 +271,7 @@ use Carbon\Carbon;
                     <div style="border: 1px solid black; font-size: 10px; width: 100%">
                         <p><strong>Visto do Dirigente do Órgão</strong></p>
                         <br><br><br><!-- comment -->
-                       <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y') }}</p>
+                        <p style="text-align: center">Rio Branco - AC, {{ date('d/m/Y') }}</p>
 
                     </div>
                     <div style="border: 1px solid black;font-size: 10px; width: 100%">
@@ -320,17 +320,34 @@ use Carbon\Carbon;
             <tbody>
                 @foreach($ctc_verso as $registro)
                 <tr>
-                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_magisterio_incio_3) && !empty($registro->tempo_magisterio_fim_3))
-                        {{ Carbon::parse($registro->tempo_magisterio_incio_3)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_magisterio_fim_3)->format('d/m/Y') }}
+                    <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_bruto_inicio_1) && !empty($registro->tempo_bruto_fim_1))
+                        {{ Carbon::parse($registro->tempo_bruto_inicio_1)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_1)->format('d/m/Y') }}
                         @endif</td>
-                    <td style="border: 1px solid black;">{{ $registro->tempo_bruto_dias_1 }}</td>
+                    @if (!empty($registro->tempo_bruto_dias_1))
+                    <td style="border: 1px solid black;">
+                        {{ $registro->tempo_bruto_dias_1 }} dias
+                    </td>
+                    @else
+                    <td style="border: 1px solid black;">
+                        {{ $registro->tempo_bruto_dias_1 }} 
+                    </td>
+                    @endif
+
                     <td style="border: 1px solid black;">{{ $registro->id_ocorrencia_1 }}</td>
                 </tr>
                 <tr>
                     <td style="border: 1px solid black;">De:  @if(!empty($registro->tempo_bruto_inicio_2) && !empty($registro->tempo_bruto_fim_2))
                         {{ Carbon::parse($registro->tempo_bruto_inicio_2)->format('d/m/Y') }} A {{ Carbon::parse($registro->tempo_bruto_fim_2)->format('d/m/Y') }}
                         @endif</td>
-                    <td style="border: 1px solid black;">{{ $registro->tempo_bruto_dias_2 }}</td>
+                    @if (!empty($registro->tempo_bruto_dias_2))
+                    <td style="border: 1px solid black;">
+                        {{ $registro->tempo_bruto_dias_2 }} dias
+                    </td>
+                    @else
+                    <td style="border: 1px solid black;">
+                        {{ $registro->tempo_bruto_dias_2 }} 
+                    </td>
+                    @endif
                     <td style="border: 1px solid black;">{{ $registro->id_ocorrencia_2 }}</td>
                 </tr>
                 <tr>

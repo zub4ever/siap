@@ -22,21 +22,22 @@
 
                 </label>
                 <input type="text" class="form-control" name='tempo_bruto_inicio_1' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                       value="">
+                       
+                       value="{{ $ctc_verso->tempo_bruto_inicio_1 ? date('d/m/Y', strtotime($ctc_verso->tempo_bruto_inicio_1)) : '' }}">
             </td>
             <td class="col-4">
                 <label for="tempo_bruto_fim_1" class="form-control-label">A:
 
                 </label>
                 <input type="text" class="form-control" name='tempo_bruto_fim_1' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                       value="">
+                       value="{{ $ctc_verso->tempo_bruto_fim_1 ? date('d/m/Y', strtotime($ctc_verso->tempo_bruto_fim_1)) : '' }}">
             </td>
             <td class="col-4">
                 <label for="id_ocorrencia_1" class="form-control-label">Identificação da ocorrência:
 
                 </label>
                 <input type="text" class="form-control" name='id_ocorrencia_1' placeholder="Identificação da ocorrência" autocomplete="off"
-                       value="">
+                       value="{{@$ctc_verso->id_ocorrencia_1}}">
             </td>
         </tr>
         <tr class="row">
@@ -45,21 +46,21 @@
 
                 </label>
                 <input type="text" class="form-control" name='tempo_bruto_inicio_2' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                       value="">
+                        value="{{ $ctc_verso->tempo_bruto_inicio_2 ? date('d/m/Y', strtotime($ctc_verso->tempo_bruto_inicio_2)) : '' }}">
             </td>
             <td class="col-4">
                 <label for="tempo_bruto_fim_2" class="form-control-label">A:
 
                 </label>
                 <input type="text" class="form-control" name='tempo_bruto_fim_2' placeholder="00/00/0000" data-mask="00/00/0000" autocomplete="off"
-                       value="">
+                       value="{{ $ctc_verso->tempo_bruto_fim_2 ? date('d/m/Y', strtotime($ctc_verso->tempo_bruto_fim_2)) : '' }}">
             </td>
             <td class="col-4">
                 <label for="id_ocorrencia_2" class="form-control-label">Identificação da ocorrência:
 
                 </label>
                 <input type="text" class="form-control" name='id_ocorrencia_2' placeholder="Identificação da ocorrência" autocomplete="off"
-                       value="">
+                       value="{{@$ctc_verso->id_ocorrencia_2}}">
             </td>
         </tr>
         <tr class="row">
