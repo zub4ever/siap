@@ -18,10 +18,7 @@ Almoxarifado
 <link rel="stylesheet" href="{{asset("assets/vendors/sweetalert2/css/sweetalert2.min.css")}}">
 @endsection
 @section('main-content')
-<ol class="breadcrumb">
-    <li class="breadcrumb-item"><a href="">Início</a></li>
-    <li class="breadcrumb-item active"><a>Almoxarifado</a></li>
-</ol>
+
 
 <div class="row">
     <div class="col-lg-12 mb-4">
@@ -60,7 +57,7 @@ Almoxarifado
     <div class="card-body">
         <hr/>
         <h4>FILTRO DE RELATÓRIO</h4>
-        <hr/>                       
+        <hr/>
         <div class="container">
             <div class="row">
                 <div class="col-3">
@@ -149,7 +146,7 @@ Almoxarifado
                                     <a href="{{route('almoxarifado.edit', $fcn->id)}}">
                                         <i class="ti-pencil mr-1 btn btn-success"></i>
                                     </a>
-                                    
+
                                     &nbsp;
                                     <form action="{{route('almoxarifado.destroy', $fcn->id)}}" method="POST"
                                           id="formLaravel{{$fcn->id}}" style="display:inline-block;">
