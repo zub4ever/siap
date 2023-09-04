@@ -17,7 +17,7 @@ class AuthAPIController extends Controller
             'cpf' => 'required',
         ]);
 
-        // Buscar o registro com base na matrícula e no CPF fornecidos
+        //Buscar o registro com base na matrícula e no CPF fornecidos
         $serve = Serve::where('matricula', $request->matricula)
             ->where('cpf', $request->cpf)
             ->first();

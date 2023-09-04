@@ -137,12 +137,12 @@ class PedidoController extends Controller
             ->get();
 
         $registroPreco = DB::table('almoxarifado_virtual_registro_preco as preco')
-        ->join('almoxarifado_virtual_contrato_empenho as empenho', 'preco.almoxarifado_virtual_contrato_empenho_id', '=', 'empenho.id')
-        ->where('nr_pedido', $nr_pedido)
-        ->select('preco.*', 'empenho.*')
-        ->get();
+            ->join('almoxarifado_virtual_contrato_empenho as empenho', 'preco.almoxarifado_virtual_contrato_empenho_id', '=', 'empenho.id')
+            ->where('nr_pedido', $nr_pedido)
+            ->select('preco.*', 'empenho.*')
+            ->get();
 
-        return view('daf.virtualAlmoxarifado.pedido.show', compact('pedido','empenho','registroPreco'));
+        return view('daf.virtualAlmoxarifado.pedido.show', compact('pedido', 'empenho', 'registroPreco'));
     }
 
 

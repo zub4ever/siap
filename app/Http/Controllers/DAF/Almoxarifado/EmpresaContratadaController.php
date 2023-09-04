@@ -15,9 +15,9 @@ class EmpresaContratadaController extends Controller
 
     public function index()
     {
-       $empresas = EmpresaContratada::all();
+        $empresas = EmpresaContratada::all();
 
-        return view('daf.virtualAlmoxarifado.empresa.index',compact('empresas'));
+        return view('daf.virtualAlmoxarifado.empresa.index', compact('empresas'));
     }
 
     public function create()
@@ -40,7 +40,7 @@ class EmpresaContratadaController extends Controller
 
         DB::beginTransaction();
 
-        $empresaContratada = EmpresaContratada::create($request->all());
+        $empresaContratada = EmpresaContr00atada::create($request->all());
 
         if (!$empresaContratada) {
             DB::rollBack();

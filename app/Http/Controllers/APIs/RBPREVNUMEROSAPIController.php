@@ -15,22 +15,26 @@ use Illuminate\Http\Response;
 
 //use App\Funcao;
 
-class RBPREVNUMEROSAPIController extends Controller {
+class RBPREVNUMEROSAPIController extends Controller
+{
 
-    public function index() {
+    public function index()
+    {
         $rbprevNumeros = RBPREVNUMEROS::join('rbprev_numeros_ano', 'rbprev_numeros.rbprev_numeros_ano_id', '=', 'rbprev_numeros_ano.id')
-                ->join('rbprev_numeros_mes', 'rbprev_numeros.rbprev_numeros_mes_id', '=', 'rbprev_numeros_mes.id')
-                ->select('rbprev_numeros.id', 'rbprev_numeros_ano.nm_ano', 'rbprev_numeros_mes.nm_mes', 'rbprev_numeros.path_pdf')
-                ->get();
+            ->join('rbprev_numeros_mes', 'rbprev_numeros.rbprev_numeros_mes_id', '=', 'rbprev_numeros_mes.id')
+            ->select('rbprev_numeros.id', 'rbprev_numeros_ano.nm_ano', 'rbprev_numeros_mes.nm_mes', 'rbprev_numeros.path_pdf')
+            ->get();
 
         foreach ($rbprevNumeros as $item) {
             $item->path_pdf = Storage::url($item->path_pdf);
-        }
+        }// Verifica o caminho do arquivo
+
 
         return response()->json($rbprevNumeros);
     }
 
-    public function show($id) {
+    public function show($id)
+    {
 
 
         $document = DB::table('rbprev_numeros')->where('id', $id)->first();
@@ -43,8 +47,8 @@ class RBPREVNUMEROSAPIController extends Controller {
             ]);
 
             return $response->header('Cache-Control', 'public')
-                            ->header('Content-Transfer-Encoding', 'binary')
-                            ->header('Content-Length', filesize($pdfPath));
+                ->header('Content-Transfer-Encoding', 'binary')
+                ->header('Content-Length', filesize($pdfPath));
         } else {
             return response()->json(['error' => 'Arquivo não encontrado para este ID.'], 404);
         }
