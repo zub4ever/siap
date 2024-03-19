@@ -82,28 +82,15 @@ Route::group(['middleware' => ['auth']], function () {
 
     //Rotas para processamento do HTML para extração de dados
 
-    Route::get('dirf', 'Dirf\DirfCedulaCController@index')->name('dirf.index');
-    Route::get('/dirf/download/{cpf}', 'Dirf\DirfCedulaCController@download')->name('dirf.download');
-
+    Route::get('informerendimentos', 'Dirf\DirfCedulaCController@inicio')->name('cedula.inicio');
+    //Rota para ver o PDF
+    Route::get('informerendimentos/pdf/{cpf}', 'Dirf\DirfCedulaCController@pdf')->name('cedula.pdf');
     Route::get('/dirf/upload', function () {
         return view('dirf.dirf-upload');
     })->name('dirf.up');
     Route::post('/dirf/upload', 'Dirf\DirfCedulaCController@upload')->name('dirf.upload');
-    Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store')->name('dirf.store');
+   
 
-
-    //Cedula C da Prefeitura
-
-    Route::get('dirfpmrb', 'Dirf\DirfCedulaPMRBCController@index')->name('dirf_pmrb.index');
-    //
-    Route::get('/dirfpmrb/upload', function () {
-        return view('dirf_pmrb.dirf-upload');
-    })->name('dirf_pmrb.up');
-    //
-
-    //
-    Route::post('/dirfpmrb/upload', 'Dirf\DirfCedulaPMRBCController@upload')->name('dirf_pmrb.upload');
-    Route::get('/dirfpmrb/store/{cpf}', 'Dirf\DirfCedulaPMRBCController@store')->name('dirf_pmrb.store');
 
 
 
@@ -304,10 +291,11 @@ Route::post('/consultaPublica/resultado', 'DAF\AlmoxarifadoController@busca')->n
 Route::get('/consulta/{id?}', 'DAF\AlmoxarifadoController@buscaQrCode');
 
 //Rotas para Cécula
-Route::get('/cpf/search', 'Dirf\DirfCedulaCController@search')->name('dirf.search');
-Route::post('/cpf/result', 'Dirf\DirfCedulaCController@result')->name('dirf.result');
-Route::get('/dirf/not-found', 'Dirf\DirfCedulaCController@cpfNotFound')->name('dirf.not-found');
-Route::get('/dirf/store/{cpf}', 'Dirf\DirfCedulaCController@store_c')->name('dirf.store_c');
+Route::get('/dirfCedula', 'Dirf\DirfCedulaCController@pesquisapublica')->name('publico.inicio');
+
+Route::post('/dirfCedula/inicio', 'Dirf\DirfCedulaCController@resultadoPublico')->name('dirf.result');
+Route::get('/caminho/para/pdf/{cpf}/{anoExercicio}', 'Dirf\DirfCedulaCController@pdfPublico')->name('publico.pdf');
+
 
 
 

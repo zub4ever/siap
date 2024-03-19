@@ -3,133 +3,197 @@
 namespace App\Http\Controllers\Dirf;
 
 use App\Http\Controllers\Controller;
+
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
-use App\Models\DIRF\D_2023\DIRF2023;
+
 use App\Http\Requests\DirfFormRequest;
 use Illuminate\Http\UploadedFile;
 use \setasign\Fpdi\Fpdi;
 use \setasign\Fpdi\PdfParser\StreamReader;
 use Smalot\PdfParser\Parser;
+//use Smalot\PdfParser\Parser;
 use DB;
 use Illuminate\Http\Response;
+use App\Models\DIRF\DirfCedulaC;
 
-class DirfCedulaCController extends Controller {
+class DirfCedulaCController extends Controller
+{
 
-    public function index() {
+    public function inicio()
+    {
 
-        $cpfList = DB::table('documentos_cedula_c')->pluck('cpf')->toArray();
 
-        return view('dirf.index', [
-            'cpfList' => $cpfList
-        ]);
+        $cedulas = DirfCedulaC::all();
+        //dd($cedulas);
+        return view('dirf.inicio', compact('cedulas'));
     }
 
-    public function download($cpf) {
-        $pdfPath = storage_path('app/pdfs/Dirf2023CPF' . str_replace('.', '', $cpf) . '.pdf');
+    public function download($cpf)
+    {
+        $pdfPath = storage_path('app/pdfs/Dirf2024CPF' . str_replace('.', '', $cpf) . '.pdf');
 
         if (file_exists($pdfPath)) {
             return response()->download($pdfPath, $cpf . '.pdf', [
-                        'Content-Type' => 'application/pdf'
+                'Content-Type' => 'application/pdf'
             ]);
         }
 
         return view('dirf.cpf_not_found', ['cpf' => $cpf]);
     }
 
-    public function upload(DirfFormRequest $request) {
-        $cpfRegex = '/(\d{3}\.\d{3}\.\d{3}-\d{2})/'; // Regex para extrair o CPF do nome do arquivo
+    public function upload(Request $request)
+    {
+        $files = $request->file('pdfs');
 
-        $uploadedFiles = $request->file('pdfs');
+        if (!$files) {
+            throw ValidationException::withMessages([
+                'pdfs' => 'Nenhum arquivo foi enviado.'
+            ]);
+        }
 
-        foreach ($uploadedFiles as $uploadedFile) {
-            // Verifica se o arquivo é realmente um PDF
-            if ($uploadedFile->extension() !== 'pdf') {
-                continue;
-            }
+        $results = [];
+        $uploadCount = 0;
 
-            $fileName = $uploadedFile->getClientOriginalName();
-            preg_match($cpfRegex, $fileName, $matches);
+        foreach ($files as $file) {
+            if ($file) {
+                /**
+                 * Ler o arquivo temporário
+                 */
 
-            if (!empty($matches)) {
-                $cpf = str_replace('.', '', $matches[0]);
+                $parser = new Parser();
+                $pdf = $parser->parseFile($file->getRealPath());
+                $text = $pdf->getText(); // Extrai o texto do PDF
 
-                $existingFile = DB::table('documentos_cedula_c')->where('cpf', $cpf)->first();
+                /**
+                 *  Expressão regular para extrair CPF, nome e ano do exercício
+                 */
 
-                if ($existingFile) {
-                    Storage::delete($existingFile->pdf_path);
-                    DB::table('documentos_cedula_c')->where('cpf', $cpf)->delete();
+                preg_match("/\d{3}\.\d{3}\.\d{3}-\d{2}/", $text, $cpfMatches);
+                preg_match("/\d{3}\.\d{3}\.\d{3}-\d{2}\s*(.*)/", $text, $nameMatches);
+                preg_match("/Exercício de (\d+)/", $text, $exerciseMatches);
+                /*
+                // Prepara os dados
+                */
+                $cpf = $cpfMatches[0] ?? 'CPF Nao encontrado';
+                $name = isset ($nameMatches[1]) ? trim(str_replace('Nome Completo', '', $nameMatches[1])) : 'Nome nao encontrado';
+                $exerciseYear = $exerciseMatches[1] ?? 'Ano nao encontrado';
+                $userId = Auth::id();
+
+                /* Salva o arquivo no diretório storage/app/public/pdf e obtém o caminho
+                 */
+                $pdfPath = $file->store('public/pdf');
+                /*
+                // Cria uma nova cédula e salva no banco de dados
+                */
+                $cedula = new DirfCedulaC();
+                $cedula->cpf = $cpf;
+                $cedula->nome = $name;
+                $cedula->anoExercicio = $exerciseYear;
+                $cedula->caminhodoarquivo = $pdfPath;
+                $cedula->id_usuario = $userId;
+
+                if ($cedula->save()) {
+                    $uploadCount++;
+                    $results[] = [
+                        'cpf' => $cpf,
+                        'nome' => $name,
+                        'anoExercicio' => $exerciseYear,
+                        'caminhodoarquivo' => $pdfPath,
+                        'id_usuario' => $userId
+                    ];
                 }
-
-                $pdfPath = $uploadedFile->storeAs('pdfs', 'Dirf2023CPF' . $cpf . '.pdf');
-
-                DB::table('documentos_cedula_c')->insert([
-                    'cpf' => $cpf,
-                    'pdf_path' => $pdfPath
-                ]);
             }
         }
 
-        return redirect()->route('dirf.index')->with(
-                        'success',
-                        'Upload realizado com sucesso.'
-        );
-    }
+        if ($uploadCount > 0) {
 
-    public function store($cpf) {
-        $pdfPath = storage_path('app/public/pdfs/Dirf2023CPF' . str_replace('.', '', $cpf) . '.pdf');
+            return redirect()->route('cedula.inicio')->with('success', "Foram processados $uploadCount arquivos.");
+        } else {
 
-        if (!file_exists($pdfPath)) {
-            return view('dirf.not-found', ['cpf' => $cpf]);
+            return response()->json([
+                'success' => false,
+                'message' => "Nenhum arquivo foi processado.",
+                'data' => $results
+            ]);
         }
 
-        $response = new Response(file_get_contents($pdfPath), 200, [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="' . $cpf . '.pdf"'
-        ]);
-
-        return $response;
     }
 
-    public function search() {
+
+
+
+    public function pdf($cpf)
+    {
+        // Primeiro, encontre a cédula correspondente ao CPF fornecido.
+        $cedula = DirfCedulaC::where('cpf', $cpf)->first();
+
+        //dd($cedula);
+        // Se a cédula não for encontrada ou o arquivo não existir, retorne um erro ou uma view específica.
+        if (!$cedula || !file_exists(storage_path('app/public/' . $cedula->caminhodoarquivo))) {
+            // Você pode retornar um erro 404 ou redirecionar para uma página de erro.
+            // Por exemplo, retornar uma view dizendo que o arquivo não foi encontrado:
+            return response()->json(['message' => 'Arquivo não encontrado']);
+        }
+
+        // Se o arquivo existir, prepare e retorne a resposta com o arquivo.
+        $caminhodoarquivo = storage_path('app/public/' . $cedula->caminhodoarquivo);
+
+        return new Response(file_get_contents($caminhodoarquivo), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . basename($caminhodoarquivo) . '"'
+        ]);
+    }
+
+    public function pesquisapublica(Request $request)
+    {
         return view('dirf.dirf_search');
     }
+    public function resultadoPublico(Request $request)
+{
+    $cpf = $request->cpf;
+    $nomeInformado = strtolower($request->nome); // Convertendo para minúsculas para comparação insensível a maiúsculas/minúsculas
 
-    public function result(Request $request) {
-        $cpf = $request->input('cpf');
+    // Busca por CPF
+    $cedulas = DirfCedulaC::where('cpf', $cpf)->get();
 
-        $document = DB::table('documentos_cedula_c')->where('cpf', $cpf)->first();
+    // Filtra os registros para aqueles em que o primeiro nome corresponde ao informado
+    $cedulasFiltradas = $cedulas->filter(function ($cedula) use ($nomeInformado) {
+        // Extrai o primeiro nome do nome completo armazenado e converte para minúsculas
+        $primeiroNome = strtolower(explode(' ', trim($cedula->nome))[0]);
+        
+        // Retorna verdadeiro se o primeiro nome corresponder ao nome informado
+        return $primeiroNome === $nomeInformado;
+    });
 
-        if (!$document) {
-            return redirect()->route('dirf.not-found')->with('error', 'O CPF digitado não foi encontrado.');
-        }
+    return view('dirf.cpf_result', compact('cedulasFiltradas'));
+}
 
-        $pdfPath = $document->pdf_path;
+public function pdfPublico($cpf,$anoExercicio)
+{
+    // Primeiro, encontre a cédula correspondente ao CPF fornecido.
+    $cedula = DirfCedulaC::where('cpf', $cpf)->where('anoExercicio', $anoExercicio)->first();
 
-        return view('dirf.cpf_result', ['pdfPath' => $pdfPath, 'cpf' => $cpf]);
+    //dd($cedula);
+    // Se a cédula não for encontrada ou o arquivo não existir, retorne um erro ou uma view específica.
+    if (!$cedula || !file_exists(storage_path('app/public/' . $cedula->caminhodoarquivo))) {
+        // Você pode retornar um erro 404 ou redirecionar para uma página de erro.
+        // Por exemplo, retornar uma view dizendo que o arquivo não foi encontrado:
+        return response()->json(['message' => 'Arquivo não encontrado']);
     }
 
-    public function cpfNotFound(Request $request) {
-        $cpf = $request->input('cpf');
-        $errorMessage = $request->session()->get('error');
-        return view('dirf.cpf_not_found', ['cpf' => $cpf, 'errorMessage' => $errorMessage]);
-    }
-    public function store_c($cpf) {
-        $pdfPath = storage_path('app/public/pdfs/Dirf2023CPF' . str_replace('.', '', $cpf) . '.pdf');
+    // Se o arquivo existir, prepare e retorne a resposta com o arquivo.
+    $caminhodoarquivo = storage_path('app/public/' . $cedula->caminhodoarquivo);
 
-        if (!file_exists($pdfPath)) {
-            return view('dirf.not-found', ['cpf' => $cpf]);
-        }
+    return new Response(file_get_contents($caminhodoarquivo), 200, [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="' . basename($caminhodoarquivo) . '"'
+    ]);
+}
 
-        $response = new Response(file_get_contents($pdfPath), 200, [
-            'Content-Type' => 'application/pdf',
-            'Content-Disposition' => 'inline; filename="' . $cpf . '.pdf"'
-        ]);
 
-        return $response;
-    }
-    
 
 }

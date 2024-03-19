@@ -22,20 +22,18 @@
         </div>
         <div class="container mt-5">
             <h4 class="mb-3">Resultado da pesquisa por CPF</h4>
-            @if ($pdfPath)
-            <p>A busca correspondente ao CPF {{ $cpf }} foi encontrado:</p>
+            @foreach ($cedulasFiltradas as $cedula)
+            <p>A busca correspondente ao CPF  foi encontrado:</p>
+            <div class="col-3">
             <div class="card">
-                <div class="card-body">
-                    
-                    <a href="{{ route('dirf.store_c', $cpf) }}" target="_blank" class="btn btn-primary">Baixar Cédula</a>
-                </div>
+            <div class="card-body">                  
+                <a href="{{ route('publico.pdf', ['cpf' => $cedula->cpf, 'anoExercicio' => $cedula->anoExercicio]) }}" target="_blank" class="btn btn-primary">Baixar Cédula {{$cedula->anoExercicio}}</a>
             </div>
-            @else
-            <p>Nenhum PDF foi encontrado para o CPF {{ $cpf }}.</p>
-            @endif
+            </div>
+            </div>
+            
+            @endforeach
         </div>
-
-
     </body>
     <br><br><br>
     <br><br><br>

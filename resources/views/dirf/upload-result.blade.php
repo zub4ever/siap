@@ -32,16 +32,11 @@ Dirf
         </tr>
     </thead>
     <tbody>
-        @foreach ($cpfList as $index => $cpf)
-            <tr>
-                <td>{{ $cpf }}</td>
-                <td>{{ $nameList[$index] }}</td>
-            </tr>
-        @endforeach
+        
     </tbody>
     <tfoot>
         <tr>
-            <td colspan="2">Total: {{ count($cpfList) }}</td>
+            <td colspan="2">Total: </td>
         </tr>
     </tfoot>
 </table>

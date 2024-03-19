@@ -35,14 +35,24 @@
 
             <form action="{{ route('dirf.result') }}" method="post" id="cpf-form">
                 @csrf
+                <div class="col-4">
                 <div class="form-group">
                     <label for="cpf">CPF:</label>
                     <input type="text" class="form-control" id="cpf" name="cpf" placeholder="Digite o CPF" required>
                 </div>
+                <br>
+                <div class="form-group">
+                    <label for="nome">Primeiro Nome:</label>
+                    <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite o primeiro nome" required>
+                </div>
+
                 <div class="d-flex justify-content-center">
                     <button type="submit" class="btn btn-primary" style="background-color: #003C82 ;">Pesquisar</button>
                 </div>
+                </div>
+                
             </form>
+            
         </div>
         <br><br><br>
         <br><br><br>
@@ -53,13 +63,23 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
         <script>
-$(document).ready(function () {
-    $('#cpf').mask('000.000.000-00');
-    $('#cpf-form').submit(function () {
-        var cpf = $('#cpf').val().replace(/\./g, ''); // Remove pontos do valor do campo
-        $('#cpf').val(cpf); // Atualiza o valor do campo com o valor sem pontos
-    });
-});
+                $(document).ready(function () {
+                    $('#cpf').mask('000.000.000-00');
+                    
+                });
+                $('#nome').on('input', function() {
+                    var input = $(this);
+                    var nomeCompleto = input.val();
+                    var primeiroNome = nomeCompleto.split(' ')[0]; 
+                    primeiroNome = primeiroNome.toUpperCase(); 
+
+                    
+                    if(nomeCompleto.indexOf(' ') >= 0) {
+                        input.val(primeiroNome);
+                    } else {
+                        input.val(primeiroNome);
+                    }
+                });
         </script>
 
         <br>

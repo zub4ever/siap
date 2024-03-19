@@ -1,6 +1,4 @@
 @extends('layouts.app')
-
-
 {{-- Page Title --}}
 @section('page-title')
 Dirf
@@ -26,11 +24,7 @@ Dirf
 <div class="row">
     <div class="col-lg-12 mb-4">
         <div class="card">
-            <div class="card-body">
-                <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('pdf.showUploadForm')}}" role="button">
-                    Subir HTML de processamento
-                </a>
-            </div>
+           
             <div class="card-body">
                 <a class="btn btn-success btn-md" data-toggle="tooltip" data-placement="right" title="Cadastrar" href="{{route('dirf.upload')}}" role="button">
                     Subir nova Cédula
@@ -44,39 +38,31 @@ Dirf
     <div class="col-12 mb-4">
         <div class="card">
             <div class="card-body">
-                <h4 class="card_title">Cédulas C 2023</h4>
+                <h4 class="card_title">Informe de Rendimentos</h4>
                 <div class="table-responsive">
                     <table id="dataTable" class="table text-center">
                         <thead class="bg-light text-capitalize">
                             <tr>
                                 <th class="text-center">#</th>
                                 <th class="text-center">CPF</th>
+                                <th class="text-center">Nome</th>
+                                <th class="text-center">Ano Exercício</th>
                                 <th class="text-center">Ação</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($cpfList as $cpf)
+                            @foreach($cedulas as $cedula)
                             <tr>
-                                <td class="text-center"></td>
-                                <td class="text-center">{{$cpf}}</td>
+                                <td>{{$loop->index + 1}}</td>
+                                <td>{{$cedula->cpf}}</td>
+                                <td></td>
+                                <td>{{$cedula->anoExercicio}}</td>
                                 <td>
-                                   @hasanyrole('Admin|Tecnico')
-
-                                    @php
-                                    $document = DB::table('documentos_cedula_c')->where('cpf', $cpf)->first();
-                                    $pdfPath = $document ? storage_path('app/public/pdfs/Dirf2023CPF' . str_replace('.', '', $cpf) . '.pdf') : null;
-
-                                    @endphp
-                                    @if ($pdfPath && file_exists($pdfPath))
-                                    <a href="{{ route('dirf.store_c', $cpf) }}" target="_blank">
-                                        <i class="ti-printer mr-1 btn btn-warning"></i>
-                                    </a>
-                                    @endif
-                                    @endhasanyrole
+                                    
                                 </td>
-
                             </tr>
                             @endforeach
+
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-end">
@@ -110,4 +96,5 @@ Dirf
 <!-- Sweet Alert Js -->
 <script src="{{asset("assets/vendors/sweetalert2/js/sweetalert2.all.min.js")}}"></script>
 <script src="{{asset('js/delete.js')}}"></script>
+
 @endsection

@@ -257,10 +257,10 @@
                     </li>
                     Fim de DAF-->
                      <!--Inicio  de Cédula -->
-                    <li {!! (request()->is('dirf*') ? 'class="active"' : "")!!}>
-                        <a href="{{route('dirf.index')}}" aria-expanded="true">
+                    <li {!! (request()->is('cedula*') ? 'class="active"' : "")!!}>
+                        <a href="{{route('cedula.inicio')}}" aria-expanded="true">
                             <i class="ti-money"></i>
-                            <span>Cédula C</span>
+                            <span>Informe de Rendimento</span>
                         </a>
                     </li>
                     <!--Fim de DAF-->
