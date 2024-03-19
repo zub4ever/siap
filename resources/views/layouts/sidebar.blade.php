@@ -260,7 +260,7 @@
                     <li {!! (request()->is('cedula*') ? 'class="active"' : "")!!}>
                         <a href="{{route('cedula.inicio')}}" aria-expanded="true">
                             <i class="ti-money"></i>
-                            <span>Informe de Rendimento</span>
+                            <span>Informe de Rendimentos</span>
                         </a>
                     </li>
                     <!--Fim de DAF-->

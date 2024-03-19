@@ -79,7 +79,7 @@ class DirfCedulaCController extends Controller
                 // Prepara os dados
                 */
                 $cpf = $cpfMatches[0] ?? 'CPF Nao encontrado';
-                $name = isset ($nameMatches[1]) ? trim(str_replace('Nome Completo', '', $nameMatches[1])) : 'Nome nao encontrado';
+                $name = isset($nameMatches[1]) ? trim(str_replace('Nome Completo', '', $nameMatches[1])) : 'Nome nao encontrado';
                 $exerciseYear = $exerciseMatches[1] ?? 'Ano nao encontrado';
                 $userId = Auth::id();
 
@@ -120,7 +120,6 @@ class DirfCedulaCController extends Controller
                 'data' => $results
             ]);
         }
-
     }
 
 
@@ -153,47 +152,52 @@ class DirfCedulaCController extends Controller
         return view('dirf.dirf_search');
     }
     public function resultadoPublico(Request $request)
-{
-    $cpf = $request->cpf;
-    $nomeInformado = strtolower($request->nome); // Convertendo para minúsculas para comparação insensível a maiúsculas/minúsculas
+    {
+        $cpf = $request->cpf;
+        $nomeInformado = strtolower($request->nome);
 
-    // Busca por CPF
-    $cedulas = DirfCedulaC::where('cpf', $cpf)->get();
+        // Busca por CPF
+        $cedulas = DirfCedulaC::where('cpf', $cpf)->get();
 
-    // Filtra os registros para aqueles em que o primeiro nome corresponde ao informado
-    $cedulasFiltradas = $cedulas->filter(function ($cedula) use ($nomeInformado) {
-        // Extrai o primeiro nome do nome completo armazenado e converte para minúsculas
-        $primeiroNome = strtolower(explode(' ', trim($cedula->nome))[0]);
-        
-        // Retorna verdadeiro se o primeiro nome corresponder ao nome informado
-        return $primeiroNome === $nomeInformado;
-    });
+        // Filtra os registros para aqueles em que o primeiro nome corresponde ao informado
+        $cedulasFiltradas = $cedulas->filter(function ($cedula) use ($nomeInformado) {
+            $primeiroNome = strtolower(explode(' ', trim($cedula->nome))[0]);
+            return $primeiroNome === $nomeInformado;
+        });
 
-    return view('dirf.cpf_result', compact('cedulasFiltradas'));
-}
+        if ($cedulasFiltradas->isEmpty()) {
+            // Se não encontrar nenhuma cédula correspondente, retorna um JSON indicando que não foram encontrados dados
+            return response()->json([
+                'message' => 'Não foram encontrados dados para as credenciais informadas.'
+            ], 404);
+        }
 
-public function pdfPublico($cpf,$anoExercicio)
-{
-    // Primeiro, encontre a cédula correspondente ao CPF fornecido.
-    $cedula = DirfCedulaC::where('cpf', $cpf)->where('anoExercicio', $anoExercicio)->first();
-
-    //dd($cedula);
-    // Se a cédula não for encontrada ou o arquivo não existir, retorne um erro ou uma view específica.
-    if (!$cedula || !file_exists(storage_path('app/public/' . $cedula->caminhodoarquivo))) {
-        // Você pode retornar um erro 404 ou redirecionar para uma página de erro.
-        // Por exemplo, retornar uma view dizendo que o arquivo não foi encontrado:
-        return response()->json(['message' => 'Arquivo não encontrado']);
+            //Retornar tbm o primeiro nome
+            $nomeDirf = explode(' ', trim($cedulasFiltradas[0]->nome))[0];
+        // Se registros correspondentes forem encontrados, redireciona para a view com os dados filtrados
+        return view('dirf.cpf_result', compact('cedulasFiltradas', 'nomeDirf'));
     }
 
-    // Se o arquivo existir, prepare e retorne a resposta com o arquivo.
-    $caminhodoarquivo = storage_path('app/public/' . $cedula->caminhodoarquivo);
 
-    return new Response(file_get_contents($caminhodoarquivo), 200, [
-        'Content-Type' => 'application/pdf',
-        'Content-Disposition' => 'inline; filename="' . basename($caminhodoarquivo) . '"'
-    ]);
-}
+    public function pdfPublico($cpf, $anoExercicio)
+    {
+        // Primeiro, encontre a cédula correspondente ao CPF fornecido.
+        $cedula = DirfCedulaC::where('cpf', $cpf)->where('anoExercicio', $anoExercicio)->first();
 
+        //dd($cedula);
+        // Se a cédula não for encontrada ou o arquivo não existir, retorne um erro ou uma view específica.
+        if (!$cedula || !file_exists(storage_path('app/public/' . $cedula->caminhodoarquivo))) {
+            // Você pode retornar um erro 404 ou redirecionar para uma página de erro.
+            // Por exemplo, retornar uma view dizendo que o arquivo não foi encontrado:
+            return response()->json(['message' => 'Arquivo não encontrado']);
+        }
 
+        /* Se o arquivo existir, prepare e retorne a resposta com o arquivo. */
+        $caminhodoarquivo = storage_path('app/public/' . $cedula->caminhodoarquivo);
 
+        return new Response(file_get_contents($caminhodoarquivo), 200, [
+            'Content-Type' => 'application/pdf',
+            'Content-Disposition' => 'inline; filename="' . basename($caminhodoarquivo) . '"'
+        ]);
+    }
 }
