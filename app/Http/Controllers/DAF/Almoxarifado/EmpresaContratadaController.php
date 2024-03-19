@@ -40,7 +40,7 @@ class EmpresaContratadaController extends Controller
 
         DB::beginTransaction();
 
-        $empresaContratada = EmpresaContr00atada::create($request->all());
+        $empresaContratada = EmpresaContratada::create($request->all());
 
         if (!$empresaContratada) {
             DB::rollBack();

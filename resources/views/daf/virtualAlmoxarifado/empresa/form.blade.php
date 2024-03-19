@@ -153,16 +153,16 @@
 
 <script>
     document.getElementById('btnBuscarCnpj').addEventListener('click', function () {
-        var cnpj = document.getElementById('cnpj').value.replaceAll(/[^\d]/g, ''); // Remove todos os caracteres não numéricos
+        var cnpj = document.getElementById('cnpj').value.replaceAll(/[^\d]/g, ''); // Esse trecho remove os pontos e vigula e tals
         var url = '/search-cnpj?cnpj=' + cnpj;
 
-        // Requisição AJAX para obter os dados do CNPJ
+       
         var request = new XMLHttpRequest();
         request.open('GET', url, true);
         request.onload = function () {
             if (request.status >= 200 && request.status < 400) {
                 var data = JSON.parse(request.responseText);
-                // Preencher os campos com os dados do CNPJ
+                
                 document.getElementById('nomeFantasia').value = data['NOME FANTASIA'];
                 document.getElementById('razaoSocial').value = data['RAZAO SOCIAL'];
                 document.getElementById('cnpjRetornado').value = data['CNPJ'];

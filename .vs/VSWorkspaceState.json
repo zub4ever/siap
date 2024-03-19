@@ -1,0 +1,13 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\app",
+    "\\app\\Http",
+    "\\app\\Http\\Controllers",
+    "\\app\\Http\\Controllers\\DAF",
+    "\\app\\Http\\Controllers\\DAF\\Almoxarifado",
+    "\\app\\Http\\Controllers\\ProcessosHomologadosTCE"
+  ],
+  "SelectedNode": "\\app\\Http\\Controllers\\ProcessosHomologadosTCE\\ProcessosHomologadosTCEController.php",
+  "PreviewInSolutionExplorer": false
+}
