@@ -156,27 +156,28 @@ class DirfCedulaCController extends Controller
         $cpf = $request->cpf;
         $nomeInformado = strtolower($request->nome);
 
-        // Busca por CPF
-        $cedulas = DirfCedulaC::where('cpf', $cpf)->get();
-
-        // Filtra os registros para aqueles em que o primeiro nome corresponde ao informado
-        $cedulasFiltradas = $cedulas->filter(function ($cedula) use ($nomeInformado) {
-            $primeiroNome = strtolower(explode(' ', trim($cedula->nome))[0]);
-            return $primeiroNome === $nomeInformado;
-        });
+        // Busca por CPF e nome
+        $cedulasFiltradas = DirfCedulaC::where('cpf', $cpf)
+            ->get()
+            ->filter(function ($cedula) use ($nomeInformado) {
+                $primeiroNome = strtolower(explode(' ', trim($cedula->nome))[0]);
+                return $primeiroNome === $nomeInformado;
+            });
 
         if ($cedulasFiltradas->isEmpty()) {
-            // Se não encontrar nenhuma cédula correspondente, retorna um JSON indicando que não foram encontrados dados
+            
             return response()->json([
                 'message' => 'Não foram encontrados dados para as credenciais informadas.'
             ], 404);
         }
 
-            //Retornar tbm o primeiro nome
-            $nomeDirf = explode(' ', trim($cedulasFiltradas[0]->nome))[0];
-        // Se registros correspondentes forem encontrados, redireciona para a view com os dados filtrados
+        
+        $nomeDirf = explode(' ', trim($cedulasFiltradas->first()->nome))[0];
+
+       
         return view('dirf.cpf_result', compact('cedulasFiltradas', 'nomeDirf'));
     }
+
 
 
     public function pdfPublico($cpf, $anoExercicio)
